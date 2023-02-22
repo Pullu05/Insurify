@@ -17,6 +17,7 @@
         <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
             rel="stylesheet">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
         <!-- Vendor CSS Files -->
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -28,39 +29,16 @@
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
-
-
-
-
-
+        <link href="assets/css/forms.css" rel="stylesheet">
         <style>
-            #automobileVehicledata{
-                margin: auto;
-                /*border: 2px solid;*/
-                width: 50%;
-                padding: 30px 0;
-                padding-left: 100px;
-            }
-
-
-
-            .form-group{
-                margin: 25px 0px;
-            }
-            #next_Btn{
-                width: 30%;
+            #insurantData,#productData,#planData,#sendData{
+                display: none;
             }
         </style>
-
-
-
-
-
-
-
     </head>
 
     <body>
+        <script src="javascript/automobileInsurance.js"></script>
         <header id="header" class="fixed-top">
             <div class="container d-flex align-items-center justify-content-lg-between mt-3">
                 <h2 class="logo me-auto me-lg-0 display-7"><a href="index.jsp">Insurify</a></h2>
@@ -74,28 +52,26 @@
                 </nav> <a href="#contact" class="get-started-btn scrollto">Contact Us</a>
             </div>
 
-
         </header>
-
 
 
         <div style="margin-top: 100px" class="container d-flex justify-content-center align-items-center">
 
 
-            <button type="button" class="btn btn-success mx-2">Enter Vehicle Data</button>
-            <button type="button" class="btn btn-secondary mx-2">Enter Insurant Data</button>
-            <button type="button" class="btn btn-secondary mx-2">Enter Product Data</button>
-            <button type="button" class="btn btn-secondary mx-2">Select Your Plan</button>
-            <button type="button" class="btn btn-secondary mx-2">Send Quote</button>
+            <button id="vehicle_btn" type="button" class="btn btn-success mx-2" onclick="showVehicleData()">Enter Vehicle Data</button>
+            <button id="insurant_btn" type="button" class="btn btn-secondary mx-2"  onclick="showInsurantData()">Enter Insurant Data</button>
+            <button id="product_btn" type="button" class="btn btn-secondary mx-2" onclick="showProductData()">Enter Product Data</button>
+            <button id="plan_btn" type="button" class="btn btn-secondary mx-2" onclick="showPlanData()" >Select Your Plan</button>
+            <button id="quote_btn" type="button" class="btn btn-secondary mx-2" onclick="showQuoteData()">Send Quote</button>
 
 
         </div>
 
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
+        <section id="vehicleData"><jsp:include page="vehicleData.jsp"></jsp:include></section>
+        <section id="insurantData"><jsp:include page="insurantData.jsp"></jsp:include></section>
+            <section id="productData"><jsp:include page="productData.jsp"></jsp:include></section>
+            <section id="planData"></section>
+            <section id="sendData"><jsp:include page="sendQuote.jsp"></jsp:include></section>
 
 
 
@@ -183,7 +159,9 @@
         <script src="assets/vendor/php-email-form/validate.js"></script>
 
         <!-- Template Main JS File -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="assets/js/main.js"></script>
+        
     </body>
 
 </html>
