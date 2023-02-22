@@ -53,16 +53,16 @@
         <div style="margin-top: 100px" class="container d-flex justify-content-center align-items-center">
 
 
-            <button id="vehicle_btn" data-sectionid="vehicleData" type="button" class="btn btn-success mx-2" onclick="handleAutomobileSectionChange(event)">Enter Vehicle Data</button>
-            <button id="insurant_btn" data-sectionid="insurantData" type="button" class="btn btn-secondary mx-2"  onclick="handleAutomobileSectionChange(event)">Enter Insurant Data</button>
-            <button id="product_btn" data-sectionid="productData" type="button" class="btn btn-secondary mx-2" onclick="handleAutomobileSectionChange(event)">Enter Product Data</button>
-            <button id="plan_btn" data-sectionid="planData" type="button" class="btn btn-secondary mx-2" onclick="handleAutomobileSectionChange(event)" >Select Your Plan</button>
-            <button id="quote_btn" data-sectionid="sendData" type="button" class="btn btn-secondary mx-2" onclick="handleAutomobileSectionChange(event)">Send Quote</button>
+            <button data-sectionid="vehicleData" type="button" class="btn btn-success mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Vehicle Data</button>
+            <button data-sectionid="insurantData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Insurant Data</button>
+            <button data-sectionid="productData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Product Data</button>
+            <button data-sectionid="planData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)" >Select Your Plan</button>
+            <button data-sectionid="sendData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Send Quote</button>
 
 
         </div>
 
-        <section id="vehicleData" class="automobileFormSection d-block"><jsp:include page="vehicleData.jsp"></jsp:include></section>
+        <section id="vehicleData" class="automobileFormSection"><jsp:include page="vehicleData.jsp"></jsp:include></section>
         <section id="insurantData" class="automobileFormSection d-none"><jsp:include page="insurantData.jsp"></jsp:include></section>
         <section id="productData" class="automobileFormSection d-none"><jsp:include page="productData.jsp"></jsp:include></section>
         <section id="planData" class="automobileFormSection d-none"><jsp:include page="subscriptionPlans.jsp"></jsp:include></section>
