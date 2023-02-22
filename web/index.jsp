@@ -40,7 +40,7 @@
       <h2 class="logo me-auto me-lg-0 display-7"><a href="index.html">Insurify</a></h2>
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Automobile</a></li>
+          <li><a class="nav-link scrollto active" href="sendQuote.jsp">Automobile</a></li>
           <li><a class="nav-link scrollto" href="#about">Truck</a></li>
           <li><a class="nav-link scrollto" href="#services">Motocycle</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Camper</a></li>
