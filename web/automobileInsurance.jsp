@@ -17,7 +17,7 @@
         <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
             rel="stylesheet">
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
         <!-- Vendor CSS Files -->
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -30,11 +30,6 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/forms.css" rel="stylesheet">
-        <style>
-            #insurantData,#productData,#planData,#sendData{
-                display: none;
-            }
-        </style>
     </head>
 
     <body>
@@ -58,20 +53,20 @@
         <div style="margin-top: 100px" class="container d-flex justify-content-center align-items-center">
 
 
-            <button id="vehicle_btn" type="button" class="btn btn-success mx-2" onclick="showVehicleData()">Enter Vehicle Data</button>
-            <button id="insurant_btn" type="button" class="btn btn-secondary mx-2"  onclick="showInsurantData()">Enter Insurant Data</button>
-            <button id="product_btn" type="button" class="btn btn-secondary mx-2" onclick="showProductData()">Enter Product Data</button>
-            <button id="plan_btn" type="button" class="btn btn-secondary mx-2" onclick="showPlanData()" >Select Your Plan</button>
-            <button id="quote_btn" type="button" class="btn btn-secondary mx-2" onclick="showQuoteData()">Send Quote</button>
+            <button id="vehicle_btn" data-sectionid="vehicleData" type="button" class="btn btn-success mx-2" onclick="handleAutomobileSectionChange(event)">Enter Vehicle Data</button>
+            <button id="insurant_btn" data-sectionid="insurantData" type="button" class="btn btn-secondary mx-2"  onclick="handleAutomobileSectionChange(event)">Enter Insurant Data</button>
+            <button id="product_btn" data-sectionid="productData" type="button" class="btn btn-secondary mx-2" onclick="handleAutomobileSectionChange(event)">Enter Product Data</button>
+            <button id="plan_btn" data-sectionid="planData" type="button" class="btn btn-secondary mx-2" onclick="handleAutomobileSectionChange(event)" >Select Your Plan</button>
+            <button id="quote_btn" data-sectionid="sendData" type="button" class="btn btn-secondary mx-2" onclick="handleAutomobileSectionChange(event)">Send Quote</button>
 
 
         </div>
 
-        <section id="vehicleData"><jsp:include page="vehicleData.jsp"></jsp:include></section>
-        <section id="insurantData"><jsp:include page="insurantData.jsp"></jsp:include></section>
-            <section id="productData"><jsp:include page="productData.jsp"></jsp:include></section>
-            <section id="planData"></section>
-            <section id="sendData"><jsp:include page="sendQuote.jsp"></jsp:include></section>
+        <section id="vehicleData" class="automobileFormSection d-block"><jsp:include page="vehicleData.jsp"></jsp:include></section>
+        <section id="insurantData" class="automobileFormSection d-none"><jsp:include page="insurantData.jsp"></jsp:include></section>
+        <section id="productData" class="automobileFormSection d-none"><jsp:include page="productData.jsp"></jsp:include></section>
+        <section id="planData" class="automobileFormSection d-none"><jsp:include page="subscriptionPlans.jsp"></jsp:include></section>
+        <section id="sendData" class="automobileFormSection d-none"><jsp:include page="sendQuote.jsp"></jsp:include></section>
 
 
 
@@ -144,7 +139,7 @@
                     <!-- You can delete the links only if you purchased the pro version. -->
                     <!-- Licensing information: https://bootstrapmade.com/license/ -->
                     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/Insurify-free-onepage-bootstrap-theme/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    Designed by <a href="https://bootstrapmade.com/">Group E</a>
                 </div>
             </div>
         </footer><!-- End Footer -->
@@ -161,7 +156,7 @@
         <!-- Template Main JS File -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="assets/js/main.js"></script>
-        
+
     </body>
 
 </html>
