@@ -1,4 +1,4 @@
-<section class="container text-center rounded border border-dark p-4 mt-2 mx-auto">
+<section class="container text-center rounded p-4 mt-2 mx-auto" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 14px rgba(0,0,0,0.23);">
     <div class="row mx-0 gap-2 my-2">
         <div class="col fw-bold text-white rounded-top p-2"></div>
         <div class="col fw-bold text-white rounded-top p-2" style="background-color: #8e8e8e;">Silver</div>

@@ -1,4 +1,4 @@
-<section class="rounded  border border-dark mt-3 formBlock">
+<section class="rounded mt-3 formBlock">
     <form>
 
         <div class="form-group row">

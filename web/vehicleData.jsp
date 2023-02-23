@@ -1,11 +1,11 @@
-<section class="rounded  border border-dark mt-3 formBlock">
+<section class="rounded mt-3 formBlock">
     <form>
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Make</label>
             <div class="col-sm-6">
                 <select id="make" name="Make" class="form-control">
                     <option value="default">&ndash; please select &ndash;</option>
-                    <option value='Audi'>Audi</option><option value='BMW'>BMW</option><option value='Ford'>Ford</option><option value='Honda'>Honda</option><option value='Mazda'>Mazda</option><option value='Mercedes Benz'>Mercedes Benz</option><option value='Nissan'>Nissan</option><option value='Opel'>Opel</option><option value='Porsche'>Porsche</option><option value='Renault'>Renault</option><option value='Skoda'>Skoda</option><option value='Suzuki'>Suzuki</option><option value='Toyota'>Toyota</option><option value='Volkswagen'>Volkswagen</option><option value='Volvo'>Volvo</option>  
+                    <option value='Audi'>Audi</option><option value='BMW'>BMW</option><option value='Ford'>Ford</option><option value='Honda'>Honda</option><option value='Mazda'>Mazda</option><option value='Mercedes Benz'>Mercedes Benz</option><option value='Nissan'>Nissan</option><option value='Opel'>Opel</option><option value='Porsche'>Porsche</option><option value='Renault'>Renault</option><option value='Skoda'>Skoda</option><option value='Suzuki'>Suzuki</option><option value='Toyota'>Toyota</option><option value='Volkswagen'>Volkswagen</option><option value='Volvo'>Volvo</option>
                 </select>
             </div>
         </div>
