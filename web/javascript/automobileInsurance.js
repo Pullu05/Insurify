@@ -18,6 +18,4 @@ function handleAutomobileSectionChange(event) {
 
     selectedBtn.classList.add('btn-success');
     selectedBtn.classList.remove('btn-secondary');
-
-
 }
