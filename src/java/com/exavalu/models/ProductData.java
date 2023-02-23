@@ -33,6 +33,14 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
         sessionMap = (SessionMap) session;
     }
 
+    private int productId;
+    private String startDate;
+    private String insuranceSum;
+    private String meritRating;
+    private String damageInsurance;
+    private String optionalProducts;
+    private String courtesyCar;
+
     public String doAddProductData() throws Exception {
 
         String result = "FAILURE";
@@ -46,9 +54,6 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
         }
         return result;
     }
-
-    private int productId;
-    private String startDate, insuranceSum, meritRating, damageInsurance, optionalProducts, courtesyCar;
 
     /**
      * @return the productId

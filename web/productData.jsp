@@ -4,14 +4,14 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Start Date</label>
             <div class="col-sm-6">
-                <input  type="date" class="form-control" id="dateofmanufacture" name="dateofmanufacture" type="text" placeholder="MM/DD/YYYY" class="datepicker">
+                <input  type="date" class="form-control" id="startDate" name="startDate" type="text" placeholder="MM/DD/YYYY" class="datepicker">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Insurance Sum [$]</label>
             <div class="col-sm-6">
-                <select id="insurancesum" name="Insurance Sum" class="form-control">
+                <select id="insuranceSum" name="insuranceSum" class="form-control">
                     <option value="default">&ndash; please select &ndash;</option>
                     <option value="3000000"> 3.000.000,00</option>
                     <option value="5000000"> 5.000.000,00</option>
@@ -29,7 +29,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Merit Rating</label>
             <div class="col-sm-6">
-                <select id="meritrating" name="Merit Rating" class="form-control">
+                <select id="meritRating" name="meritRating" class="form-control">
                     <option value="default">&ndash; please select &ndash;</option>
                     <option value="Super Bonus">Super Bonus</option>
                     <option value="Bonus 1">Bonus 1</option>
@@ -56,7 +56,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Damage Insurance</label>
             <div class="col-sm-6">
-                <select id="damageinsurance" name="Damage Insurance" class="form-control">
+                <select id="damageInsurance" name="damageInsurance" class="form-control">
                     <option value="default">&ndash; please select &ndash;</option>
                     <option value="No Coverage">No Coverage</option>
                     <option value="Partial Coverage">Partial Coverage</option>
@@ -70,9 +70,9 @@
             <div class="col-sm-6">
                 <p class="row">
                     <label>
-                        <input id="EuroProtection" name="EuroProtection" type="checkbox" value="Yes">Euro Protection</label>
+                        <input id="EuroProtection" name="optionalProducts" type="checkbox" value="Euro Protection">Euro Protection</label>
                     <label>
-                        <input id="LegalDefenseInsurance" name="LegalDefenseInsurance" type="checkbox" value="Yes">Legal Defense Insurance</label>
+                        <input id="LegalDefenseInsurance" name="optionalProducts" type="checkbox" value="Legal Defense Insurance">Legal Defense Insurance</label>
                 </p>
             </div>
         </div>
@@ -80,7 +80,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Courtesy Car</label>
             <div class="col-sm-6">
-                <select id="courtesycar" name="Courtesy Car" class="form-control">
+                <select id="courtesyCar" name="courtesyCar" class="form-control">
                     <option value="default">&ndash; please select &ndash;</option>
                     <option value="No"> No</option>
                     <option value="Yes"> Yes</option>

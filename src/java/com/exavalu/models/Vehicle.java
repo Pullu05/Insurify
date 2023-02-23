@@ -21,8 +21,27 @@ import org.apache.struts2.interceptor.SessionAware;
  */
 public class Vehicle extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 
-    private int enginePerformance, numberOfSeats, listPrice, annualMileage;
-    private String licensePlateNumber, make, fuelType;
+    private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
+
+    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+
+    @Override
+    public void setApplication(Map<String, Object> application) {
+        map = (ApplicationMap) application;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        sessionMap = (SessionMap) session;
+    }
+
+    private int enginePerformance;
+    private int numberOfSeats;
+    private int listPrice;
+    private int annualMileage;
+    private String licensePlateNumber;
+    private String make;
+    private String fuelType;
     private Date dateOfManufacture;
 
     public int getEnginePerformance() {
@@ -111,20 +130,6 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
 
     public static void setLOG(Logger LOG) {
         ActionSupport.LOG = LOG;
-    }
-
-    private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> session) {
-        sessionMap = (SessionMap) session;
     }
 
 }
