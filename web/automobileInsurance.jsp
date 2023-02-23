@@ -33,7 +33,7 @@
     </head>
 
     <body>
-        <script src="javascript/automobileInsurance.js"></script>
+
         <header id="header" class="fixed-top">
             <div class="container d-flex align-items-center justify-content-lg-between mt-3">
                 <h2 class="logo me-auto me-lg-0 display-7"><a href="index.jsp">Insurify</a></h2>
@@ -156,7 +156,7 @@
         <!-- Template Main JS File -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="assets/js/main.js"></script>
-
+        <script src="javascript/automobileInsurance.js"></script>
     </body>
 
 </html>
