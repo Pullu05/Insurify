@@ -1,2 +1,2 @@
-# Struts_Employee_Management
+# Insurify
 Using Java HTML CSS JSP and Struts2
