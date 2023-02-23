@@ -18,7 +18,7 @@ import org.apache.struts2.interceptor.SessionAware;
  * @author Nairwita Chakraborty
  */
 public class ProductData extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
-    
+
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
@@ -32,22 +32,21 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
-    
+
     public String doAddProductData() throws Exception {
-        
+
         String result = "FAILURE";
-        boolean success = ProductDataService.getInstance().addProductData();
-        
-        if(success){
+//        boolean success = ProductDataService.getInstance().addProductData();
+        boolean success = false;
+        if (success) {
             System.out.println("Successfully added product data");
             result = "SUCCESS";
-        }
-        else{
+        } else {
             System.out.println("Product data not added!!");
         }
         return result;
     }
-    
+
     private int productId;
     private String startDate, insuranceSum, meritRating, damageInsurance, optionalProducts, courtesyCar;
 
@@ -148,7 +147,5 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
     public void setCourtesyCar(String courtesyCar) {
         this.courtesyCar = courtesyCar;
     }
-    
-    
-    
+
 }

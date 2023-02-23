@@ -4,6 +4,7 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.InsurantDataService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
@@ -55,7 +56,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     public String addInsurantData() throws Exception {
         String result = "FAILURE";
 
-        boolean success = InsurantDataService.getInstance().doInsurantDataEntry(this);
+        boolean success = InsurantDataService.doInsurantDataEntry(this);
 
         if (success) {
             System.out.println("Successfully Added Insurant Data");
