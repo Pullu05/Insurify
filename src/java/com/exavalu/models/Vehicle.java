@@ -4,6 +4,7 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.VehicleDataService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.util.logging.Logger;
@@ -25,6 +26,21 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     private String licensePlateNumber, make, fuelType;
     private Date dateOfManufacture;
 
+    public String addVehicleData() throws Exception {
+        String result = "FAILURE";
+
+        boolean success = VehicleDataService.doVehicleDataEntry(this);
+
+        if (success) {
+            System.out.println("Successfully Added Vehicle Data");
+            result = "SUCCESS";
+        } else {
+            System.out.println("OOps your vehicle Data is not added");
+        }
+ 
+        return result;
+    }
+    
     public int getEnginePerformance() {
         return enginePerformance;
     }

@@ -55,7 +55,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     public String addInsurantData() throws Exception {
         String result = "FAILURE";
 
-        boolean success = InsurantDataService.getInstance().doInsurantDataEntry(this);
+        boolean success = InsurantDataService.doInsurantDataEntry(this);
 
         if (success) {
             System.out.println("Successfully Added Insurant Data");
