@@ -21,7 +21,7 @@ public class JDBCConnectionManager {
 
         String user = jdbcUtility.getPropertyValue("user");
         String password = jdbcUtility.getPropertyValue("pass");
-        String dbNname = jdbcUtility.getPropertyValue("dbNname");
+        String dbNname = jdbcUtility.getPropertyValue("dbName");
         String url = jdbcUtility.getPropertyValue("url");
         
         System.out.println("URL ="+url);
