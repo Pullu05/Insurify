@@ -1,4 +1,4 @@
-<section class="rounded  border border-dark mt-3 formBlock">
+<section class="rounded mt-3 formBlock">
     <form>
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">E-Mail</label>
