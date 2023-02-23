@@ -20,24 +20,8 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author sinha
  */
-public class InsurantData extends ActionSupport implements ApplicationAware, SessionAware, Serializable  {
-    
-    
-    private int insuranceDataId;
-    private String firstName;
-    private String lastName;
-    private String dateOfBirth;
-    private String gender;
-    private String streetAddress;
-    private String country;
-    private String ZipCode;
-    private String occupation;
-    private String hobbies; 
-    private String website;
-    private String picture;
-    
-     
-   
+public class InsurantData extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
@@ -52,7 +36,19 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
         setSessionMap((SessionMap<String, Object>) (SessionMap) session);
     }
 
-    
+    private int insuranceDataId;
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
+    private String gender;
+    private String streetAddress;
+    private String country;
+    private String ZipCode;
+    private String occupation;
+    private String hobbies;
+    private String website;
+    private String picture;
+
     public String addInsurantData() throws Exception {
         String result = "FAILURE";
 
@@ -64,9 +60,10 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
         } else {
             System.out.println("OOps your Insurant Data is not added");
         }
- 
+
         return result;
     }
+
     /**
      * @return the sessionMap
      */
@@ -262,7 +259,5 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     public void setPicture(String picture) {
         this.picture = picture;
     }
-    
-    
-    
+
 }
