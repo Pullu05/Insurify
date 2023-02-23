@@ -16,19 +16,7 @@ import org.apache.log4j.Logger;
  */
 public class InsurantDataService {
 
-    public static InsurantDataService insurantDataService = null;
     private static final Logger logger = Logger.getLogger(InsurantDataService.class);
-
-    private InsurantDataService() {
-    }
-
-    public static InsurantDataService getInstance() {
-        if (insurantDataService == null) {
-            return new InsurantDataService();
-        } else {
-            return insurantDataService;
-        }
-    }
 
     public static boolean doInsurantDataEntry(InsurantData insurantData) {
         boolean result = false;
