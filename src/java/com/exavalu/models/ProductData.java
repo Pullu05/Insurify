@@ -33,6 +33,7 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
         sessionMap = (SessionMap) session;
     }
 
+
     private int productId;
     private String startDate;
     private String insuranceSum;
@@ -40,6 +41,7 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
     private String damageInsurance;
     private String optionalProducts;
     private String courtesyCar;
+
 
     public String doAddProductData() throws Exception {
 
