@@ -4,6 +4,7 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.ProductDataService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
@@ -46,8 +47,8 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
     public String doAddProductData() throws Exception {
 
         String result = "FAILURE";
-//        boolean success = ProductDataService.getInstance().addProductData();
-        boolean success = false;
+        boolean success = ProductDataService.addProductData(this);
+        
         if (success) {
             System.out.println("Successfully added product data");
             result = "SUCCESS";
