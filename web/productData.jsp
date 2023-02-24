@@ -1,5 +1,7 @@
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<!--<c:set var="product" value="${ProductData}"/>-->
 <section class="rounded mt-3 formBlock">
-    <form>
+    <form action="AddProductData" method="post">
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Start Date</label>
@@ -92,7 +94,7 @@
             <label class="col-sm-4 col-form-label"></label>
             <div class="col-sm-6">
                 <button type="button" class="btn btn-dark prevBtn">&laquo; Prev</button>
-                <button type="button" class="btn btn-dark nextBtn">Next &raquo;</button>
+                <button type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
             </div>
 
         </div>

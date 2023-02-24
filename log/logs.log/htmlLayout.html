@@ -8746,4 +8746,420 @@ Log session start time Sun Feb 19 20:55:49 IST 2023<br>
 </tr>
 </table>
 <br>
+</body></html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>HTML Layout Example</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Fri Feb 24 13:01:55 IST 2023<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>File:Line</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td title="main thread">main</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="com.opensymphony.xwork2.util.DomHelper category">com.opensymphony.xwork2.util.DomHelper</td>
+<td>CommonsLogger.java:27</td>
+<td title="Message">The content of element type "package" must match "(result-types?,interceptors?,default-interceptor-ref?,default-action-ref?,default-class-ref?,global-results?,global-exception-mappings?,action*)". at (null:33:15)</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">org.xml.sax.SAXParseException; systemId: file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml; lineNumber: 33; columnNumber: 15; The content of element type "package" must match "(result-types?,interceptors?,default-interceptor-ref?,default-action-ref?,default-class-ref?,global-results?,global-exception-mappings?,action*)".
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:135)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:396)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.handleEndElement(XMLDTDValidator.java:1923)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.endElement(XMLDTDValidator.java:865)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(XMLDocumentFragmentScannerImpl.java:1728)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2899)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:326)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.util.DomHelper.parse(DomHelper.java:113)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadConfigurationFiles(XmlConfigurationProvider.java:893)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadDocuments(XmlConfigurationProvider.java:143)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.init(XmlConfigurationProvider.java:110)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:168)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:55)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:374)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:418)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:69)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:51)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.initFilter(ApplicationFilterConfig.java:272)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:253)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.&lt;init&gt;(ApplicationFilterConfig.java:102)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:4609)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5248)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:726)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:698)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:696)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:689)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1888)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:582)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:472)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1617)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:318)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:423)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:366)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:943)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:835)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:265)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.Catalina.start(Catalina.java:772)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:347)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:478)
+</td></tr>
+
+<tr>
+<td>11</td>
+<td title="main thread">main</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="org.apache.struts2.dispatcher.Dispatcher category">org.apache.struts2.dispatcher.Dispatcher</td>
+<td>CommonsLogger.java:27</td>
+<td title="Message">Dispatcher initialization failed</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">Unable to load configuration. - file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml:33:15
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:58)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:374)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:418)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:69)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:51)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.initFilter(ApplicationFilterConfig.java:272)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:253)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.&lt;init&gt;(ApplicationFilterConfig.java:102)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:4609)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5248)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:726)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:698)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:696)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:689)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1888)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:582)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:472)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1617)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:318)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:423)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:366)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:943)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:835)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:265)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.Catalina.start(Catalina.java:772)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:347)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:478)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Caused by: Unable to load file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml - file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml:33:15
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadConfigurationFiles(XmlConfigurationProvider.java:898)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadDocuments(XmlConfigurationProvider.java:143)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.init(XmlConfigurationProvider.java:110)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:168)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:55)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	... 48 more
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Caused by: The content of element type "package" must match "(result-types?,interceptors?,default-interceptor-ref?,default-action-ref?,default-class-ref?,global-results?,global-exception-mappings?,action*)". - file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml:33:15
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.util.DomHelper.parse(DomHelper.java:115)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadConfigurationFiles(XmlConfigurationProvider.java:893)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	... 52 more
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Caused by: org.xml.sax.SAXParseException; systemId: file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml; lineNumber: 33; columnNumber: 15; The content of element type "package" must match "(result-types?,interceptors?,default-interceptor-ref?,default-action-ref?,default-class-ref?,global-results?,global-exception-mappings?,action*)".
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:135)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:396)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.handleEndElement(XMLDTDValidator.java:1923)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.endElement(XMLDTDValidator.java:865)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(XMLDocumentFragmentScannerImpl.java:1728)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2899)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:326)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.util.DomHelper.parse(DomHelper.java:113)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	... 53 more
+</td></tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>HTML Layout Example</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Fri Feb 24 13:01:59 IST 2023<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>File:Line</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>2</td>
+<td title="http-nio-8080-exec-2 thread">http-nio-8080-exec-2</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="com.opensymphony.xwork2.util.DomHelper category">com.opensymphony.xwork2.util.DomHelper</td>
+<td>CommonsLogger.java:27</td>
+<td title="Message">The content of element type "package" must match "(result-types?,interceptors?,default-interceptor-ref?,default-action-ref?,default-class-ref?,global-results?,global-exception-mappings?,action*)". at (null:33:15)</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">org.xml.sax.SAXParseException; systemId: file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml; lineNumber: 33; columnNumber: 15; The content of element type "package" must match "(result-types?,interceptors?,default-interceptor-ref?,default-action-ref?,default-class-ref?,global-results?,global-exception-mappings?,action*)".
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:135)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:396)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.handleEndElement(XMLDTDValidator.java:1923)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.endElement(XMLDTDValidator.java:865)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(XMLDocumentFragmentScannerImpl.java:1728)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2899)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:326)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.util.DomHelper.parse(DomHelper.java:113)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadConfigurationFiles(XmlConfigurationProvider.java:893)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadDocuments(XmlConfigurationProvider.java:143)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.init(XmlConfigurationProvider.java:110)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:168)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:55)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:374)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:418)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:69)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:51)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.initFilter(ApplicationFilterConfig.java:272)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:253)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.&lt;init&gt;(ApplicationFilterConfig.java:102)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:4609)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5248)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:726)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:698)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:696)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:689)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:537)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1689)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:293)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:814)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:802)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.manager.ManagerServlet.check(ManagerServlet.java:1614)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.manager.ManagerServlet.deploy(ManagerServlet.java:1026)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.manager.ManagerServlet.doGet(ManagerServlet.java:357)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.filters.HttpHeaderSecurityFilter.doFilter(HttpHeaderSecurityFilter.java:126)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:660)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.RequestFilterValve.process(RequestFilterValve.java:378)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.RemoteAddrValve.invoke(RemoteAddrValve.java:56)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.lang.Thread.run(Thread.java:833)
+</td></tr>
+
+<tr>
+<td>8</td>
+<td title="http-nio-8080-exec-2 thread">http-nio-8080-exec-2</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="org.apache.struts2.dispatcher.Dispatcher category">org.apache.struts2.dispatcher.Dispatcher</td>
+<td>CommonsLogger.java:27</td>
+<td title="Message">Dispatcher initialization failed</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">Unable to load configuration. - file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml:33:15
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:58)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:374)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:418)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:69)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:51)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.initFilter(ApplicationFilterConfig.java:272)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:253)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterConfig.&lt;init&gt;(ApplicationFilterConfig.java:102)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:4609)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5248)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:726)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:698)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:696)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:689)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:537)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1689)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:293)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:814)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:802)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.manager.ManagerServlet.check(ManagerServlet.java:1614)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.manager.ManagerServlet.deploy(ManagerServlet.java:1026)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.manager.ManagerServlet.doGet(ManagerServlet.java:357)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.filters.HttpHeaderSecurityFilter.doFilter(HttpHeaderSecurityFilter.java:126)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:660)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.RequestFilterValve.process(RequestFilterValve.java:378)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.RemoteAddrValve.invoke(RemoteAddrValve.java:56)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.base/java.lang.Thread.run(Thread.java:833)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Caused by: Unable to load file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml - file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml:33:15
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadConfigurationFiles(XmlConfigurationProvider.java:898)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadDocuments(XmlConfigurationProvider.java:143)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.init(XmlConfigurationProvider.java:110)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:168)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:55)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	... 55 more
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Caused by: The content of element type "package" must match "(result-types?,interceptors?,default-interceptor-ref?,default-action-ref?,default-class-ref?,global-results?,global-exception-mappings?,action*)". - file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml:33:15
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.util.DomHelper.parse(DomHelper.java:115)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.loadConfigurationFiles(XmlConfigurationProvider.java:893)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	... 59 more
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Caused by: org.xml.sax.SAXParseException; systemId: file:/D:/Exavalu_Project/Insurify/build/web/WEB-INF/classes/struts.xml; lineNumber: 33; columnNumber: 15; The content of element type "package" must match "(result-types?,interceptors?,default-interceptor-ref?,default-action-ref?,default-class-ref?,global-results?,global-exception-mappings?,action*)".
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:135)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:396)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.handleEndElement(XMLDTDValidator.java:1923)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.endElement(XMLDTDValidator.java:865)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(XMLDocumentFragmentScannerImpl.java:1728)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2899)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:326)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at com.opensymphony.xwork2.util.DomHelper.parse(DomHelper.java:113)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	... 60 more
+</td></tr>
+</table>
+<br>
+</body></html></table>
+<br>
 </body></html>
