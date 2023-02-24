@@ -1,5 +1,5 @@
 <section class="rounded mt-3 formBlock">
-    <form>
+    <form action="AddVehicleData">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Make</label>
             <div class="col-sm-6">
@@ -76,7 +76,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label"></label>
             <div class="col-sm-6">
-                <button type="button" class="btn btn-dark nextBtn">Next &raquo;</button>
+                <button type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
             </div>
         </div>
     </form>

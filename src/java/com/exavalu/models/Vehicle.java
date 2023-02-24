@@ -43,13 +43,11 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     private String licensePlateNumber;
     private String make;
     private String fuelType;
-    private Date dateOfManufacture;
+    private String dateOfManufacture;
 
     public String addVehicleData() throws Exception {
         String result = "FAILURE";
-
         boolean success = VehicleDataService.doVehicleDataEntry(this);
-
         if (success) {
             System.out.println("Successfully Added Vehicle Data");
             result = "SUCCESS";
@@ -116,11 +114,11 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         this.fuelType = fuelType;
     }
 
-    public Date getDateOfManufacture() {
+    public String getDateOfManufacture() {
         return dateOfManufacture;
     }
 
-    public void setDateOfManufacture(Date dateOfManufacture) {
+    public void setDateOfManufacture(String dateOfManufacture) {
         this.dateOfManufacture = dateOfManufacture;
     }
 
