@@ -18,6 +18,11 @@
         <action name="AddVehicleData" class="com.exavalu.models.Vehicle" method="addVehicleData">
             <result name="SUCCESS">automobileInsurance.jsp</result>
             <result name="FAILURE">login.jsp</result>
+        </action> 
+        
+        <action name="AddInsurantData" class="com.exavalu.models.InsurantData" method="addInsurantData">
+            <result name="SUCCESS">automobileInsurance.jsp</result>
+            <result name="FAILURE">login.jsp</result>
         </action>  
     </package>
     
