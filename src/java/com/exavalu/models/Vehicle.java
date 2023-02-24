@@ -34,15 +34,14 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
-
-    private int enginePerformance;
-    private int numberOfSeats;
-    private int listPrice;
-    private int annualMileage;
-    private String licensePlateNumber;
     private String make;
-    private String fuelType;
+    private int enginePerformance;
     private String dateOfManufacture;
+    private int numberOfSeats;
+    private String fuelType;
+    private int listPrice;
+    private String licensePlateNumber;
+    private int annualMileage;
 
     public String addVehicleData() throws Exception {
         String result = "FAILURE";
@@ -50,13 +49,14 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         if (success) {
             System.out.println("Successfully Added Vehicle Data");
             result = "SUCCESS";
+            sessionMap.put("VehicleData", this);
         } else {
             System.out.println("OOps your vehicle Data is not added");
         }
- 
+
         return result;
     }
-    
+
     public int getEnginePerformance() {
         return enginePerformance;
     }
