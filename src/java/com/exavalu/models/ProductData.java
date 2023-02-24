@@ -52,6 +52,7 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
         if (success) {
             System.out.println("Successfully added product data");
             result = "SUCCESS";
+            sessionMap.put("ProductData", this);
         } else {
             System.out.println("Product data not added!!");
         }

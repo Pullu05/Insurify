@@ -1,9 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="insurance" value="${InsurantData}"/>
 <section class="rounded mt-3 formBlock">
     <form action="AddInsurantData" method = "post">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">First Name</label>
             <div class="col-sm-6">
-                <input id="firstName" class="form-control" name="firstName" type="text">
+                <input id="firstName" class="form-control" name="firstName" type="text" value = "${insurance.firstName}">
             </div>
         </div>
 
@@ -12,7 +14,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Last Name</label>
             <div class="col-sm-6">
-                <input id="lastName" class="form-control" name="lastName" type="text">
+                <input id="lastName" class="form-control" name="lastName" type="text" value = "${insurance.lastName}">
             </div>
         </div>
 
@@ -21,7 +23,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Date of Birth</label>
             <div class="col-sm-6">
-                <input id="dateOfBirth" class="form-control" name="dateOfBirth" type="date" placeholder="MM/DD/YYYY" class="datepicker">
+                <input id="dateOfBirth" class="form-control" name="dateOfBirth" type="date" placeholder="MM/DD/YYYY" class="datepicker" value = "${insurance.dateOfBirth}">
             </div>
         </div>
 
@@ -32,16 +34,16 @@
             <div class="col-sm-6">
                 <p class="col">
                     <label>
-                        <input id="gendermale" name="gender" class="checkbox" type="radio" value="Male">Male</label>
+                        <input id="gendermale" name="gender" class="checkbox" type="radio" value="Male" <c:if test = "${insurance.gender.equalsIgnoreCase('Male')}"> checked </c:if>>Male</label>
                     <label id="genderlabel">
-                        <input id="genderfemale" name="gender" class="checkbox" type="radio" value="Female">Female</label>
+                        <input id="genderfemale" name="gender" class="checkbox" type="radio" value="Female" <c:if test = "${insurance.gender == 'Female'}"> checked </c:if>>Female</label>
                 </p>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Street Address</label>
             <div class="col-sm-6">
-                <input id="streetAddress" class="form-control" name="streetAddress" type="text">
+                <input id="streetAddress" class="form-control" name="streetAddress" type="text" value = "${insurance.streetAddress}">
             </div>
         </div>
         <div class="form-group row">
@@ -57,19 +59,19 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Zip Code</label>
             <div class="col-sm-6">
-                <input id="ZipCode" class="form-control" name="zipCode" type="text">
+                <input id="ZipCode" class="form-control" name="zipCode" type="text" value = "${insurance.zipCode}">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Occupation</label>
             <div class="col-sm-6">
-                <select id="occupation" name="occupation" class="form-control">
+                <select id="occupation" name="occupation" class="form-control" value = "${insurance.occupation}">
                     <option value="default">&ndash; please select &ndash;</option>
-                    <option value="Employee">Employee</option>
-                    <option value="Public Official">Public Official</option>
-                    <option value="Farmer">Farmer</option>
-                    <option value="Unemployed">Unemployed</option>
-                    <option value="Selfemployed">Self-employed</option>
+                    <option value="Employee" <c:if test = "${insurance.occupation == 'Employee'}"> selected </c:if>>Employee</option>
+                    <option value="Public Official" <c:if test = "${insurance.occupation == 'Public Official'}"> selected </c:if>>Public Official</option>
+                    <option value="Farmer" <c:if test = "${insurance.occupation == 'Farmer'}"> selected </c:if>>Farmer</option>
+                    <option value="Unemployed" <c:if test = "${insurance.occupation == 'Unemployed'}"> selected </c:if>>Unemployed</option>
+                    <option value="Selfemployed" <c:if test = "${insurance.occupation == 'Selfemployed'}"> selected </c:if>>Self-employed</option>
                 </select>
             </div>
         </div>
@@ -96,7 +98,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Website</label>
             <div class="col-sm-6">
-                <input id="website" class="form-control" name="website" type="text">
+                <input id="website" class="form-control" name="website" type="text" value = "${insurance.website}">
             </div>
         </div>
         <div class="form-group row">

@@ -55,6 +55,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
         if (success) {
             System.out.println("Successfully Added Insurant Data");
             result = "SUCCESS";
+            sessionMap.put("InsurantData", this);
         } else {
             System.out.println("OOps your Insurant Data is not added");
         }
