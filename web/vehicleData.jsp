@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="vehicle" value="${VehicleData}"/>
 <section class="rounded mt-3 formBlock">
+
     <form method = "POST" action="AddVehicleData">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Make</label>
