@@ -1,5 +1,5 @@
 <section class="rounded mt-3 formBlock">
-    <form action="AddVehicleData">
+    <form action="AddVehicleData" method = "post">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Make</label>
             <div class="col-sm-6">

@@ -1,5 +1,5 @@
 <section class="rounded mt-3 formBlock">
-    <form>
+    <form action="AddInsurantData" method = "post">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">First Name</label>
             <div class="col-sm-6">
@@ -57,7 +57,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Zip Code</label>
             <div class="col-sm-6">
-                <input id="ZipCode" class="form-control" name="ZipCode" type="text">
+                <input id="ZipCode" class="form-control" name="zipCode" type="text">
             </div>
         </div>
         <div class="form-group row">
@@ -109,7 +109,7 @@
             <label class="col-sm-4 col-form-label"></label>
             <div class="col-sm-6">
                 <button type="button" class="btn btn-dark prevBtn">&laquo; Prev</button>
-                <button type="button" class="btn btn-dark nextBtn">Next &raquo;</button>
+                <button type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
             </div>
         </div>
     </form>
