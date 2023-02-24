@@ -9,10 +9,7 @@ import com.exavalu.utils.JDBCConnectionManager;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import org.apache.log4j.Logger;
 
 /**
  *
@@ -25,7 +22,7 @@ public class VehicleDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO vehicle (enginePerformance,numberOfSeats,listPrice,annualMileage,licensePlateNumber,make,fuelType,dateOfManufacture) VALUES (? , ? , ? , ? , ? , ? , ? , ? )";
+            String sql = "INSERT INTO vehicle(enginePerformance,numberOfSeats,listPrice,annualMileage,licensePlateNumber,make,fuelType,dateOfManufacture)" +"VALUES(? , ? , ? , ? , ? , ? , ? , ? )";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setInt(1, vehicle.getEnginePerformance());
@@ -37,8 +34,9 @@ public class VehicleDataService {
 
             preparedStatement.setString(6, vehicle.getMake());
             preparedStatement.setString(7, vehicle.getFuelType());
-            preparedStatement.setDate(8, (Date) vehicle.getDateOfManufacture());
-
+            preparedStatement.setString(8, vehicle.getDateOfManufacture());
+            
+            System.out.println("SQL: " + preparedStatement);
 
             int row = preparedStatement.executeUpdate();
             if (row == 1) {
