@@ -1,36 +1,51 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="vehicle" value="${VehicleData}"/>
 <section class="rounded mt-3 formBlock">
+    <script>
+        function fetchList(selectedId, targetId) {
+//            alert("#" + selectedId.name + "'");
+            $.ajax({
+                url: 'PreAddVehicleData',
+                data: {
+                    [selectedId]: $("#" + selectedId).val()
+                },
+                success: function (responseText) {
+//                        alert(responseText);
+                    $("#" + targetId).html(responseText);
+                }
+            });
+        }
+    </script>
 
-    <form method = "POST" action="AddVehicleData" onsubmit="submitFormAndChangeSection(event)">
+    <form method = "POST" action="PreAddVehicleData" onsubmit="submitFormAndChangeSection(event)">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Make</label>
             <div class="col-sm-6">
-                <select id="make" name="make" class="form-control" value = "${vehicle.make}" required>
-                    <option value="default">&ndash; please select &ndash;</option>
-                    <option value='Audi' <c:if test = "${vehicle.make == 'Audi'  }"> selected </c:if> >Audi</option>
-                    <option value='BMW' <c:if test = "${vehicle.make == 'BMW'  }"> selected </c:if>>BMW</option>
-                    <option value='Ford' <c:if test = "${vehicle.make == 'Ford'  }"> selected </c:if>>Ford</option>
-                    <option value='Honda' <c:if test = "${vehicle.make == 'Honda'  }"> selected </c:if>>Honda</option>
-                    <option value='Mazda' <c:if test = "${vehicle.make == 'Mazda'  }"> selected </c:if> >Mazda</option>
-                    <option value='Mercedes Benz' <c:if test = "${vehicle.make == 'Mercedes Benz'  }"> selected </c:if>>Mercedes Benz</option>
-                    <option value='Nissan' <c:if test = "${vehicle.make == 'Nissan'  }"> selected </c:if>>Nissan</option>
-                    <option value='Opel' <c:if test = "${vehicle.make == 'Opel'  }"> selected </c:if>>Opel</option>
-                    <option value='Porsche' <c:if test = "${vehicle.make == 'Porsche'  }"> selected </c:if>>Porsche</option>
-                    <option value='Renault' <c:if test = "${vehicle.make == 'Renault'  }"> selected </c:if>>Renault</option>
-                    <option value='Skoda' <c:if test = "${vehicle.make == 'Skoda'  }"> selected </c:if>>Skoda</option>
-                    <option value='Suzuki' <c:if test = "${vehicle.make == 'Suzuki'  }"> selected </c:if>>Suzuki</option>
-                    <option value='Toyota' <c:if test = "${vehicle.make == 'Toyota'  }"> selected </c:if>>Toyota</option>
-                    <option value='Volkswagen' <c:if test = "${vehicle.make == 'Volkswagen'  }"> selected </c:if>>Volkswagen</option>
-                    <option value='Volvo' <c:if test = "${vehicle.make == 'Volvo'  }"> selected </c:if>>Volvo</option>
-                    </select>
-                </div>
-            </div>
+                <select id="make" name="make" class="form-control" value = "${vehicle.make}" onchange="fetchList('make', 'model')" required>
+                    <option value="" >select a Maker</option>
+                    <c:forEach items="${MakeList}" var="make">
 
-            <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Engine Performance [kW]</label>
-                <div class="col-sm-6">
-                    <input id="enginePerformance" class="form-control" name="enginePerformance" type="text" value = "${vehicle.enginePerformance}" required>
+                        <option value='<c:out value ="${make.getMakeCode()}"/>' <c:if test = "${make.getMakeCode() == Users.getMakeCode() }"> selected </c:if> >
+                            <c:out value ="${make.getMakeName()}"/>
+                        </option>
+
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Model</label>
+            <div class="col-sm-6">
+                <select id="model" name="model" class="form-control" value = "${vehicle.model}" required>
+                    <option value="" >select a Model</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Engine Performance [kW]</label>
+            <div class="col-sm-6">
+                <input id="enginePerformance" class="form-control" name="enginePerformance" type="text" value = "${vehicle.enginePerformance}" required>
             </div>
         </div>
 
