@@ -4,6 +4,7 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.DriverInfoService;
 import com.exavalu.services.LoginService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -65,7 +66,10 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
                 Users user = LoginService.getUser(this.email);
                 sessionMap.put("User", user);
-
+                
+                ArrayList driverInfoList = DriverInfoService.getAllDriverInfo();
+                sessionMap.put("DriverInfoList", driverInfoList);
+                        
                 result = "ADMIN";
             } else {
                 String errorMsg = "Either Email Address or Password is Wrong";
