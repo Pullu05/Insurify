@@ -36,7 +36,7 @@
 
         <header id="header" class="fixed-top">
             <jsp:include page="navbar.jsp"></jsp:include>
-        </header>
+            </header>
 
 
             <div style="margin-top: 100px" class="container d-flex justify-content-center align-items-center">
@@ -60,7 +60,7 @@
 
 
 
-        <footer id="footer">
+            <footer id="footer">
             <jsp:include page="footer.jsp"></jsp:include>
         </footer><!-- End Footer -->
 

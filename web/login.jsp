@@ -39,14 +39,14 @@
                         <form action="Login" method="post">
                             <h1>Login</h1>
                             <!-- Error Msg -->
-                            <c:set var="msg" value="${ErrorMsg}"/>                   
+                            <c:set var="msg" value="${ErrorMsg}"/>
                             <c:if test="${msg!=null}">
                                 <div class="alert alert-danger msg_style" role="alert">
                                     <c:out value="${msg}"/>
                                 </div>
                             </c:if>
 
-                            <c:set var="msg1" value="${SuccessMsg}"/>                   
+                            <c:set var="msg1" value="${SuccessMsg}"/>
                             <c:if test="${msg1!=null}">
                                 <div class="alert alert-success msg_style" role="alert">
                                     <c:out value="${msg1}"/>
