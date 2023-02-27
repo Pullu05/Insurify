@@ -8,10 +8,8 @@ import com.exavalu.services.LoginService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
-import org.apache.log4j.Logger;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
@@ -47,6 +45,8 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
         String result = "FAILURE";
 
         boolean success = LoginService.doLogin(this);
+        ArrayList makeList = LoginService.getAllmakers();
+        sessionMap.put("MakeList", makeList);
         
         if (!success) {
             String errorMsg = "Either Email Address or Password is Wrong";
@@ -80,6 +80,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
                 sessionMap.put("LoggedIn", this);
                 Users user = LoginService.getUser(this.email);
                 sessionMap.put("User", user);
+                sessionMap.put("MakeList", makeList);
                 result = "USER";
             } else {
                 String errorMsg = "Either Email Address or Password is Wrong";

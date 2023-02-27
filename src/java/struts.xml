@@ -15,9 +15,14 @@
             <result name="SUCCESS">index.jsp</result>
         </action>
 
-        <action name="AddVehicleData" class="com.exavalu.models.Vehicle" method="addVehicleData">
+<!--        <action name="AddVehicleData" class="com.exavalu.models.Vehicle" method="addVehicleData">
             <result name="SUCCESS">success.json</result>
             <result name="FAILURE">failure.json</result>
+        </action>-->
+        <action name="PreAddVehicleData" class="com.exavalu.models.Vehicle" method="doPreAddVehicleData">
+            <result name="SUCCESS">success.json</result>
+            <result name="FAILURE">failure.json</result>
+            <result name="MODELLIST">modelList.jsp</result>
         </action>
 
         <action name="AddInsurantData" class="com.exavalu.models.InsurantData" method="addInsurantData">
