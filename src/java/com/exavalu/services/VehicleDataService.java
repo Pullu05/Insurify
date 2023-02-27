@@ -21,7 +21,7 @@ public class VehicleDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO vehicle(vin,enginePerformance,numberOfSeats,listPrice,annualMileage,licensePlateNumber,make,fuelType,dateOfManufacture,email)" +"VALUES(?, ? , ? , ? , ? , ? , ? , ? , ?, ? )";
+            String sql = "INSERT INTO vehicle(vin,enginePerformance,numberOfSeats,listPrice,annualMileage,licensePlateNumber,make,fuelType,dateOfManufacture,email,model)" +"VALUES(?, ? , ? , ? , ? , ? , ? , ? , ?, ?,? )";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, vehicle.getVin());
@@ -34,6 +34,7 @@ public class VehicleDataService {
             preparedStatement.setString(8, vehicle.getFuelType());
             preparedStatement.setString(9, vehicle.getDateOfManufacture());
             preparedStatement.setString(10, email);
+             preparedStatement.setString(11, vehicle.getModel());
             System.out.println("SQL: " + preparedStatement);
 
             int row = preparedStatement.executeUpdate();
