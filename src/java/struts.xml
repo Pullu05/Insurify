@@ -7,7 +7,7 @@
     <package name="default" namespace="/" extends="struts-default">
         <action name="Login" class="com.exavalu.models.Users" method="doLogin">
             <result name="USER">automobileInsurance.jsp</result>
-            <result name="ADMIN">index.jsp</result>
+            <result name="ADMIN">admin.jsp</result>
             <result name="FAILURE">login.jsp</result>
         </action>
 
