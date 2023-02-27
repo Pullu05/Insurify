@@ -65,7 +65,6 @@
           </a>
         </li><!-- End Search Icon-->
 
-
         <li class="nav-item d-block d-lg-none">     
             <li>
               <a class="nav-link d-flex align-items-center pe-0" href="Logout">
@@ -77,7 +76,7 @@
       </ul>
     </nav><!-- End Icons Navigation -->
 
-  </header><!-- End Header -->
+  </header>
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
@@ -111,16 +110,14 @@
 
     <section class="section dashboard">
       <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-8">
+          
           <div class="row">
 
             <div class="col-xxl-4 col-md-6">
                 <div class="card">
                     <a href="#">
                          <div class="card-body">
-                            <h5 class="card-title">Show Details</h5>
+                            <h5 class="card-title text-center">Show Details</h5>
                         </div>
                     </a>
                 </div>
@@ -129,7 +126,7 @@
                 <div class="card">
                     <a href="#">
                          <div class="card-body">
-                            <h5 class="card-title">Add Details</h5>
+                            <h5 class="card-title text-center">Add Details</h5>
                         </div>
                     </a>
                 </div>
@@ -150,7 +147,7 @@
                         <th scope="col">Driver Name</th>
                         <th scope="col">Driver Age</th>
                         <th scope="col">Medical History</th>
-                        <!--<th scope="col">Number Of Challans</th>-->
+                        <th scope="col">Number Of Challans</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
@@ -199,7 +196,6 @@
             </div><!-- End Table -->
 
           </div>
-        </div><!-- End Left side columns -->
 
       </div>
     </section>

@@ -4,12 +4,15 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.LoginService;
 import com.exavalu.services.VehicleDataService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.util.logging.Logger;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Map;
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
@@ -35,6 +38,15 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         sessionMap = (SessionMap) session;
     }
     private String make;
+    private String model;
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
     private int enginePerformance;
     private String dateOfManufacture;
     private int numberOfSeats;
@@ -50,6 +62,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         String user_email =(String)sessionMap.get("userEmail");
         System.out.println(user_email);
         boolean success = VehicleDataService.doVehicleDataEntry(this,user_email);
+//        ArrayList modList = LoginService.getAllmodels(this.make);
         if (success) {
             System.out.println("Successfully Added Vehicle Data");
             result = "SUCCESS";
@@ -78,6 +91,29 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         this.vin = vin;
     }
     
+    public String doPreAddVehicleData() throws Exception {
+        String result = "FAILURE";
+
+        if (this.getMake() != null) {
+            ArrayList modList = LoginService.getAllmodels(this.make);
+            System.out.println("Successfully Fetch Models");
+            sessionMap.put("ModelList", modList);
+            result = "MODELLIST";
+        }
+        if (this.getModel() != null) {
+            boolean success = VehicleDataService.doVehicleDataEntry(this);
+            if (success) {
+                System.out.println("Successfully Added Vehicle Data");
+                result = "SUCCESS";
+                sessionMap.put("VehicleData", this);
+            }
+        } else {
+            System.out.println("OOps your vehicle Data is not added");
+        }
+
+        return result;
+    }
+
     public int getEnginePerformance() {
         return enginePerformance;
     }
