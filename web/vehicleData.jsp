@@ -2,11 +2,11 @@
 <c:set var="vehicle" value="${VehicleData}"/>
 <section class="rounded mt-3 formBlock">
 
-    <form method = "POST" action="AddVehicleData">
+    <form method = "POST" action="AddVehicleData" onsubmit="submitFormAndChangeSection(event)">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Make</label>
             <div class="col-sm-6">
-                <select id="make" name="make" class="form-control" value = "${vehicle.make}">
+                <select id="make" name="make" class="form-control" value = "${vehicle.make}" required>
                     <option value="default">&ndash; please select &ndash;</option>
                     <option value='Audi' <c:if test = "${vehicle.make == 'Audi'  }"> selected </c:if> >Audi</option>
                     <option value='BMW' <c:if test = "${vehicle.make == 'BMW'  }"> selected </c:if>>BMW</option>
@@ -23,28 +23,28 @@
                     <option value='Toyota' <c:if test = "${vehicle.make == 'Toyota'  }"> selected </c:if>>Toyota</option>
                     <option value='Volkswagen' <c:if test = "${vehicle.make == 'Volkswagen'  }"> selected </c:if>>Volkswagen</option>
                     <option value='Volvo' <c:if test = "${vehicle.make == 'Volvo'  }"> selected </c:if>>Volvo</option>
-                </select>
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Engine Performance [kW]</label>
-            <div class="col-sm-6">
-                <input id="enginePerformance" class="form-control" name="enginePerformance" type="text" value = "${vehicle.enginePerformance}">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Engine Performance [kW]</label>
+                <div class="col-sm-6">
+                    <input id="enginePerformance" class="form-control" name="enginePerformance" type="text" value = "${vehicle.enginePerformance}" required>
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Date of Manufacture</label>
             <div class="col-sm-6">
-                <input  type="date" class="form-control" id="dateOfManufacture" name="dateOfManufacture" type="text" placeholder="MM/DD/YYYY" class="datepicker" value = "${vehicle.dateOfManufacture}">
+                <input  type="date" class="form-control" id="dateOfManufacture" name="dateOfManufacture" type="text" placeholder="MM/DD/YYYY" class="datepicker" value = "${vehicle.dateOfManufacture}" required>
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Number of Seats</label>
             <div class="col-sm-6">
-                <select id="numberOfSeats" name="numberOfSeats" class="form-control" value = "${vehicle.numberOfSeats}">
+                <select id="numberOfSeats" name="numberOfSeats" class="form-control" value = "${vehicle.numberOfSeats}" required>
                     <option value="default">&ndash; please select &ndash;</option>
                     <option value="1" <c:if test = "${vehicle.numberOfSeats == 1  }"> selected </c:if>>1</option>
                     <option value="2" <c:if test = "${vehicle.numberOfSeats == 2  }"> selected </c:if>>2</option>
@@ -55,45 +55,45 @@
                     <option value="7" <c:if test = "${vehicle.numberOfSeats == 7  }"> selected </c:if>>7</option>
                     <option value="8" <c:if test = "${vehicle.numberOfSeats == 8  }"> selected </c:if>>8</option>
                     <option value="9" <c:if test = "${vehicle.numberOfSeats == 9  }"> selected </c:if>>9</option>
-                </select>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Fuel Type</label>
-            <div class="col-sm-6">
-                <select id="fuelType" name="fuelType" class="form-control" value = "${vehicle.fuelType}">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Fuel Type</label>
+                <div class="col-sm-6">
+                    <select id="fuelType" name="fuelType" class="form-control" value = "${vehicle.fuelType}" required>
                     <option value="default">&ndash; please select &ndash;</option>
                     <option value="Petrol" <c:if test = "${vehicle.fuelType == 'Petrol' }"> selected </c:if>>Petrol</option>
                     <option value="Diesel" <c:if test = "${vehicle.fuelType == 'Diesel' }"> selected </c:if>>Diesel</option>
                     <option value="Electric Power" <c:if test = "${vehicle.fuelType == 'Electric Power' }"> selected </c:if>>Electric Power</option>
                     <option value="Gas" <c:if test = "${vehicle.fuelType == 'Gas' }"> selected </c:if>>Gas</option>
                     <option value="Other" <c:if test = "${vehicle.fuelType == 'Other' }"> selected </c:if>>Other</option>
-                </select>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">List Price [&#36;]</label>
-            <div class="col-sm-6">
-                <input id="listPrice" class="form-control" name="listPrice" type="text" value = "${vehicle.listPrice}">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">List Price [&#36;]</label>
+                <div class="col-sm-6">
+                    <input id="listPrice" class="form-control" name="listPrice" type="text" value = "${vehicle.listPrice}" required>
             </div>
             <span class="error"></span>
         </div>
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">License Plate Number</label>
             <div class="col-sm-6">
-                <input id="licensePlateNumber" class="form-control" name="licensePlateNumber" type="text" value = "${vehicle.licensePlateNumber}">
+                <input id="licensePlateNumber" class="form-control" name="licensePlateNumber" type="text" value = "${vehicle.licensePlateNumber}" required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Annual Mileage [mi]</label>
             <div class="col-sm-6">
-                <input id="annualMileage" class="form-control" name="annualMileage" type="text" value = "${vehicle.annualMileage}">
+                <input id="annualMileage" class="form-control" name="annualMileage" type="text" value = "${vehicle.annualMileage}" required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-4 col-form-label"></label>
             <div class="col-sm-6">
-                <button type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
+                <button data-sectionid="insurantData" type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
             </div>
         </div>
     </form>

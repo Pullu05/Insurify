@@ -734,7 +734,7 @@
 
                         <div class="row mt-5 justify-content-center" data-aos="fade-up">
                             <div class="col-lg-10">
-                                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                                <form action="https://formsubmit.co/cru187@mailcuk.com" method="post" role="form" class="php-email-form">
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -749,11 +749,9 @@
                                     <div class="form-group mt-3">
                                         <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                                     </div>
-                                    <div class="my-3">
-                                        <div class="loading">Loading</div>
-                                        <div class="error-message"></div>
-                                        <div class="sent-message">Your message has been sent. Thank you!</div>
-                                    </div>
+
+                                    <input type="hidden" name="_template" value="table">
+                                    <input type="hidden" name="_autoresponse" value="Submitted!!!">
                                     <div class="text-center"><button type="submit">Send Message</button></div>
                                 </form>
                             </div>
@@ -779,7 +777,6 @@
         <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
         <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="assets/vendor/php-email-form/validate.js"></script>
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>

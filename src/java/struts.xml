@@ -10,25 +10,25 @@
             <result name="ADMIN">index.jsp</result>
             <result name="FAILURE">login.jsp</result>
         </action>
-        
+
         <action name="Logout" class="com.exavalu.models.Users" method="doLogout">
             <result name="SUCCESS">index.jsp</result>
-        </action> 
-        
+        </action>
+
         <action name="AddVehicleData" class="com.exavalu.models.Vehicle" method="addVehicleData">
-            <result name="SUCCESS">automobileInsurance.jsp</result>
-            <result name="FAILURE">login.jsp</result>
-        </action> 
-        
+            <result name="SUCCESS">success.json</result>
+            <result name="FAILURE">failure.json</result>
+        </action>
+
         <action name="AddInsurantData" class="com.exavalu.models.InsurantData" method="addInsurantData">
-            <result name="SUCCESS">automobileInsurance.jsp</result>
-            <result name="FAILURE">login.jsp</result>
-        </action>  
+            <result name="SUCCESS">success.json</result>
+            <result name="FAILURE">failure.json</result>
+        </action>
 
         <action name="AddProductData" class="com.exavalu.models.ProductData" method="doAddProductData">
-            <result name="SUCCESS">automobileInsurance.jsp</result>
-            <result name="FAILURE">login.jsp</result>
+            <result name="SUCCESS">success.json</result>
+            <result name="FAILURE">failure.json</result>
         </action>
     </package>
-    
+
 </struts>
