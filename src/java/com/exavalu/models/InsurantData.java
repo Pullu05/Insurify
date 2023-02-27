@@ -46,6 +46,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     private String hobbies;
     private String website;
     private String picture;
+    private String email;
 
     public String addInsurantData() throws Exception {
         String result = "FAILURE";
@@ -259,4 +260,12 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
         this.picture = picture;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 }

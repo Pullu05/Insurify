@@ -42,10 +42,14 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     private int listPrice;
     private String licensePlateNumber;
     private int annualMileage;
+    private String vin;
+    private String email;
 
     public String addVehicleData() throws Exception {
         String result = "FAILURE";
-        boolean success = VehicleDataService.doVehicleDataEntry(this);
+        String user_email =(String)sessionMap.get("userEmail");
+        System.out.println(user_email);
+        boolean success = VehicleDataService.doVehicleDataEntry(this,user_email);
         if (success) {
             System.out.println("Successfully Added Vehicle Data");
             result = "SUCCESS";
@@ -57,6 +61,23 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         return result;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+    
     public int getEnginePerformance() {
         return enginePerformance;
     }

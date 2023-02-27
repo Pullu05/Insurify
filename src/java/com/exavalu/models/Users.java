@@ -80,6 +80,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
                 sessionMap.put("LoggedIn", this);
                 Users user = LoginService.getUser(this.email);
                 sessionMap.put("User", user);
+                sessionMap.put("userEmail",user.getEmail());
                 result = "USER";
             } else {
                 String errorMsg = "Either Email Address or Password is Wrong";

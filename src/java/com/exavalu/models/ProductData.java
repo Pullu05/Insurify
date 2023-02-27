@@ -42,12 +42,15 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
     private String damageInsurance;
     private String optionalProducts;
     private String courtesyCar;
+    private String email;
 
 
     public String doAddProductData() throws Exception {
 
         String result = "FAILURE";
-        boolean success = ProductDataService.addProductData(this);
+        String user_email =(String)sessionMap.get("userEmail");
+        System.out.println(user_email);
+        boolean success = ProductDataService.addProductData(this,user_email);
         
         if (success) {
             System.out.println("Successfully added product data");
@@ -59,6 +62,13 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
         return result;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     /**
      * @return the productId
      */
