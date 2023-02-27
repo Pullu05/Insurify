@@ -54,10 +54,14 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     private int listPrice;
     private String licensePlateNumber;
     private int annualMileage;
+    private String vin;
+    private String email;
 
     public String addVehicleData() throws Exception {
         String result = "FAILURE";
-        boolean success = VehicleDataService.doVehicleDataEntry(this);
+        String user_email =(String)sessionMap.get("userEmail");
+        System.out.println(user_email);
+        boolean success = VehicleDataService.doVehicleDataEntry(this,user_email);
 //        ArrayList modList = LoginService.getAllmodels(this.make);
         if (success) {
             System.out.println("Successfully Added Vehicle Data");
@@ -70,12 +74,26 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         return result;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+    
     public String doPreAddVehicleData() throws Exception {
         String result = "FAILURE";
-//        boolean success = VehicleDataService.doVehicleDataEntry(this);
-//        ArrayList makeList = LoginService.getAllmakers();
-//        sessionMap.put("MakeList", makeList);
-//        sessionMap.put("User", user);
+
         if (this.getMake() != null) {
             ArrayList modList = LoginService.getAllmodels(this.make);
             System.out.println("Successfully Fetch Models");

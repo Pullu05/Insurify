@@ -16,8 +16,15 @@
             });
         }
     </script>
-
     <form method = "POST" action="PreAddVehicleData" onsubmit="submitFormAndChangeSection(event)">
+        
+        <div class="form-group row">
+                <label class="col-sm-4 col-form-label">VIN No</label>
+                <div class="col-sm-6">
+                    <input id="vin" class="form-control" name="vin" type="text" value = "${vehicle.vin}" required>
+            </div>
+        </div>
+            
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Make</label>
             <div class="col-sm-6">

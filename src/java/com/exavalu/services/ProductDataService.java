@@ -19,12 +19,12 @@ public class ProductDataService {
     
     private static final Logger logger = Logger.getLogger(ProductDataService.class);
     
-    public static boolean addProductData(ProductData product) {
+    public static boolean addProductData(ProductData product,String email) {
         boolean result = false;
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO productdata(startDate,insuranceSum,meritRating,damageInsurance,optionalProducts,courtesyCar)" +"VALUES(? , ? , ? , ? , ? , ? )";
+            String sql = "INSERT INTO productdata(startDate,insuranceSum,meritRating,damageInsurance,optionalProducts,courtesyCar,email)" +"VALUES(? , ? , ? , ? , ? , ?, ? )";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, product.getStartDate());
@@ -33,6 +33,7 @@ public class ProductDataService {
             preparedStatement.setString(4, product.getDamageInsurance());
             preparedStatement.setString(5, product.getOptionalProducts());
             preparedStatement.setString(6, product.getCourtesyCar());
+            preparedStatement.setString(7, email);
             
             System.out.println("SQL: " + preparedStatement);
 

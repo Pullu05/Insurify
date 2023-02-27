@@ -18,6 +18,13 @@
             </div>
         </div>
 
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-6">
+                <input id="email" class="form-control" name="email" type="text" value = "${userEmail}" readonly>
+            </div>
+        </div>
+
 
 
         <div class="form-group row">
