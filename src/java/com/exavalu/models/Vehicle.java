@@ -12,7 +12,6 @@ import com.opensymphony.xwork2.util.logging.Logger;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
-import static org.apache.commons.collections.CollectionUtils.isEmpty;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
@@ -100,15 +99,9 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
             sessionMap.put("ModelList", modList);
             result = "MODELLIST";
         }
-        if (this.getModel() != null) {
-            boolean success = VehicleDataService.doVehicleDataEntry(this);
-            if (success) {
-                System.out.println("Successfully Added Vehicle Data");
-                result = "SUCCESS";
-                sessionMap.put("VehicleData", this);
-            }
-        } else {
-            System.out.println("OOps your vehicle Data is not added");
+        
+        if(this.vin!=null && this.make!=null && this.model!= null && this.enginePerformance!=0 && this.dateOfManufacture!=null && this.numberOfSeats!=0 && this.fuelType!=null && this.listPrice!=0 && this.licensePlateNumber!=null && this.annualMileage!=0){
+            result = this.addVehicleData();
         }
 
         return result;
