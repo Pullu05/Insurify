@@ -16,17 +16,17 @@
 
             <div class="col-xxl-4 col-md-6">
                 <div class="card">
-                    <a href="#" onclick="showDriverTable()">
+                    <button type="button" class="btn btn-outline-light" onclick="showDriverTable()">
                         <div class="card-body">
                             <h5 class="card-title text-center">Show Driver Details</h5>
                         </div>
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="col-xxl-4 col-md-6">
                 <div class="card">
                   <jsp:include page="adminDriverForm.jsp"></jsp:include>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div class="card-body">
                             <h5 class="card-title text-center">Add Driver Details</h5>
                         </div>
