@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author RISHAV DUTTA
  */
-public class driverInfoService {
+public class DriverInfoService {
 
     public static ArrayList getAllDriverInfo() {
         ArrayList driverInfoList = new ArrayList();
