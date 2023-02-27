@@ -1,3 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="login_check" value="${LoggedIn}"/>
+<c:if test="${login_check==null}">
+    <c:redirect url="login.jsp"></c:redirect>
+</c:if>
 <!DOCTYPE html>
 <html lang="en">
 
