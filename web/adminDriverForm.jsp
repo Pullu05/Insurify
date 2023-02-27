@@ -11,23 +11,33 @@
                 <form class="container p-5" method="post" action="SubmitDriverInfo">
                     <div class="mb-3">
                         <label for="licenseNo" class="form-label">License No</label>
-                        <input type="text" class="form-control" id="licenseNo" name="licenseNo">
+                        <input type="text" class="form-control" id="licenseNo" name="licenseNo"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="driverName" class="form-label">Driver Name</label>
+                        <input type="text" class="form-control" id="driverName" name="driverName" required>
                     </div>
                     <div class="mb-3">
                         <label for="driverAge" class="form-label">Age</label>
-                        <input type="text" class="form-control" id="driverAge" name="driverAge">
+                        <input type="text" class="form-control" id="driverAge" name="driverAge" required>
                     </div>
                     <div class="mb-3">
                         <label for="noOfChallans" class="form-label">Number of Challans</label>
-                        <input type="text" class="form-control" id="noOfChallans" name="noOfChallans">
+                        <input type="text" class="form-control" id="noOfChallans" name="noOfChallans"required>
                     </div>
                     <div class="mb-3">
                         <label for="driverMedicalHistory" class="form-label">Medical History</label>
-                        <input type="text" class="form-control" id="driverMedicalHistory" name="medicalHistory">
+<!--                        <input type="text" class="form-control" id="driverMedicalHistory" name="medicalHistory">-->
+                        <select id="driverMedicalHistory" name="medicalHistory" class="form-control" required>
+                            <option value="" >select Medical History</option>
+                            <option value="Good" >Good</option>
+                            <option value="Average" >Average</option>
+                            <option value="Bad" >Bad</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="driverWeightage" class="form-label">Weightage</label>
-                        <input type="text" class="form-control" id="driverWeightage" name="weightage">
+                        <input type="text" class="form-control" id="driverWeightage" name="weightage" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -4,9 +4,11 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.DriverInfoService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Map;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -18,7 +20,7 @@ import org.apache.struts2.interceptor.SessionAware;
  * @author RISHAV DUTTA
  */
 public class DriverInfo extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
-    
+
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
@@ -32,15 +34,35 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
-    
+
     private String licenseNo;
     private String driverName;
     private String medicalHistory;
     private int noOfChallans;
     private int driverAge;
     private int weightage;
-    
-    
+
+    public String doAddDriverInfo() throws Exception {
+        String result = "FAILURE";
+
+        boolean success = DriverInfoService.AddDriverInfo(this);
+
+        if (success) {
+            System.out.println("returning Success from doAddDriverInfo method");
+//            String Msg ="Data Added Successfully!!!";
+//            sessionMap.put("SuccessMsg2", Msg);
+            ArrayList driverInfoList = DriverInfoService.getAllDriverInfo();
+            sessionMap.put("DriverInfoList", driverInfoList);
+            result = "SUCCESS";
+        } else {
+//            String errorMsg = "Somehting Went is Wrong Try Again!!!";
+//            sessionMap.put("ErrorMsg2", errorMsg);
+            System.out.println("returning Failure from doAddDriverInfo method");
+        }
+
+        return result;
+    }
+
     public String getLicenseNo() {
         return licenseNo;
     }
@@ -88,8 +110,5 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     public void setWeightage(int weightage) {
         this.weightage = weightage;
     }
-    
-    
-    
-    
+
 }

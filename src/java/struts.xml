@@ -34,6 +34,11 @@
             <result name="SUCCESS">success.json</result>
             <result name="FAILURE">failure.json</result>
         </action>
+        
+        <action name="SubmitDriverInfo" class="com.exavalu.models.DriverInfo" method="doAddDriverInfo">
+            <result name="SUCCESS">admin.jsp</result>
+           
+        </action>
     </package>
 
 </struts>
