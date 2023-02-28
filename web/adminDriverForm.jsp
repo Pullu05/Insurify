@@ -11,7 +11,7 @@
                 <form class="container p-5" method="post" action="SubmitDriverInfo">
                     <div class="mb-3">
                         <label for="licenseNo" class="form-label">License No</label>
-                        <input type="text" class="form-control" id="licenseNo" name="licenseNo"required>
+                        <input type="text" class="form-control" id="licenseNo" name="licenseNo"required readonly>
                     </div>
                     <div class="mb-3">
                         <label for="driverName" class="form-label">Driver Name</label>
@@ -27,7 +27,6 @@
                     </div>
                     <div class="mb-3">
                         <label for="driverMedicalHistory" class="form-label">Medical History</label>
-<!--                        <input type="text" class="form-control" id="driverMedicalHistory" name="medicalHistory">-->
                         <select id="driverMedicalHistory" name="medicalHistory" class="form-control" required>
                             <option value="" >select Medical History</option>
                             <option value="Good" >Good</option>

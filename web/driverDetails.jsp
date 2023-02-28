@@ -63,7 +63,7 @@
                                 <td><c:out value="${driverInfo.medicalHistory}"> </c:out></td>
                                 <td><c:out value="${driverInfo.noOfChallans}"></c:out></td>
                                 <td><c:out value="${driverInfo.weightage}"> </c:out></td>
-                                <td><span class="badge bg-success">Edit</span></td>
+                                <td><a href=EditDriverInfo?licenseNo=${driverInfo.licenseNo}> <span class="badge bg-success">Edit</span> </a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

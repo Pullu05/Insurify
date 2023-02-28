@@ -49,18 +49,22 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
 
         if (success) {
             System.out.println("returning Success from doAddDriverInfo method");
-//            String Msg ="Data Added Successfully!!!";
-//            sessionMap.put("SuccessMsg2", Msg);
             ArrayList driverInfoList = DriverInfoService.getAllDriverInfo();
             sessionMap.put("DriverInfoList", driverInfoList);
             result = "SUCCESS";
         } else {
-//            String errorMsg = "Somehting Went is Wrong Try Again!!!";
-//            sessionMap.put("ErrorMsg2", errorMsg);
             System.out.println("returning Failure from doAddDriverInfo method");
         }
 
         return result;
+    }
+    
+     public String doEditDriverInfo() throws Exception {
+        DriverInfo driverInfo = DriverInfoService.getDriverInfo(this.licenseNo);
+       
+        sessionMap.put("specificDriverInfo", driverInfo);
+        
+        return "SUCCESS";
     }
 
     public String getLicenseNo() {
