@@ -22,14 +22,13 @@ public class DriverInfoService {
         ArrayList driverInfoList = new ArrayList();
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "SELECT licenseNo,driverName,medicalHistory,noOfChallans,driverAge,weightage from driverinfo";
+            String sql = "SELECT * from driverinfo";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 DriverInfo driverinfo = new DriverInfo();
-
-                driverinfo.setLicenseNo(rs.getString("licenseNo"));
-                driverinfo.setDriverName(rs.getString("driverName"));
+                
+                driverinfo.setId(rs.getInt("id"));
                 driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
                 driverinfo.setNoOfChallans(rs.getInt("noOfChallans"));
                 driverinfo.setDriverAge(rs.getInt("driverAge"));
@@ -49,17 +48,15 @@ public class DriverInfoService {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO driverinfo(licenseNo,driverName,medicalHistory,noOfChallans,driverAge,weightage )"
-                    + "VALUES(? ,? ,? ,? , ? , ?)";
+            String sql = "INSERT INTO driverinfo(medicalHistory,noOfChallans,driverAge,weightage )"
+                    + "VALUES(? ,? , ? , ?)";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, driverInfo.getLicenseNo());
-            preparedStatement.setString(2, driverInfo.getDriverName());
-            preparedStatement.setString(3, driverInfo.getMedicalHistory());
-            preparedStatement.setInt(4, driverInfo.getNoOfChallans());
-            preparedStatement.setInt(5, driverInfo.getDriverAge());
-            preparedStatement.setInt(6, driverInfo.getWeightage());
+            preparedStatement.setString(1, driverInfo.getMedicalHistory());
+            preparedStatement.setInt(2, driverInfo.getNoOfChallans());
+            preparedStatement.setInt(3, driverInfo.getDriverAge());
+            preparedStatement.setInt(4, driverInfo.getWeightage());
 
             int row = preparedStatement.executeUpdate();
 
@@ -75,20 +72,18 @@ public class DriverInfoService {
         return result;
     }
 
-    public static DriverInfo getDriverInfo(String licenseNo) {
+    public static DriverInfo getDriverInfo(int id) {
         DriverInfo driverinfo = new DriverInfo();
         try {
             Connection con = JDBCConnectionManager.getConnection();
 
-            String sql = "SELECT licenseNo,driverName,medicalHistory,noOfChallans,driverAge,weightage from driverinfo where licenseNo =?";
+            String sql = "SELECT * from driverinfo where id =?";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, licenseNo);
+            preparedStatement.setInt(1, id);
 
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-
-                driverinfo.setLicenseNo(rs.getString("licenseNo"));
-                driverinfo.setDriverName(rs.getString("driverName"));
+                driverinfo.setId(rs.getInt("id"));
                 driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
                 driverinfo.setNoOfChallans(rs.getInt("noOfChallans"));
                 driverinfo.setDriverAge(rs.getInt("driverAge"));
@@ -102,26 +97,24 @@ public class DriverInfoService {
         return driverinfo;
     }
 
-    public static boolean updateDriverInfo(DriverInfo driverInfo, String licenseNo) {
+    public static boolean updateDriverInfo(DriverInfo driverInfo, int id) {
 
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "UPDATE driverinfo "
-                    + "SET licenseNo = ? , driverName = ? , medicalHistory = ?,"
+                    + "SET medicalHistory = ?,"
                     + "noOfChallans = ?, driverAge = ? , weightage = ?"
-                    + "WHERE licenseNo = ?";
+                    + "WHERE id = ?";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, driverInfo.getLicenseNo());
-            preparedStatement.setString(2, driverInfo.getDriverName());
-            preparedStatement.setString(3, driverInfo.getMedicalHistory());
-            preparedStatement.setInt(4, driverInfo.getNoOfChallans());
-            preparedStatement.setInt(5, driverInfo.getDriverAge());
-            preparedStatement.setInt(6, driverInfo.getWeightage());
+            preparedStatement.setString(1, driverInfo.getMedicalHistory());
+            preparedStatement.setInt(2, driverInfo.getNoOfChallans());
+            preparedStatement.setInt(3, driverInfo.getDriverAge());
+            preparedStatement.setInt(4, driverInfo.getWeightage());
 
-            preparedStatement.setString(7, licenseNo);
+            preparedStatement.setInt(5, id);
 
             int row = preparedStatement.executeUpdate();
 

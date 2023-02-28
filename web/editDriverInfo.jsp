@@ -16,12 +16,8 @@
         <c:set var="driver" value="${specificDriverInfo}"/>
         <form class="container p-5" method="post" action="UpdateDriverInfo">
             <div class="mb-3">
-                <label for="licenseNo" class="form-label">License No</label>
-                <input type="text" class="form-control" id="licenseNo" name="licenseNo" value="${driver.licenseNo}" required >
-            </div>
-            <div class="mb-3">
-                <label for="driverName" class="form-label">Driver Name</label>
-                <input type="text" class="form-control" id="driverName" name="driverName" value="${driver.driverName}" required>
+                <label for="id" class="form-label">Id</label>
+                <input type="text" class="form-control" id="id" name="id" value="${driver.id}" readonly >
             </div>
             <div class="mb-3">
                 <label for="driverAge" class="form-label">Age</label>

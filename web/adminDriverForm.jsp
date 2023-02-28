@@ -10,14 +10,6 @@
             <div class="modal-body">
                 <form class="container p-5" method="post" action="SubmitDriverInfo">
                     <div class="mb-3">
-                        <label for="licenseNo" class="form-label">License No</label>
-                        <input type="text" class="form-control" id="licenseNo" name="licenseNo"required readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label for="driverName" class="form-label">Driver Name</label>
-                        <input type="text" class="form-control" id="driverName" name="driverName" required>
-                    </div>
-                    <div class="mb-3">
                         <label for="driverAge" class="form-label">Age</label>
                         <input type="text" class="form-control" id="driverAge" name="driverAge" required>
                     </div>
