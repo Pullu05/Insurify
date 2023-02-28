@@ -34,9 +34,8 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
-
-    private String licenseNo;
-    private String driverName;
+    
+    private int id;
     private String medicalHistory;
     private int noOfChallans;
     private int driverAge;
@@ -60,29 +59,21 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     }
     
      public String doEditDriverInfo() throws Exception {
-        DriverInfo driverInfo = DriverInfoService.getDriverInfo(this.licenseNo);
+        DriverInfo driverInfo = DriverInfoService.getDriverInfo(this.id);
        
         sessionMap.put("specificDriverInfo", driverInfo);
         
         return "SUCCESS";
     }
 
-    public String getLicenseNo() {
-        return licenseNo;
+    public int getId() {
+        return id;
     }
 
-    public void setLicenseNo(String licenseNo) {
-        this.licenseNo = licenseNo;
+    public void setId(int id) {
+        this.id = id;
     }
-
-    public String getDriverName() {
-        return driverName;
-    }
-
-    public void setDriverName(String driverName) {
-        this.driverName = driverName;
-    }
-
+    
     public String getMedicalHistory() {
         return medicalHistory;
     }

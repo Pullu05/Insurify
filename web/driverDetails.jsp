@@ -45,8 +45,7 @@
                         <table class="table table-borderless datatable">
                             <thead>
                                 <tr>
-                                    <th scope="col">Driver License No</th>
-                                    <th scope="col">Driver Name</th>
+                                    <th scope="col">Id</th>
                                     <th scope="col">Driver Age</th>
                                     <th scope="col">Medical History</th>
                                     <th scope="col">Number Of Challans</th>
@@ -57,13 +56,12 @@
                             <tbody>
                             <c:forEach items="${DriverInfoList}" var="driverInfo">
                                 <tr>
-                                    <th scope="row"><c:out value="${driverInfo.licenseNo}"> </c:out></th>
-                                <td><c:out value="${driverInfo.driverName}"> </c:out></td>
+                                    <th scope="row"><c:out value="${driverInfo.id}"> </c:out></th>
                                 <td><c:out value="${driverInfo.driverAge}"> </c:out></td>
                                 <td><c:out value="${driverInfo.medicalHistory}"> </c:out></td>
                                 <td><c:out value="${driverInfo.noOfChallans}"></c:out></td>
                                 <td><c:out value="${driverInfo.weightage}"> </c:out></td>
-                                <td><a href=EditDriverInfo?licenseNo=${driverInfo.licenseNo}> <span class="badge bg-success">Edit</span> </a></td>
+                                <td><a href=EditDriverInfo?id=${driverInfo.id}> <span class="badge bg-success">Edit</span> </a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

@@ -119,10 +119,10 @@
 
             <section class="section dashboard">
                 <div>
-                    
-                    
+
+
                 </div>
-                
+
                 <div id ="driverDetails" class="d-none">
                     <jsp:include page="driverDetails.jsp"></jsp:include>
                     </div>
