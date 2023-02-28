@@ -61,7 +61,16 @@
                                 <td><c:out value="${driverInfo.medicalHistory}"> </c:out></td>
                                 <td><c:out value="${driverInfo.noOfChallans}"></c:out></td>
                                 <td><c:out value="${driverInfo.weightage}"> </c:out></td>
-                                <td><a href=EditDriverInfo?id=${driverInfo.id}> <span class="badge bg-success">Edit</span> </a></td>
+                                <td><div class="col-xxl-4 col-md-6">
+                <div class="card">
+                  <jsp:include page="editDriverInfo.jsp"></jsp:include>
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        <div>
+                            <a href="EditDriverInfo?id=${driverInfo.id}" > <span class="badge bg-success">Edit</span> </a>
+                        </div>
+                    </button>
+                </div>
+            </div></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
