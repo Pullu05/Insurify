@@ -102,10 +102,7 @@ public class DriverInfoService {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "UPDATE driverinfo "
-                    + "SET medicalHistory = ?,"
-                    + "noOfChallans = ?, driverAge = ? , weightage = ?"
-                    + "WHERE id = ?";
+            String sql = "UPDATE driverinfo SET medicalHistory = ? , noOfChallans = ?, driverAge = ? , weightage = ? WHERE id = ?;";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
