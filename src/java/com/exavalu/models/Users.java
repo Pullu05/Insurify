@@ -6,6 +6,7 @@ package com.exavalu.models;
 
 import com.exavalu.services.DriverInfoService;
 import com.exavalu.services.LoginService;
+import com.exavalu.services.VehicleInfoService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
@@ -48,7 +49,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
         boolean success = LoginService.doLogin(this);
         ArrayList makeList = LoginService.getAllmakers();
         sessionMap.put("MakeList", makeList);
-        
+
         if (!success) {
             String errorMsg = "Either Email Address or Password is Wrong";
             sessionMap.put("ErrorMsg", errorMsg);
@@ -66,10 +67,13 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
                 Users user = LoginService.getUser(this.email);
                 sessionMap.put("User", user);
-                
+
                 ArrayList driverInfoList = DriverInfoService.getAllDriverInfo();
                 sessionMap.put("DriverInfoList", driverInfoList);
-                        
+
+                ArrayList vehicleInfoList = VehicleInfoService.getAllVehicleInfo();
+                sessionMap.put("VehicleInfoList", vehicleInfoList);
+
                 result = "ADMIN";
             } else {
                 String errorMsg = "Either Email Address or Password is Wrong";
@@ -84,7 +88,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
                 sessionMap.put("LoggedIn", this);
                 Users user = LoginService.getUser(this.email);
                 sessionMap.put("User", user);
-                sessionMap.put("userEmail",user.getEmail());
+                sessionMap.put("userEmail", user.getEmail());
                 sessionMap.put("MakeList", makeList);
 
                 result = "USER";

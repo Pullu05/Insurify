@@ -15,10 +15,6 @@
             <result name="SUCCESS">index.jsp</result>
         </action>
 
-<!--        <action name="AddVehicleData" class="com.exavalu.models.Vehicle" method="addVehicleData">
-            <result name="SUCCESS">success.json</result>
-            <result name="FAILURE">failure.json</result>
-        </action>-->
         <action name="PreAddVehicleData" class="com.exavalu.models.Vehicle" method="doPreAddVehicleData">
             <result name="SUCCESS">success.json</result>
             <result name="FAILURE">failure.json</result>
@@ -34,16 +30,18 @@
             <result name="SUCCESS">success.json</result>
             <result name="FAILURE">failure.json</result>
         </action>
-        
+
         <action name="SubmitDriverInfo" class="com.exavalu.models.DriverInfo" method="doAddDriverInfo">
             <result name="SUCCESS">admin.jsp</result>
-           
         </action>
-        
-        
+
+        <action name="SubmitVehicleInfo" class="com.exavalu.models.VehicleInfo" method="doAddVehicleInfo">
+            <result name="SUCCESS">admin.jsp</result>
+        </action>
+
         <action name="EditDriverInfo" class="com.exavalu.models.DriverInfo" method="doEditDriverInfo">
             <result name="SUCCESS">editDriverInfo.jsp</result>
-           
+
         </action>
         <action name="UpdateDriverInfo" class="com.exavalu.models.DriverInfo" method="doUpdateDriverInfo">
             <result name="SUCCESS">admin.jsp</result>

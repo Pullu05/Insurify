@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : admin
     Created on : 27-Feb-2023, 1:07:10 pm
     Author     : Nairwita Chakraborty
@@ -20,7 +20,7 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        Vendor CSS Files 
+        Vendor CSS Files
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
         <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-        Template Main CSS File 
+        Template Main CSS File
         <link href="assets/css/style_1.css" rel="stylesheet">
 
 
@@ -76,7 +76,7 @@
                         </a>
                     </li><!-- End Search Icon-->
 
-                    <li class="nav-item d-block d-lg-none">     
+                    <li class="nav-item d-block d-lg-none">
                     <li>
                         <a class="nav-link d-flex align-items-center pe-0 me-5" href="Logout">
                             <span class="d-none d-md-block ps-2">Sign-out</span>
@@ -150,7 +150,36 @@
 
         <!-- Template Main JS File -->
         <script src="assets/js/main_1.js"></script>
-        <!--<script src="https://bootstrapmade.com/assets/js/demo-4.3.js"></script>-->
+        <script>
+                        async function myFormSubmission(event) {
+                            event.preventDefault();
+
+                            const formData = new FormData(event.target);
+                            const data = {};
+                            formData.forEach(function (value, key) {
+                                data[key] = value;
+                            });
+
+                            const formAction = event.target.getAttribute('action');
+                            const responseTableParent = document.getElementById(event.target.dataset.table);
+
+                            await fetch(formAction, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
+                                body: new URLSearchParams(data)
+                            })
+                                    .then(response => response.text())
+                                    .then(result => {
+                                        responseTableParent.innerHTML = result;
+                                        event.target.reset();
+                                        alert("Data submitted successfully!");
+                                    })
+                                    .catch(err => console.error(err));
+
+                        }
+        </script>
     </body>
 
 </html>

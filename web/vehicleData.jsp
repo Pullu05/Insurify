@@ -48,7 +48,7 @@
             <label class="col-sm-4 col-form-label">Model</label>
             <div class="col-sm-6">
                 <select id="model" name="model" class="form-control" value = "${vehicle.model}" required>
-                    <option value="" >select a Model</option>
+                    <option value="" >Select a Model</option>
                 </select>
             </div>
         </div>
