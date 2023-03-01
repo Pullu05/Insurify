@@ -37,7 +37,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     private int insuranceDataId;
     private String firstName;
     private String lastName;
-    private String dateOfBirth;
+    private int age;
     private String gender;
     private String streetAddress;
     private String country;
@@ -48,7 +48,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     private String picture;
     private String email;
     private String aadhaarNo;
-
+    private String medicalRecord;
     public String addInsurantData() throws Exception {
         String result = "FAILURE";
 
@@ -135,19 +135,15 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
         this.lastName = lastName;
     }
 
-    /**
-     * @return the dateOfBirth
-     */
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public int getAge() {
+        return age;
     }
 
-    /**
-     * @param dateOfBirth the dateOfBirth to set
-     */
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setAge(int age) {
+        this.age = age;
     }
+
+   
 
     /**
      * @return the gender
@@ -276,5 +272,13 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     public void setAadhaarNo(String aadhaarNo) {
         this.aadhaarNo = aadhaarNo;
     }
-   
+
+    public String getMedicalRecord() {
+        return medicalRecord;
+    }
+
+    public void setMedicalRecord(String medicalRecord) {
+        this.medicalRecord = medicalRecord;
+    }
+    
 }

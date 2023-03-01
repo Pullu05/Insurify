@@ -24,21 +24,22 @@ public class InsurantDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO insurantdata (email,firstName,lastName,aadhaarNo,dateOfBirth,gender,streetAddress,country,zipCode,occupation,hobbies,website) VALUES (?,? , ? , ? , ? , ? , ? , ? , ? , ? , ?, ?)";
+            String sql = "INSERT INTO insurantdata (email,firstName,lastName,aadhaarNo,age,medicalRecord,gender,streetAddress,country,zipCode,occupation,hobbies,website) VALUES (?, ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ?, ?)";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             
             preparedStatement.setString(1, insurantData.getEmail());
             preparedStatement.setString(2, insurantData.getFirstName());
             preparedStatement.setString(3, insurantData.getLastName());
             preparedStatement.setString(4, insurantData.getAadhaarNo());
-            preparedStatement.setString(5, insurantData.getDateOfBirth());
-            preparedStatement.setString(6, insurantData.getGender());
-            preparedStatement.setString(7, insurantData.getStreetAddress());
-            preparedStatement.setString(8, insurantData.getCountry());
-            preparedStatement.setString(9, insurantData.getZipCode());
-            preparedStatement.setString(10, insurantData.getOccupation());
-            preparedStatement.setString(11, insurantData.getHobbies());
-            preparedStatement.setString(12, insurantData.getWebsite());
+            preparedStatement.setInt(5, insurantData.getAge());
+            preparedStatement.setString(6, insurantData.getMedicalRecord());
+            preparedStatement.setString(7, insurantData.getGender());
+            preparedStatement.setString(8, insurantData.getStreetAddress());
+            preparedStatement.setString(9, insurantData.getCountry());
+            preparedStatement.setString(10, insurantData.getZipCode());
+            preparedStatement.setString(11, insurantData.getOccupation());
+            preparedStatement.setString(12, insurantData.getHobbies());
+            preparedStatement.setString(13, insurantData.getWebsite());
 //                preparedStatement.setString(12, insurantData.getPicture());
 
             System.out.println("sql:" + preparedStatement);
