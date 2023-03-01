@@ -32,7 +32,7 @@ CREATE TABLE `productdata` (
   `optionalProducts` varchar(45) NOT NULL,
   `courtesyCar` varchar(45) NOT NULL,
   PRIMARY KEY (`productId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `productdata` (
 
 LOCK TABLES `productdata` WRITE;
 /*!40000 ALTER TABLE `productdata` DISABLE KEYS */;
-INSERT INTO `productdata` VALUES (4,'user@gmail.com','2023-02-10','5000000','Malus 14','No Coverage','Legal Defense Insurance','Yes');
+INSERT INTO `productdata` VALUES (4,'user@gmail.com','2023-02-10','5000000','Malus 14','No Coverage','Legal Defense Insurance','Yes'),(5,'user@gmail.com','2023-02-17','10000000','Bonus 8','Partial Coverage','Legal Defense Insurance','Yes');
 /*!40000 ALTER TABLE `productdata` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-28 13:08:21
+-- Dump completed on 2023-03-02  2:46:02

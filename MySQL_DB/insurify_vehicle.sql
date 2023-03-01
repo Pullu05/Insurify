@@ -44,7 +44,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
-INSERT INTO `vehicle` VALUES ('WB145478PKK','WB2345','BMW','MR',4500,'1999-12-04',3,'Diesel',5200,500,'user@gmail.com'),('WB145478PKKOO','WB1234547','HA','OS',4500,'2023-02-10',3,'Petrol',5000,52000,'user@gmail.com'),('WB145478PKp','WB2345','CT','MC',4500,'1999-12-04',3,'Diesel',5200,500,'user@gmail.com');
+INSERT INTO `vehicle` VALUES ('WB145478PKK','WB3556','Geo','Prizm',4500,'2023-03-24',6,'Diesel',5000,255,'user@gmail.com'),('WB145478PKK11','WB12156','Chevrolet','Monte Carlo',4500,'2023-04-01',4,'Diesel',450,500,'user@gmail.com');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-28 13:08:21
+-- Dump completed on 2023-03-02  2:46:01

@@ -16,40 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `insurantdata`
+-- Table structure for table `insuranceapi`
 --
 
-DROP TABLE IF EXISTS `insurantdata`;
+DROP TABLE IF EXISTS `insuranceapi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `insurantdata` (
-  `insuranceDataId` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `insuranceapi` (
+  `insuranceId` int NOT NULL AUTO_INCREMENT,
+  `insuranceStatus` varchar(45) NOT NULL,
+  `insuranceHistory` varchar(45) NOT NULL,
+  `amountClaimed` int NOT NULL,
+  `drivingExperience` int NOT NULL,
+  `weightage` int NOT NULL,
   `aadhaarNo` varchar(12) NOT NULL,
-  `firstName` varchar(45) NOT NULL,
-  `lastName` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `age` int NOT NULL,
-  `medicalRecord` varchar(45) NOT NULL,
-  `gender` varchar(45) NOT NULL,
-  `streetAddress` varchar(80) NOT NULL,
-  `country` varchar(45) NOT NULL,
-  `zipCode` varchar(45) NOT NULL,
-  `occupation` varchar(45) NOT NULL,
-  `hobbies` varchar(45) NOT NULL,
-  `website` varchar(45) NOT NULL,
-  `picture` longblob,
-  PRIMARY KEY (`insuranceDataId`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`insuranceId`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `insurantdata`
+-- Dumping data for table `insuranceapi`
 --
 
-LOCK TABLES `insurantdata` WRITE;
-/*!40000 ALTER TABLE `insurantdata` DISABLE KEYS */;
-INSERT INTO `insurantdata` VALUES (15,'12345678911','Rishav','Dutta','user@gmail.com',22,'Average','Male','BARUIPUR , UKILPARA ,KOLKATA-144','India','700144','Public Official','Cricket, Football','WWW.google.com',NULL),(16,'45645','54654','5454','user@gmail.com',4646,'Good','Male','56464654','Austria','65464','Public Official','466464','64456',NULL),(17,'6564','t54656','46654','user@gmail.com',655454,'Good','Male','45456','Bahamas','4564','Public Official','464','56',NULL);
-/*!40000 ALTER TABLE `insurantdata` ENABLE KEYS */;
+LOCK TABLES `insuranceapi` WRITE;
+/*!40000 ALTER TABLE `insuranceapi` DISABLE KEYS */;
+INSERT INTO `insuranceapi` VALUES (1,'New','Bad',25008,2,20,''),(2,'New','Bad',36738,34,17,''),(3,'Old','Average',29778,13,7,'45645'),(4,'Old','Good',47513,38,-3,'6564');
+/*!40000 ALTER TABLE `insuranceapi` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -61,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-02  2:46:03
+-- Dump completed on 2023-03-02  2:46:02
