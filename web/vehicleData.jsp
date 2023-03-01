@@ -38,7 +38,7 @@
                 <select id="make" name="make" class="form-control" value = "${vehicle.make}" onchange="fetchList('make', 'model')" required>
                     <option value="" >select a Maker</option>
                     <c:forEach items="${MakeList}" var="make">
-                        <option value="${make.getMakeCode()}" <c:if test = "${make.getMakeCode() == Users.getMakeCode() }"> selected </c:if> >
+                        <option value="${make.getMakeName()}" <c:if test = "${make.getMakeCode() == Users.getMakeCode() }"> selected </c:if> >
                             <c:out value ="${make.getMakeName()}"/>
                         </option>
                     </c:forEach>
