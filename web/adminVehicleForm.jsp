@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close" style="background-size: 40%"></button>
             </div>
             <div class="modal-body">
-                <form class="container p-2" method="post" data-table="vehicleTable" action="SubmitVehicleInfo">
+                <form class="container p-2" method="post" data-table="vehicleTable" action="SubmitVehicleInfo" onsubmit="handleFormSubmission(event)">
                     <div class="mb-3">
                         <label for="vehicleMake" class="form-label">Make</label>
                         <input type="text" class="form-control" id="vehicleMake" name="vehicleMake">
