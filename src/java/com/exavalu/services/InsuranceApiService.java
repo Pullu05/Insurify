@@ -18,8 +18,6 @@ public class InsuranceApiService {
 
     public static int calculateWeightage(InsuranceAPIData insuranceData) {
         
-        
-        
         int weightage = 0;
 
         // Insurance status weightage

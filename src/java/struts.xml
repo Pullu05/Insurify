@@ -47,6 +47,9 @@
             <result name="SUCCESS">admin.jsp</result>
 
         </action>
+        <action name="CalculatePremium" class="com.exavalu.models.InsuranceAPIData" method="doGetInsuranceDetails">
+            <result name="SUCCESS">success.json</result>
+        </action>
 
     </package>
 

@@ -49,11 +49,13 @@
             <input type="radio" class="form-check-input custom-border" name="radioNoLabel" />
         </div>
     </div>
-    <div class="row mx-0 gap-2 my-2 mt-4">
-        <div class="d-flex gap-4 justify-content-center">
-            <button data-sectionid="insurantData" type="button" class="btn btn-dark prevBtn" onclick="handleAutomobileSectionChange(event)">&laquo; Prev</button>
-            <button data-sectionid="planData" type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
+    <form action="CalculatePremium" method="post" onsubmit="submitFormAndChangeSection(event)">
+        <div class="row mx-0 gap-2 my-2 mt-4">
+            <div class="d-flex gap-4 justify-content-center">
+                <button data-sectionid="productData" type="button" class="btn btn-dark prevBtn" onclick="handleAutomobileSectionChange(event)">&laquo; Prev</button>
+                <button data-sectionid="sendData" type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
+            </div>
         </div>
+    </form>
 
-    </div>
 </section>
