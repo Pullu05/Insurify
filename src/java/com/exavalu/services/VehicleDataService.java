@@ -51,7 +51,7 @@ public class VehicleDataService {
 
     }
     
-    public static int getVehicleWeightage(VehicleInfo vehicleInfo) {
+    public static int getVehicleWeightage(Vehicle vehicle) {
         int weightageValue = 0;
 
         try {
@@ -59,8 +59,8 @@ public class VehicleDataService {
             String sql = "SELECT weightage from vehicleinfo where vehicleMake=? and vechicleModel=?";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, vehicleInfo.getVehicleMake());
-            preparedStatement.setString(2, vehicleInfo.getVehicleModel());
+            preparedStatement.setString(1, vehicle.getMake());
+            preparedStatement.setString(2, vehicle.getModel());
            
             System.out.println("SQL: " + preparedStatement);
 
