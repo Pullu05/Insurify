@@ -4,6 +4,10 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.InsuranceApiService;
+import com.exavalu.services.InsurantDataService;
+import com.exavalu.services.PolicyService;
+import com.exavalu.services.VehicleDataService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
@@ -18,7 +22,7 @@ import org.apache.struts2.interceptor.SessionAware;
  * @author RISHAV DUTTA
  */
 public class Policy extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
-    
+
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
@@ -32,8 +36,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
-    
-    
+
     private String weightageRange;
     private int coverage;
     private int premium;
@@ -61,5 +64,25 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public void setPremium(int premium) {
         this.premium = premium;
     }
-    
+
+    public String doGetTotalWeightage() throws Exception {
+        String result = "SUCCESS";
+        int vehicleWeightage = VehicleDataService.getVehicleWeightage((Vehicle) sessionMap.get("VehicleData"));
+
+        int insurantWeightage = InsurantDataService.getDriverWeightage((InsurantData) sessionMap.get("InsurantData"));
+
+        InsurantData insurantData = (InsurantData) sessionMap.get("InsurantData");
+        String aadhaarNo = insurantData.getAadhaarNo();
+        int apiWeightage = InsuranceApiService.getInsuranceApiWeightage(aadhaarNo);
+
+        int totalWeightage = vehicleWeightage + insurantWeightage + apiWeightage;
+        
+        System.out.println(vehicleWeightage+"  "+insurantWeightage+"  "+apiWeightage);
+        
+        Policy policy = PolicyService.getPolicyInfo(totalWeightage);
+        System.out.println("Coverage  :" + policy.getCoverage());
+        System.out.println("Premium  :" + policy.getPremium());
+        
+        return result;
+    }
 }
