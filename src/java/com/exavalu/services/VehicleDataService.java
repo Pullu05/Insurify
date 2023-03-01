@@ -9,6 +9,7 @@ import com.exavalu.models.VehicleInfo;
 import com.exavalu.utils.JDBCConnectionManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -50,8 +51,8 @@ public class VehicleDataService {
 
     }
     
-    public static boolean getVehicleWeightage(VehicleInfo vehicleInfo) {
-        boolean result = false;
+    public static int getVehicleWeightage(VehicleInfo vehicleInfo) {
+        int weightageValue = 0;
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -63,16 +64,18 @@ public class VehicleDataService {
            
             System.out.println("SQL: " + preparedStatement);
 
-            int row = preparedStatement.executeUpdate();
-            if (row == 1) {
-                result = true;
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            if (rs.next()) {
+                weightageValue = rs.getInt(1);             
             }
+            System.out.println("Vehicle Weightage: "+weightageValue);
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            ex.getMessage();
         }
-        return result;
 
+        return weightageValue;
     }
     
 }
