@@ -5,7 +5,6 @@
 package com.exavalu.models;
 
 import com.exavalu.services.InsuranceApiService;
-import com.exavalu.services.InsurantApiService;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -86,7 +85,7 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
 //        boolean success = InsurantApiService.storeIntoDB(insuranceInfo);
  //       boolean success = true;
         
-        boolean success = InsurantApiService.storeIntoDB(insuranceInfo);
+        boolean success = InsuranceApiService.storeIntoDB(insuranceInfo);
         if (success) {
             sessionMap.put("InsuranceInfo", insuranceInfo);
             result = "SUCCESS";
