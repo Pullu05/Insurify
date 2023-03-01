@@ -47,6 +47,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     private String website;
     private String picture;
     private String email;
+    private String aadhaarNo;
 
     public String addInsurantData() throws Exception {
         String result = "FAILURE";
@@ -267,5 +268,13 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+    public String getAadhaarNo() {
+        return aadhaarNo;
+    }
+
+    public void setAadhaarNo(String aadhaarNo) {
+        this.aadhaarNo = aadhaarNo;
+    }
+   
 }
