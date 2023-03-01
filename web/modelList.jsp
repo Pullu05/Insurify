@@ -2,7 +2,7 @@
 
 <option value="" >Select a Model</option>
 <c:forEach items="${ModelList}" var="model">
-    <option value="${model.getModelCode()}" >
+    <option value="${model.getModelName()}" >
         <c:out value ="${model.getModelName()}"/>
     </option>
 </c:forEach>
