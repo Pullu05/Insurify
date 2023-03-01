@@ -5,6 +5,7 @@
 package com.exavalu.services;
 
 import com.exavalu.models.Vehicle;
+import com.exavalu.models.VehicleInfo;
 import com.exavalu.utils.JDBCConnectionManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,4 +49,30 @@ public class VehicleDataService {
         return result;
 
     }
+    
+    public static boolean getVehicleWeightage(VehicleInfo vehicleInfo) {
+        boolean result = false;
+
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "SELECT weightage from vehicleinfo where vehicleMake=? and vechicleModel=?";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+            preparedStatement.setString(1, vehicleInfo.getVehicleMake());
+            preparedStatement.setString(2, vehicleInfo.getVehicleModel());
+           
+            System.out.println("SQL: " + preparedStatement);
+
+            int row = preparedStatement.executeUpdate();
+            if (row == 1) {
+                result = true;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return result;
+
+    }
+    
 }
