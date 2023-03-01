@@ -48,7 +48,6 @@
                                         <th scope="col">Id</th>
                                         <th scope="col">Driver Age</th>
                                         <th scope="col">Medical History</th>
-                                        <th scope="col">Number Of Challans</th>
                                         <th scope="col">Weightage</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -59,7 +58,6 @@
                                         <th scope="row"><c:out value="${driverInfo.id}"> </c:out></th>
                                         <td><c:out value="${driverInfo.driverAge}"> </c:out></td>
                                         <td><c:out value="${driverInfo.medicalHistory}"> </c:out></td>
-                                        <td><c:out value="${driverInfo.noOfChallans}"></c:out></td>
                                         <td><c:out value="${driverInfo.weightage}"> </c:out></td>
                                             <td>
                                                 <a href="EditDriverInfo?id=${driverInfo.id}" > <span class="badge bg-success">Edit</span> </a>

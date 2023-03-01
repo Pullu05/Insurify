@@ -30,8 +30,7 @@ public class DriverInfoService {
                 
                 driverinfo.setId(rs.getInt("id"));
                 driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
-                driverinfo.setNoOfChallans(rs.getInt("noOfChallans"));
-                driverinfo.setDriverAge(rs.getInt("driverAge"));
+                driverinfo.setDriverAge(rs.getString("driverAge"));
                 driverinfo.setWeightage(rs.getInt("weightage"));
 
                 driverInfoList.add(driverinfo);
@@ -48,15 +47,14 @@ public class DriverInfoService {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO driverinfo(medicalHistory,noOfChallans,driverAge,weightage )"
-                    + "VALUES(? ,? , ? , ?)";
+            String sql = "INSERT INTO driverinfo(medicalHistory,driverAge,weightage )"
+                    + "VALUES(? ,? , ?)";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, driverInfo.getMedicalHistory());
-            preparedStatement.setInt(2, driverInfo.getNoOfChallans());
-            preparedStatement.setInt(3, driverInfo.getDriverAge());
-            preparedStatement.setInt(4, driverInfo.getWeightage());
+            preparedStatement.setString(2, driverInfo.getDriverAge());
+            preparedStatement.setInt(3, driverInfo.getWeightage());
 
             int row = preparedStatement.executeUpdate();
 
@@ -85,8 +83,7 @@ public class DriverInfoService {
             while (rs.next()) {
                 driverinfo.setId(rs.getInt("id"));
                 driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
-                driverinfo.setNoOfChallans(rs.getInt("noOfChallans"));
-                driverinfo.setDriverAge(rs.getInt("driverAge"));
+                driverinfo.setDriverAge(rs.getString("driverAge"));
                 driverinfo.setWeightage(rs.getInt("weightage"));
             }
 
@@ -102,16 +99,15 @@ public class DriverInfoService {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "UPDATE driverinfo SET medicalHistory = ? , noOfChallans = ?, driverAge = ? , weightage = ? WHERE id = ?;";
+            String sql = "UPDATE driverinfo SET medicalHistory = ? , driverAge = ? , weightage = ? WHERE id = ?;";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, driverInfo.getMedicalHistory());
-            preparedStatement.setInt(2, driverInfo.getNoOfChallans());
-            preparedStatement.setInt(3, driverInfo.getDriverAge());
-            preparedStatement.setInt(4, driverInfo.getWeightage());
+            preparedStatement.setString(2, driverInfo.getDriverAge());
+            preparedStatement.setInt(3, driverInfo.getWeightage());
 
-            preparedStatement.setInt(5, id);
+            preparedStatement.setInt(4, id);
 
             int row = preparedStatement.executeUpdate();
 
