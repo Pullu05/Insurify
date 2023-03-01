@@ -22,7 +22,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author kumar
  */
-public class Insurance extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class InsuranceAPIData extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 
     public SessionMap<String, Object> getSessionMap() {
         return sessionMap;
@@ -54,8 +54,8 @@ public class Insurance extends ActionSupport implements ApplicationAware, Sessio
     }
 
     public String doGetInsuranceDetails() throws Exception {
-        String result = "SUCCESS";
-        HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://retoolapi.dev/cBe7u6/insuranceInfo?email=" + this.getEmail())).build();
+        String result = "FAILURE";
+        HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://retoolapi.dev/cBe7u6/insuranceInfo")).build();
 
         //creating client object to send request
         HttpClient httpClient = HttpClient.newHttpClient();
@@ -63,32 +63,30 @@ public class Insurance extends ActionSupport implements ApplicationAware, Sessio
         HttpResponse<String> postResponse = httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
 
         Gson gson = new Gson();
-        Insurance insuranceInfo = gson.fromJson(postResponse.body(), Insurance.class);
-        sessionMap.put("InsuranceInfo", insuranceInfo);
+        InsuranceAPIData insuranceInfo = gson.fromJson(postResponse.body(), InsuranceAPIData.class);
+        int weightage = InsurantApiService.calculateWeightage(insuranceInfo);
+        incuranceInfo.setWeightage(weightage);
+        boolean success = InsurantApiService.storeIntoDB(insuranceInfo);
+        if (success) {
+            sessionMap.put("InsuranceInfo", insuranceInfo);
+            result = "SUCCESS";
+        }
 
         return result;
     }
 
-    private String email;
-    private int insuranceAge;
+    private String insuranceStatus;
     private String insuranceHistory;
     private int amountClaimed;
     private int drivingExperience;
+    private int weightage;
 
-    public String getEmail() {
-        return email;
+    public String getInsuranceStatus() {
+        return insuranceStatus;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getInsuranceAge() {
-        return insuranceAge;
-    }
-
-    public void setInsuranceAge(int insuranceAge) {
-        this.insuranceAge = insuranceAge;
+    public void setInsuranceStatus(String insuranceStatus) {
+        this.insuranceStatus = insuranceStatus;
     }
 
     public String getInsuranceHistory() {
@@ -113,6 +111,14 @@ public class Insurance extends ActionSupport implements ApplicationAware, Sessio
 
     public void setDrivingExperience(int drivingExperience) {
         this.drivingExperience = drivingExperience;
+    }
+
+    public int getWeightage() {
+        return weightage;
+    }
+
+    public void setWeightage(int weightage) {
+        this.weightage = weightage;
     }
 
 }
