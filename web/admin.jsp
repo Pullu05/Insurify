@@ -151,7 +151,7 @@
         <!-- Template Main JS File -->
         <script src="assets/js/main_1.js"></script>
         <script>
-                        async function myFormSubmission(event) {
+                        async function handleFormSubmission(event) {
                             event.preventDefault();
 
                             const formData = new FormData(event.target);
@@ -161,7 +161,7 @@
                             });
 
                             const formAction = event.target.getAttribute('action');
-                            const responseTableParent = document.getElementById(event.target.dataset.table);
+//                            const responseTableParent = document.getElementById(event.target.dataset.table);
 
                             await fetch(formAction, {
                                 method: 'POST',
@@ -172,9 +172,10 @@
                             })
                                     .then(response => response.text())
                                     .then(result => {
-                                        responseTableParent.innerHTML = result;
+//                                        responseTableParent.innerHTML = result;
                                         event.target.reset();
                                         alert("Data submitted successfully!");
+                                        location.href = "admin.jsp";
                                     })
                                     .catch(err => console.error(err));
 
