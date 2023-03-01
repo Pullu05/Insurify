@@ -37,8 +37,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
 
     private int id;
     private String medicalHistory;
-    private int noOfChallans;
-    private int driverAge;
+    private String driverAge;
     private int weightage;
 
     public String doAddDriverInfo() throws Exception {
@@ -90,22 +89,14 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
         this.medicalHistory = medicalHistory;
     }
 
-    public int getNoOfChallans() {
-        return noOfChallans;
-    }
-
-    public void setNoOfChallans(int noOfChallans) {
-        this.noOfChallans = noOfChallans;
-    }
-
-    public int getDriverAge() {
+    public String getDriverAge() {
         return driverAge;
     }
 
-    public void setDriverAge(int driverAge) {
+    public void setDriverAge(String driverAge) {
         this.driverAge = driverAge;
     }
-
+  
     public int getWeightage() {
         return weightage;
     }

@@ -14,10 +14,6 @@
                         <input type="text" class="form-control" id="driverAge" name="driverAge" required>
                     </div>
                     <div class="mb-3">
-                        <label for="noOfChallans" class="form-label">Number of Challans</label>
-                        <input type="text" class="form-control" id="noOfChallans" name="noOfChallans"required>
-                    </div>
-                    <div class="mb-3">
                         <label for="driverMedicalHistory" class="form-label">Medical History</label>
                         <select id="driverMedicalHistory" name="medicalHistory" class="form-control" required>
                             <option value="" >Select Medical History</option>
