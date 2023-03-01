@@ -59,6 +59,7 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
 
     public String doGetInsuranceDetails() throws Exception {
         String result = "FAILURE";
+        boolean success = false;
         HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://randomapi.com/api/7763e3d1c2c554b861a7aa429b67cbe7")).build();
 
         //creating client object to send request
@@ -72,22 +73,34 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
         JsonArray jsonArray = jsonElement.getAsJsonObject().getAsJsonArray("results");
         InsuranceAPIData insuranceInfo = gson.fromJson(jsonArray.get(0), InsuranceAPIData.class);
 
-        int weightage = InsuranceApiService.calculateWeightage(insuranceInfo);
-        insuranceInfo.setWeightage(weightage);
+        // Getting aadhaar number from the Session Map
+        InsurantData insurantData = (InsurantData) sessionMap.get("InsurantData");
+        String aadhaarNo = insurantData.getAadhaarNo();
 
-        System.out.println("----------------------------------");
-        System.out.println("insuranceStatus : " + insuranceInfo.getInsuranceStatus());
-        System.out.println("insuranceHistory : " + insuranceInfo.getInsuranceHistory());
-        System.out.println("amountClaimed : " + insuranceInfo.getAmountClaimed());
-        System.out.println("drivingExperience : " + insuranceInfo.getDrivingExperience());
-        System.out.println("weightage : " + insuranceInfo.getWeightage());
-        
-//        boolean success = InsurantApiService.storeIntoDB(insuranceInfo);
- //       boolean success = true;
-        
-        boolean success = InsuranceApiService.storeIntoDB(insuranceInfo);
-        if (success) {
-            sessionMap.put("InsuranceInfo", insuranceInfo);
+        insuranceInfo.setAadhaarNo(aadhaarNo);
+
+        int existingWeightageData = InsuranceApiService.getInsuranceApiWeightage(aadhaarNo);
+
+        if (existingWeightageData == 0) {
+            System.out.println("Null Insurance Data");
+
+            existingWeightageData = InsuranceApiService.calculateWeightage(insuranceInfo);
+            insuranceInfo.setWeightage(existingWeightageData);
+
+            System.out.println("----------------------------------");
+            System.out.println("aadhaarNo : " + insuranceInfo.getAadhaarNo());
+            System.out.println("insuranceStatus : " + insuranceInfo.getInsuranceStatus());
+            System.out.println("insuranceHistory : " + insuranceInfo.getInsuranceHistory());
+            System.out.println("amountClaimed : " + insuranceInfo.getAmountClaimed());
+            System.out.println("drivingExperience : " + insuranceInfo.getDrivingExperience());
+            System.out.println("weightage : " + insuranceInfo.getWeightage());
+
+            success = InsuranceApiService.storeIntoDB(insuranceInfo);
+            if (success) {
+                result = "SUCCESS";
+            }
+        } else {
+            System.out.println("Weightage Data Already exists with value: " + existingWeightageData);
             result = "SUCCESS";
         }
 
@@ -99,6 +112,7 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
     private int amountClaimed;
     private int drivingExperience;
     private int weightage;
+    private String aadhaarNo;
 
     public String getInsuranceStatus() {
         return insuranceStatus;
@@ -138,6 +152,14 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
 
     public void setWeightage(int weightage) {
         this.weightage = weightage;
+    }
+
+    public String getAadhaarNo() {
+        return aadhaarNo;
+    }
+
+    public void setAadhaarNo(String aadhaarNo) {
+        this.aadhaarNo = aadhaarNo;
     }
 
 }

@@ -25,11 +25,10 @@ DROP TABLE IF EXISTS `driverinfo`;
 CREATE TABLE `driverinfo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `medicalHistory` varchar(45) NOT NULL,
-  `noOfChallans` int NOT NULL,
-  `driverAge` int NOT NULL,
+  `driverAge` varchar(45) NOT NULL,
   `weightage` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +37,7 @@ CREATE TABLE `driverinfo` (
 
 LOCK TABLES `driverinfo` WRITE;
 /*!40000 ALTER TABLE `driverinfo` DISABLE KEYS */;
-INSERT INTO `driverinfo` VALUES (1,'Bad',2,26,10),(2,'Average',2,26,20),(3,'Good',10,25,25),(4,'Average',5,23,35),(5,'Good',5,23,30),(6,'Good',9,41,12),(7,'Bad',1,28,30),(8,'Bad',2,28,29),(9,'Average',7,45,15),(10,'Good',4,43,25),(11,'Bad',5,41,22),(12,'Bad',6,24,16),(13,'Good',3,59,20),(14,'Bad',3,42,32),(15,'Average',2,56,26),(16,'Average',1,49,35),(17,'Bad',8,57,24),(18,'Bad',5,42,22),(19,'Average',6,55,10),(20,'Average',4,48,18),(21,'Good',1,32,35),(22,'Bad',4,44,30),(23,'Bad',9,45,10),(24,'Bad',3,23,34),(25,'Average',6,23,22),(26,'Bad',8,43,5),(27,'Average',7,42,13),(28,'Bad',3,54,21),(29,'Bad',6,40,15),(30,'Good',5,38,18),(31,'Bad',3,44,29),(32,'Good',6,42,25),(33,'Average',8,26,18),(34,'Bad',5,35,20),(35,'Average',10,51,10),(36,'Good',8,19,12),(37,'Bad',2,25,28),(38,'Bad',3,34,20),(39,'Bad',8,37,10),(40,'Bad',10,22,15),(41,'Bad',2,58,25),(42,'Average',1,59,22),(43,'Bad',1,41,34),(44,'Good',1,43,35),(45,'Good',8,21,16),(46,'Bad',3,38,34),(47,'Average',6,19,25),(48,'Bad',4,38,30),(49,'Good',3,50,29),(50,'Good',9,46,13),(51,'Bad',3,37,34),(52,'Bad',8,46,12),(53,'Bad',3,54,31),(54,'Average',6,45,22),(55,'Average',7,54,16),(56,'Good',2,25,25),(57,'Average',10,18,18),(58,'Average',10,18,18);
+INSERT INTO `driverinfo` VALUES (1,'Bad','18-30',17),(2,'Bad','31-50',12),(3,'Bad','51-75',7),(4,'Average','18-30',25),(5,'Average','31-50',20),(6,'Average','51-75',15),(7,'Good','18-30',33),(8,'Good','31-50',28),(9,'Good','51-75',23);
 /*!40000 ALTER TABLE `driverinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-28 13:08:21
+-- Dump completed on 2023-03-02  2:46:01

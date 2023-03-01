@@ -37,7 +37,7 @@ CREATE TABLE `models` (
 
 LOCK TABLES `models` WRITE;
 /*!40000 ALTER TABLE `models` DISABLE KEYS */;
-INSERT INTO `models` VALUES ('A','A5','AI'),('A6','A6','AI'),('Aac','Acclaim','PH'),('B-745','BMW-745','BMW'),('B250','Ram Van B250','DE'),('CA','Commander','JP'),('CaL','Cavalier','CT'),('CL','Challenger','MI'),('CN','Carens','KA'),('CV','Colt Vista','PH'),('Cva','Crown Victoria','FR'),('FD-350','F-350 Super Duty','FR'),('GC','Grand Cherokee','JP'),('GCN','Grand Caravan','DE'),('GrandM','Grand Marquis','MY'),('GtN','Galant','MI'),('H1','H1','HR'),('IE','Intrepid','DE'),('JY','Jimmy','GMC'),('LaR','Laser','FR'),('LHS','LHS','CR'),('LR','Liberty','JP'),('LS','LeSabre','BK'),('MC','Monte Carlo','CT'),('MM','Mighty Max','MI '),('MR','M Roadster','BMW'),('MX','MX-5','MA '),('OS','Odyssey','HA'),('PR','PR-968','PE'),('PrM','Prizm','GO'),('PS','Prius','TA'),('QT','Quest','NN'),('QX','QX','II'),('R1500','Ram 1500','DE'),('R2','Ram','DE'),('RX','RX-7','MA '),('S','S-07','SB'),('S1500','Sierra 1500','GMC'),('S3','3 Series','BMW'),('S8','S8','AI'),('SC','SC','LS'),('SedonaNedon','Sedona','KA'),('SR','Safari','PC'),('ST','Stratus','DE'),('TC','Transit Connect','FR'),('V850','Volvo-850','VO'),('X3','X3','BMW'),('ZM','Z4 M','BMW');
+INSERT INTO `models` VALUES ('A6','A6','Audi'),('Aac','Acclaim','Plymouth'),('B-745','BMW-745','BMW'),('B250','Ram Van B250','Dodge'),('CA','Commander','Jeep'),('CaL','Cavalier','Chevrolet'),('CL','Challenger','Mitsubishi'),('CN','Carens','Kia'),('CV','Colt Vista','Plymouth'),('Cva','Crown Victoria','Ford'),('FD-350','F-350 Super Duty','Ford'),('GC','Grand Cherokee','Jeep'),('GCN','Grand Caravan','Dodge'),('GrandM','Grand Marquis','Mercury'),('GtN','Galant','Mitsubishi'),('H1','H1','Hummer'),('ï»¿A','A5','Audi'),('IE','Intrepid','Dodge'),('JY','Jimmy','GMC'),('LaR','Laser','Ford'),('LHS','LHS','Chrysler'),('LR','Liberty','Jeep'),('LS','LeSabre','Buick'),('MC','Monte Carlo','Chevrolet'),('MM','Mighty Max','Mitsubishi'),('MR','M Roadster','BMW'),('MX','MX-5','Mazda'),('OS','Odyssey','Honda'),('PR','PR-968','Porsche'),('PrM','Prizm','Geo'),('PS','Prius','Toyota'),('QT','Quest','Nissan'),('QX','QX','Infiniti'),('R1500','Ram 1500','Dodge'),('R2','Ram','Dodge'),('RX','RX-7','Mazda'),('S','S-07','Saab'),('S1500','Sierra 1500','GMC'),('S3','3 Series','BMW'),('S8','S8','Audi'),('SC','SC','Saab'),('SedonaNedon','Sedona','Kia'),('SR','Safari','Pontiac'),('ST','Stratus','Dodge'),('TC','Transit Connect','Ford'),('V850','Volvo-850','Volvo'),('X3','X3','BMW'),('ZM','Z4 M','BMW');
 /*!40000 ALTER TABLE `models` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-28 13:08:21
+-- Dump completed on 2023-03-02  2:46:02

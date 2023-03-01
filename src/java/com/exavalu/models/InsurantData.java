@@ -49,6 +49,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     private String email;
     private String aadhaarNo;
     private String medicalRecord;
+
     public String addInsurantData() throws Exception {
         String result = "FAILURE";
 
@@ -142,8 +143,6 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     public void setAge(int age) {
         this.age = age;
     }
-
-   
 
     /**
      * @return the gender
@@ -280,5 +279,5 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     public void setMedicalRecord(String medicalRecord) {
         this.medicalRecord = medicalRecord;
     }
-    
+
 }
