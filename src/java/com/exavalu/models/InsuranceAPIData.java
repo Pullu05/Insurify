@@ -4,7 +4,11 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.InsuranceApiService;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
@@ -55,7 +59,7 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
 
     public String doGetInsuranceDetails() throws Exception {
         String result = "FAILURE";
-        HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://retoolapi.dev/cBe7u6/insuranceInfo")).build();
+        HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://randomapi.com/api/7763e3d1c2c554b861a7aa429b67cbe7")).build();
 
         //creating client object to send request
         HttpClient httpClient = HttpClient.newHttpClient();
@@ -63,10 +67,21 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
         HttpResponse<String> postResponse = httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
 
         Gson gson = new Gson();
-        InsuranceAPIData insuranceInfo = gson.fromJson(postResponse.body(), InsuranceAPIData.class);
-        int weightage = InsurantApiService.calculateWeightage(insuranceInfo);
-        incuranceInfo.setWeightage(weightage);
-        boolean success = InsurantApiService.storeIntoDB(insuranceInfo);
+        JsonElement jsonElement = JsonParser.parseString(postResponse.body());
+        JsonArray jsonArray = jsonElement.getAsJsonObject().getAsJsonArray("results");
+        InsuranceAPIData insuranceInfo = gson.fromJson(jsonArray.get(0), InsuranceAPIData.class);
+
+        int weightage = InsuranceApiService.calculateWeightage(insuranceInfo);
+        insuranceInfo.setWeightage(weightage);
+
+        System.out.println("----------------------------------");
+        System.out.println("insuranceStatus : " + insuranceInfo.getInsuranceStatus());
+        System.out.println("insuranceHistory : " + insuranceInfo.getInsuranceHistory());
+        System.out.println("amountClaimed : " + insuranceInfo.getAmountClaimed());
+        System.out.println("drivingExperience : " + insuranceInfo.getDrivingExperience());
+        System.out.println("weightage : " + insuranceInfo.getWeightage());
+//        boolean success = InsurantApiService.storeIntoDB(insuranceInfo);
+        boolean success = true;
         if (success) {
             sessionMap.put("InsuranceInfo", insuranceInfo);
             result = "SUCCESS";
