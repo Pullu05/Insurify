@@ -40,7 +40,7 @@
         </action>
 
         <action name="EditDriverInfo" class="com.exavalu.models.DriverInfo" method="doEditDriverInfo">
-            <result name="SUCCESS">editDriverInfo.jsp</result>
+            <result name="SUCCESS">editDriver.jsp</result>
 
         </action>
         <action name="UpdateDriverInfo" class="com.exavalu.models.DriverInfo" method="doUpdateDriverInfo">
