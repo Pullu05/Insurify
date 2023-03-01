@@ -67,6 +67,7 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
         HttpResponse<String> postResponse = httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
 
         Gson gson = new Gson();
+
         JsonElement jsonElement = JsonParser.parseString(postResponse.body());
         JsonArray jsonArray = jsonElement.getAsJsonObject().getAsJsonArray("results");
         InsuranceAPIData insuranceInfo = gson.fromJson(jsonArray.get(0), InsuranceAPIData.class);
@@ -80,8 +81,11 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
         System.out.println("amountClaimed : " + insuranceInfo.getAmountClaimed());
         System.out.println("drivingExperience : " + insuranceInfo.getDrivingExperience());
         System.out.println("weightage : " + insuranceInfo.getWeightage());
+        
 //        boolean success = InsurantApiService.storeIntoDB(insuranceInfo);
-        boolean success = true;
+ //       boolean success = true;
+        
+        boolean success = InsuranceApiService.storeIntoDB(insuranceInfo);
         if (success) {
             sessionMap.put("InsuranceInfo", insuranceInfo);
             result = "SUCCESS";

@@ -5,6 +5,10 @@
 package com.exavalu.services;
 
 import com.exavalu.models.InsuranceAPIData;
+import com.exavalu.utils.JDBCConnectionManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -13,7 +17,9 @@ import com.exavalu.models.InsuranceAPIData;
 public class InsuranceApiService {
 
     public static int calculateWeightage(InsuranceAPIData insuranceData) {
-
+        
+        
+        
         int weightage = 0;
 
         // Insurance status weightage
@@ -55,5 +61,34 @@ public class InsuranceApiService {
 
         return weightage;
     }
+    
+    public static boolean storeIntoDB(InsuranceAPIData insuranceData) {
+        boolean result = false;
+        try {
 
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "INSERT INTO insuranceapi(insuranceStatus, insuranceHistory, amountClaimed, drivingExperience, weightage)" +"VALUES(?,?,?,?,?)";
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+            preparedStatement.setString(1, insuranceData.getInsuranceStatus());
+            preparedStatement.setString(2, insuranceData.getInsuranceHistory());
+            preparedStatement.setInt(3, insuranceData.getAmountClaimed());
+            preparedStatement.setInt(4, insuranceData.getDrivingExperience());
+            preparedStatement.setInt(5, insuranceData.getWeightage());
+
+            int row = preparedStatement.executeUpdate();
+
+            System.out.println("SQl=" + preparedStatement);
+            if (row == 1) {
+                result = true;
+            }
+                
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return result;
+  
+    }
 }
