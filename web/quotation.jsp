@@ -1,63 +1,10 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.time.LocalDateTime"%>
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-
-    body{
-        margin: 0;
-        font-size: .9rem;
-        font-weight: 400;
-        line-height: 1.6;
-        color: #212529;
-        text-align: left;
-        background-color: #f5f8fa;
-    }
-
-    .navbar-laravel
-    {
-        box-shadow: 0 2px 4px rgba(0,0,0,.04);
-    }
-
-    .navbar-brand , .nav-link, .my-form, .login-form
-    {
-        font-family: Arial, sans-serif;
-    }
-
-    .my-form
-    {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-    }
-
-    .my-form .row
-    {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .login-form
-    {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-    }
-
-    .login-form .row
-    {
-        margin-left: 0;
-        margin-right: 0;
-    }
-</style>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="user" value="${User}"/>
 <c:set var="insurant" value="${InsurantData}"/>
 <c:set var="vehicle" value="${VehicleData}"/>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 
 <!------ Include the above in your HEAD tag ---------->
 
@@ -72,235 +19,264 @@
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
-
-
         <link rel="icon" href="Favicon.png">
-
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+        <style>
+
+            body{
+                margin: 0;
+                font-size: .9rem;
+                font-weight: 400;
+                line-height: 1.6;
+                color: #212529;
+                text-align: left;
+                background-color: #f5f8fa;
+            }
+
+            .navbar-laravel
+            {
+                box-shadow: 0 2px 4px rgba(0,0,0,.04);
+            }
+
+            .navbar-brand , .nav-link, .my-form, .login-form
+            {
+                font-family: Arial, sans-serif;
+            }
+
+            .my-form
+            {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            .my-form .row
+            {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .login-form
+            {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            .login-form .row
+            {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            #pdf-content{
+                margin: 50px;
+            }
+        </style>
 
         <title>Quotation Details</title>
     </head>
     <body>
-        <main class="my-form" id="pdf-content">
-            <div class="cotainer">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card flex">
-                            <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
-                                <h2>The New India Assurance pvt ltd</h2></div>
-                        <!--</div>-->
-                        <div class="card">
-                            <div class="card-header">Company Details</div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <form name="my-form" onsubmit="return validform()" action="success.php" method="">
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Company Name</label>
+        <script>
+            window.onload = function () {
+                document.getElementById("GetFile")
+                        .addEventListener("click", () => {
+                            const template = this.document.getElementById("pdf-content");
+                            console.log(template);
+                            console.log(window);
+                            var opt = {
+                                margin: 0,
+                                filename: 'Quotation.pdf',
+                                image: {type: 'jpeg', quality: 0.98},
+                                html2canvas: {scale: 2},
+                                jsPDF: {unit: 'in', format: 'A3', orientation: 'portrait'}
+                            };
+                            html2pdf().from(template).set(opt).save();
+                        })
+            }
+        </script>
+        <main class="my-form">
+            <div class="cotainer col-md-11" id="pdf-content">
+                <!--                <div class="row justify-content-center">-->
+                <!--<div class="col-md-11">-->
+                <div class="card flex py-3">
+                    <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
+                    <h2 class="text-center">The New India Assurance pvt ltd</h2>
+                </div>
+                <!--</div>-->
+                <div class="card">
+                    <div class="card-header">Company Details</div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Company Name</label>
 
-                                            <div class="col-sm-8">
-                                                <input id="name" class="form-control" name="companyname" type="text" value = "The New India Assurance pvt ltd" readonly>
+                                <div class="col-sm-8">
+                                    <input id="name" class="form-control" name="companyname" type="text" value = "The New India Assurance pvt ltd" readonly>
 
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Proposal Number</label>
-                                            <div class="col-sm-8">
-                                                <input id="proposalno" class="form-control" name="proposalno" type="text" value = "P55789458" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Company Address</label>
-                                            <div class="col-sm-4">
-                                                <input  type="text" class="form-control" id="companyadd" name="companyadd" value = "10th Floor, 1 Ho Chi Minh Sarani" readonly>
-
-                                            </div>
-                                            <label class="col-sm-2 col-form-label" style = "padding-left: 85px">District</label>
-                                            <div class="col-sm-2">
-                                                <input  type="text" class="form-control" id="companydist" name="companydist" value = "Kolkata" readonly>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">State</label>
-                                            <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="companystate" name="companystate" value = "West-Bengal" readonly>
-
-                                            </div>
-                                            <label class="col-sm-2 col-form-label" style = "padding-left: 75px">Pin Code</label>
-                                            <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="companypincode" name="companypincode" value = "743122" readonly>
-
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
-                                <div class="card-header">Quotation For Your Car</div>
-                                <div class="card-body">
-                                    <form name="my-form" onsubmit="return validform()" action="success.php" method="">
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">E-Mail Address</label>
+                            </div>
 
-                                            <div class="col-sm-8">
-                                                <input id="email" class="form-control" name="email" type="email" value = "${user.email}" readonly>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Aadhaar Number</label>
-                                            <div class="col-sm-8">
-                                                <input id="phone" class="form-control" name="aadhaarNo" type="txt" value = "${insurant.aadhaarNo}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Proposer Name</label>
-                                            <div class="col-sm-8">
-                                                <input  type="text" class="form-control" id="proposername" name="proposerName" value = "${insurant.firstName} ${insurant.lastName}" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Quotation Date</label>
-                                            <div class="col-sm-8">
-                                                <% SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                                                    Date date = new Date();
-                                                    String now = formatter.format(date);%>
-                                                <input  type="text" class="form-control" id="iquotationdate" name="quotationDate" value = "<%=now%>" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">IDV Value</label>
-                                            <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="idvvalue" name="idvValue" value = "${Coverage}" readonly>
-
-                                            </div>
-                                            <label class="col-sm-2 col-form-label">VIN Number</label>
-                                            <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="vin" name="vin" value = "${vehicle.vin}" readonly>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">CC</label>
-                                            <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="cc" name="cc" value = "${vehicle.enginePerformance}" readonly>
-
-                                            </div>
-                                            <label class="col-sm-2 col-form-label">Plate Number</label>
-                                            <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="licensePlateNumber" name="licensePlateNumber" value = "${vehicle.licensePlateNumber}" readonly>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Vehicle Make</label>
-                                            <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="vmake" name="make" value = "${vehicle.make}" readonly>
-
-                                            </div>
-                                            <label class="col-sm-2 col-form-label">Vehicle Model</label>
-                                            <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="vmodel" name="model" value = "${vehicle.model}" readonly>
-
-                                            </div>
-                                        </div>
-                                        <div class="card" style="margin:0px -20px ">
-                                            <div class="card-header">Premium Details</div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label p-lg-4">Own Damage Premium(A)</label>
-                                            <label class="col-sm-4 col-form-label p-lg-4">Liability - Premium (B)</label>
-                                            <label class="col-sm-4 col-form-label p-lg-4">Total Premium(A+B)</label>
-                                        </div>
-
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-3 p-lg-3">
-                                                <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${Premium}" readonly>
-
-                                            </div>
-                                            <div class="col-sm-3 offset-1 p-lg-3">
-                                                <c:set var = "libPrem" value="5580"></c:set>
-                                                <input  type="text" class="form-control" id="liabpremium" name="liabPremium" value ="${libPrem}" readonly>
-
-                                            </div>
-                                            <div class="col-sm-4 offset-1 p-lg-3">
-                                                <c:set var = "libPrem" value="5580"></c:set>
-                                                <input  type="text" class="form-control" id="totpremium" name="totPremium" value ="${Premium+libPrem}" readonly>
-
-                                            </div>
-                                        </div>
-                                        <div class="card my-3" style="margin:-20px">
-                                            <div class="card-header ">Declaration</div>
-                                        </div>
-                                        <div class="form-group row mr-2">
-                                            <div class="col-sm-10">
-
-                                                I/ we hereby declare and state that the above statements made by me/ us are true and complete. No part of it is false. I/ we desire to effectan insurance as describe herein with
-                                                Future Generali India Insurance Co. Ltd.
-                                                and I/ we agree that this proposal and declarations shall be the basis ofcontract between me/ us and the
-                                                Future Generali India Insurance Co. Ltd.
-                                                and I/ we agree to accept the policy subject to the condition specified by theInsurance Company.
-                                                I/ we agree to receive the policy document (without enclosing the terms and conditions of policy) from the company and authorise the company to displayTerms and Conditions of the policy on its website that enables access by me.
-                                                I hereby confirm that I have mandated Aditya Birla Insurance Brokers Ltd. to place my insurance cover and have read and agreed on the terms andconditions and also give my unconditional consent for receiving a call from Aditya Birla Insurance Brokers or its affiliated entities on my number even if thenumber is enrolled under NDNC/DND registry
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-md-6 offset-md-4">
-                                            <button type="button" class="btn btn-primary" id="view-pdf-btn">
-                                                DOWNLOAD THE PDF
-                                            </button>
-                                        </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Proposal Number</label>
+                                <div class="col-sm-8">
+                                    <input id="proposalno" class="form-control" name="proposalno" type="text" value = "P55789458" readonly>
                                 </div>
-                                </form>
-                                <!-- Example JavaScript function to generate and open PDF in new tab -->
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Company Address</label>
+                                <div class="col-sm-4">
+                                    <input  type="text" class="form-control" id="companyadd" name="companyadd" value = "10th Floor, 1 Ho Chi Minh Sarani" readonly>
+
+                                </div>
+                                <label class="col-sm-2 col-form-label" style = "padding-left: 85px">District</label>
+                                <div class="col-sm-2">
+                                    <input  type="text" class="form-control" id="companydist" name="companydist" value = "Kolkata" readonly>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">State</label>
+                                <div class="col-sm-3">
+                                    <input  type="text" class="form-control" id="companystate" name="companystate" value = "West-Bengal" readonly>
+
+                                </div>
+                                <label class="col-sm-2 col-form-label" style = "padding-left: 75px">Pin Code</label>
+                                <div class="col-sm-3">
+                                    <input  type="text" class="form-control" id="companypincode" name="companypincode" value = "743122" readonly>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-header">Quotation For Your Car</div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">E-Mail Address</label>
+
+                                <div class="col-sm-8">
+                                    <input id="email" class="form-control" name="email" type="email" value = "${user.email}" readonly>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Aadhaar Number</label>
+                                <div class="col-sm-8">
+                                    <input id="phone" class="form-control" name="aadhaarNo" type="txt" value = "${insurant.aadhaarNo}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Proposer Name</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" class="form-control" id="proposername" name="proposerName" value = "${insurant.firstName} ${insurant.lastName}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Quotation Date</label>
+                                <div class="col-sm-8">
+                                    <% SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                        Date date = new Date();
+                                        String now = formatter.format(date);%>
+                                    <input  type="text" class="form-control" id="iquotationdate" name="quotationDate" value = "<%=now%>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">IDV Value</label>
+                                <div class="col-sm-3">
+                                    <input  type="text" class="form-control" id="idvvalue" name="idvValue" value = "${Coverage}" readonly>
+
+                                </div>
+                                <label class="col-sm-2 col-form-label">VIN Number</label>
+                                <div class="col-sm-3">
+                                    <input  type="text" class="form-control" id="vin" name="vin" value = "${vehicle.vin}" readonly>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">CC</label>
+                                <div class="col-sm-3">
+                                    <input  type="text" class="form-control" id="cc" name="cc" value = "${vehicle.enginePerformance}" readonly>
+
+                                </div>
+                                <label class="col-sm-2 col-form-label">Plate Number</label>
+                                <div class="col-sm-3">
+                                    <input  type="text" class="form-control" id="licensePlateNumber" name="licensePlateNumber" value = "${vehicle.licensePlateNumber}" readonly>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Vehicle Make</label>
+                                <div class="col-sm-3">
+                                    <input  type="text" class="form-control" id="vmake" name="make" value = "${vehicle.make}" readonly>
+
+                                </div>
+                                <label class="col-sm-2 col-form-label">Vehicle Model</label>
+                                <div class="col-sm-3">
+                                    <input  type="text" class="form-control" id="vmodel" name="model" value = "${vehicle.model}" readonly>
+
+                                </div>
+                            </div>
+                            <div class="card" style="margin:0px -20px ">
+                                <div class="card-header">Premium Details</div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label p-lg-4">Own Damage Premium(A)</label>
+                                <label class="col-sm-4 col-form-label p-lg-4">Liability - Premium (B)</label>
+                                <label class="col-sm-4 col-form-label p-lg-4">Total Premium(A+B)</label>
+                            </div>
 
 
+                            <div class="form-group row">
+                                <div class="col-sm-3 p-lg-3">
+                                    <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${Premium}" readonly>
 
+                                </div>
+                                <div class="col-sm-3 offset-1 p-lg-3">
+                                    <c:set var = "libPrem" value="5580"></c:set>
+                                    <input  type="text" class="form-control" id="liabpremium" name="liabPremium" value ="${libPrem}" readonly>
+
+                                </div>
+                                <div class="col-sm-4 offset-1 p-lg-3">
+                                    <c:set var = "libPrem" value="5580"></c:set>
+                                    <input  type="text" class="form-control" id="totpremium" name="totPremium" value ="${Premium+libPrem}" readonly>
+
+                                </div>
+                            </div>
+                            <div class="card my-3" style="margin:-20px">
+                                <div class="card-header ">Declaration</div>
+                            </div>
+                            <div class="form-group row mr-2">
+                                <div class="col-sm-12">
+                                    I/ we hereby declare and state that the above statements made by me/ us are true and complete. No part of it is false. I/ we desire to effectan insurance as describe herein with
+                                    Future Generali India Insurance Co. Ltd.
+                                    and I/ we agree that this proposal and declarations shall be the basis ofcontract between me/ us and the
+                                    Future Generali India Insurance Co. Ltd.
+                                    and I/ we agree to accept the policy subject to the condition specified by theInsurance Company.
+                                    I/ we agree to receive the policy document (without enclosing the terms and conditions of policy) from the company and authorise the company to displayTerms and Conditions of the policy on its website that enables access by me.
+                                    I hereby confirm that I have mandated Aditya Birla Insurance Brokers Ltd. to place my insurance cover and have read and agreed on the terms andconditions and also give my unconditional consent for receiving a call from Aditya Birla Insurance Brokers or its affiliated entities on my number even if thenumber is enrolled under NDNC/DND registry
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" id="GetFile">
+                    DOWNLOAD THE PDF
+                </button>
+            </div>
         </main>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <!-- Include jsPDF library from CDN -->
-        <script>
-                                        // Get the button element
-                                        var viewBtn = document.getElementById('view-pdf-btn');
-
-                                        // Add a click event listener to the button
-                                        viewBtn.addEventListener('click', function () {
-                                            // Create a new jsPDF object
-                                            var doc = new jspdf.jsPDF();
-
-                                            // Get the HTML content to convert to PDF
-                                            var content = document.getElementById('pdf-content');
-
-//                                             Add the HTML content to the PDF
-//                                            doc.html(content, {
-//                                                callback: function () {
-//                                                    // Open the PDF in a new tab
-////                                                            doc.fromHTML(content);
-//                                                    var pdfData = doc.output('dataurlstring');
-//                                                    window.open(pdfData, '_blank');
-////                                                            window.open(pdfData, '_blank');
-//                                                }
-//                                            });
-
-                                            doc.html(content);
-                                            doc.save('my-document.pdf');
-                                        });
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     </body>
 </html>
