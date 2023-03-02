@@ -56,6 +56,9 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <!doctype html>
@@ -79,14 +82,14 @@
         <title>Quotation Details</title>
     </head>
     <body>
-        <main class="my-form">
+        <main class="my-form" id="pdf-content">
             <div class="cotainer">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card flex">
-                            <div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">
+                            <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
                                 <h2>The New India Assurance pvt ltd</h2></div>
-                        </div>
+                        <!--</div>-->
                         <div class="card">
                             <div class="card-header">Company Details</div>
                             <div class="card">
@@ -231,12 +234,12 @@
 
                                             </div>
                                         </div>
-                                                <div class="card my-3" style="margin:-20px">
+                                        <div class="card my-3" style="margin:-20px">
                                             <div class="card-header ">Declaration</div>
                                         </div>
                                         <div class="form-group row mr-2">
                                             <div class="col-sm-10">
-                                                
+
                                                 I/ we hereby declare and state that the above statements made by me/ us are true and complete. No part of it is false. I/ we desire to effectan insurance as describe herein with
                                                 Future Generali India Insurance Co. Ltd.
                                                 and I/ we agree that this proposal and declarations shall be the basis ofcontract between me/ us and the
@@ -250,12 +253,15 @@
 
 
                                         <div class="col-md-6 offset-md-4">
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="button" class="btn btn-primary" id="view-pdf-btn">
                                                 DOWNLOAD THE PDF
                                             </button>
                                         </div>
                                 </div>
                                 </form>
+                                <!-- Example JavaScript function to generate and open PDF in new tab -->
+
+
 
                             </div>
                         </div>
@@ -267,6 +273,34 @@
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <!-- Include jsPDF library from CDN -->
+        <script>
+                                        // Get the button element
+                                        var viewBtn = document.getElementById('view-pdf-btn');
+
+                                        // Add a click event listener to the button
+                                        viewBtn.addEventListener('click', function () {
+                                            // Create a new jsPDF object
+                                            var doc = new jspdf.jsPDF();
+
+                                            // Get the HTML content to convert to PDF
+                                            var content = document.getElementById('pdf-content');
+
+//                                             Add the HTML content to the PDF
+//                                            doc.html(content, {
+//                                                callback: function () {
+//                                                    // Open the PDF in a new tab
+////                                                            doc.fromHTML(content);
+//                                                    var pdfData = doc.output('dataurlstring');
+//                                                    window.open(pdfData, '_blank');
+////                                                            window.open(pdfData, '_blank');
+//                                                }
+//                                            });
+
+                                            doc.html(content);
+                                            doc.save('my-document.pdf');
+                                        });
+        </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     </body>
 </html>
