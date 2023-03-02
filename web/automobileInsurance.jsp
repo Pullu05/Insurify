@@ -58,14 +58,14 @@
 
             </div>
 
-            <section id="vehicleData" class="automobileFormSection d-block"><jsp:include page="vehicleData.jsp"></jsp:include></section>
+        <section id="vehicleData" class="automobileFormSection d-block"><jsp:include page="vehicleData.jsp"></jsp:include></section>
         <section id="insurantData" class="automobileFormSection d-none"><jsp:include page="insurantData.jsp"></jsp:include></section>
         <section id="productData" class="automobileFormSection d-none"><jsp:include page="productData.jsp"></jsp:include></section>
         <section id="planData" class="automobileFormSection d-none"><jsp:include page="subscriptionPlans.jsp"></jsp:include></section>
         <section id="sendData" class="automobileFormSection d-none"><jsp:include page="sendQuote.jsp"></jsp:include></section>
 
-
-
+        
+        
 
             <footer id="footer">
             <jsp:include page="footer.jsp"></jsp:include>
