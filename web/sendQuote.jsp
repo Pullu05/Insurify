@@ -1,4 +1,4 @@
-<section class="rounded mt-3 formBlock">
+<section class="rounded mt-3 formBlock" id="send-quote-section">
     <form action="TotalWeightage" method="post">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">E-Mail</label>
@@ -59,3 +59,7 @@
         </div>
     </form>
 </section>
+
+<div id="form-message2">
+    <h1>Please fill the previous forms</h1>
+</div>

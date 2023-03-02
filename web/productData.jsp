@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="product" value="${ProductData}"/>
 <section class="rounded mt-3 formBlock">
-    <form action="AddProductData" method="post" onsubmit="submitFormAndChangeSection(event)">
+    <form action="AddProductData" method="post" onsubmit="submitFormAndChangeSection(event)" id="productDataForm">
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Start Date</label>
