@@ -57,7 +57,18 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
         sessionMap = (SessionMap) session;
     }
 
+    public static InsuranceAPIData insuranceAPIData = null;
+
+    public static InsuranceAPIData getInstance() {
+        if (insuranceAPIData == null) {
+            return new InsuranceAPIData();
+        } else {
+            return insuranceAPIData;
+        }
+    }
+
     public String doGetInsuranceDetails() throws Exception {
+
         String result = "FAILURE";
         boolean success = false;
         HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://randomapi.com/api/7763e3d1c2c554b861a7aa429b67cbe7")).build();
