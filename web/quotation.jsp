@@ -1,3 +1,6 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.time.LocalDateTime"%>
 <style>
     @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
@@ -46,6 +49,10 @@
         margin-right: 0;
     }
 </style>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="user" value="${User}"/>
+<c:set var="insurant" value="${InsurantData}"/>
+<c:set var="vehicle" value="${VehicleData}"/>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -106,7 +113,7 @@
                                                 <input  type="text" class="form-control" id="companyadd" name="companyadd" value = "10th Floor, 1 Ho Chi Minh Sarani" readonly>
 
                                             </div>
-                                            <label class="col-sm-2 col-form-label">District</label>
+                                            <label class="col-sm-2 col-form-label" style = "padding-left: 85px">District</label>
                                             <div class="col-sm-2">
                                                 <input  type="text" class="form-control" id="companydist" name="companydist" value = "Kolkata" readonly>
 
@@ -119,7 +126,7 @@
                                                 <input  type="text" class="form-control" id="companystate" name="companystate" value = "West-Bengal" readonly>
 
                                             </div>
-                                            <label class="col-sm-2 col-form-label">Pin Code</label>
+                                            <label class="col-sm-2 col-form-label" style = "padding-left: 75px">Pin Code</label>
                                             <div class="col-sm-3">
                                                 <input  type="text" class="form-control" id="companypincode" name="companypincode" value = "743122" readonly>
 
@@ -134,39 +141,42 @@
                                             <label class="col-sm-2 col-form-label">E-Mail Address</label>
 
                                             <div class="col-sm-8">
-                                                <input id="email" class="form-control" name="email" type="email" required>
+                                                <input id="email" class="form-control" name="email" type="email" value = "${user.email}" readonly>
 
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Phone Number</label>
+                                            <label class="col-sm-2 col-form-label">Aadhaar Number</label>
                                             <div class="col-sm-8">
-                                                <input id="phone" class="form-control" name="phone" type="tel">
+                                                <input id="phone" class="form-control" name="aadhaarNo" type="txt" value = "${insurant.aadhaarNo}" readonly>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Proposer Name</label>
                                             <div class="col-sm-8">
-                                                <input  type="text" class="form-control" id="proposername" name="proposerName" required>
+                                                <input  type="text" class="form-control" id="proposername" name="proposerName" value = "${insurant.firstName} ${insurant.lastName}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Quotation Date</label>
                                             <div class="col-sm-8">
-                                                <input  type="text" class="form-control" id="invoicedate" name="invoiceDate" required>
+                                                <% SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                                    Date date = new Date();
+                                                    String now = formatter.format(date);%>
+                                                <input  type="text" class="form-control" id="iquotationdate" name="quotationDate" value = "<%=now%>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">IDV Value</label>
                                             <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="idvvalue" name="idvValue" required>
+                                                <input  type="text" class="form-control" id="idvvalue" name="idvValue" value = "${Coverage}" readonly>
 
                                             </div>
                                             <label class="col-sm-2 col-form-label">VIN Number</label>
                                             <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="vinnumber" name="vinNumber" required>
+                                                <input  type="text" class="form-control" id="vin" name="vin" value = "${vehicle.vin}" readonly>
 
                                             </div>
                                         </div>
@@ -174,26 +184,29 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">CC</label>
                                             <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="cc" name="cc" required>
+                                                <input  type="text" class="form-control" id="cc" name="cc" value = "${vehicle.enginePerformance}" readonly>
 
                                             </div>
                                             <label class="col-sm-2 col-form-label">Plate Number</label>
                                             <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="licensePlateNumber" name="licensePlateNumber" required>
+                                                <input  type="text" class="form-control" id="licensePlateNumber" name="licensePlateNumber" value = "${vehicle.licensePlateNumber}" readonly>
 
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Vehicle Make</label>
                                             <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="vmake" name="make" required>
+                                                <input  type="text" class="form-control" id="vmake" name="make" value = "${vehicle.make}" readonly>
 
                                             </div>
                                             <label class="col-sm-2 col-form-label">Vehicle Model</label>
                                             <div class="col-sm-3">
-                                                <input  type="text" class="form-control" id="vmodel" name="model" required>
+                                                <input  type="text" class="form-control" id="vmodel" name="model" value = "${vehicle.model}" readonly>
 
                                             </div>
+                                        </div>
+                                        <div class="card" style="margin:0px -20px ">
+                                            <div class="card-header">Premium Details</div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label p-lg-4">Own Damage Premium(A)</label>
@@ -204,21 +217,26 @@
 
                                         <div class="form-group row">
                                             <div class="col-sm-3 p-lg-3">
-                                                <input  type="text" class="form-control" id="ownpremium" name="ownPremium" required>
+                                                <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${Premium}" readonly>
 
                                             </div>
                                             <div class="col-sm-3 offset-1 p-lg-3">
-                                                <input  type="text" class="form-control" id="liabpremium" name="liabPremium" value ="$ 5580" readonly>
+                                                <c:set var = "libPrem" value="5580"></c:set>
+                                                <input  type="text" class="form-control" id="liabpremium" name="liabPremium" value ="${libPrem}" readonly>
 
                                             </div>
                                             <div class="col-sm-4 offset-1 p-lg-3">
-                                                <input  type="text" class="form-control" id="totpremium" name="totPremium" required>
+                                                <c:set var = "libPrem" value="5580"></c:set>
+                                                <input  type="text" class="form-control" id="totpremium" name="totPremium" value ="${Premium+libPrem}" readonly>
 
                                             </div>
                                         </div>
+                                                <div class="card my-3" style="margin:-20px">
+                                            <div class="card-header ">Declaration</div>
+                                        </div>
                                         <div class="form-group row mr-2">
                                             <div class="col-sm-10">
-                                                <strong>Declaration:  </strong>
+                                                
                                                 I/ we hereby declare and state that the above statements made by me/ us are true and complete. No part of it is false. I/ we desire to effectan insurance as describe herein with
                                                 Future Generali India Insurance Co. Ltd.
                                                 and I/ we agree that this proposal and declarations shall be the basis ofcontract between me/ us and the
