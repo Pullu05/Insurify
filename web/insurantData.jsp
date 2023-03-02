@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="insurance" value="${InsurantData}"/>
 <section class="rounded mt-3 formBlock">
-    <form action="AddInsurantData" method = "post" onsubmit="submitFormAndChangeSection(event)">
+    <form action="AddInsurantData" method = "post" onsubmit="submitFormAndChangeSection(event)" id="insurantDataForm">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">First Name</label>
             <div class="col-sm-6">

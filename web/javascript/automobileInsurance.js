@@ -1,3 +1,5 @@
+checkPreviousForms();
+
 function handleAutomobileSectionChange(event = {}) {
     let selectedBtn = event.currentTarget;
     const targetSectionId = selectedBtn.dataset.sectionid;
@@ -50,9 +52,38 @@ async function submitFormAndChangeSection(event) {
                     console.log("Yayy! Data Successfully inserted into DB using the " + formAction + " route");
                     // Change button colour and section after form submission
                     handleAutomobileSectionChange({currentTarget: event.submitter});
+                    checkPreviousForms();
                 } else {
                     throw new Error("Oops! Something went wrong during insertion of data from the " + formAction + " route");
                 }
             })
             .catch(err => console.error(err));
+}
+
+
+function checkPreviousForms() {
+    // Get the previous form element
+    var vehicleForm = document.getElementById("vehicleDataForm");
+    var insurantForm = document.getElementById("insurantDataForm");
+    var productForm = document.getElementById("productDataForm");
+
+
+    // Check if the previous form is filled out
+    if (vehicleForm.checkValidity() && insurantForm.checkValidity() && productForm.checkValidity()) {
+        // If the previous form is filled out, show the current form section
+        document.getElementById("send-quote-section").style.display = "block";
+        document.getElementById("subscription-plans-section").style.display = "block";
+        // Hide the "Please fill the previous forms" message
+        document.getElementById("form-message").style.display = "none";
+        document.getElementById("form-message2").style.display = "none";
+
+    } else {
+        // If the previous form is not filled out, hide the current form section
+        document.getElementById("send-quote-section").style.display = "none";
+        document.getElementById("subscription-plans-section").style.display = "none";
+        // Show the "Please fill the previous forms" message
+        document.getElementById("form-message").style.display = "block";
+        document.getElementById("form-message2").style.display = "block";
+
+    }
 }

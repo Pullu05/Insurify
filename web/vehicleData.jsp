@@ -23,7 +23,7 @@
             });
         }
     </script>
-    <form method = "POST" action="PreAddVehicleData" onsubmit="submitFormAndChangeSection(event)">
+    <form method = "POST" action="PreAddVehicleData" onsubmit="submitFormAndChangeSection(event)" id="vehicleDataForm">
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">VIN No</label>
