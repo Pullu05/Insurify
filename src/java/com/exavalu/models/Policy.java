@@ -76,13 +76,51 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         int apiWeightage = InsuranceApiService.getInsuranceApiWeightage(aadhaarNo);
 
         int totalWeightage = vehicleWeightage + insurantWeightage + apiWeightage;
-        
-        System.out.println(vehicleWeightage+"  "+insurantWeightage+"  "+apiWeightage);
-        
+
+        System.out.println(vehicleWeightage + "  " + insurantWeightage + "  " + apiWeightage);
+
         Policy policy = PolicyService.getPolicyInfo(totalWeightage);
-        System.out.println("Coverage  :" + policy.getCoverage());
-        System.out.println("Premium  :" + policy.getPremium());
+        int coverage = policy.getCoverage();
+        int premium = policy.getPremium();
+
+        System.out.println("Coverage  :" + coverage);
+        System.out.println("Premium  :" + premium);
+
+        Plan plan = (Plan) sessionMap.get("Plan");
         
+        String planName=plan.getPlanName();
+        System.out.println(planName);
+
+        if (plan.getPlanName().equalsIgnoreCase("Silver")) {
+            System.out.println("Plan Name :" + planName);
+            System.out.println("Coverage  :" + coverage);
+            System.out.println("Premium  :" + premium);
+
+        }
+        if (planName.equalsIgnoreCase("Gold")) {
+            System.out.println("Plan Name :" + planName);
+            coverage = 2 * coverage + 2700;
+            premium = 2 * premium + 300;
+            System.out.println("Coverage  :" + coverage);
+            System.out.println("Premium  :" + premium);
+
+        }
+        if (planName.equalsIgnoreCase("Platinum")) {
+            System.out.println("Plan Name :" + planName);
+            coverage = 3 * coverage + 7000;
+            premium = 3 * premium + 750;
+            System.out.println("Coverage  :" + coverage);
+            System.out.println("Premium  :" + premium);
+
+        }
+        if (planName.equalsIgnoreCase("Ultimate")) {
+            System.out.println("Plan Name :" + planName);
+            coverage = 4 * coverage + 12000;
+            premium = 4 * premium + 1500;
+            System.out.println("Coverage  :" + coverage);
+            System.out.println("Premium  :" + premium);
+
+        }
         return result;
     }
 }
