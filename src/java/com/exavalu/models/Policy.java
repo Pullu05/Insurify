@@ -121,6 +121,9 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
             System.out.println("Premium  :" + premium);
 
         }
+        sessionMap.put("Coverage", coverage);
+        sessionMap.put("Premium", premium);
+        sessionMap.put("PlanName", planName);
         return result;
     }
 }
