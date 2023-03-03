@@ -9,7 +9,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Properties;
-import java.util.logging.Level;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -18,7 +17,6 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import org.apache.log4j.Logger;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
@@ -29,10 +27,10 @@ import org.apache.struts2.interceptor.SessionAware;
  * @author sinha
  */
 public class MailSender extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
-    private static SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
+
+    private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-    private String email;
 
     @Override
     public void setApplication(Map<String, Object> application) {
@@ -43,13 +41,15 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
- static String fromEmail = "sssinhasneha956@gmail.com";
+    static String fromEmail = "sssinhasneha956@gmail.com";
     static String password = "vvjszdveplmauvnt";
     static String userName = "sssinhasneha956";
-    static String message ="successfully signed up ";
-    
+    static String message = "successfully signed up ";
 
-    public static void sendEmailToUser(String toEmail) {
+    private String email;
+
+    public String sendEmailToUser() throws Exception {
+        String result = "SUCCESS";
         try {
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com");
@@ -58,7 +58,7 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
                     "javax.net.ssl.SSLSocketFactory");
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.port", "25");
-            
+
             Session session = Session.getDefaultInstance(props,
                     new javax.mail.Authenticator() {
                 @Override
@@ -66,23 +66,32 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
                     return new PasswordAuthentication(userName, password);
                 }
             });
-            
+
             Message mailMessage = new MimeMessage(session);
 
             //setting up all the messages
             mailMessage.setFrom(new InternetAddress(fromEmail));
             mailMessage.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(toEmail));
-            String coverage=(String)sessionMap.get("PlanName");
+                    InternetAddress.parse(this.getEmail()));
+            String coverage = (String) sessionMap.get("PlanName");
             mailMessage.setSubject("Successfully created Quote");
-            mailMessage.setText("coverage "+coverage );
+            mailMessage.setText("coverage " + coverage);
             Transport.send(mailMessage);
-            
+
         } catch (AddressException ex) {
-            
+
         } catch (MessagingException ex) {
-            
+
         }
+        return result;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

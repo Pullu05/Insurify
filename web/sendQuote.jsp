@@ -2,30 +2,11 @@
     <div id="send-quote-section">
         <form action="TotalWeightage" method="post">
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">E-Mail</label>
-
-                <div class="col-sm-6">
-                    <input id="email" class="form-control" name="email" type="email" required>
-
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Phone</label>
-                <div class="col-sm-6">
-                    <input id="phone" class="form-control" name="phone" type="tel">
-                </div>
-            </div>
-
-            <div class="form-group row">
                 <label class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-6">
                     <button data-sectionid="planData" type="button" class="btn btn-dark prevBtn" onclick="handleAutomobileSectionChange(event)">&laquo; Prev</button>
                     <button type="submit" class="btn btn-dark sendBtn">Show Quote &raquo;</button>
                 </div>
-
-
-
             </div>
         </form>
     </div>

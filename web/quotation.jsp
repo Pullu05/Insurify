@@ -104,6 +104,38 @@
             };
         </script>
         <main class="my-form">
+            <!--            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Save Your Quotation</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="action">
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-form-label">E-Mail</label>
+                                                <div class="col-sm-6">
+                                                    <input id="email" class="form-control" name="email" type="email" required>
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-form-label">Phone</label>
+                                                <div class="col-sm-6">
+                                                    <input id="phone" class="form-control" name="phone" type="tel">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">
+                                                SEND
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
             <form action="SubmitQuotationData" method="post" onsubmit="saveQuotation(event)">
                 <div class="cotainer col-md-11" id="pdf-content">
                     <!--                <div class="row justify-content-center">-->
@@ -287,12 +319,30 @@
                         <button type="button" class="btn btn-primary mr-3" id="GetFile">
                             DOWNLOAD YOUR QUOTATION
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             SEND YOUR QUOTATION
                         </button>
                     </div>
+                </div>                           
+            </form>
 
+            <form action="SendQuotation" method="post">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">E-Mail</label>
+                    <div class="col-sm-6">
+                        <input id="email" class="form-control" name="email" type="email" required>
+                    </div>
                 </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Phone</label>
+                    <div class="col-sm-6">
+                        <input id="phone" class="form-control" name="phone" type="tel">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    SEND
+                </button>
             </form>
         </main>
 

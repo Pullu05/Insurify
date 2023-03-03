@@ -64,6 +64,10 @@
             <result name="SUCCESS">success.json</result>
             <result name="FAILURE">failure.json</result>
         </action>
+        <action name="SendQuotation" class="com.exavalu.models.MailSender" method="sendEmailToUser">
+            <result name="SUCCESS">quotation.jsp</result>
+            <result name="FAILURE">failure.json</result>
+        </action>
 
     </package>
 
