@@ -106,7 +106,7 @@
                 <!--<div class="col-md-11">-->
                 <div class="card flex py-3">
                     <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
-                    <h2 class="text-center">The New India Assurance pvt ltd</h2>
+                    <h2 class="text-center">Insurify India Pvt Ltd</h2>
                 </div>
                 <!--</div>-->
                 <div class="card">
@@ -117,7 +117,7 @@
                                 <label class="col-sm-2 col-form-label">Company Name</label>
 
                                 <div class="col-sm-8">
-                                    <input id="name" class="form-control" name="companyname" type="text" value = "The New India Assurance pvt ltd" readonly>
+                                    <input id="name" class="form-control" name="companyname" type="text" value = "Insurify India Pvt Ltd" readonly>
 
                                 </div>
                             </div>
@@ -226,36 +226,37 @@
 
                                 </div>
                             </div>
-                            <div class="card" style="margin:0px -20px ">
-                                <div class="card-header">Premium Details</div>
-                            </div>
+                            <div class="card-header" style="margin-left: -1.25rem; width: calc(100% + 2.5rem)">Premium Details</div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label p-lg-4">Own Damage Premium(A)</label>
-                                <label class="col-sm-4 col-form-label p-lg-4">Liability - Premium (B)</label>
-                                <label class="col-sm-4 col-form-label p-lg-4">Total Premium(A+B)</label>
+                                <label class="col-sm-3 col-form-label p-lg-4">Plan Name</label>
+                                <label class="col-sm-3 col-form-label p-lg-4">Own Damage Premium(A)</label>
+                                <label class="col-sm-3 col-form-label p-lg-4">Liability - Premium (B)</label>
+                                <label class="col-sm-3 col-form-label p-lg-4">Total Premium(A+B)</label>
                             </div>
 
 
                             <div class="form-group row">
                                 <div class="col-sm-3 p-lg-3">
+                                    <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${PlanName}" readonly>
+
+                                </div>
+                                <div class="col-sm-3 p-lg-3">
                                     <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${Premium}" readonly>
 
                                 </div>
-                                <div class="col-sm-3 offset-1 p-lg-3">
+                                <div class="col-sm-3 p-lg-3">
                                     <c:set var = "libPrem" value="5580"></c:set>
                                     <input  type="text" class="form-control" id="liabpremium" name="liabPremium" value ="${libPrem}" readonly>
 
                                 </div>
-                                <div class="col-sm-4 offset-1 p-lg-3">
+                                <div class="col-sm-3 p-lg-3">
                                     <c:set var = "libPrem" value="5580"></c:set>
                                     <input  type="text" class="form-control" id="totpremium" name="totPremium" value ="${Premium+libPrem}" readonly>
 
                                 </div>
                             </div>
-                            <div class="card my-3" style="margin:-20px">
-                                <div class="card-header ">Declaration</div>
-                            </div>
-                            <div class="form-group row mr-2">
+                            <div class="card-header" style="margin-left: -1.25rem; width: calc(100% + 2.5rem)">Declaration</div>
+                            <div class="form-group row mr-2 mt-4">
                                 <div class="col-sm-12">
                                     I/ we hereby declare and state that the above statements made by me/ us are true and complete. No part of it is false. I/ we desire to effectan insurance as describe herein with
                                     Future Generali India Insurance Co. Ltd.

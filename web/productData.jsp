@@ -4,17 +4,17 @@
     <form action="AddProductData" method="post" onsubmit="submitFormAndChangeSection(event)" id="productDataForm">
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Start Date</label>
+            <label class="col-sm-4 col-form-label" for="startDate">Start Date</label>
             <div class="col-sm-6">
-                <input  type="date" class="form-control" id="startDate" name="startDate" type="text" placeholder="MM/DD/YYYY" class="datepicker" value = "${product.startDate}" required>
+                <input type="date" class="form-control" id="startDate" name="startDate" type="text" placeholder="MM/DD/YYYY" class="datepicker" value = "${product.startDate}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Insurance Sum [$]</label>
+            <label class="col-sm-4 col-form-label" for="insuranceSum">Insurance Sum [$]</label>
             <div class="col-sm-6">
                 <select id="insuranceSum" name="insuranceSum" class="form-control" value = "${product.insuranceSum}" required>
-                    <option value="default">&ndash; please select &ndash;</option>
+                    <option value="">&ndash; please select &ndash;</option>
                     <option value="3000000" <c:if test = "${product.insuranceSum == '3000000'  }"> selected </c:if>> 3.000.000,00</option>
                     <option value="5000000" <c:if test = "${product.insuranceSum == '5000000'  }"> selected </c:if>> 5.000.000,00</option>
                     <option value="7000000" <c:if test = "${product.insuranceSum == '7000000'  }"> selected </c:if>> 7.000.000,00</option>
@@ -29,10 +29,10 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Merit Rating</label>
+                <label class="col-sm-4 col-form-label" for="meritRating">Merit Rating</label>
                 <div class="col-sm-6">
                     <select id="meritRating" name="meritRating" class="form-control" value = "${product.meritRating}" required>
-                    <option value="default">&ndash; please select &ndash;</option>
+                    <option value="">&ndash; please select &ndash;</option>
                     <option value="Super Bonus">Super Bonus</option>
                     <option value="Bonus 1" <c:if test = "${product.meritRating == 'Bonus 1'  }"> selected </c:if>>Bonus 1</option>
                     <option value="Bonus 2" <c:if test = "${product.meritRating == 'Bonus 2'  }"> selected </c:if>>Bonus 2</option>
@@ -56,10 +56,10 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Damage Insurance</label>
+                <label class="col-sm-4 col-form-label" for="damageInsurance">Damage Insurance</label>
                 <div class="col-sm-6">
                     <select id="damageInsurance" name="damageInsurance" class="form-control" value = "${product.damageInsurance}" required>
-                    <option value="default">&ndash; please select &ndash;</option>
+                    <option value="">&ndash; please select &ndash;</option>
                     <option value="No Coverage" <c:if test = "${product.damageInsurance == 'No Coverage'  }"> selected </c:if>>No Coverage</option>
                     <option value="Partial Coverage" <c:if test = "${product.damageInsurance == 'Partial Coverage'  }"> selected </c:if>>Partial Coverage</option>
                     <option value="Full Coverage" <c:if test = "${product.damageInsurance == 'Full Coverage'  }"> selected </c:if>>Full Coverage</option>
@@ -68,22 +68,10 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Optional Products</label>
-                <div class="col-sm-6">
-                    <p class="row">
-                        <label>
-                            <input id="EuroProtection" name="optionalProducts" type="checkbox" value="Euro Protection" required>Euro Protection</label>
-                        <label>
-                            <input id="LegalDefenseInsurance" name="optionalProducts" type="checkbox" value="Legal Defense Insurance" required>Legal Defense Insurance</label>
-                    </p>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Courtesy Car</label>
+                <label class="col-sm-4 col-form-label" for="courtesyCar">Courtesy Car</label>
                 <div class="col-sm-6">
                     <select id="courtesyCar" name="courtesyCar" class="form-control" value = "${product.courtesyCar}" required>
-                    <option value="default">&ndash; please select &ndash;</option>
+                    <option value="">&ndash; please select &ndash;</option>
                     <option value="No" <c:if test = "${product.courtesyCar == 'No'  }"> selected </c:if>> No</option>
                     <option value="Yes" <c:if test = "${product.courtesyCar == 'Yes'  }"> selected </c:if>> Yes</option>
                 </select>

@@ -34,24 +34,21 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
         sessionMap = (SessionMap) session;
     }
 
-
     private int productId;
     private String startDate;
     private String insuranceSum;
     private String meritRating;
     private String damageInsurance;
-    private String optionalProducts;
     private String courtesyCar;
     private String email;
-
 
     public String doAddProductData() throws Exception {
 
         String result = "FAILURE";
-        String user_email =(String)sessionMap.get("userEmail");
+        String user_email = (String) sessionMap.get("userEmail");
         System.out.println(user_email);
-        boolean success = ProductDataService.addProductData(this,user_email);
-        
+        boolean success = ProductDataService.addProductData(this, user_email);
+
         if (success) {
             System.out.println("Successfully added product data");
             result = "SUCCESS";
@@ -69,6 +66,7 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
     public void setEmail(String email) {
         this.email = email;
     }
+
     /**
      * @return the productId
      */
@@ -137,20 +135,6 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
      */
     public void setDamageInsurance(String damageInsurance) {
         this.damageInsurance = damageInsurance;
-    }
-
-    /**
-     * @return the optionalProducts
-     */
-    public String getOptionalProducts() {
-        return optionalProducts;
-    }
-
-    /**
-     * @param optionalProducts the optionalProducts to set
-     */
-    public void setOptionalProducts(String optionalProducts) {
-        this.optionalProducts = optionalProducts;
     }
 
     /**

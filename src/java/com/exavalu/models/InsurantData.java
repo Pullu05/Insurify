@@ -26,29 +26,29 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
 
     @Override
     public void setApplication(Map<String, Object> application) {
-        setMap((ApplicationMap) application);
+        map = (ApplicationMap) application;
     }
 
     @Override
     public void setSession(Map<String, Object> session) {
-        setSessionMap((SessionMap<String, Object>) (SessionMap) session);
+        sessionMap = (SessionMap) session;
     }
 
     private int insuranceDataId;
     private String firstName;
     private String lastName;
+    private String email;
+    private String aadhaarNo;
     private int age;
+    private String medicalRecord;
     private String gender;
     private String streetAddress;
     private String country;
-    private String ZipCode;
+    private int zipCode;
     private String occupation;
     private String hobbies;
     private String website;
     private String picture;
-    private String email;
-    private String aadhaarNo;
-    private String medicalRecord;
 
     public String addInsurantData() throws Exception {
         String result = "FAILURE";
@@ -66,194 +66,28 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
         return result;
     }
 
-    /**
-     * @return the sessionMap
-     */
-    public SessionMap<String, Object> getSessionMap() {
-        return sessionMap;
-    }
-
-    /**
-     * @param sessionMap the sessionMap to set
-     */
-    public void setSessionMap(SessionMap<String, Object> sessionMap) {
-        this.sessionMap = sessionMap;
-    }
-
-    /**
-     * @return the map
-     */
-    public ApplicationMap getMap() {
-        return map;
-    }
-
-    /**
-     * @param map the map to set
-     */
-    public void setMap(ApplicationMap map) {
-        this.map = map;
-    }
-
-    /**
-     * @return the insuranceDataId
-     */
     public int getInsuranceDataId() {
         return insuranceDataId;
     }
 
-    /**
-     * @param insuranceDataId the insuranceDataId to set
-     */
     public void setInsuranceDataId(int insuranceDataId) {
         this.insuranceDataId = insuranceDataId;
     }
 
-    /**
-     * @return the firstName
-     */
     public String getFirstName() {
         return firstName;
     }
 
-    /**
-     * @param firstName the firstName to set
-     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    /**
-     * @return the lastName
-     */
     public String getLastName() {
         return lastName;
     }
 
-    /**
-     * @param lastName the lastName to set
-     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    /**
-     * @return the gender
-     */
-    public String getGender() {
-        return gender;
-    }
-
-    /**
-     * @param gender the gender to set
-     */
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    /**
-     * @return the streetAddress
-     */
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    /**
-     * @param streetAddress the streetAddress to set
-     */
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-
-    /**
-     * @return the country
-     */
-    public String getCountry() {
-        return country;
-    }
-
-    /**
-     * @param country the country to set
-     */
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    /**
-     * @return the ZipCode
-     */
-    public String getZipCode() {
-        return ZipCode;
-    }
-
-    /**
-     * @param ZipCode the ZipCode to set
-     */
-    public void setZipCode(String ZipCode) {
-        this.ZipCode = ZipCode;
-    }
-
-    /**
-     * @return the occupation
-     */
-    public String getOccupation() {
-        return occupation;
-    }
-
-    /**
-     * @param occupation the occupation to set
-     */
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    /**
-     * @return the hobbies
-     */
-    public String getHobbies() {
-        return hobbies;
-    }
-
-    /**
-     * @param hobbies the hobbies to set
-     */
-    public void setHobbies(String hobbies) {
-        this.hobbies = hobbies;
-    }
-
-    /**
-     * @return the website
-     */
-    public String getWebsite() {
-        return website;
-    }
-
-    /**
-     * @param website the website to set
-     */
-    public void setWebsite(String website) {
-        this.website = website;
-    }
-
-    /**
-     * @return the picture
-     */
-    public String getPicture() {
-        return picture;
-    }
-
-    /**
-     * @param picture the picture to set
-     */
-    public void setPicture(String picture) {
-        this.picture = picture;
     }
 
     public String getEmail() {
@@ -272,12 +106,84 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
         this.aadhaarNo = aadhaarNo;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getMedicalRecord() {
         return medicalRecord;
     }
 
     public void setMedicalRecord(String medicalRecord) {
         this.medicalRecord = medicalRecord;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public int getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(String hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
 }

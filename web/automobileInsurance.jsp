@@ -5,7 +5,7 @@
     <c:redirect url="login.jsp"></c:redirect>
 </c:if>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
     <head>
         <meta charset="utf-8">
@@ -36,33 +36,35 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/forms.css" rel="stylesheet">
-        
+
     </head>
 
-    <body>
+    <body class="d-flex flex-column h-100">
 
         <header id="header" class="fixed-top">
             <jsp:include page="navbar.jsp"></jsp:include>
             </header>
 
 
-            <div style="margin-top: 100px" class="container d-flex justify-content-center align-items-center">
+            <main class="flex-grow-1">
+                <div style="margin-top: 100px" class="container d-flex justify-content-center align-items-center">
 
 
-                <button data-sectionid="vehicleData" type="button" class="btn btn-success mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Vehicle Data</button>
-                <button data-sectionid="insurantData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Insurant Data</button>
-                <button data-sectionid="productData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Product Data</button>
-                <button data-sectionid="planData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)" >Select Your Plan</button>
-                <button data-sectionid="sendData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Send Quote</button>
+                    <button data-sectionid="vehicleData" type="button" class="btn btn-success mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Vehicle Data</button>
+                    <button data-sectionid="insurantData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Insurant Data</button>
+                    <button data-sectionid="productData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Enter Product Data</button>
+                    <button data-sectionid="planData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)" >Select Your Plan</button>
+                    <button data-sectionid="sendData" type="button" class="btn btn-secondary mx-2 custom-btn" onclick="handleAutomobileSectionChange(event)">Send Quote</button>
 
 
-            </div>
+                </div>
 
-        <section id="vehicleData" class="automobileFormSection d-block"><jsp:include page="vehicleData.jsp"></jsp:include></section>
-        <section id="insurantData" class="automobileFormSection d-none"><jsp:include page="insurantData.jsp"></jsp:include></section>
-        <section id="productData" class="automobileFormSection d-none"><jsp:include page="productData.jsp"></jsp:include></section>
-        <section id="planData" class="automobileFormSection d-none"><jsp:include page="subscriptionPlans.jsp"></jsp:include></section>
-        <section id="sendData" class="automobileFormSection d-none"><jsp:include page="sendQuote.jsp"></jsp:include></section>
+                <section id="vehicleData" class="automobileFormSection d-block"><jsp:include page="vehicleData.jsp"></jsp:include></section>
+            <section id="insurantData" class="automobileFormSection d-none"><jsp:include page="insurantData.jsp"></jsp:include></section>
+            <section id="productData" class="automobileFormSection d-none"><jsp:include page="productData.jsp"></jsp:include></section>
+            <section id="planData" class="automobileFormSection d-none"><jsp:include page="subscriptionPlans.jsp"></jsp:include></section>
+            <section id="sendData" class="automobileFormSection d-none"><jsp:include page="sendQuote.jsp"></jsp:include></section>
+            </main>
 
         
         

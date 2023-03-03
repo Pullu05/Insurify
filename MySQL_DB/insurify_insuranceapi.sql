@@ -31,7 +31,7 @@ CREATE TABLE `insuranceapi` (
   `weightage` int NOT NULL,
   `aadhaarNo` varchar(12) NOT NULL,
   PRIMARY KEY (`insuranceId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `insuranceapi` (
 
 LOCK TABLES `insuranceapi` WRITE;
 /*!40000 ALTER TABLE `insuranceapi` DISABLE KEYS */;
-INSERT INTO `insuranceapi` VALUES (1,'New','Bad',25008,2,20,''),(2,'New','Bad',36738,34,17,''),(3,'Old','Average',29778,13,7,'45645'),(4,'Old','Good',47513,38,-3,'6564');
+INSERT INTO `insuranceapi` VALUES (1,'New','Bad',25008,2,20,''),(2,'New','Bad',36738,34,17,''),(3,'Old','Average',29778,13,7,'45645'),(4,'Old','Good',47513,38,-3,'6564'),(5,'Old','Average',32013,36,5,'646545649987'),(6,'Old','Bad',47978,7,12,'646945649987'),(7,'New','Good',14155,38,5,'222222222222'),(8,'New','Bad',18885,40,15,'888222222222'),(9,'Old','Bad',24492,6,10,'222278453222'),(10,'Old','Average',38327,12,9,'897222222225'),(11,'Old','Good',41215,2,2,'646545646654'),(12,'Old','Good',23231,36,-5,'564545454555');
 /*!40000 ALTER TABLE `insuranceapi` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-02  2:46:02
+-- Dump completed on 2023-03-03 12:08:42

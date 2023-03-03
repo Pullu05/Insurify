@@ -3,51 +3,49 @@
 <section class="rounded mt-3 formBlock">
     <form action="AddInsurantData" method = "post" onsubmit="submitFormAndChangeSection(event)" id="insurantDataForm">
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">First Name</label>
+            <label class="col-sm-4 col-form-label" for="firstName">First Name</label>
             <div class="col-sm-6">
-                <input id="firstName" class="form-control" name="firstName" type="text" value = "${insurance.firstName}" required>
-            </div>
-        </div>
-
-
-
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Last Name</label>
-            <div class="col-sm-6">
-                <input id="lastName" class="form-control" name="lastName" type="text" value = "${insurance.lastName}" required>
+                <input type="text" id="firstName" class="form-control" name="firstName" value = "${insurance.firstName}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Email</label>
+            <label class="col-sm-4 col-form-label" for="lastName">Last Name</label>
             <div class="col-sm-6">
-                <input id="email" class="form-control" name="email" type="text" value = "${userEmail}" readonly>
+                <input type="text" id="lastName" class="form-control" name="lastName" value = "${insurance.lastName}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Aadhaar No</label>
+            <label class="col-sm-4 col-form-label" for="email">Email</label>
             <div class="col-sm-6">
-                <input id="aadhaarNo" class="form-control" name="aadhaarNo" type="text" value = "${insurance.aadhaarNo}">
+                <input type="email" id="email" class="form-control" name="email" value = "${userEmail}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label" for="aadhaarNo">Aadhaar No</label>
+            <div class="col-sm-6">
+                <input type="text" id="aadhaarNo" class="form-control" name="aadhaarNo" value = "${insurance.aadhaarNo}" pattern="[0-9]{12}" required>
             </div>
         </div>
 
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Age</label>
+            <label class="col-sm-4 col-form-label" for="age">Age</label>
             <div class="col-sm-6">
-                <input id="age" class="form-control" name="age" type="number" value = "${insurance.age}" required>
+                <input type="number" id="age" class="form-control" name="age" value = "${insurance.age}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Medical Record</label>
+            <label class="col-sm-4 col-form-label" for="medicalRecord">Medical Record</label>
             <div class="col-sm-6">
                 <select id="medicalRecord" name="medicalRecord" class="form-control" required>
                     <option value="" >Select Medical Record</option>
-                    <option value="Good" <c:if test="${driver.medicalRecord=='Good'}"> selected </c:if>>Good</option>
-                    <option value="Average" <c:if test="${driver.medicalRecord=='Average'}"> selected </c:if>>Average</option>
-                    <option value="Bad" <c:if test="${driver.medicalRecord=='Bad'}"> selected </c:if>>Bad</option>
+                    <option value="Good" <c:if test="${InsurantData.medicalRecord=='Good'}"> selected </c:if>>Good</option>
+                    <option value="Average" <c:if test="${InsurantData.medicalRecord=='Average'}"> selected </c:if>>Average</option>
+                    <option value="Bad" <c:if test="${InsurantData.medicalRecord=='Bad'}"> selected </c:if>>Bad</option>
                     </select>
                 </div>
             </div>
@@ -58,27 +56,27 @@
                 <div class="col-sm-6">
                     <p class="col">
                         <label>
-                            <input id="gendermale" name="gender" class="checkbox" type="radio" value="Male" required <c:if test = "${insurance.gender.equalsIgnoreCase('Male')}"> checked </c:if>>
+                            <input id="gendermale" name="gender" class="checkbox" type="radio" value="Male" required <c:if test = "${insurance.gender.equalsIgnoreCase('Male')}"> checked </c:if> required>
                             Male
                         </label>
                         <label id="genderlabel">
-                            <input id="genderfemale" name="gender" class="checkbox" type="radio" value="Female" required <c:if test = "${insurance.gender == 'Female'}"> checked </c:if>>
+                            <input type="radio" id="genderfemale" name="gender" class="checkbox" value="Female" required <c:if test = "${insurance.gender == 'Female'}"> checked </c:if> required>
                             Female
                         </label>
                     </p>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Street Address</label>
+                <label class="col-sm-4 col-form-label" for="streetAddress">Street Address</label>
                 <div class="col-sm-6">
-                    <input id="streetAddress" class="form-control" name="streetAddress" type="text" value = "${insurance.streetAddress}" required>
+                    <input type="text" id="streetAddress" class="form-control" name="streetAddress" value = "${insurance.streetAddress}" required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Country</label>
             <div class="col-sm-6">
                 <select id="country" class="form-control" name="country" required>
-                    <option value="default">&ndash; please select &ndash;</option>
+                    <option value="">&ndash; please select &ndash;</option>
                     <option value='Afghanistan'>Afghanistan</option><option value='Albania'>Albania</option>
                     <option value='Algeria'>Algeria</option>
                     <option value='American Samoa'>American Samoa</option>
@@ -90,16 +88,16 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Zip Code</label>
+            <label class="col-sm-4 col-form-label" for="zipCode">Zip Code</label>
             <div class="col-sm-6">
-                <input id="ZipCode" class="form-control" name="zipCode" type="text" value = "${insurance.zipCode}" required>
+                <input type="number" id="zipCode" class="form-control" name="zipCode" value = "${insurance.zipCode}" required>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Occupation</label>
+            <label class="col-sm-4 col-form-label" for="occupation">Occupation</label>
             <div class="col-sm-6">
                 <select id="occupation" name="occupation" class="form-control" value = "${insurance.occupation}" required>
-                    <option value="default">&ndash; please select &ndash;</option>
+                    <option value="">&ndash; please select &ndash;</option>
                     <option value="Employee" <c:if test = "${insurance.occupation == 'Employee'}"> selected </c:if>>Employee</option>
                     <option value="Public Official" <c:if test = "${insurance.occupation == 'Public Official'}"> selected </c:if>>Public Official</option>
                     <option value="Farmer" <c:if test = "${insurance.occupation == 'Farmer'}"> selected </c:if>>Farmer</option>
@@ -112,19 +110,19 @@
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label" for="hobbies">Hobbies</label>
                 <div class="col-sm-6">
-                    <input id="hobbies" class="form-control" name="hobbies" type="text" value = "${insurance.hobbies}" required>
+                    <input type="text" id="hobbies" class="form-control" name="hobbies" value = "${insurance.hobbies}" required>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Website</label>
+            <label class="col-sm-4 col-form-label" for="website">Website</label>
             <div class="col-sm-6">
-                <input id="website" class="form-control" name="website" type="text" value = "${insurance.website}">
+                <input type="text" id="website" class="form-control" name="website" value = "${insurance.website}">
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Picture</label>
+            <label class="col-sm-4 col-form-label" for="picture">Picture</label>
             <div class="col-sm-6">
-                <input id="picture" class="form-control" name="picture" type="file" multiple>
+                <input type="file" id="picture" class="form-control" name="picture">
             </div>
         </div>
         <div class="form-group row">

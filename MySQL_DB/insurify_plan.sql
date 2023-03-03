@@ -16,27 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `roles`
+-- Table structure for table `plan`
 --
 
-DROP TABLE IF EXISTS `roles`;
+DROP TABLE IF EXISTS `plan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `roles` (
-  `roleId` int NOT NULL,
-  `roleName` varchar(45) NOT NULL,
-  PRIMARY KEY (`roleId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `plan` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `planName` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `roles`
+-- Dumping data for table `plan`
 --
 
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'Admin'),(2,'User');
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+LOCK TABLES `plan` WRITE;
+/*!40000 ALTER TABLE `plan` DISABLE KEYS */;
+INSERT INTO `plan` VALUES (17,'Gold'),(18,'Gold'),(19,'Gold'),(20,'Gold'),(21,'Platinum'),(22,'Ultimate'),(23,'Platinum'),(24,'Platinum'),(25,'Gold'),(26,'Platinum'),(27,'Ultimate'),(28,'Platinum'),(29,'Ultimate'),(30,'Gold'),(31,'Platinum'),(32,'Platinum'),(33,'Platinum'),(34,'Platinum'),(35,'Platinum'),(36,'Platinum'),(37,'Ultimate'),(38,'Gold'),(39,'Gold'),(40,'Gold');
+/*!40000 ALTER TABLE `plan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
