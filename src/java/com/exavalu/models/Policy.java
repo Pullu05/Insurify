@@ -143,7 +143,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
 //        System.out.println(sessionMap.get("Coverage"));
         //System.out.println(this.getEmail());
           //System.out.println(this.email);
-       MailSender.sendEmailToUser(this.getEmail());
+//       MailSender.sendEmailToUser(this.getEmail());
         
 
         return result;

@@ -79,6 +79,7 @@
             #pdf-content{
                 margin: 50px;
             }
+
         </style>
 
         <title>Quotation Details</title>
@@ -103,186 +104,283 @@
             };
         </script>
         <main class="my-form">
-            <div class="cotainer col-md-11" id="pdf-content">
-                <!--                <div class="row justify-content-center">-->
-                <!--<div class="col-md-11">-->
-                <div class="card flex py-3">
-                    <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
-                    <h2 class="text-center">Insurify India Pvt Ltd</h2>
-                </div>
-                <!--</div>-->
-                <div class="card">
-                    <div class="card-header">Company Details</div>
+            <!--            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Save Your Quotation</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="action">
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-form-label">E-Mail</label>
+                                                <div class="col-sm-6">
+                                                    <input id="email" class="form-control" name="email" type="email" required>
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-form-label">Phone</label>
+                                                <div class="col-sm-6">
+                                                    <input id="phone" class="form-control" name="phone" type="tel">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">
+                                                SEND
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+            <form action="SubmitQuotationData" method="post" onsubmit="saveQuotation(event)">
+                <div class="cotainer col-md-11" id="pdf-content">
+                    <!--                <div class="row justify-content-center">-->
+                    <!--<div class="col-md-11">-->
+                    <div class="card flex py-3">
+                        <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
+                        <h2 class="text-center">Insurify India Pvt Ltd</h2>
+                    </div>
+                    <!--</div>-->
                     <div class="card">
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Company Name</label>
+                        <div class="card-header">Company Details</div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Company Name</label>
 
-                                <div class="col-sm-8">
-                                    <input id="name" class="form-control" name="companyname" type="text" value = "Insurify India Pvt Ltd" readonly>
+                                    <div class="col-sm-8">
+                                        <input id="name" class="form-control" name="companyname" type="text" value = "Insurify India Pvt Ltd" readonly>
 
+                                    </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Proposal Number</label>
+                                    <div class="col-sm-8">
+                                        <% Vehicle v = (Vehicle) session.getAttribute("VehicleData");
+                                            String proposeNumber = "INS" + v.getVin();
+                                        %>
+                                        <input id="proposalno" class="form-control" name="proposalNo" type="text" value = "<%=proposeNumber%>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Company Address</label>
+                                    <div class="col-sm-4">
+                                        <input  type="text" class="form-control" id="companyadd" name="companyadd" value = "10th Floor, 1 Ho Chi Minh Sarani" readonly>
+
+                                    </div>
+                                    <label class="col-sm-2 col-form-label" style = "padding-left: 85px">District</label>
+                                    <div class="col-sm-2">
+                                        <input  type="text" class="form-control" id="companydist" name="companydist" value = "Kolkata" readonly>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">State</label>
+                                    <div class="col-sm-3">
+                                        <input  type="text" class="form-control" id="companystate" name="companystate" value = "West-Bengal" readonly>
+
+                                    </div>
+                                    <label class="col-sm-2 col-form-label" style = "padding-left: 75px">Pin Code</label>
+                                    <div class="col-sm-3">
+                                        <input  type="text" class="form-control" id="companypincode" name="companypincode" value = "743122" readonly>
+
+                                    </div>
+                                </div>
+
                             </div>
+                            <div class="card-header">Quotation For Your Car</div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">E-Mail Address</label>
 
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Proposal Number</label>
-                                <div class="col-sm-8">
-                                    <% Vehicle v =(Vehicle)session.getAttribute("VehicleData");
-                                        String proposeNumber = "INS"+v.getVin();
-                                    %>
-                                    <input id="proposalno" class="form-control" name="proposalno" type="text" value = "<%=proposeNumber%>" readonly>
+                                    <div class="col-sm-8">
+                                        <input id="email" class="form-control" name="email" type="email" value = "${user.email}" readonly>
+
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Company Address</label>
-                                <div class="col-sm-4">
-                                    <input  type="text" class="form-control" id="companyadd" name="companyadd" value = "10th Floor, 1 Ho Chi Minh Sarani" readonly>
-
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Aadhaar Number</label>
+                                    <div class="col-sm-8">
+                                        <input id="phone" class="form-control" name="aadhaarNo" type="txt" value = "${insurant.aadhaarNo}" readonly>
+                                    </div>
                                 </div>
-                                <label class="col-sm-2 col-form-label" style = "padding-left: 85px">District</label>
-                                <div class="col-sm-2">
-                                    <input  type="text" class="form-control" id="companydist" name="companydist" value = "Kolkata" readonly>
 
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Proposer Name</label>
+                                    <div class="col-sm-8">
+                                        <input  type="text" class="form-control" id="proposerName" name="proposerName" value = "${insurant.firstName} ${insurant.lastName}" readonly>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">State</label>
-                                <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="companystate" name="companystate" value = "West-Bengal" readonly>
-
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Quotation Date</label>
+                                    <div class="col-sm-8">
+                                        <% SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                            Date date = new Date();
+                                            String now = formatter.format(date);%>
+                                        <input  type="text" class="form-control" id="iquotationdate" name="quotationDate" value = "<%=now%>" readonly>
+                                    </div>
                                 </div>
-                                <label class="col-sm-2 col-form-label" style = "padding-left: 75px">Pin Code</label>
-                                <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="companypincode" name="companypincode" value = "743122" readonly>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">IDV Value</label>
+                                    <div class="col-sm-3">
+                                        <input  type="text" class="form-control" id="idvValue" name="idvValue" value = "${CVRG}" readonly>
 
+                                    </div>
+                                    <label class="col-sm-2 col-form-label">VIN Number</label>
+                                    <div class="col-sm-3">
+                                        <input  type="text" class="form-control" id="vin" name="vin" value = "${vehicle.vin}" readonly>
+
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                        <div class="card-header">Quotation For Your Car</div>
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">E-Mail Address</label>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">CC</label>
+                                    <div class="col-sm-3">
+                                        <input  type="text" class="form-control" id="cc" name="cc" value = "${vehicle.enginePerformance}" readonly>
 
-                                <div class="col-sm-8">
-                                    <input id="email" class="form-control" name="email" type="email" value = "${user.email}" readonly>
+                                    </div>
+                                    <label class="col-sm-2 col-form-label">Plate Number</label>
+                                    <div class="col-sm-3">
+                                        <input  type="text" class="form-control" id="licensePlateNumber" name="licensePlateNumber" value = "${vehicle.licensePlateNumber}" readonly>
 
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Vehicle Make</label>
+                                    <div class="col-sm-3">
+                                        <input  type="text" class="form-control" id="vmake" name="make" value = "${vehicle.make}" readonly>
 
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Aadhaar Number</label>
-                                <div class="col-sm-8">
-                                    <input id="phone" class="form-control" name="aadhaarNo" type="txt" value = "${insurant.aadhaarNo}" readonly>
+                                    </div>
+                                    <label class="col-sm-2 col-form-label">Vehicle Model</label>
+                                    <div class="col-sm-3">
+                                        <input  type="text" class="form-control" id="vmodel" name="model" value = "${vehicle.model}" readonly>
+
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Proposer Name</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" class="form-control" id="proposername" name="proposerName" value = "${insurant.firstName} ${insurant.lastName}" readonly>
+                                <div class="card-header" style="margin-left: -1.25rem; width: calc(100% + 2.5rem)">Premium Details</div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label p-lg-4">Plan Name</label>
+                                    <label class="col-sm-3 col-form-label p-lg-4">Own Damage Premium(A)</label>
+                                    <label class="col-sm-3 col-form-label p-lg-4">Liability - Premium (B)</label>
+                                    <label class="col-sm-3 col-form-label p-lg-4">Total Premium(A+B)</label>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Quotation Date</label>
-                                <div class="col-sm-8">
-                                    <% SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                                        Date date = new Date();
-                                        String now = formatter.format(date);%>
-                                    <input  type="text" class="form-control" id="iquotationdate" name="quotationDate" value = "<%=now%>" readonly>
+
+
+                                <div class="form-group row">
+                                    <div class="col-sm-3 p-lg-3">
+                                        <input  type="text" class="form-control" id="ownpremium" name="planName" value = "${PlanName}" readonly>
+
+                                    </div>
+                                    <div class="col-sm-3 p-lg-3">
+                                        <input  type="text" class="form-control" id="ownpremium" name="premium" value = "${PRM}" readonly>
+
+                                    </div>
+                                    <div class="col-sm-3 p-lg-3">
+                                        <c:set var = "libPrem" value="5580"></c:set>
+                                        <input  type="text" class="form-control" id="liabpremium" name="liabPremium" value ="${libPrem}" readonly>
+
+                                    </div>
+                                    <div class="col-sm-3 p-lg-3">
+                                        <c:set var = "libPrem" value="5580"></c:set>
+                                        <input  type="text" class="form-control" id="totpremium" name="totalPremium" value ="${PRM+libPrem}" readonly>
+
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">IDV Value</label>
-                                <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="idvvalue" name="idvValue" value = "${CVRG}" readonly>
+                                <div class="card-header" style="margin-left: -1.25rem; width: calc(100% + 2.5rem)">Declaration</div>
+                                <div class="form-group row mr-2 mt-4">
+                                    <div class="col-sm-12">
+                                        I/ we hereby declare and state that the above statements made by me/ us are true and complete. No part of it is false. I/ we desire to effectan insurance as describe herein with
+                                        Future General India Insurance Co. Ltd.
+                                        and I/ we agree that this proposal and declarations shall be the basis of contract between me/ us and the
+                                        Future General India Insurance Co. Ltd.
+                                        and I/ we agree to accept the policy subject to the condition specified by the Insurance Company.
+                                        I/ we agree to receive the policy document (without enclosing the terms and conditions of policy) from the company and authorise the company to displayTerms and Conditions of the policy on its website that enables access by me.
+                                        I hereby confirm that I have mandated Insurify India Pvt Ltd. to place my insurance cover and have read and agreed on the terms andconditions and also give my unconditional consent for receiving a call from Aditya Birla Insurance Brokers or its affiliated entities on my number even if thenumber is enrolled under NDNC/DND registry
 
-                                </div>
-                                <label class="col-sm-2 col-form-label">VIN Number</label>
-                                <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="vin" name="vin" value = "${vehicle.vin}" readonly>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">CC</label>
-                                <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="cc" name="cc" value = "${vehicle.enginePerformance}" readonly>
-
-                                </div>
-                                <label class="col-sm-2 col-form-label">Plate Number</label>
-                                <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="licensePlateNumber" name="licensePlateNumber" value = "${vehicle.licensePlateNumber}" readonly>
-
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Vehicle Make</label>
-                                <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="vmake" name="make" value = "${vehicle.make}" readonly>
-
-                                </div>
-                                <label class="col-sm-2 col-form-label">Vehicle Model</label>
-                                <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="vmodel" name="model" value = "${vehicle.model}" readonly>
-
-                                </div>
-                            </div>
-                            <div class="card-header" style="margin-left: -1.25rem; width: calc(100% + 2.5rem)">Premium Details</div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label p-lg-4">Plan Name</label>
-                                <label class="col-sm-3 col-form-label p-lg-4">Own Damage Premium(A)</label>
-                                <label class="col-sm-3 col-form-label p-lg-4">Liability - Premium (B)</label>
-                                <label class="col-sm-3 col-form-label p-lg-4">Total Premium(A+B)</label>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <div class="col-sm-3 p-lg-3">
-                                    <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${PlanName}" readonly>
-
-                                </div>
-                                <div class="col-sm-3 p-lg-3">
-                                    <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${PRM}" readonly>
-
-                                </div>
-                                <div class="col-sm-3 p-lg-3">
-                                    <c:set var = "libPrem" value="5580"></c:set>
-                                    <input  type="text" class="form-control" id="liabpremium" name="liabPremium" value ="${libPrem}" readonly>
-
-                                </div>
-                                <div class="col-sm-3 p-lg-3">
-                                    <c:set var = "libPrem" value="5580"></c:set>
-                                    <input  type="text" class="form-control" id="totpremium" name="totPremium" value ="${PRM+libPrem}" readonly>
-
-                                </div>
-                            </div>
-                            <div class="card-header" style="margin-left: -1.25rem; width: calc(100% + 2.5rem)">Declaration</div>
-                            <div class="form-group row mr-2 mt-4">
-                                <div class="col-sm-12">
-                                    I/ we hereby declare and state that the above statements made by me/ us are true and complete. No part of it is false. I/ we desire to effectan insurance as describe herein with
-                                    Future General India Insurance Co. Ltd.
-                                    and I/ we agree that this proposal and declarations shall be the basis of contract between me/ us and the
-                                    Future General India Insurance Co. Ltd.
-                                    and I/ we agree to accept the policy subject to the condition specified by the Insurance Company.
-                                    I/ we agree to receive the policy document (without enclosing the terms and conditions of policy) from the company and authorise the company to displayTerms and Conditions of the policy on its website that enables access by me.
-                                    I hereby confirm that I have mandated Aditya Birla Insurance Brokers Ltd. to place my insurance cover and have read and agreed on the terms andconditions and also give my unconditional consent for receiving a call from Aditya Birla Insurance Brokers or its affiliated entities on my number even if thenumber is enrolled under NDNC/DND registry
-
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-primary" id="GetFile">
-                    DOWNLOAD THE PDF
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary" id="saveBtn" >
+                        SAVE QUOTATION
+                    </button>
+                    <div class="gap-2 d-none" id="btnGroup">
+                        <button type="button" class="btn btn-primary mr-3" id="GetFile">
+                            DOWNLOAD YOUR QUOTATION
+                        </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            SEND YOUR QUOTATION
+                        </button>
+                    </div>
+                </div>                           
+            </form>
+
+            <form action="SendQuotation" method="post">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">E-Mail</label>
+                    <div class="col-sm-6">
+                        <input id="email" class="form-control" name="email" type="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Phone</label>
+                    <div class="col-sm-6">
+                        <input id="phone" class="form-control" name="phone" type="tel">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    SEND
                 </button>
-            </div>
+            </form>
         </main>
+
+
+        <script>
+            async function saveQuotation(event) {
+                event.preventDefault();
+
+                // Form Submission functionality
+                const formData = new FormData(event.target);
+                const data = {};
+                formData.forEach(function (value, key) {
+                    data[key] = value;
+                });
+
+                const formAction = event.target.getAttribute('action');
+
+                await fetch(formAction, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams(data)
+                })
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.success) {
+                                alert("Yayy! Data Successfully inserted into DB using the " + formAction + " route");
+                                event.submitter.remove();
+                                btnGroup.classList.remove("d-none");
+                            } else {
+                                throw new Error("Oops! Something went wrong during insertion of data from the " + formAction + " route");
+                            }
+                        })
+                        .catch(err => alert(err));
+            }
+
+        </script>
 
     </body>
 </html>
