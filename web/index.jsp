@@ -47,7 +47,7 @@
                 <div class="container text-center text-md-left" data-aos="fade-up">
                     <h1>Welcome to Insurify</h1>
                     <h2>Your safety on the road, our priority in your pocket</h2>
-                    <a href="#about" class="btn-get-started scrollto">Get a quote</a>
+<!--                    <a href="#about" class="btn-get-started scrollto">Get a quote</a>-->
                 </div>
             </section><!-- End Hero -->
 
