@@ -82,6 +82,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         Policy policy = PolicyService.getPolicyInfo(totalWeightage);
         int coverage = policy.getCoverage();
         int premium = policy.getPremium();
+        
 
         System.out.println("Coverage  :" + coverage);
         System.out.println("Premium  :" + premium);
@@ -121,10 +122,12 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
             System.out.println("Premium  :" + premium);
 
         }
-        sessionMap.put("Coverage", coverage);
-        sessionMap.put("Premium", premium);
+        sessionMap.put("CVRG", coverage);
+        sessionMap.put("PRM", premium);
         sessionMap.put("PlanName", planName);
         System.out.println(sessionMap.get("Coverage"));
+        
+
         return result;
     }
 }
