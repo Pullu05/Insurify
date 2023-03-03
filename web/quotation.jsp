@@ -97,8 +97,8 @@
                                 jsPDF: {unit: 'in', format: 'A3', orientation: 'portrait'}
                             };
                             html2pdf().from(template).set(opt).save();
-                        })
-            }
+                        });
+            };
         </script>
         <main class="my-form">
             <div class="cotainer col-md-11" id="pdf-content">
@@ -192,7 +192,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">IDV Value</label>
                                 <div class="col-sm-3">
-                                    <input  type="text" class="form-control" id="idvvalue" name="idvValue" value = "${Coverage}" readonly>
+                                    <input  type="text" class="form-control" id="idvvalue" name="idvValue" value = "${CVRG}" readonly>
 
                                 </div>
                                 <label class="col-sm-2 col-form-label">VIN Number</label>
@@ -241,7 +241,7 @@
 
                                 </div>
                                 <div class="col-sm-3 p-lg-3">
-                                    <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${Premium}" readonly>
+                                    <input  type="text" class="form-control" id="ownpremium" name="ownPremium" value = "${PRM}" readonly>
 
                                 </div>
                                 <div class="col-sm-3 p-lg-3">
@@ -251,7 +251,7 @@
                                 </div>
                                 <div class="col-sm-3 p-lg-3">
                                     <c:set var = "libPrem" value="5580"></c:set>
-                                    <input  type="text" class="form-control" id="totpremium" name="totPremium" value ="${Premium+libPrem}" readonly>
+                                    <input  type="text" class="form-control" id="totpremium" name="totPremium" value ="${PRM+libPrem}" readonly>
 
                                 </div>
                             </div>
@@ -259,10 +259,10 @@
                             <div class="form-group row mr-2 mt-4">
                                 <div class="col-sm-12">
                                     I/ we hereby declare and state that the above statements made by me/ us are true and complete. No part of it is false. I/ we desire to effectan insurance as describe herein with
-                                    Future Generali India Insurance Co. Ltd.
-                                    and I/ we agree that this proposal and declarations shall be the basis ofcontract between me/ us and the
-                                    Future Generali India Insurance Co. Ltd.
-                                    and I/ we agree to accept the policy subject to the condition specified by theInsurance Company.
+                                    Future General India Insurance Co. Ltd.
+                                    and I/ we agree that this proposal and declarations shall be the basis of contract between me/ us and the
+                                    Future General India Insurance Co. Ltd.
+                                    and I/ we agree to accept the policy subject to the condition specified by the Insurance Company.
                                     I/ we agree to receive the policy document (without enclosing the terms and conditions of policy) from the company and authorise the company to displayTerms and Conditions of the policy on its website that enables access by me.
                                     I hereby confirm that I have mandated Aditya Birla Insurance Brokers Ltd. to place my insurance cover and have read and agreed on the terms andconditions and also give my unconditional consent for receiving a call from Aditya Birla Insurance Brokers or its affiliated entities on my number even if thenumber is enrolled under NDNC/DND registry
 
