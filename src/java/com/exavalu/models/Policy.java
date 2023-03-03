@@ -87,8 +87,8 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         System.out.println("Premium  :" + premium);
 
         Plan plan = (Plan) sessionMap.get("Plan");
-        
-        String planName=plan.getPlanName();
+
+        String planName = plan.getPlanName();
         System.out.println(planName);
 
         if (plan.getPlanName().equalsIgnoreCase("Silver")) {
@@ -124,6 +124,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         sessionMap.put("Coverage", coverage);
         sessionMap.put("Premium", premium);
         sessionMap.put("PlanName", planName);
+        System.out.println(sessionMap.get("Coverage"));
         return result;
     }
 }

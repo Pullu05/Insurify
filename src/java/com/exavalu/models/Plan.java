@@ -44,9 +44,9 @@ public class Plan extends ActionSupport implements ApplicationAware, SessionAwar
             System.out.println("Successfully Added Plan Name");
             sessionMap.put("Plan", this);
             InsuranceAPIData.getInstance().doGetInsuranceDetails();
-            result="SUCCESS";
+            result = "SUCCESS";
         } else {
-            System.out.println("OOps your Plan Name is not added");
+            System.out.println("Oops! Your Plan Name is not added");
         }
         return result;
     }

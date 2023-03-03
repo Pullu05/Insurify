@@ -50,14 +50,14 @@
         <action name="CalculatePremium" class="com.exavalu.models.InsuranceAPIData" method="doGetInsuranceDetails">
             <result name="SUCCESS">success.json</result>
         </action>
-        
+
         <action name="CalculatePremium" class="com.exavalu.models.Plan" method="doAddPlanName">
             <result name="SUCCESS">success.json</result>
             <result name="FAILURE">failure.json</result>
         </action>
-        
+
         <action name="TotalWeightage" class="com.exavalu.models.Policy" method="doGetTotalWeightage">
-            <result name="SUCCESS">success.json</result>
+            <result name="SUCCESS">quotation.jsp</result>
         </action>
 
     </package>

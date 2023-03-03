@@ -28,22 +28,6 @@ import org.apache.struts2.interceptor.SessionAware;
  */
 public class InsuranceAPIData extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 
-    public SessionMap<String, Object> getSessionMap() {
-        return sessionMap;
-    }
-
-    public void setSessionMap(SessionMap<String, Object> sessionMap) {
-        this.sessionMap = sessionMap;
-    }
-
-    public ApplicationMap getMap() {
-        return map;
-    }
-
-    public void setMap(ApplicationMap map) {
-        this.map = map;
-    }
-
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
 
