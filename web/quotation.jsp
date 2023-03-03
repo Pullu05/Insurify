@@ -1,3 +1,5 @@
+<%@page import="com.exavalu.models.Vehicle"%>
+<%@page import="java.util.Random"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.time.LocalDateTime"%>
@@ -125,7 +127,10 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Proposal Number</label>
                                 <div class="col-sm-8">
-                                    <input id="proposalno" class="form-control" name="proposalno" type="text" value = "P55789458" readonly>
+                                    <% Vehicle v =(Vehicle)session.getAttribute("VehicleData");
+                                        String proposeNumber = "INS"+v.getVin();
+                                    %>
+                                    <input id="proposalno" class="form-control" name="proposalno" type="text" value = "<%=proposeNumber%>" readonly>
                                 </div>
                             </div>
 
