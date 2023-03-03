@@ -26,6 +26,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+    private String email;
 
     @Override
     public void setApplication(Map<String, Object> application) {
@@ -64,9 +65,23 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public void setPremium(int premium) {
         this.premium = premium;
     }
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String doGetTotalWeightage() throws Exception {
         String result = "SUCCESS";
+        
         int vehicleWeightage = VehicleDataService.getVehicleWeightage((Vehicle) sessionMap.get("VehicleData"));
 
         int insurantWeightage = InsurantDataService.getDriverWeightage((InsurantData) sessionMap.get("InsurantData"));
@@ -125,9 +140,14 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         sessionMap.put("CVRG", coverage);
         sessionMap.put("PRM", premium);
         sessionMap.put("PlanName", planName);
-        System.out.println(sessionMap.get("Coverage"));
+//        System.out.println(sessionMap.get("Coverage"));
+        //System.out.println(this.getEmail());
+          //System.out.println(this.email);
+       MailSender.sendEmailToUser(this.getEmail());
         
 
         return result;
     }
+
+    
 }
