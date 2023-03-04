@@ -31,7 +31,7 @@ CREATE TABLE `productdata` (
   `damageInsurance` varchar(45) NOT NULL,
   `courtesyCar` varchar(45) NOT NULL,
   PRIMARY KEY (`productId`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `productdata` (
 
 LOCK TABLES `productdata` WRITE;
 /*!40000 ALTER TABLE `productdata` DISABLE KEYS */;
-INSERT INTO `productdata` VALUES (4,'user@gmail.com','2023-02-10','5000000','Malus 14','No Coverage','Yes'),(5,'user@gmail.com','2023-02-17','10000000','Bonus 8','Partial Coverage','Yes'),(6,'user@gmail.com','2023-03-08','7000000','Malus 12','Partial Coverage','No'),(7,'user@gmail.com','2023-03-29','7000000','Malus 13','No Coverage','No'),(8,'user@gmail.com','2023-03-14','15000000','Malus 15','No Coverage','No'),(9,'user@gmail.com','2023-03-16','7000000','Malus 14','No Coverage','No'),(10,'user@gmail.com','2023-03-16','7000000','Malus 14','No Coverage','No'),(11,'user@gmail.com','2023-03-16','7000000','Malus 14','No Coverage','No'),(12,'user@gmail.com','2023-03-16','7000000','Malus 14','No Coverage','No'),(13,'user@gmail.com','2023-03-16','7000000','Malus 14','No Coverage','No'),(14,'user@gmail.com','2023-03-16','7000000','Malus 14','No Coverage','No'),(15,'user@gmail.com','2023-03-16','7000000','Malus 14','No Coverage','No'),(16,'user@gmail.com','2023-03-20','15000000','Malus 12','No Coverage','No'),(17,'user@gmail.com','2023-03-20','15000000','Malus 12','No Coverage','No'),(18,'user@gmail.com','2023-03-20','15000000','Malus 12','No Coverage','No'),(19,'user@gmail.com','2023-03-21','10000000','Malus 11','Partial Coverage','No'),(20,'user@gmail.com','2023-03-24','10000000','Malus 11','No Coverage','Yes'),(21,'user@gmail.com','2023-03-08','7000000','Malus 16','Full Coverage','No');
 /*!40000 ALTER TABLE `productdata` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-03 12:08:45
+-- Dump completed on 2023-03-05  1:32:34

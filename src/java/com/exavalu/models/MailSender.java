@@ -4,6 +4,7 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.utils.EnvUtility;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
@@ -41,16 +42,22 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
-    static String fromEmail = "sssinhasneha956@gmail.com";
-    static String password = "vvjszdveplmauvnt";
-    static String userName = "sssinhasneha956";
-    static String message = "successfully signed up ";
 
     private String email;
+    private String htmlContent;
 
     public String sendEmailToUser() throws Exception {
         String result = "SUCCESS";
         try {
+            EnvUtility envUtility = EnvUtility.getInstanceOfEnvUtility();
+
+            String fromEmail = envUtility.getPropertyValue("fromEmail");
+            final String password = envUtility.getPropertyValue("password");
+            final String userName = envUtility.getPropertyValue("userName");
+
+            System.out.println(fromEmail
+                    + " : " + password + " : " + userName);
+
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com");
             props.put("mail.smtp.socketFactory.port", "465");
@@ -75,7 +82,7 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
                     InternetAddress.parse(this.getEmail()));
             String coverage = (String) sessionMap.get("PlanName");
             mailMessage.setSubject("Successfully created Quote");
-            mailMessage.setText("coverage " + coverage);
+            mailMessage.setContent(this.getHtmlContent(), "text/html");
             Transport.send(mailMessage);
 
         } catch (AddressException ex) {
@@ -92,6 +99,14 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getHtmlContent() {
+        return htmlContent;
+    }
+
+    public void setHtmlContent(String htmlContent) {
+        this.htmlContent = htmlContent;
     }
 
 }
