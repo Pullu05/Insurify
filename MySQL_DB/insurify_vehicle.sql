@@ -44,7 +44,6 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
-INSERT INTO `vehicle` VALUES ('123456','HR13BH6789','BMW','3 Series',1200,'2023-03-29',5,'Gas',54456,34534,'user@gmail.com'),('12345643453','343','Mercury','Grand Marquis',1200,'2023-03-21',6,'Petrol',342,342342,'user@gmail.com'),('1234564576','WB13BH6789','Mazda','MX-5',5357,'2023-04-06',6,'Electric Power',34,34534,'user@gmail.com'),('12345678','HR13BH6789','Honda','Odyssey',1200,'2023-03-29',5,'Gas',54456,34534,'user@gmail.com'),('123456856797','JH13BH6789','Mazda','MX-5',1200,'2023-03-14',4,'Petrol',54456,49,'user@gmail.com'),('345436','5465','Chevrolet','Cavalier',54,'2023-03-22',6,'Electric Power',5465,5465,'user@gmail.com');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-03 12:08:44
+-- Dump completed on 2023-03-05  1:32:34

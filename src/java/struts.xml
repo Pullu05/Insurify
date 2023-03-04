@@ -59,13 +59,13 @@
         <action name="TotalWeightage" class="com.exavalu.models.Policy" method="doGetTotalWeightage">
             <result name="SUCCESS">quotation.jsp</result>
         </action>
-        
+
         <action name="SubmitQuotationData" class="com.exavalu.models.Quotation" method="AddQuotationData">
             <result name="SUCCESS">success.json</result>
             <result name="FAILURE">failure.json</result>
         </action>
         <action name="SendQuotation" class="com.exavalu.models.MailSender" method="sendEmailToUser">
-            <result name="SUCCESS">quotation.jsp</result>
+            <result name="SUCCESS">success.json</result>
             <result name="FAILURE">failure.json</result>
         </action>
 

@@ -16,11 +16,12 @@ import java.sql.SQLException;
  * @author RISHAV DUTTA
  */
 public class QuotationService {
+
     public static Boolean addQuotationData(Quotation quotation) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO quotation(eamil,proposalNo,aadhaarNo,proposerName,quotationDate,idvValue,vin,cc,licensePlateNumber,make,model,planName,premium,liabPremium,totalPremium )"
+            String sql = "INSERT INTO quotation(email,proposalNo,aadhaarNo,proposerName,quotationDate,idvValue,vin,cc,licensePlateNumber,make,model,planName,premium,liabPremium,totalPremium )"
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -40,7 +41,6 @@ public class QuotationService {
             preparedStatement.setInt(13, quotation.getPremium());
             preparedStatement.setInt(14, quotation.getLiabPremium());
             preparedStatement.setInt(15, quotation.getTotalPremium());
-
 
             int row = preparedStatement.executeUpdate();
 
