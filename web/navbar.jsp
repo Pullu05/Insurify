@@ -10,16 +10,8 @@
             <li><a class="nav-link scrollto" href="#portfolio">Camper</a></li>
         </ul> <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
-    <div>
-        <c:set var="login_check" value="${LoggedIn}"/>
-        <c:if test="${User!=null}">
-            <h5 class="text-warning">
-                WELCOME :
-                <c:set var="user" value="${User}"/>
-                <c:out value="${user.getFirstName()} ${user.getLastName()}" />!!!!
-            </h5>
-        </c:if>
-    </div>
+     <c:set var="login_check" value="${LoggedIn}"/>
+ 
     <div>
         <c:if test="${login_check==null}">
             <a href="login.jsp">

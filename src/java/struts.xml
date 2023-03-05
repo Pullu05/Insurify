@@ -6,7 +6,7 @@
     <!-- Configuration for the default package. -->
     <package name="default" namespace="/" extends="struts-default">
         <action name="Login" class="com.exavalu.models.Users" method="doLogin">
-            <result name="USER">index_1.jsp</result>
+            <result name="USER">index.jsp</result>
             <result name="ADMIN">admin.jsp</result>
             <result name="FAILURE">login.jsp</result>
         </action>
@@ -66,6 +66,16 @@
         </action>
         <action name="SendQuotation" class="com.exavalu.models.MailSender" method="sendEmailToUser">
             <result name="SUCCESS">success.json</result>
+            <result name="FAILURE">failure.json</result>
+        </action>
+        
+        <action name="ShowQuotation" class="com.exavalu.models.Quotation" method="showQuotationData">
+            <result name="SUCCESS">showQuotation.jsp</result>
+            <result name="FAILURE">failure.json</result>
+        </action>
+        
+        <action name="SaveStatus" class="com.exavalu.models.Quotation" method="updateStatus">
+            <result name="SUCCESS">previousQuotation.jsp</result>
             <result name="FAILURE">failure.json</result>
         </action>
 

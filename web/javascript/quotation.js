@@ -39,6 +39,7 @@ async function saveQuotation(event) {
                 if (result.success) {
                     alert("Yayy! Your quotation has been saved successfully");
                     event.submitter.remove();
+                    saveBtn.classList.add("d-none");
                     btnGroup.classList.remove("d-none");
                 } else {
                     throw new Error("Oops! Something went wrong during insertion of data from the " + formAction + " route");
@@ -50,7 +51,7 @@ async function saveQuotation(event) {
 
 async function sendQuotationToMail(event) {
     event.preventDefault();
-    var htmlContent = "<html> <head> <style> label{ font-size: 1rem; margin-bottom: 4px; display: block; } input{padding: 8px; width: 20vw; font-size: 15px; margin-bottom: 14px; } h6{ font-size: 1.3rem; font-weight: bold; margin: 0; padding: 0; } h2{ font-size: 1.8rem; } .card{ margin-bottom: 1rem; } .card-header{ margin-bottom: 8px; } </style> </head> <body>";
+    var htmlContent = "<html> <head> <style> label{ font-size: 1rem; margin-bottom: 4px; display: block; } input{padding: 8px; width: 20vw; font-size: 15px; margin-bottom: 14px; } @media only screen and (max-width: 700px) { input { width: 70vw; } } h6{ font-size: 1.3rem; font-weight: bold; margin: 0; padding: 0; } h2{ font-size: 1.8rem; } .card{ margin-bottom: 1rem; } .card-header{ margin-bottom: 8px; } </style> </head> <body>";
     htmlContent += document.getElementById('pdf-content').innerHTML.toString();
     htmlContent += "</body> </html>";
 //                    await fetch("TotalWeightage").then(res => res.text()).then(data => {

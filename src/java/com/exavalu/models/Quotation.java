@@ -9,6 +9,7 @@ import com.exavalu.services.VehicleDataService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Map;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -34,7 +35,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
         sessionMap = (SessionMap) session;
     }
 
-    private int quotaionId;
+    private int quotationId;
     private int idvValue;
     private int cc;
     private int premium;
@@ -49,27 +50,68 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     private String make;
     private String model;
     private String planName;
+    private String status;
 
     public String AddQuotationData() throws Exception {
         String result = "FAILURE";
-        
+
         boolean success = QuotationService.addQuotationData(this);
         if (success) {
             System.out.println("Successfully Quotation Data Added");
             result = "SUCCESS";
             sessionMap.put("QuotationData", this);
+            ArrayList quotationList = QuotationService.getQuotationList(this.email);
+            sessionMap.put("PrevQuotList", quotationList);
         } else {
             System.out.println("OOps your Quotation Data is not added");
         }
         return result;
     }
 
-    public int getQuotaionId() {
-        return quotaionId;
+    public String showQuotationData() throws Exception {
+        String result = "SUCCESS";
+        Quotation quotation = QuotationService.getQuotation(this.quotationId);
+        sessionMap.put("IdSpecificQuotataion", quotation);
+        return result;
     }
 
-    public void setQuotaionId(int quotaionId) {
-        this.quotaionId = quotaionId;
+    public String updateStatus() throws Exception {
+        String result = "FAILURE";
+        Quotation quot = (Quotation) sessionMap.get("IdSpecificQuotataion");
+        int quotId = quot.getQuotationId();
+        String quotEmail = quot.getEmail();
+        if (this.status.equals("1")) {
+            boolean success = QuotationService.updateStatus(quotId, "ACCEPTED");
+            if (success) {
+                result = "SUCCESS";
+                ArrayList quotationList = QuotationService.getQuotationList(this.email);
+                sessionMap.put("PrevQuotList", quotationList);
+            } else {
+                System.out.println("OOps your update is failed");
+            }
+        }
+        if (this.status.equals("0")) {
+            boolean success = QuotationService.updateStatus(quotId, "REJECTED");
+            if (success) {
+                result = "SUCCESS";
+                ArrayList quotationList = QuotationService.getQuotationList(this.email);
+                sessionMap.put("PrevQuotList", quotationList);
+            } else {
+                System.out.println("OOps your update is failed");
+            }
+        }
+
+        ArrayList quotationList = QuotationService.getQuotationList(quotEmail);
+        sessionMap.put("PrevQuotList", quotationList);
+        return result;
+    }
+
+    public int getQuotationId() {
+        return quotationId;
+    }
+
+    public void setQuotationId(int quotationId) {
+        this.quotationId = quotationId;
     }
 
     public int getIdvValue() {
@@ -182,6 +224,14 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
 
     public void setPlanName(String planName) {
         this.planName = planName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

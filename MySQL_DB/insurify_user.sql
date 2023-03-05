@@ -40,7 +40,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin@gmail.com','1234','Admin','Admin',1),('user@gmail.com','1234','user','user',2);
+INSERT INTO `user` VALUES ('admin@gmail.com','1234','Admin','Admin',1),('user@gmail.com','1234','user','user',2),('user1@gmail.com','1234','user1','user1',2),('user2@gmail.com','1234','user2','user2',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-05  1:32:34
+-- Dump completed on 2023-03-05 21:44:02
