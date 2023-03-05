@@ -70,7 +70,7 @@
         </action>
         
         <action name="ShowQuotation" class="com.exavalu.models.Quotation" method="showQuotationData">
-            <result name="SUCCESS">showQutation.jsp</result>
+            <result name="SUCCESS">showQuotation.jsp</result>
             <result name="FAILURE">failure.json</result>
         </action>
         
