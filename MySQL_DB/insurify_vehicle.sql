@@ -44,6 +44,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
+INSERT INTO `vehicle` VALUES ('ABCDRF6579KLL','WB123402515','Mitsubishi','Challenger',4500,'2023-03-15',4,'Electric Power',5200,52000,'user@gmail.com'),('WB14547025789','WB2240','Nissan','Quest',2500,'2023-03-15',3,'Electric Power',2000,1200,'user@gmail.com'),('WB145478LPO','WB0425','BMW','M Roadster',2200,'1999-08-12',3,'Electric Power',2566,2300,'user@gmail.com'),('WB145478PK12','WB345690','Mitsubishi','Mighty Max',4500,'2023-03-22',3,'Electric Power',5000,2000,'user1@gmail.com'),('WB145478PKK','WB123455','Ford','F-350 Super Duty',4500,'2023-03-22',5,'Electric Power',5200,50,'user@gmail.com'),('WB145478PKK0','1','Mazda','MX-5',4500,'2023-03-23',4,'Electric Power',1,11,'user@gmail.com'),('WB145478PKK02','WB123455','Honda','Odyssey',1000,'2023-03-07',4,'Gas',5200,5200,'user1@gmail.com'),('WB145478PKK07','WB5700','BMW','M Roadster',4500,'2023-03-08',2,'Diesel',5200,5200,'user@gmail.com'),('WB145478PKK18','WB57005','Mitsubishi','Challenger',4500,'2023-03-03',2,'Diesel',2000,5200,'user@gmail.com'),('WB145478PMLP','WB12345502','Porsche','PR-968',2000,'2022-12-05',2,'Diesel',450,250,'user@gmail.com');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-05  1:32:34
+-- Dump completed on 2023-03-05 21:44:02
