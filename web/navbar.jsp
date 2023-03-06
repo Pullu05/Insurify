@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="container d-flex align-items-center justify-content-lg-between mt-3">
-    <h2 class="logo me-auto me-lg-0 display-7"><a href="index.jsp">Insurify</a></h2>
+    <h2 class="logo me-auto me-lg-0 display-7"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/> <a href="index.jsp">Insurify</a></h2>
     <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
             <li><a class="nav-link scrollto" href="automobileInsurance.jsp">Automobile</a></li>
