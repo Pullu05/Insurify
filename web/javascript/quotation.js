@@ -51,6 +51,12 @@ async function saveQuotation(event) {
 
 async function sendQuotationToMail(event) {
     event.preventDefault();
+    const submitBtn = event.submitter;
+
+    submitBtn.setAttribute('disabled', true);
+    submitBtn.lastElementChild.innerHTML = "Sending...";
+    submitBtn.firstElementChild.classList.remove('d-none');
+
     var htmlContent = "<html> <head> <style> label{ font-size: 1rem; margin-bottom: 4px; display: block; } input{padding: 8px; width: 20vw; font-size: 15px; margin-bottom: 14px; } @media only screen and (max-width: 700px) { input { width: 70vw; } } h6{ font-size: 1.3rem; font-weight: bold; margin: 0; padding: 0; } h2{ font-size: 1.8rem; } .card{ margin-bottom: 1rem; } .card-header{ margin-bottom: 8px; } </style> </head> <body>";
     htmlContent += document.getElementById('pdf-content').innerHTML.toString();
     htmlContent += "</body> </html>";
@@ -86,5 +92,11 @@ async function sendQuotationToMail(event) {
                     throw new Error("Oops! Something went wrong during sending of data from the " + formAction + " route");
                 }
             })
-            .catch(err => alert(err));
+            .catch(err => alert(err))
+            .finally(() => {
+                event.target.reset();
+                submitBtn.removeAttribute('disabled');
+                submitBtn.lastElementChild.innerHTML = "Sent";
+                submitBtn.firstElementChild.classList.add('d-none');
+            });
 }

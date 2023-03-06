@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
-        
+
         <style>
 
             body{
@@ -115,8 +115,11 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary px-4">
-                                        SEND
+                                    <button type="submit" class="btn btn-primary px-4 d-flex align-items-center gap-2">
+                                        <div class="spinner-border spinner-border-sm text-light d-none" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                        <span>Send</span>
                                     </button>
                                 </div>
                             </form>
@@ -327,7 +330,7 @@
                         <a href="index.jsp">
                             <button type="button" class="btn btn-primary">
                                 CANCEL
-                            </button> 
+                            </button>
                         </a>
                     </div>
 

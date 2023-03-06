@@ -50,7 +50,7 @@
                 <c:set var="UserloginCheck" value="${UserLoggedIn}"/>
                 <c:if test="${UserLoggedIn!=null}">
                     <a href="automobileInsurance.jsp" class="btn-get-started scrollto mx-1">Get a new quote</a>
-                    <a href="previousQuotation.jsp" class="btn-get-started scrollto mx-1">View previous quotes</a>
+                    <a href="quotationList.jsp" class="btn-get-started scrollto mx-1">View previous quotes</a>
                 </c:if>
             </div>
         </section><!-- End Hero -->
@@ -214,17 +214,17 @@
                 </div>
             </section><!-- End Testimonials Section -->
 
-            <!--                 ======= Portfolio Section ======= 
+            <!--                 ======= Portfolio Section =======
                             <section id="portfolio" class="portfolio section-bg">
                                 <div class="container">
-            
+
                                     <div class="section-title" data-aos="fade-up">
                                         <h2>Portfolio</h2>
                                         <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                                             consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
                                             in iste officiis commodi quidem hic quas.</p>
                                     </div>
-            
+
                                     <div class="row" data-aos="fade-up">
                                         <div class="col-lg-12 d-flex justify-content-center">
                                             <ul id="portfolio-flters">
@@ -235,9 +235,9 @@
                                             </ul>
                                         </div>
                                     </div>
-            
+
                                     <div class="row portfolio-container" data-aos="fade-up">
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
@@ -252,7 +252,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
@@ -267,7 +267,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
@@ -282,7 +282,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
@@ -297,7 +297,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
@@ -312,7 +312,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
@@ -327,7 +327,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
@@ -342,7 +342,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
@@ -357,7 +357,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                                             <div class="portfolio-wrap">
                                                 <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
@@ -372,25 +372,25 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                     </div>
-            
+
                                 </div>
                             </section> End Portfolio Section -->
 
             <!-- ======= Team Section ======= -->
             <!--                <section id="team" class="team">
                                 <div class="container">
-            
+
                                     <div class="section-title" data-aos="fade-up">
                                         <h2>Team</h2>
                                         <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                                             consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
                                             in iste officiis commodi quidem hic quas.</p>
                                     </div>
-            
+
                                     <div class="row">
-            
+
                                         <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
                                             <div class="member">
                                                 <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
@@ -408,7 +408,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                                             <div class="member">
                                                 <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
@@ -426,7 +426,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                                             <div class="member">
                                                 <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
@@ -444,7 +444,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                         <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                                             <div class="member">
                                                 <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
@@ -462,9 +462,9 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                     </div>
-            
+
                                 </div>
                             </section> End Team Section -->
 
