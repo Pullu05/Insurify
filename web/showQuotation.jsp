@@ -83,13 +83,17 @@
                 gap: 1rem;
                 margin-top: 15px;
             }
+            img{
+                margin-right: 10px;
+            }
         </style>
     </head>
     <body>
         <div class="cotainer col-md-11" id="pdf-content">
             <div class="card flex py-4 rounded-bottom-0 border-bottom-0">
-                <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
-                <h2 class="text-center m-0">Insurify India Pvt Ltd</h2>
+                <!--<div class="card-header"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/>-->
+                <!--<h2 class="logo me-auto me-lg-0 display-7"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/></h2>-->
+                <h2 class="text-center m-0"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/>Insurify India Pvt Ltd</h2>
             </div>
             <div class="card rounded-0 border-bottom-0">
                 <div class="card-header py-3">
