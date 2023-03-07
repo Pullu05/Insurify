@@ -1,4 +1,3 @@
-<link href="images/logo.jpg" rel="icon">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="container d-flex align-items-center justify-content-lg-between mt-3">
