@@ -4,11 +4,9 @@
  */
 package com.exavalu.models;
 
-import com.exavalu.services.LoginService;
 import com.exavalu.services.VehicleDataService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.util.logging.Logger;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
@@ -53,7 +51,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         String result = "FAILURE";
 
         if (this.getMake() != null) {
-            ArrayList modList = LoginService.getAllmodels(this.make);
+            ArrayList modList = VehicleDataService.getAllmodels(this.make);
             System.out.println("Successfully Fetch Models");
             sessionMap.put("ModelList", modList);
             result = "MODELLIST";
