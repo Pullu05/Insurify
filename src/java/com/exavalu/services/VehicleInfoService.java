@@ -84,7 +84,7 @@ public class VehicleInfoService {
 
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-
+                vehicleInfo.setVehicleId(rs.getInt("vehicleId"));
                 vehicleInfo.setVehicleMake(rs.getString("vehicleMake"));
                 vehicleInfo.setVehicleModel(rs.getString("vechicleModel"));
                 vehicleInfo.setDateOfManufacture(rs.getString("dateOfManufacture"));
@@ -104,9 +104,8 @@ public class VehicleInfoService {
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "UPDATE vehicleInfo "
-                    + "SET vehicleMake = ? , vechicleModel = ? , dateOfManufacture = ?,"
-                    + "weightage = ?"
-                    + "WHERE vehicleId = ?";
+                    + "SET vehicleMake = ? , vechicleModel = ? , dateOfManufacture = ?, weightage = ? "
+                    + "WHERE vehicleId = ?;";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 

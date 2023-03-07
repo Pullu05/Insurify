@@ -37,40 +37,7 @@
 
                 <!-- Table -->
                 <div id="driverTable" class="d-none">
-                    <div class="card recent-sales overflow-auto">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Driver Details</h5>
-
-                            <table class="table table-borderless datatable">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Driver Age</th>
-                                        <th scope="col">Medical History</th>
-                                        <th scope="col">Weightage</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${DriverInfoList}" var="driverInfo">
-                                    <tr>
-                                        <th scope="row"><c:out value="${driverInfo.id}"> </c:out></th>
-                                        <td><c:out value="${driverInfo.driverAge}"> </c:out></td>
-                                        <td><c:out value="${driverInfo.medicalHistory}"> </c:out></td>
-                                        <td><c:out value="${driverInfo.weightage}"> </c:out></td>
-                                            <td>
-                                                <a href="EditDriverInfo?id=${driverInfo.id}" > <span class="badge bg-success">Edit</span> </a>
-                                        </td>
-                                        </button>
-                                        </div>
-                                        </div></td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <jsp:include page="driverInfoTable.jsp"></jsp:include>
             </div>
 
 

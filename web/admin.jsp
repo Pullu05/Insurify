@@ -118,10 +118,19 @@
 
             <!-- End Page Title -->
 
+
+
             <section class="section dashboard">
-                <div>
 
-
+                <!-- Dynamic Modal -->
+                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="adminDriverForm" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="spinner-border spinner-border-sm text-light d-none" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id ="driverDetails" class="d-none">
@@ -152,35 +161,47 @@
         <!-- Template Main JS File -->
         <script src="assets/js/main_1.js"></script>
         <script>
-                        async function handleFormSubmission(event) {
-                            event.preventDefault();
-
-                            const formData = new FormData(event.target);
-                            const data = {};
-                            formData.forEach(function (value, key) {
-                                data[key] = value;
+                        function initialiseDataTables() {
+                            const datatables = [...document.querySelectorAll('.datatable')];
+                            datatables.forEach(datatable => {
+                                new simpleDatatables.DataTable(datatable);
                             });
-
-                            const formAction = event.target.getAttribute('action');
-//                            const responseTableParent = document.getElementById(event.target.dataset.table);
-
-                            await fetch(formAction, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded'
-                                },
-                                body: new URLSearchParams(data)
-                            })
-                                    .then(response => response.text())
-                                    .then(result => {
-//                                        responseTableParent.innerHTML = result;
-                                        event.target.reset();
-                                        alert("Data submitted successfully!");
-                                        location.href = "admin.jsp";
-                                    })
-                                    .catch(err => console.error(err));
-
                         }
+        </script>
+        <script>
+            async function handleEditForm(action) {
+//                console.log(action);
+                await fetch(action).then(res => res.text()).then(data => {
+                    editModal.querySelector('.modal-content').innerHTML = data;
+                });
+            }
+
+            async function handleAdditionOfData(event) {
+                event.preventDefault();
+                const formData = new FormData(event.target);
+                const data = {};
+                formData.forEach(function (value, key) {
+                    data[key] = value;
+                });
+                const formAction = event.target.getAttribute('action');
+                const responseTableParent = document.getElementById(event.target.dataset.table);
+                await fetch(formAction, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams(data)
+                })
+                        .then(response => response.text())
+                        .then(result => {
+                            alert("Data submitted successfully!");
+                            event.target.reset();
+                            responseTableParent.innerHTML = result;
+                            initialiseDataTables();
+                            event.submitter.previousElementSibling.click();
+                        })
+                        .catch(err => console.error(err));
+            }
         </script>
     </body>
 

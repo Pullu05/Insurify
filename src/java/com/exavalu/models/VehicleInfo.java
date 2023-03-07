@@ -58,6 +58,22 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
         return result;
     }
 
+    public String doEditVehicleInfo() throws Exception {
+        VehicleInfo vehicleInfo = VehicleInfoService.getVehicleInfo(this.vehicleId);
+
+        sessionMap.put("SpecificVehicleInfo", vehicleInfo);
+
+        return "SUCCESS";
+    }
+
+    public String doUpdateVehicleInfo() throws Exception {
+        boolean result = false;
+        result = VehicleInfoService.updateVehicleInfo(this, this.vehicleId);
+        ArrayList vehicleInfoList = VehicleInfoService.getAllVehicleInfo();
+        sessionMap.put("VehicleInfoList", vehicleInfoList);
+        return "SUCCESS";
+    }
+
     public int getVehicleId() {
         return vehicleId;
     }
