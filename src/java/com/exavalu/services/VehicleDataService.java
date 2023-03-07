@@ -4,13 +4,15 @@
  */
 package com.exavalu.services;
 
+import com.exavalu.models.Make;
+import com.exavalu.models.Model;
 import com.exavalu.models.Vehicle;
-import com.exavalu.models.VehicleInfo;
 import com.exavalu.utils.JDBCConnectionManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -78,4 +80,57 @@ public class VehicleDataService {
         return weightageValue;
     }
     
+    public static ArrayList getAllmakers() {
+        ArrayList makeList = new ArrayList();
+
+        String sql = "Select * from makers";
+
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Make make = new Make();
+                make.setMakeCode(rs.getString("makeCode"));
+                make.setMakeName(rs.getString("makeName"));
+                makeList.add(make);
+            }
+            System.out.println("MakeList :" + makeList.size());
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return makeList;
+    }
+    
+    public static ArrayList getAllmodels(String makeCode) {
+        ArrayList modelList = new ArrayList();
+
+        String sql = "Select * from models where makeCode = ?";
+
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, makeCode);
+
+            ResultSet rs = ps.executeQuery();
+            System.err.println(ps);
+
+            while (rs.next()) {
+                Model model = new Model();
+                model.setMakeCode(rs.getString("makeCode"));
+                model.setModelCode(rs.getString("modelCode"));
+                model.setModelName(rs.getString("modelName"));
+                modelList.add(model);
+            }
+            System.out.println("ModelList :" + modelList.size());
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return modelList;
+    }
 }

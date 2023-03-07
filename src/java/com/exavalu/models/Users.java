@@ -7,6 +7,7 @@ package com.exavalu.models;
 import com.exavalu.services.DriverInfoService;
 import com.exavalu.services.LoginService;
 import com.exavalu.services.QuotationService;
+import com.exavalu.services.VehicleDataService;
 import com.exavalu.services.VehicleInfoService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -48,7 +49,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
         String result = "FAILURE";
 
         boolean success = LoginService.doLogin(this);
-        ArrayList makeList = LoginService.getAllmakers();
+        ArrayList makeList = VehicleDataService.getAllmakers();
         sessionMap.put("MakeList", makeList);
 
         if (!success) {
@@ -65,9 +66,9 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
             if (success) {
                 System.out.println("returning Success from doLogin method");
                 sessionMap.put("LoggedIn", this);
-                
+
                 Users user = LoginService.getUser(this.email);
-                
+
                 sessionMap.put("User", user);
 
                 ArrayList driverInfoList = DriverInfoService.getAllDriverInfo();
@@ -90,11 +91,11 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
                 sessionMap.put("LoggedIn", this);
                 Users user = LoginService.getUser(this.email);
                 sessionMap.put("User", user);
-                sessionMap.put("UserLoggedIn",user);
+                sessionMap.put("UserLoggedIn", user);
                 sessionMap.put("userEmail", user.getEmail());
                 sessionMap.put("MakeList", makeList);
-                
-                ArrayList quotationList =QuotationService.getQuotationList(this.email);
+
+                ArrayList quotationList = QuotationService.getQuotationList(this.email);
                 sessionMap.put("PrevQuotList", quotationList);
                 result = "USER";
             } else {
@@ -111,6 +112,27 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public String doLogout() throws Exception {
         sessionMap.clear();
         return "SUCCESS";
+    }
+
+    public String doSignUp() throws Exception {
+        sessionMap.clear();
+        String result = "FAILURE";
+
+        boolean success = LoginService.doSignUp(this);
+
+        if (success) {
+            System.out.println("returning Success from doSignUp method");
+            String successMsg = "Now Login with your Email Id and PassWord";
+            sessionMap.put("SuccessMsg", successMsg);
+
+            result = "SUCCESS";
+        } else {
+            String errorMsg = "Email Id Already Register Please Log-In";
+            sessionMap.put("ErrorMsg1", errorMsg);
+            System.out.println("returning Failure from doSignUp method");
+        }
+
+        return result;
     }
 
     public String getEmail() {
