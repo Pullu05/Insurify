@@ -24,6 +24,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 
@@ -108,17 +109,21 @@
                                 <div class="row mb-3">
                                     <label for="email" class="col-sm-2 col-form-label">E-Mail</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="email" name="email">
+                                        <input type="email" class="form-control" id="email" name="email" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="phone" class="col-sm-2 col-form-label">Phone</label>
                                     <div class="col-sm-10">
-                                        <input type="tel" class="form-control" id="phone" name="phone">
+                                        <input type="tel" class="form-control" id="phone" name="phone" required>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary px-4 d-flex align-items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle d-none" viewBox="0 0 16 16">
+                                        <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                                        <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                                        </svg>
                                         <div class="spinner-border spinner-border-sm text-light d-none" role="status">
                                             <span class="visually-hidden">Loading...</span>
                                         </div>
@@ -134,9 +139,7 @@
             <form action="SubmitQuotationData" method="post" onsubmit="saveQuotation(event)">
                 <div class="cotainer col-md-11" id="pdf-content">
                     <div class="card flex py-4 rounded-bottom-0 border-bottom-0">
-                        <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
-                        <!--<h2 class="text-center m-0"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/>Insurify India Pvt Ltd</h2>-->
-                        <h2 class="text-center m-0"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/>Insurify India Pvt Ltd</h2>
+                        <h2 class="text-center m-0"><img src="images/logo.jpg" class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" />Insurify India Pvt Ltd</h2>
                     </div>
                     <div class="card rounded-0 border-bottom-0">
                         <div class="card-header py-3">
@@ -326,16 +329,12 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-center mb-4">
+                <div class="d-flex justify-content-center mb-4 gap-3">
                     <div id="saveBtn">
-                        <button type="submit" class="btn btn-primary me-3">
+                        <button type="submit" class="btn btn-primary">
                             SAVE QUOTATION
                         </button>
-                        <a href="index.jsp">
-                            <button type="button" class="btn btn-primary">
-                                CANCEL
-                            </button>
-                        </a>
+
                     </div>
 
                     <div class="d-none" id="btnGroup">
@@ -346,6 +345,12 @@
                             SEND YOUR QUOTATION
                         </button>
                     </div>
+
+                    <a href="index.jsp">
+                        <button type="button" class="btn btn-primary">
+                            CANCEL
+                        </button>
+                    </a>
                 </div>
             </form>
         </main>

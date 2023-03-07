@@ -32,21 +32,27 @@
         </action>
 
         <action name="SubmitDriverInfo" class="com.exavalu.models.DriverInfo" method="doAddDriverInfo">
-            <result name="SUCCESS">admin.jsp</result>
+            <result name="SUCCESS">driverInfoTable.jsp</result>
         </action>
 
         <action name="SubmitVehicleInfo" class="com.exavalu.models.VehicleInfo" method="doAddVehicleInfo">
-            <result name="SUCCESS">admin.jsp</result>
+            <result name="SUCCESS">vehicleInfoTable.jsp</result>
         </action>
 
         <action name="EditDriverInfo" class="com.exavalu.models.DriverInfo" method="doEditDriverInfo">
             <result name="SUCCESS">editDriverInfo.jsp</result>
-
         </action>
         <action name="UpdateDriverInfo" class="com.exavalu.models.DriverInfo" method="doUpdateDriverInfo">
-            <result name="SUCCESS">admin.jsp</result>
-
+            <result name="SUCCESS">driverInfoTable.jsp</result>
         </action>
+
+        <action name="EditVehicleInfo" class="com.exavalu.models.VehicleInfo" method="doEditVehicleInfo">
+            <result name="SUCCESS">editVehicleInfo.jsp</result>
+        </action>
+        <action name="UpdateVehicleInfo" class="com.exavalu.models.VehicleInfo" method="doUpdateVehicleInfo">
+            <result name="SUCCESS">vehicleInfoTable.jsp</result>
+        </action>
+
         <action name="CalculatePremium" class="com.exavalu.models.InsuranceAPIData" method="doGetInsuranceDetails">
             <result name="SUCCESS">success.json</result>
         </action>

@@ -1,4 +1,3 @@
-
 <!-- Modal -->
 <div class="modal fade" id="adminDriverForm" tabindex="-1" aria-labelledby="adminDriverForm" aria-hidden="true">
     <div class="modal-dialog">
@@ -8,7 +7,7 @@
                 <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close" style="background-size: 40%"></button>
             </div>
             <div class="modal-body">
-                <form class="container p-2" method="post" data-table="driverTable" action="SubmitDriverInfo" onsubmit="handleFormSubmission(event)">
+                <form class="container p-2" method="post" data-table="driverTable" action="SubmitDriverInfo" onsubmit="handleAdditionOfData(event)">
                     <div class="mb-3">
                         <label for="driverAge" class="form-label">Age</label>
                         <input type="text" class="form-control" id="driverAge" name="driverAge" required>

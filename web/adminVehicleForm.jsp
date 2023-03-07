@@ -9,25 +9,28 @@
                 <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close" style="background-size: 40%"></button>
             </div>
             <div class="modal-body">
-                <form class="container p-2" method="post" data-table="vehicleTable" action="SubmitVehicleInfo" onsubmit="handleFormSubmission(event)">
+                <form class="container p-2" method="post" data-table="vehicleTable" action="SubmitVehicleInfo" onsubmit="handleAdditionOfData(event)">
                     <div class="mb-3">
                         <label for="vehicleMake" class="form-label">Make</label>
-                        <input type="text" class="form-control" id="vehicleMake" name="vehicleMake">
+                        <input type="text" class="form-control" id="vehicleMake" name="vehicleMake" required>
                     </div>
                     <div class="mb-3">
                         <label for="vehicleModel" class="form-label">Model</label>
-                        <input type="text" class="form-control" id="vehicleModel" name="vehicleModel">
+                        <input type="text" class="form-control" id="vehicleModel" name="vehicleModel" required>
                     </div>
                     <div class="mb-3">
                         <label for="dateOfManufacture" class="form-label">Year of Manufacture</label>
-                        <input type="text" class="form-control" id="dateOfManufacture" name="dateOfManufacture">
+                        <input type="text" class="form-control" id="dateOfManufacture" name="dateOfManufacture" required>
                     </div>
                     <div class="mb-3">
                         <label for="weightage" class="form-label">Weightage</label>
-                        <input type="text" class="form-control" id="weightage" name="weightage">
+                        <input type="text" class="form-control" id="weightage" name="weightage" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
 

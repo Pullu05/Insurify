@@ -60,7 +60,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     public String doEditDriverInfo() throws Exception {
         DriverInfo driverInfo = DriverInfoService.getDriverInfo(this.id);
 
-        sessionMap.put("specificDriverInfo", driverInfo);
+        sessionMap.put("SpecificDriverInfo", driverInfo);
 
         return "SUCCESS";
     }
@@ -96,7 +96,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     public void setDriverAge(String driverAge) {
         this.driverAge = driverAge;
     }
-  
+
     public int getWeightage() {
         return weightage;
     }
