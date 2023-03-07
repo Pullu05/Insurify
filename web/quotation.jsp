@@ -19,7 +19,7 @@
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
-        <link rel="icon" href="Favicon.png">
+        <link href="images/logo.jpg" rel="icon">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
         <!-- Bootstrap CSS -->
@@ -85,6 +85,9 @@
                 box-shadow: none;
                 outline: 0;
             }
+            img{
+                margin-right: 10px;
+            }
         </style>
 
         <title>Quotation Details</title>
@@ -132,7 +135,8 @@
                 <div class="cotainer col-md-11" id="pdf-content">
                     <div class="card flex py-4 rounded-bottom-0 border-bottom-0">
                         <!--<div class="card-header"><img src="images\OIP.jpeg" height="85px" style="margin-top:-10px;">-->
-                        <h2 class="text-center m-0">Insurify India Pvt Ltd</h2>
+                        <!--<h2 class="text-center m-0"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/>Insurify India Pvt Ltd</h2>-->
+                        <h2 class="text-center m-0"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/>Insurify India Pvt Ltd</h2>
                     </div>
                     <div class="card rounded-0 border-bottom-0">
                         <div class="card-header py-3">

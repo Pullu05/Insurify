@@ -14,7 +14,7 @@
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
-        <link rel="icon" href="Favicon.png">
+        <link href="images/logo.jpg" rel="icon">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
         <!-- Bootstrap CSS -->
