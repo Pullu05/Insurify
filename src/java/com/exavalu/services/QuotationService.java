@@ -148,4 +148,52 @@ public class QuotationService {
         }
         return result;
     }
+    
+    public static float getAvgPremium(){
+        
+        float avgPrem = 0;
+         try {
+
+            Connection con = JDBCConnectionManager.getConnection();
+
+            String sql = "SELECT avg(totalPremium) from quotation;";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+//            System.out.println("SQL: " + preparedStatement);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                avgPrem = rs.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+         return avgPrem;
+    }
+    
+    public static float getAvgCoverage(){
+        
+        float avgCvg = 0;
+         try {
+
+            Connection con = JDBCConnectionManager.getConnection();
+
+            String sql = "SELECT avg(idvValue) from quotation;";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+//            System.out.println("SQL: " + preparedStatement);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                avgCvg = rs.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+         return avgCvg;
+    }
 }

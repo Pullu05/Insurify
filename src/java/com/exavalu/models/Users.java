@@ -77,6 +77,11 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
                 ArrayList vehicleInfoList = VehicleInfoService.getAllVehicleInfo();
                 sessionMap.put("VehicleInfoList", vehicleInfoList);
 
+                float averagePremium = QuotationService.getAvgPremium();
+                sessionMap.put("AvgPrem",averagePremium);
+                
+                float averageCoverage = QuotationService.getAvgCoverage();
+                sessionMap.put("AvgCvg",averageCoverage);
                 result = "ADMIN";
             } else {
                 String errorMsg = "Either Email Address or Password is Wrong";
