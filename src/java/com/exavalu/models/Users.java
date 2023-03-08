@@ -97,7 +97,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
                 ArrayList quotationList = QuotationService.getQuotationList(this.email);
                 sessionMap.put("PrevQuotList", quotationList);
-                result = "USER";
+                    result = "USER";
             } else {
                 String errorMsg = "Either Email Address or Password is Wrong";
                 sessionMap.put("ErrorMsg", errorMsg);
@@ -105,7 +105,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
             }
         }
-
+        
         return result;
     }
 
@@ -174,5 +174,5 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    
 }

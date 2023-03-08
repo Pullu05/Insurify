@@ -17,6 +17,7 @@
             <a href="sign-up.jsp">
                 <button type="button" class="btn btn-outline-light me-2" >Sign-Up</button>
             </a>
+            <a href="#contact" class="get-started-btn scrollto">Contact Us</a>
         </c:if>
 
         <c:if test="${login_check!=null}">
@@ -24,6 +25,6 @@
                 <button type="button" class="btn btn-outline-light me-2" >Log Out</button>
             </a>
         </c:if>
-        <a href="#contact" class="get-started-btn scrollto">Contact Us</a>
+        
     </div>
 </div>

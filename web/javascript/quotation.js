@@ -93,7 +93,7 @@ async function sendQuotationToMail(event) {
                     msgElem.innerHTML = "Sent";
                     successIcon.classList.remove('d-none');
 
-                    setTimeout(() => document.querySelector('.btn-close').click(), 1500);
+                    setTimeout(() => document.querySelector('.btn-close').click(), 1200);
 
                 } else {
                     throw new Error("Oops! Something went wrong during sending of data from the " + formAction + " route");
@@ -110,6 +110,6 @@ async function sendQuotationToMail(event) {
                 setTimeout(() => {
                     msgElem.innerHTML = "Send";
                     successIcon.classList.add('d-none');
-                }, 1600);
+                }, 1300);
             });
 }
