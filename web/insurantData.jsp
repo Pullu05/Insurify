@@ -3,14 +3,14 @@
 <section class="rounded mt-3 formBlock">
     <form action="AddInsurantData" method = "post" onsubmit="submitFormAndChangeSection(event)" id="insurantDataForm">
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="firstName">First Name</label>
+            <label class="col-sm-4 col-form-label" for="firstName">First Name<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="text" id="firstName" class="form-control" name="firstName" value = "${insurance.firstName}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="lastName">Last Name</label>
+            <label class="col-sm-4 col-form-label" for="lastName">Last Name<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="text" id="lastName" class="form-control" name="lastName" value = "${insurance.lastName}" required>
             </div>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="aadhaarNo">Aadhaar No</label>
+            <label class="col-sm-4 col-form-label" for="aadhaarNo">Aadhaar No<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="text" id="aadhaarNo" class="form-control" name="aadhaarNo" value = "${insurance.aadhaarNo}" pattern="[0-9]{12}" required>
             </div>
@@ -32,14 +32,14 @@
 
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="age">Age</label>
+            <label class="col-sm-4 col-form-label" for="age">Age<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="number" id="age" class="form-control" name="age" value = "${insurance.age}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="medicalRecord">Medical Record</label>
+            <label class="col-sm-4 col-form-label" for="medicalRecord">Medical Record<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <select id="medicalRecord" name="medicalRecord" class="form-control" required>
                     <option value="" >Select Medical Record</option>
@@ -52,7 +52,7 @@
 
 
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Gender</label>
+                <label class="col-sm-4 col-form-label">Gender<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <p class="col">
                         <label>
@@ -67,13 +67,13 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label" for="streetAddress">Street Address</label>
+                <label class="col-sm-4 col-form-label" for="streetAddress">Street Address<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <input type="text" id="streetAddress" class="form-control" name="streetAddress" value = "${insurance.streetAddress}" required>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Country</label>
+            <label class="col-sm-4 col-form-label">Country<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <select id="country" class="form-control" name="country" required>
                     <option value="">&ndash; please select &ndash;</option>
@@ -88,13 +88,13 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="zipCode">Zip Code</label>
+            <label class="col-sm-4 col-form-label" for="zipCode">Zip Code<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="number" id="zipCode" class="form-control" name="zipCode" value = "${insurance.zipCode}" required>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="occupation">Occupation</label>
+            <label class="col-sm-4 col-form-label" for="occupation">Occupation<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <select id="occupation" name="occupation" class="form-control" value = "${insurance.occupation}" required>
                     <option value="">&ndash; please select &ndash;</option>
@@ -108,7 +108,7 @@
             </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label" for="hobbies">Hobbies</label>
+                <label class="col-sm-4 col-form-label" for="hobbies">Hobbies<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <input type="text" id="hobbies" class="form-control" name="hobbies" value = "${insurance.hobbies}" required>
             </div>

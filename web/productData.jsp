@@ -4,14 +4,14 @@
     <form action="AddProductData" method="post" onsubmit="submitFormAndChangeSection(event)" id="productDataForm">
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="startDate">Start Date</label>
+            <label class="col-sm-4 col-form-label" for="startDate">Start Date<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="date" class="form-control" id="startDate" name="startDate" type="text" placeholder="MM/DD/YYYY" class="datepicker" value = "${product.startDate}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="insuranceSum">Insurance Sum [$]</label>
+            <label class="col-sm-4 col-form-label" for="insuranceSum">Insurance Sum [$]<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <select id="insuranceSum" name="insuranceSum" class="form-control" value = "${product.insuranceSum}" required>
                     <option value="">&ndash; please select &ndash;</option>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label" for="meritRating">Merit Rating</label>
+                <label class="col-sm-4 col-form-label" for="meritRating">Merit Rating<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <select id="meritRating" name="meritRating" class="form-control" value = "${product.meritRating}" required>
                     <option value="">&ndash; please select &ndash;</option>
@@ -56,7 +56,7 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label" for="damageInsurance">Damage Insurance</label>
+                <label class="col-sm-4 col-form-label" for="damageInsurance">Damage Insurance<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <select id="damageInsurance" name="damageInsurance" class="form-control" value = "${product.damageInsurance}" required>
                     <option value="">&ndash; please select &ndash;</option>
@@ -68,7 +68,7 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label" for="courtesyCar">Courtesy Car</label>
+                <label class="col-sm-4 col-form-label" for="courtesyCar">Courtesy Car<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <select id="courtesyCar" name="courtesyCar" class="form-control" value = "${product.courtesyCar}" required>
                     <option value="">&ndash; please select &ndash;</option>

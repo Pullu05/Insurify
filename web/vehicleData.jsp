@@ -7,6 +7,7 @@
             crossorigin="anonymous">
     </script>
 
+
     <script>
 
         function fetchList(selectedId, targetId) {
@@ -26,14 +27,16 @@
     <form method = "POST" action="PreAddVehicleData" onsubmit="submitFormAndChangeSection(event)" id="vehicleDataForm">
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="vin">VIN</label>
+            <label  class="col-sm-4 col-form-label" for="vin">VIN<span  style="color:red"> *</span></label>
+              
             <div class="col-sm-6">
                 <input type="text" id="vin" class="form-control" name="vin" value = "${vehicle.vin}" required>
+             
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="make">Make</label>
+            <label class="col-sm-4 col-form-label" for="make">Make<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <select id="make" name="make" class="form-control" value = "${vehicle.make}" onchange="fetchList('make', 'model')" required>
                     <option value="" >Select a Maker</option>
@@ -46,7 +49,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="model">Model</label>
+            <label class="col-sm-4 col-form-label" for="model">Model<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <select id="model" name="model" class="form-control" value = "${vehicle.model}" required>
                     <option value="">Select a Model</option>
@@ -55,21 +58,21 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="enginePerformance">Engine Performance [kW]</label>
+            <label class="col-sm-4 col-form-label" for="enginePerformance">Engine Performance [kW]<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="number" id="enginePerformance" class="form-control" name="enginePerformance" value = "${vehicle.enginePerformance}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="dateOfManufacture">Date of Manufacture</label>
+            <label class="col-sm-4 col-form-label" for="dateOfManufacture">Date of Manufacture<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="date" class="form-control" id="dateOfManufacture" name="dateOfManufacture" type="text" placeholder="MM/DD/YYYY" class="datepicker" value = "${vehicle.dateOfManufacture}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="numberOfSeats">Number of Seats</label>
+            <label class="col-sm-4 col-form-label" for="numberOfSeats">Number of Seats<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <select id="numberOfSeats" name="numberOfSeats" class="form-control" value = "${vehicle.numberOfSeats}" required>
                     <option value="">&ndash; please select &ndash;</option>
@@ -86,7 +89,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label" for="fuelType">Fuel Type</label>
+                <label class="col-sm-4 col-form-label" for="fuelType">Fuel Type<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <select id="fuelType" name="fuelType" class="form-control" value = "${vehicle.fuelType}" required>
                     <option value="">&ndash; please select &ndash;</option>
@@ -99,19 +102,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label" for="listPrice">List Price [&#36;]</label>
+                <label class="col-sm-4 col-form-label" for="listPrice">List Price [&#36;]<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <input type="number" id="listPrice" class="form-control" name="listPrice" value = "${vehicle.listPrice}" required>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="licensePlateNumber">License Plate Number</label>
+            <label class="col-sm-4 col-form-label" for="licensePlateNumber">License Plate Number<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="text" id="licensePlateNumber" class="form-control" name="licensePlateNumber" value = "${vehicle.licensePlateNumber}" required>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="annualMileage">Annual Mileage [mi]</label>
+            <label class="col-sm-4 col-form-label" for="annualMileage">Annual Mileage [mi]<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
                 <input type="number" id="annualMileage" class="form-control" name="annualMileage" value = "${vehicle.annualMileage}" required>
             </div>
