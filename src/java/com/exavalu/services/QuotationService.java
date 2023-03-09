@@ -31,7 +31,7 @@ public class QuotationService {
         }
     }
 
-    public  Boolean addQuotationData(Quotation quotation) {
+    public boolean addQuotationData(Quotation quotation) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -70,7 +70,7 @@ public class QuotationService {
         return result;
     }
 
-    public  ArrayList getQuotationList(String email) {
+    public ArrayList getQuotationList(String email) {
         ArrayList quotationList = new ArrayList();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -101,7 +101,7 @@ public class QuotationService {
         return quotationList;
     }
 
-    public  Quotation getQuotation(int quotaionId) {
+    public Quotation getQuotation(int quotaionId) {
         Quotation quotation = new Quotation();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -138,7 +138,7 @@ public class QuotationService {
         return quotation;
     }
     
-    public  boolean updateStatus(int quotaionId,String value) {
+    public boolean updateStatus(int quotaionId,String value) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -162,7 +162,7 @@ public class QuotationService {
         return result;
     }
     
-    public  float getAvgPremium(){
+    public float getAvgPremium(){
         
         float avgPrem = 0;
          try {
@@ -186,7 +186,7 @@ public class QuotationService {
          return avgPrem;
     }
     
-    public  float getAvgCoverage(){
+    public float getAvgCoverage(){
         
         float avgCvg = 0;
          try {
