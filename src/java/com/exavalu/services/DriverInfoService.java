@@ -31,7 +31,7 @@ public class DriverInfoService {
         }
     }
 
-    public  ArrayList getAllDriverInfo() {
+    public ArrayList getAllDriverInfo() {
         ArrayList driverInfoList = new ArrayList();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -56,7 +56,7 @@ public class DriverInfoService {
         return driverInfoList;
     }
 
-    public  Boolean AddDriverInfo(DriverInfo driverInfo) {
+    public boolean AddDriverInfo(DriverInfo driverInfo) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -83,7 +83,7 @@ public class DriverInfoService {
         return result;
     }
 
-    public  DriverInfo getDriverInfo(int id) {
+    public DriverInfo getDriverInfo(int id) {
         DriverInfo driverinfo = new DriverInfo();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -107,7 +107,7 @@ public class DriverInfoService {
         return driverinfo;
     }
 
-    public  boolean updateDriverInfo(DriverInfo driverInfo, int id) {
+    public boolean updateDriverInfo(DriverInfo driverInfo, int id) {
 
         boolean result = false;
         try {
