@@ -29,7 +29,7 @@ public class PlanService {
         }
     }
     
-    public  Boolean addPlanName(Plan plan) {
+    public boolean addPlanName(Plan plan) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
