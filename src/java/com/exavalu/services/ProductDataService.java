@@ -16,10 +16,23 @@ import org.apache.log4j.Logger;
  * @author Nairwita Chakraborty
  */
 public class ProductDataService {
+     public static ProductDataService productDataService= null;
+    
+    public static ProductDataService getInstance()
+    {
+        if(productDataService==null)
+        {
+            return new ProductDataService();
+        }
+        else
+        {
+            return productDataService;
+        }
+    }
 
     private static final Logger logger = Logger.getLogger(ProductDataService.class);
 
-    public static boolean addProductData(ProductData product, String email) {
+    public  boolean addProductData(ProductData product, String email) {
         boolean result = false;
 
         try {

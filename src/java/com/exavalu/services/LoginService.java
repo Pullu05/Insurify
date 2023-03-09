@@ -18,8 +18,21 @@ import org.apache.log4j.Logger;
  * @author RISHAV DUTTA
  */
 public class LoginService {
+    public static LoginService loginService= null;
+    
+    public static LoginService getInstance()
+    {
+        if(loginService==null)
+        {
+            return new LoginService();
+        }
+        else
+        {
+            return loginService;
+        }
+    }
 
-    public static boolean doLogin(Users user) {
+    public  boolean doLogin(Users user) {
         boolean success = false;
 
         String sql = "Select * from user where email=? and password=?";
@@ -45,7 +58,7 @@ public class LoginService {
         return success;
     }
 
-    public static Users getUser(String emailAddress) {
+    public  Users getUser(String emailAddress) {
         Connection con = JDBCConnectionManager.getConnection();
         Users user = new Users();
         try {
@@ -70,7 +83,7 @@ public class LoginService {
         return user;
     }
 
-    public static int doGetRoleId(String email) {
+    public  int doGetRoleId(String email) {
         int roleId = 0;
         String sql = "select roleId from user where email=?";
         try {
@@ -90,7 +103,7 @@ public class LoginService {
         return roleId;
     }
 
-    public static boolean doSignUp(Users user) {
+    public  boolean doSignUp(Users user) {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
         String sql = "INSERT INTO user(email,password,firstName,lastName,roleId)" + "VALUES(? ,? ,? ,?, ?)";

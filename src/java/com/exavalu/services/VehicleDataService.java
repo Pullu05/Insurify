@@ -19,8 +19,21 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class VehicleDataService {
+    public static VehicleDataService vehicleDataService= null;
+    
+    public static VehicleDataService getInstance()
+    {
+        if(vehicleDataService==null)
+        {
+            return new VehicleDataService();
+        }
+        else
+        {
+            return vehicleDataService;
+        }
+    }
 
-    public static boolean doVehicleDataEntry(Vehicle vehicle,String email) {
+    public  boolean doVehicleDataEntry(Vehicle vehicle,String email) {
         boolean result = false;
 
         try {
@@ -53,7 +66,7 @@ public class VehicleDataService {
 
     }
     
-    public static int getVehicleWeightage(Vehicle vehicle) {
+    public  int getVehicleWeightage(Vehicle vehicle) {
         int weightageValue = 0;
 
         try {
@@ -80,7 +93,7 @@ public class VehicleDataService {
         return weightageValue;
     }
     
-    public static ArrayList getAllmakers() {
+    public  ArrayList getAllmakers() {
         ArrayList makeList = new ArrayList();
 
         String sql = "Select * from makers";
@@ -105,7 +118,7 @@ public class VehicleDataService {
         return makeList;
     }
     
-    public static ArrayList getAllmodels(String makeCode) {
+    public  ArrayList getAllmodels(String makeCode) {
         ArrayList modelList = new ArrayList();
 
         String sql = "Select * from models where makeCode = ?";

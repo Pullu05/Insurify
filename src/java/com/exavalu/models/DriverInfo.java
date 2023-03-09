@@ -43,11 +43,11 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     public String doAddDriverInfo() throws Exception {
         String result = "FAILURE";
 
-        boolean success = DriverInfoService.AddDriverInfo(this);
+        boolean success = DriverInfoService.getInstance().AddDriverInfo(this);
 
         if (success) {
             System.out.println("returning Success from doAddDriverInfo method");
-            ArrayList driverInfoList = DriverInfoService.getAllDriverInfo();
+            ArrayList driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
             sessionMap.put("DriverInfoList", driverInfoList);
             result = "SUCCESS";
         } else {
@@ -58,7 +58,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     }
 
     public String doEditDriverInfo() throws Exception {
-        DriverInfo driverInfo = DriverInfoService.getDriverInfo(this.id);
+        DriverInfo driverInfo = DriverInfoService.getInstance().getDriverInfo(this.id);
 
         sessionMap.put("SpecificDriverInfo", driverInfo);
 
@@ -67,8 +67,8 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
 
     public String doUpdateDriverInfo() throws Exception {
         boolean result = false;
-        result = DriverInfoService.updateDriverInfo(this, this.id);
-        ArrayList driverInfoList = DriverInfoService.getAllDriverInfo();
+        result = DriverInfoService.getInstance().updateDriverInfo(this, this.id);
+        ArrayList driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
         sessionMap.put("DriverInfoList", driverInfoList);
         return "SUCCESS";
     }

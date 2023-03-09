@@ -44,11 +44,11 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public String doAddVehicleInfo() throws Exception {
         String result = "FAILURE";
 
-        boolean success = VehicleInfoService.AddVehicleInfo(this);
+        boolean success = VehicleInfoService.getInstance().AddVehicleInfo(this);
 
         if (success) {
             System.out.println("returning Success from doAddVehicleInfo method");
-            ArrayList vehicleInfoList = VehicleInfoService.getAllVehicleInfo();
+            ArrayList vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
             sessionMap.put("VehicleInfoList", vehicleInfoList);
             result = "SUCCESS";
         } else {
@@ -59,7 +59,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     }
 
     public String doEditVehicleInfo() throws Exception {
-        VehicleInfo vehicleInfo = VehicleInfoService.getVehicleInfo(this.vehicleId);
+        VehicleInfo vehicleInfo = VehicleInfoService.getInstance().getVehicleInfo(this.vehicleId);
 
         sessionMap.put("SpecificVehicleInfo", vehicleInfo);
 
@@ -68,8 +68,8 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
 
     public String doUpdateVehicleInfo() throws Exception {
         boolean result = false;
-        result = VehicleInfoService.updateVehicleInfo(this, this.vehicleId);
-        ArrayList vehicleInfoList = VehicleInfoService.getAllVehicleInfo();
+        result = VehicleInfoService.getInstance().updateVehicleInfo(this, this.vehicleId);
+        ArrayList vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
         sessionMap.put("VehicleInfoList", vehicleInfoList);
         return "SUCCESS";
     }

@@ -16,8 +16,21 @@ import java.sql.SQLException;
  * @author Subhadip
  */
 public class PolicyService {
+    public static PolicyService policyService= null;
+    
+    public static PolicyService getInstance()
+    {
+        if(policyService==null)
+        {
+            return new PolicyService();
+        }
+        else
+        {
+            return policyService;
+        }
+    }
 
-    public static Policy getPolicyInfo(int weightage) {
+    public  Policy getPolicyInfo(int weightage) {
         Policy policy = new Policy();
 
         int weightageId;

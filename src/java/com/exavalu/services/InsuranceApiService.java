@@ -16,8 +16,21 @@ import java.sql.SQLException;
  * @author Subhadip Sarkar
  */
 public class InsuranceApiService {
+     public static InsuranceApiService insuranceApiService = null;
+    
+    public  static InsuranceApiService getInstance()
+    {
+        if(insuranceApiService==null)
+        {
+            return new InsuranceApiService();
+        }
+        else
+        {
+            return insuranceApiService;
+        }
+    }
 
-    public static int calculateWeightage(InsuranceAPIData insuranceData) {
+    public  int calculateWeightage(InsuranceAPIData insuranceData) {
 
         int weightage = 0;
 
@@ -61,7 +74,7 @@ public class InsuranceApiService {
         return weightage;
     }
 
-    public static boolean storeIntoDB(InsuranceAPIData insuranceData) {
+    public  boolean storeIntoDB(InsuranceAPIData insuranceData) {
         boolean result = false;
         try {
 
@@ -92,7 +105,7 @@ public class InsuranceApiService {
 
     }
 
-    public static int getInsuranceApiWeightage(String aadhaarNo) {
+    public  int getInsuranceApiWeightage(String aadhaarNo) {
         int weightage = 0;
         InsuranceAPIData insuranceData = new InsuranceAPIData();
 

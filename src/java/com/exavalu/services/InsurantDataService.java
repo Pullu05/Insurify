@@ -17,10 +17,23 @@ import org.apache.log4j.Logger;
  * @author Admin
  */
 public class InsurantDataService {
+     public static InsurantDataService insurantDataService = null;
+    
+    public static InsurantDataService getInstance()
+    {
+        if(insurantDataService==null)
+        {
+            return new InsurantDataService();
+        }
+        else
+        {
+            return insurantDataService;
+        }
+    }
 
     private static final Logger logger = Logger.getLogger(InsurantDataService.class);
 
-    public static boolean doInsurantDataEntry(InsurantData insurantData) {
+    public  boolean doInsurantDataEntry(InsurantData insurantData) {
         boolean result = false;
 
         try {
@@ -58,7 +71,7 @@ public class InsurantDataService {
 
     }
 
-    public static int getDriverWeightage(InsurantData insurantData) {
+    public  int getDriverWeightage(InsurantData insurantData) {
         //DriverInfo driverInfo = new DriverInfo();
 
         int weightageId = 0;
