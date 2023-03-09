@@ -17,8 +17,21 @@ import java.util.ArrayList;
  * @author kumar
  */
 public class VehicleInfoService {
+    public static VehicleInfoService vehicleInfoService= null;
+    
+    public static VehicleInfoService getInstance()
+    {
+        if(vehicleInfoService==null)
+        {
+            return new VehicleInfoService();
+        }
+        else
+        {
+            return vehicleInfoService;
+        }
+    }
 
-    public static ArrayList getAllVehicleInfo() {
+    public  ArrayList getAllVehicleInfo() {
         ArrayList vehicleInfoList = new ArrayList();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -44,7 +57,7 @@ public class VehicleInfoService {
         return vehicleInfoList;
     }
 
-    public static Boolean AddVehicleInfo(VehicleInfo vehicleInfo) {
+    public  Boolean AddVehicleInfo(VehicleInfo vehicleInfo) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -72,7 +85,7 @@ public class VehicleInfoService {
         return result;
     }
 
-    public static VehicleInfo getVehicleInfo(int vehicleId) {
+    public  VehicleInfo getVehicleInfo(int vehicleId) {
         VehicleInfo vehicleInfo = new VehicleInfo();
 
         try {
@@ -98,7 +111,7 @@ public class VehicleInfoService {
         return vehicleInfo;
     }
 
-    public static boolean updateVehicleInfo(VehicleInfo vehicleInfo, int vehicleId) {
+    public  boolean updateVehicleInfo(VehicleInfo vehicleInfo, int vehicleId) {
 
         boolean result = false;
         try {

@@ -74,12 +74,12 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
 
         insuranceInfo.setAadhaarNo(aadhaarNo);
 
-        int existingWeightageData = InsuranceApiService.getInsuranceApiWeightage(aadhaarNo);
+        int existingWeightageData = InsuranceApiService.getInstance().getInsuranceApiWeightage(aadhaarNo);
 
         if (existingWeightageData == 0) {
             System.out.println("Null Insurance Data");
 
-            existingWeightageData = InsuranceApiService.calculateWeightage(insuranceInfo);
+            existingWeightageData = InsuranceApiService.getInstance().calculateWeightage(insuranceInfo);
             insuranceInfo.setWeightage(existingWeightageData);
 
             System.out.println("----------------------------------");
@@ -90,7 +90,7 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
             System.out.println("drivingExperience : " + insuranceInfo.getDrivingExperience());
             System.out.println("weightage : " + insuranceInfo.getWeightage());
 
-            success = InsuranceApiService.storeIntoDB(insuranceInfo);
+            success = InsuranceApiService.getInstance().storeIntoDB(insuranceInfo);
             if (success) {
                 result = "SUCCESS";
             }

@@ -55,12 +55,12 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String AddQuotationData() throws Exception {
         String result = "FAILURE";
 
-        boolean success = QuotationService.addQuotationData(this);
+        boolean success = QuotationService.getInstance().addQuotationData(this);
         if (success) {
             System.out.println("Successfully Quotation Data Added");
             result = "SUCCESS";
             sessionMap.put("QuotationData", this);
-            ArrayList quotationList = QuotationService.getQuotationList(this.email);
+            ArrayList quotationList = QuotationService.getInstance().getQuotationList(this.email);
             sessionMap.put("PrevQuotList", quotationList);
         } else {
             System.out.println("OOps your Quotation Data is not added");
@@ -70,7 +70,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
 
     public String showQuotationData() throws Exception {
         String result = "SUCCESS";
-        Quotation quotation = QuotationService.getQuotation(this.quotationId);
+        Quotation quotation = QuotationService.getInstance().getQuotation(this.quotationId);
         sessionMap.put("IdSpecificQuotataion", quotation);
         return result;
     }
@@ -81,27 +81,27 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
         int quotId = quot.getQuotationId();
         String quotEmail = quot.getEmail();
         if (this.status.equals("1")) {
-            boolean success = QuotationService.updateStatus(quotId, "ACCEPTED");
+            boolean success = QuotationService.getInstance().updateStatus(quotId, "ACCEPTED");
             if (success) {
                 result = "SUCCESS";
-                ArrayList quotationList = QuotationService.getQuotationList(this.email);
+                ArrayList quotationList = QuotationService.getInstance().getQuotationList(this.email);
                 sessionMap.put("PrevQuotList", quotationList);
             } else {
                 System.out.println("OOps your update is failed");
             }
         }
         if (this.status.equals("0")) {
-            boolean success = QuotationService.updateStatus(quotId, "REJECTED");
+            boolean success = QuotationService.getInstance().updateStatus(quotId, "REJECTED");
             if (success) {
                 result = "SUCCESS";
-                ArrayList quotationList = QuotationService.getQuotationList(this.email);
+                ArrayList quotationList = QuotationService.getInstance().getQuotationList(this.email);
                 sessionMap.put("PrevQuotList", quotationList);
             } else {
                 System.out.println("OOps your update is failed");
             }
         }
 
-        ArrayList quotationList = QuotationService.getQuotationList(quotEmail);
+        ArrayList quotationList = QuotationService.getInstance().getQuotationList(quotEmail);
         sessionMap.put("PrevQuotList", quotationList);
         return result;
     }

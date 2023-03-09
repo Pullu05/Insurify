@@ -17,8 +17,21 @@ import java.util.ArrayList;
  * @author RISHAV DUTTA
  */
 public class DriverInfoService {
+    public static DriverInfoService driverInfoService = null;
+    
+    public static DriverInfoService getInstance()
+    {
+        if(driverInfoService==null)
+        {
+            return new DriverInfoService();
+        }
+        else
+        {
+            return driverInfoService;
+        }
+    }
 
-    public static ArrayList getAllDriverInfo() {
+    public  ArrayList getAllDriverInfo() {
         ArrayList driverInfoList = new ArrayList();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -43,7 +56,7 @@ public class DriverInfoService {
         return driverInfoList;
     }
 
-    public static Boolean AddDriverInfo(DriverInfo driverInfo) {
+    public  Boolean AddDriverInfo(DriverInfo driverInfo) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -70,7 +83,7 @@ public class DriverInfoService {
         return result;
     }
 
-    public static DriverInfo getDriverInfo(int id) {
+    public  DriverInfo getDriverInfo(int id) {
         DriverInfo driverinfo = new DriverInfo();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -94,7 +107,7 @@ public class DriverInfoService {
         return driverinfo;
     }
 
-    public static boolean updateDriverInfo(DriverInfo driverInfo, int id) {
+    public  boolean updateDriverInfo(DriverInfo driverInfo, int id) {
 
         boolean result = false;
         try {

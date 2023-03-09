@@ -39,7 +39,7 @@ public class Plan extends ActionSupport implements ApplicationAware, SessionAwar
 
     public String doAddPlanName() throws Exception {
         String result = "FAILURE";
-        boolean planSuccess = PlanService.addPlanName(this);
+        boolean planSuccess = PlanService.getInstance().addPlanName(this);
         if (planSuccess) {
             System.out.println("Successfully Added Plan Name");
             sessionMap.put("Plan", this);

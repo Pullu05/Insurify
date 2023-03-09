@@ -17,8 +17,21 @@ import java.util.ArrayList;
  * @author RISHAV DUTTA
  */
 public class QuotationService {
+     public static QuotationService quotationService= null;
+    
+    public static QuotationService getInstance()
+    {
+        if(quotationService==null)
+        {
+            return new QuotationService();
+        }
+        else
+        {
+            return quotationService;
+        }
+    }
 
-    public static Boolean addQuotationData(Quotation quotation) {
+    public  Boolean addQuotationData(Quotation quotation) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -57,7 +70,7 @@ public class QuotationService {
         return result;
     }
 
-    public static ArrayList getQuotationList(String email) {
+    public  ArrayList getQuotationList(String email) {
         ArrayList quotationList = new ArrayList();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -88,7 +101,7 @@ public class QuotationService {
         return quotationList;
     }
 
-    public static Quotation getQuotation(int quotaionId) {
+    public  Quotation getQuotation(int quotaionId) {
         Quotation quotation = new Quotation();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -125,7 +138,7 @@ public class QuotationService {
         return quotation;
     }
     
-    public static boolean updateStatus(int quotaionId,String value) {
+    public  boolean updateStatus(int quotaionId,String value) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -149,7 +162,7 @@ public class QuotationService {
         return result;
     }
     
-    public static float getAvgPremium(){
+    public  float getAvgPremium(){
         
         float avgPrem = 0;
          try {
@@ -173,7 +186,7 @@ public class QuotationService {
          return avgPrem;
     }
     
-    public static float getAvgCoverage(){
+    public  float getAvgCoverage(){
         
         float avgCvg = 0;
          try {

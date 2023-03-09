@@ -82,19 +82,19 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public String doGetTotalWeightage() throws Exception {
         String result = "SUCCESS";
         
-        int vehicleWeightage = VehicleDataService.getVehicleWeightage((Vehicle) sessionMap.get("VehicleData"));
+        int vehicleWeightage = VehicleDataService.getInstance().getVehicleWeightage((Vehicle) sessionMap.get("VehicleData"));
 
-        int insurantWeightage = InsurantDataService.getDriverWeightage((InsurantData) sessionMap.get("InsurantData"));
+        int insurantWeightage = InsurantDataService.getInstance().getDriverWeightage((InsurantData) sessionMap.get("InsurantData"));
 
         InsurantData insurantData = (InsurantData) sessionMap.get("InsurantData");
         String aadhaarNo = insurantData.getAadhaarNo();
-        int apiWeightage = InsuranceApiService.getInsuranceApiWeightage(aadhaarNo);
+        int apiWeightage = InsuranceApiService.getInstance().getInsuranceApiWeightage(aadhaarNo);
 
         int totalWeightage = vehicleWeightage + insurantWeightage + apiWeightage;
 
         System.out.println(vehicleWeightage + "  " + insurantWeightage + "  " + apiWeightage);
 
-        Policy policy = PolicyService.getPolicyInfo(totalWeightage);
+        Policy policy = PolicyService.getInstance().getPolicyInfo(totalWeightage);
         int coverage = policy.getCoverage();
         int premium = policy.getPremium();
         

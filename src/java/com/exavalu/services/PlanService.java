@@ -15,8 +15,21 @@ import java.sql.SQLException;
  * @author RISHAV DUTTA
  */
 public class PlanService {
+    public static PlanService planService= null;
     
-    public static Boolean addPlanName(Plan plan) {
+    public static PlanService getInstance()
+    {
+        if(planService==null)
+        {
+            return new PlanService();
+        }
+        else
+        {
+            return planService;
+        }
+    }
+    
+    public  Boolean addPlanName(Plan plan) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();

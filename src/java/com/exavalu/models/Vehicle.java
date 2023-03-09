@@ -51,7 +51,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         String result = "FAILURE";
 
         if (this.getMake() != null) {
-            ArrayList modList = VehicleDataService.getAllmodels(this.make);
+            ArrayList modList = VehicleDataService.getInstance().getAllmodels(this.make);
             System.out.println("Successfully Fetch Models");
             sessionMap.put("ModelList", modList);
             result = "MODELLIST";
@@ -68,7 +68,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         String result = "FAILURE";
         String user_email = (String) sessionMap.get("userEmail");
         System.out.println(user_email);
-        boolean success = VehicleDataService.doVehicleDataEntry(this, user_email);
+        boolean success = VehicleDataService.getInstance().doVehicleDataEntry(this, user_email);
 //        ArrayList modList = LoginService.getAllmodels(this.make);
         if (success) {
             System.out.println("Successfully Added Vehicle Data");

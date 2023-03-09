@@ -48,8 +48,8 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public String doLogin() throws Exception {
         String result = "FAILURE";
 
-        boolean success = LoginService.doLogin(this);
-        ArrayList makeList = VehicleDataService.getAllmakers();
+        boolean success = LoginService.getInstance().doLogin(this);
+        ArrayList makeList = VehicleDataService.getInstance().getAllmakers();
         sessionMap.put("MakeList", makeList);
 
         if (!success) {
@@ -57,7 +57,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
             sessionMap.put("ErrorMsg", errorMsg);
             System.out.println("returning Failure from doLogin method");
         }
-        int RoleId = LoginService.doGetRoleId(this.email);
+        int RoleId = LoginService.getInstance().doGetRoleId(this.email);
 
         System.out.println(RoleId);
 
@@ -67,20 +67,20 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
                 System.out.println("returning Success from doLogin method");
                 sessionMap.put("LoggedIn", this);
 
-                Users user = LoginService.getUser(this.email);
+                Users user = LoginService.getInstance().getUser(this.email);
 
                 sessionMap.put("User", user);
 
-                ArrayList driverInfoList = DriverInfoService.getAllDriverInfo();
+                ArrayList driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
                 sessionMap.put("DriverInfoList", driverInfoList);
 
-                ArrayList vehicleInfoList = VehicleInfoService.getAllVehicleInfo();
+                ArrayList vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
                 sessionMap.put("VehicleInfoList", vehicleInfoList);
 
-                float averagePremium = QuotationService.getAvgPremium();
+                float averagePremium = QuotationService.getInstance().getAvgPremium();
                 sessionMap.put("AvgPrem",averagePremium);
                 
-                float averageCoverage = QuotationService.getAvgCoverage();
+                float averageCoverage = QuotationService.getInstance().getAvgCoverage();
                 sessionMap.put("AvgCvg",averageCoverage);
                 result = "ADMIN";
             } else {
@@ -94,13 +94,13 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
             System.out.println(success);
             if (success) {
                 sessionMap.put("LoggedIn", this);
-                Users user = LoginService.getUser(this.email);
+                Users user = LoginService.getInstance().getUser(this.email);
                 sessionMap.put("User", user);
                 sessionMap.put("UserLoggedIn", user);
                 sessionMap.put("userEmail", user.getEmail());
                 sessionMap.put("MakeList", makeList);
 
-                ArrayList quotationList = QuotationService.getQuotationList(this.email);
+                ArrayList quotationList = QuotationService.getInstance().getQuotationList(this.email);
                 sessionMap.put("PrevQuotList", quotationList);
                     result = "USER";
             } else {
@@ -123,7 +123,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
         sessionMap.clear();
         String result = "FAILURE";
 
-        boolean success = LoginService.doSignUp(this);
+        boolean success = LoginService.getInstance().doSignUp(this);
 
         if (success) {
             System.out.println("returning Success from doSignUp method");

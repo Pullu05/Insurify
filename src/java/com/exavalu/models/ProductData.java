@@ -47,7 +47,7 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
         String result = "FAILURE";
         String user_email = (String) sessionMap.get("userEmail");
         System.out.println(user_email);
-        boolean success = ProductDataService.addProductData(this, user_email);
+        boolean success = ProductDataService.getInstance().addProductData(this, user_email);
 
         if (success) {
             System.out.println("Successfully added product data");
