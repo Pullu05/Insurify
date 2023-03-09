@@ -31,7 +31,7 @@ public class VehicleInfoService {
         }
     }
 
-    public  ArrayList getAllVehicleInfo() {
+    public ArrayList getAllVehicleInfo() {
         ArrayList vehicleInfoList = new ArrayList();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -57,7 +57,7 @@ public class VehicleInfoService {
         return vehicleInfoList;
     }
 
-    public  Boolean AddVehicleInfo(VehicleInfo vehicleInfo) {
+    public boolean AddVehicleInfo(VehicleInfo vehicleInfo) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -85,7 +85,7 @@ public class VehicleInfoService {
         return result;
     }
 
-    public  VehicleInfo getVehicleInfo(int vehicleId) {
+    public VehicleInfo getVehicleInfo(int vehicleId) {
         VehicleInfo vehicleInfo = new VehicleInfo();
 
         try {
@@ -111,7 +111,7 @@ public class VehicleInfoService {
         return vehicleInfo;
     }
 
-    public  boolean updateVehicleInfo(VehicleInfo vehicleInfo, int vehicleId) {
+    public boolean updateVehicleInfo(VehicleInfo vehicleInfo, int vehicleId) {
 
         boolean result = false;
         try {
