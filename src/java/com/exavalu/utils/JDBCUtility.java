@@ -47,12 +47,17 @@ public class JDBCUtility {
         // Private constructor
     }
 
+    /**
+     *
+     * Description: It is the Instance method for JDBCUtility class
+     *
+     * @return It returns the created object of JDBCUtility
+     */
     public static JDBCUtility getInstanceOfJDBCUtility() {
         if (jdbcUtility == null) {
             jdbcUtility = new JDBCUtility();
         }
         return jdbcUtility;
     }
-
 
 }

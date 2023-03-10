@@ -12,25 +12,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * Description: The PolicyService public class represents a class that will
+ * contain the methods to get the policy details using weightage. The premium
+ * and the coverage is generated based on different weightage value
  *
  * @author Subhadip
  */
 public class PolicyService {
-    public static PolicyService policyService= null;
-    
-    public static PolicyService getInstance()
-    {
-        if(policyService==null)
-        {
+
+    public static PolicyService policyService = null;
+
+    /**
+     *
+     * Description: It is the Instance method for PolicyService class
+     *
+     * @return It returns the created object of PolicyService
+     */
+    public static PolicyService getInstance() {
+        if (policyService == null) {
             return new PolicyService();
-        }
-        else
-        {
+        } else {
             return policyService;
         }
     }
 
-    public  Policy getPolicyInfo(int weightage) {
+    /**
+     *
+     * Description: The getPolicyInfo method is used to get policy information based on the weightage
+     * @param weightage it is the total weightage, by using it the premium and the coverage will be calculated
+     * @return this method returns the Policy details like premium and the coverage for a particular weightage
+     */
+    public Policy getPolicyInfo(int weightage) {
         Policy policy = new Policy();
 
         int weightageId;
@@ -68,7 +80,7 @@ public class PolicyService {
             while (rs.next()) {
                 policy.setCoverage(rs.getInt("coverage"));
                 policy.setPremium(rs.getInt("premium"));
-                
+
             }
 
         } catch (SQLException ex) {

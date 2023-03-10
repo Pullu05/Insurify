@@ -20,7 +20,8 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
- *
+ * Description: The Users public class represents a class that will
+ * contain the methods for login, logout, sign-up, validate the user email while login and get the role id based on user and admin
  * @author RISHAV DUTTA
  */
 public class Users extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
@@ -44,7 +45,12 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     private int roleId;
     private String firstName;
     private String lastName;
-
+    /**
+     *
+     * Description: The doLogin method is used to do the login by validating the email, password and role id 
+     * 
+     * @return it returns a string which is mapped to the struts.xml
+     */
     public String doLogin() throws Exception {
         String result = "FAILURE";
 
@@ -113,12 +119,22 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
         
         return result;
     }
-
+    /**
+     *
+     * Description: The doLogout method is used to do the logout by clearing the session for the user
+     * 
+     * @return it returns a string which is mapped to the struts.xml
+     */
     public String doLogout() throws Exception {
         sessionMap.clear();
         return "SUCCESS";
     }
-
+    /**
+     *
+     * Description: The doSignUp method is used to do the SignUp by a new user
+     * 
+     * @return it returns a string which is mapped to the struts.xml
+     */
     public String doSignUp() throws Exception {
         sessionMap.clear();
         String result = "FAILURE";
@@ -139,43 +155,83 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
         return result;
     }
-
+    /**
+     * Getter method of Email.
+     *
+     * @return it returns the Email of the user
+     */
     public String getEmail() {
         return email;
     }
-
+    /**
+     * Setter method of Email.
+     *
+     * @param email it denotes the Email of the user
+     */
     public void setEmail(String email) {
         this.email = email;
     }
-
+    /**
+     * Getter method of Password.
+     *
+     * @return it returns the Password of the user
+     */
     public String getPassword() {
         return password;
     }
-
+    /**
+     * Setter method of Password.
+     *
+     * @param password it denotes the Password of the user
+     */
     public void setPassword(String password) {
         this.password = password;
     }
-
+    /**
+     * Getter method of RoleId.
+     *
+     * @return it returns the RoleId of the user
+     */
     public int getRoleId() {
         return roleId;
     }
-
+    /**
+     * Setter method of RoleId.
+     *
+     * @param roleId it denotes the RoleId of the user
+     */
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
-
+    /**
+     * Getter method of FirstName.
+     *
+     * @return it returns the FirstName of the user
+     */
     public String getFirstName() {
         return firstName;
     }
-
+    /**
+     * Setter method of FirstName.
+     *
+     * @param firstName it denotes the FirstName of the user
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    /**
+     * Getter method of LastName.
+     *
+     * @return it returns the LastName of the user
+     */
     public String getLastName() {
         return lastName;
     }
-
+    /**
+     * Setter method of LastName.
+     *
+     * @param lastName it denotes the LastName of the user
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
