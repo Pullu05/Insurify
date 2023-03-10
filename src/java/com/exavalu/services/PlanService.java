@@ -11,24 +11,37 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
+ * Description: The PlanService public class represents a class that will
+ * contain the methods to add the plan name to the DB
  *
  * @author RISHAV DUTTA
  */
 public class PlanService {
-    public static PlanService planService= null;
-    
-    public static PlanService getInstance()
-    {
-        if(planService==null)
-        {
+
+    public static PlanService planService = null;
+
+    /**
+     *
+     * Description: It is the Instance method for PlanService class
+     *
+     * @return It returns the created object of PlanService
+     */
+    public static PlanService getInstance() {
+        if (planService == null) {
             return new PlanService();
-        }
-        else
-        {
+        } else {
             return planService;
         }
     }
-    
+    /**
+     *
+     * Description: The addPlanName method is used to add the
+     * plan name to the DB
+     * @param plan it consists of plan name and plan id
+     * @return this method returns a boolean type which denotes the status of
+     * adding the plan name( True if successfully added to the DB,
+     * otherwise False )
+     */
     public boolean addPlanName(Plan plan) {
         boolean result = false;
         try {
@@ -51,5 +64,5 @@ public class PlanService {
 
         return result;
     }
-    
+
 }

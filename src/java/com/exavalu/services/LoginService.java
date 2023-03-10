@@ -10,29 +10,41 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import org.apache.log4j.Logger;
 
 /**
+ * Description: The LoginService public class represents a class that will
+ * contain the methods for login, sign-up, validate the user email while login and get the role id based on user and admin
  *
  * @author RISHAV DUTTA
  */
 public class LoginService {
-    public static LoginService loginService= null;
-    
-    public static LoginService getInstance()
-    {
-        if(loginService==null)
-        {
+
+    public static LoginService loginService = null;
+
+    /**
+     *
+     * Description: It is the Instance method for LoginService class
+     *
+     * @return It returns the created object of LoginService
+     */
+    public static LoginService getInstance() {
+        if (loginService == null) {
             return new LoginService();
-        }
-        else
-        {
+        } else {
             return loginService;
         }
     }
 
-    public  boolean doLogin(Users user) {
+    /**
+     *
+     * Description: The doLogin method is used to do the login by validating the email and password 
+     * @param user it is the user datatype/model which has properties like email,password,role-id
+     * 
+     * @return this method returns a boolean type which denotes the status of
+     * login by the user( True if successfully logged in,
+     * otherwise False )
+     */
+    public boolean doLogin(Users user) {
         boolean success = false;
 
         String sql = "Select * from user where email=? and password=?";
@@ -58,7 +70,13 @@ public class LoginService {
         return success;
     }
 
-    public  Users getUser(String emailAddress) {
+    /**
+     *
+     * Description: The getUser method is used to get the particular user using the email 
+     * @param emailAddress email address of the user
+     * @return this method returns the corresponding user for the given email
+     */
+    public Users getUser(String emailAddress) {
         Connection con = JDBCConnectionManager.getConnection();
         Users user = new Users();
         try {
@@ -83,7 +101,14 @@ public class LoginService {
         return user;
     }
 
-    public  int doGetRoleId(String email) {
+    /**
+     *
+     * Description: The doGetRoleId method is used to get the role id for a given user email
+     * @param email email address of the user
+     * 
+     * @return this method returns the role id for the given user email
+     */
+    public int doGetRoleId(String email) {
         int roleId = 0;
         String sql = "select roleId from user where email=?";
         try {
@@ -103,7 +128,15 @@ public class LoginService {
         return roleId;
     }
 
-    public  boolean doSignUp(Users user) {
+    /**
+     *
+     * Description: The doSignUp method is used to do the sign-up of a user. The sign-up functionality is only applicable for the user not for the admin
+     * @param user it is the user datatype/model which has properties like email,password,role-id
+     * @return this method returns a boolean type which denotes the status of
+     * singing up by the new user( True if successfully signed up and inserted the user details to the DB,
+     * otherwise False )
+     */
+    public boolean doSignUp(Users user) {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
         String sql = "INSERT INTO user(email,password,firstName,lastName,roleId)" + "VALUES(? ,? ,? ,?, ?)";

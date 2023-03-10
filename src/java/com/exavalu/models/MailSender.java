@@ -24,6 +24,8 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
+ * Description: The MailSender public class represents a class that will contain
+ * the private data members and the method to send a mail to the user
  *
  * @author sinha
  */
@@ -46,6 +48,12 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
     private String email;
     private String htmlContent;
 
+    /**
+     * Description: The sendEmailToUser method is used to send an email to the
+     * user with the all quotation details
+     *
+     * @return it returns a string which is mapped to the struts.xml
+     */
     public String sendEmailToUser() throws Exception {
         String result = "SUCCESS";
         try {
@@ -93,18 +101,38 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
         return result;
     }
 
+    /**
+     * Getter method of Email.
+     *
+     * @return it returns the Email of the user
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Setter method of Email.
+     *
+     * @param email it denotes the Email of the user
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Getter method of HtmlContent.
+     *
+     * @return it returns the HtmlContent of the quotation.jsp
+     */
     public String getHtmlContent() {
         return htmlContent;
     }
 
+    /**
+     * Setter method of HtmlContent.
+     *
+     * @param htmlContent  it denotes the HtmlContent of the quotation.jsp
+     */
     public void setHtmlContent(String htmlContent) {
         this.htmlContent = htmlContent;
     }

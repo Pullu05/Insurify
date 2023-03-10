@@ -23,6 +23,9 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
+ * Description: The InsuranceAPIData public class represents a class that will
+ * contain the private data members and the method to get the insurance history
+ * details from the API
  *
  * @author kumar
  */
@@ -43,6 +46,12 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
 
     public static InsuranceAPIData insuranceAPIData = null;
 
+    /**
+     *
+     * Description: It is the Instance method for InsuranceAPIData class
+     *
+     * @return It returns the created object of InsuranceAPIData
+     */
     public static InsuranceAPIData getInstance() {
         if (insuranceAPIData == null) {
             return new InsuranceAPIData();
@@ -51,6 +60,11 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
         }
     }
 
+    /**
+     * Description: The doGetInsuranceDetails method is used to get all the insurance details from the API call
+     *
+     * @return it returns a string which is mapped to the struts.xml
+     */
     public String doGetInsuranceDetails() throws Exception {
 
         String result = "FAILURE";
@@ -109,50 +123,113 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
     private int weightage;
     private String aadhaarNo;
 
+    /**
+     * Getter method of Insurance Status.
+     *
+     * @return it returns the insurance Status of the insurance data
+     */
     public String getInsuranceStatus() {
         return insuranceStatus;
     }
 
+    /**
+     * Setter method of Insurance Status.
+     *
+     * @param insuranceStatus it denotes the Insurance Status of the insurance
+     * data
+     */
     public void setInsuranceStatus(String insuranceStatus) {
         this.insuranceStatus = insuranceStatus;
     }
 
+    /**
+     * Getter method of Insurance History.
+     *
+     * @return it returns the insurance History of the insurance data
+     */
     public String getInsuranceHistory() {
         return insuranceHistory;
     }
 
+    /**
+     * Setter method of Insurance History.
+     *
+     * @param insuranceHistory it denotes the Insurance History of the insurance
+     * data
+     */
     public void setInsuranceHistory(String insuranceHistory) {
         this.insuranceHistory = insuranceHistory;
     }
 
+    /**
+     * Getter method of Claimed Amount.
+     *
+     * @return it returns the Claimed Amount of the insurance data
+     */
     public int getAmountClaimed() {
         return amountClaimed;
     }
 
+    /**
+     * Setter method of Claimed Amount.
+     *
+     * @param amountClaimed it denotes the Claimed Amount of the insurance data
+     */
     public void setAmountClaimed(int amountClaimed) {
         this.amountClaimed = amountClaimed;
     }
 
+    /**
+     * Getter method of Driving Experience.
+     *
+     * @return it returns the Driving Experience of the insurance data
+     */
     public int getDrivingExperience() {
         return drivingExperience;
     }
 
+    /**
+     * Setter method of Driving Experience.
+     *
+     * @param drivingExperience it denotes the Driving Experience of the
+     * insurance data
+     */
     public void setDrivingExperience(int drivingExperience) {
         this.drivingExperience = drivingExperience;
     }
 
+    /**
+     * Getter method of Weightage.
+     *
+     * @return it returns the Weightage of the insurance data
+     */
     public int getWeightage() {
         return weightage;
     }
 
+    /**
+     * Setter method of Weightage.
+     *
+     * @param weightage it denotes the Weightage of the insurance data
+     */
     public void setWeightage(int weightage) {
         this.weightage = weightage;
     }
 
+    /**
+     * Getter method of AadhaarNo.
+     *
+     * @return it returns the AadhaarNo of the insurance data
+     */
     public String getAadhaarNo() {
         return aadhaarNo;
     }
 
+    /**
+     * Setter method of AadhaarNo.
+     *
+     * @param aadhaarNo it denotes the Insurance Status of the insurance data
+     */
     public void setAadhaarNo(String aadhaarNo) {
         this.aadhaarNo = aadhaarNo;
     }

@@ -13,24 +13,39 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Description: The DriverInfoService public class represents a class that will
+ * contain the methods to get all driver information, to add driver information
+ * to the existing details, to edit/update driver details
  *
  * @author RISHAV DUTTA
+ * @version 1.0
+ *
  */
 public class DriverInfoService {
+
     public static DriverInfoService driverInfoService = null;
-    
-    public static DriverInfoService getInstance()
-    {
-        if(driverInfoService==null)
-        {
+
+    /**
+     *
+     * Description: It is the Instance method for DriverInfoService class
+     *
+     * @return It returns the created object of DriverInfoService
+     */
+    public static DriverInfoService getInstance() {
+        if (driverInfoService == null) {
             return new DriverInfoService();
-        }
-        else
-        {
+        } else {
             return driverInfoService;
         }
     }
 
+    /**
+     *
+     * Description: The getAllDriverInfo method is used to get all the details
+     * of Driver Information
+     *
+     * @return list of all Driver Information
+     */
     public ArrayList getAllDriverInfo() {
         ArrayList driverInfoList = new ArrayList();
         try {
@@ -40,7 +55,7 @@ public class DriverInfoService {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 DriverInfo driverinfo = new DriverInfo();
-                
+
                 driverinfo.setId(rs.getInt("id"));
                 driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
                 driverinfo.setDriverAge(rs.getString("driverAge"));
@@ -56,6 +71,17 @@ public class DriverInfoService {
         return driverInfoList;
     }
 
+    /**
+     *
+     * Description: The AddDriverInfo method is used to add the
+     * details/information of a new driver
+     * 
+     * @param driverInfo Information about the Driver
+     * 
+     * @return this method returns a boolean type which denotes the status of
+     * adding the new driver details( True if successfully added to the DB,
+     * otherwise False )
+     */
     public boolean AddDriverInfo(DriverInfo driverInfo) {
         boolean result = false;
         try {
@@ -83,6 +109,14 @@ public class DriverInfoService {
         return result;
     }
 
+    /**
+     *
+     * Description: The getDriverInfo method is used to get the
+     * details/information of a particular driver using it's id
+     * @param id it is the id of DriverInfo
+     * 
+     * @return this method returns the desired driver's information
+     */
     public DriverInfo getDriverInfo(int id) {
         DriverInfo driverinfo = new DriverInfo();
         try {
@@ -107,6 +141,18 @@ public class DriverInfoService {
         return driverinfo;
     }
 
+    /**
+     *
+     * Description: The updateDriverInfo method is used to update the existing
+     * details/information of a particular driver using it's id
+     * @param driverInfo The DriverInfo object 
+     * @param id The id of the DriverInfo 
+     * 
+     * @return this method returns a boolean type which denotes the status of
+     * updating the existing driver details( True if successfully updated to the
+     * DB, otherwise False )
+     *
+     */
     public boolean updateDriverInfo(DriverInfo driverInfo, int id) {
 
         boolean result = false;

@@ -15,6 +15,8 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
+ * Description: The ProductData public class represents a class that will
+ * contain the private data members and the method to add Product data
  *
  * @author Nairwita Chakraborty
  */
@@ -42,6 +44,12 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
     private String courtesyCar;
     private String email;
 
+    /**
+     * Description: The doAddProductData method is used to add the Product data
+     * and put the ProductData to the session map
+     *
+     * @return it returns a string which is mapped to the struts.xml
+     */
     public String doAddProductData() throws Exception {
 
         String result = "FAILURE";
@@ -59,10 +67,20 @@ public class ProductData extends ActionSupport implements ApplicationAware, Sess
         return result;
     }
 
+    /**
+     * Getter method of Email.
+     *
+     * @return it returns the Email of the user
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Setter method of Email.
+     *
+     * @param email it denotes the Email of the user
+     */
     public void setEmail(String email) {
         this.email = email;
     }

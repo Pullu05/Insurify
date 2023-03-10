@@ -15,30 +15,44 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Description: The VehicleDataService public class represents a class that will
+ * contain the methods to insert the vehicle data to the DB, and categorize the
+ * weightage based on vehicle make and model, get all makers and models for the vehicle data
  *
  * @author Admin
  */
 public class VehicleDataService {
-    public static VehicleDataService vehicleDataService= null;
-    
-    public static VehicleDataService getInstance()
-    {
-        if(vehicleDataService==null)
-        {
+
+    public static VehicleDataService vehicleDataService = null;
+
+    /**
+     *
+     * Description: It is the Instance method for VehicleDataService class
+     *
+     * @return It returns the created object of VehicleDataService
+     */
+    public static VehicleDataService getInstance() {
+        if (vehicleDataService == null) {
             return new VehicleDataService();
-        }
-        else
-        {
+        } else {
             return vehicleDataService;
         }
     }
-
-    public  boolean doVehicleDataEntry(Vehicle vehicle,String email) {
+    /**
+     *
+     * Description: The doVehicleDataEntry method is used to Insert the client-side Vehicle Data into the DB
+     * @param vehicle  vehicle data which is given by the user while filling the client-side form
+     * @param email email address of the user
+     * @return this method returns a boolean type which denotes the status of
+     * inserting the client-side Vehicle Data into the DB( True if successfully inserted to the DB,
+     * otherwise False )
+     */
+    public boolean doVehicleDataEntry(Vehicle vehicle, String email) {
         boolean result = false;
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO vehicle(vin,enginePerformance,numberOfSeats,listPrice,annualMileage,licensePlateNumber,make,fuelType,dateOfManufacture,email,model)" +"VALUES(?, ? , ? , ? , ? , ? , ? , ? , ?, ?,? )";
+            String sql = "INSERT INTO vehicle(vin,enginePerformance,numberOfSeats,listPrice,annualMileage,licensePlateNumber,make,fuelType,dateOfManufacture,email,model)" + "VALUES(?, ? , ? , ? , ? , ? , ? , ? , ?, ?,? )";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, vehicle.getVin());
@@ -51,7 +65,7 @@ public class VehicleDataService {
             preparedStatement.setString(8, vehicle.getFuelType());
             preparedStatement.setString(9, vehicle.getDateOfManufacture());
             preparedStatement.setString(10, email);
-             preparedStatement.setString(11, vehicle.getModel());
+            preparedStatement.setString(11, vehicle.getModel());
             System.out.println("SQL: " + preparedStatement);
 
             int row = preparedStatement.executeUpdate();
@@ -65,8 +79,14 @@ public class VehicleDataService {
         return result;
 
     }
-    
-    public  int getVehicleWeightage(Vehicle vehicle) {
+    /**
+     *
+     * Description: The getVehicleWeightage method is used to get the
+     * Vehicle Weightage using id , as well as set the weightage value for different make and model
+     * @param vehicle  vehicle data which is given by the user while filling the client-side form
+     * @return this method returns weightage of a vehicle using id
+     */
+    public int getVehicleWeightage(Vehicle vehicle) {
         int weightageValue = 0;
 
         try {
@@ -76,15 +96,15 @@ public class VehicleDataService {
 
             preparedStatement.setString(1, vehicle.getMake());
             preparedStatement.setString(2, vehicle.getModel());
-           
+
             System.out.println("SQL: " + preparedStatement);
 
             ResultSet rs = preparedStatement.executeQuery();
-            
+
             if (rs.next()) {
-                weightageValue = rs.getInt(1);             
+                weightageValue = rs.getInt(1);
             }
-            System.out.println("Vehicle Weightage: "+weightageValue);
+            System.out.println("Vehicle Weightage: " + weightageValue);
 
         } catch (SQLException ex) {
             ex.getMessage();
@@ -92,8 +112,13 @@ public class VehicleDataService {
 
         return weightageValue;
     }
-    
-    public  ArrayList getAllmakers() {
+    /**
+     *
+     * Description: The getAllmakers method is used to get all makers of cars
+     *
+     * @return list of all makers of cars
+     */
+    public ArrayList getAllmakers() {
         ArrayList makeList = new ArrayList();
 
         String sql = "Select * from makers";
@@ -117,8 +142,13 @@ public class VehicleDataService {
         }
         return makeList;
     }
-    
-    public  ArrayList getAllmodels(String makeCode) {
+    /**
+     *
+     * Description: The getAllmodels method is used to get all models for a particular car maker
+     *
+     * @return list of all models of a particular car maker
+     */
+    public ArrayList getAllmodels(String makeCode) {
         ArrayList modelList = new ArrayList();
 
         String sql = "Select * from models where makeCode = ?";

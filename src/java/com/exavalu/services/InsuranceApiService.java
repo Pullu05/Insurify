@@ -12,25 +12,39 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * Description: The InsuranceApiService public class represents a class that
+ * will contain the methods to insert the insurance record of a particular driver,
+ * calculate the weightage based on the data fetched from the API call and store it in the DB also, get the weightage of a driver using Aadhaar number
  *
  * @author Subhadip Sarkar
  */
 public class InsuranceApiService {
-     public static InsuranceApiService insuranceApiService = null;
-    
-    public  static InsuranceApiService getInstance()
-    {
-        if(insuranceApiService==null)
-        {
+
+    public static InsuranceApiService insuranceApiService = null;
+
+    /**
+     *
+     * Description: It is the Instance method for InsuranceApiService class
+     *
+     * @return It returns the created object of InsuranceApiService
+     */
+    public static InsuranceApiService getInstance() {
+        if (insuranceApiService == null) {
             return new InsuranceApiService();
-        }
-        else
-        {
+        } else {
             return insuranceApiService;
         }
     }
 
-    public  int calculateWeightage(InsuranceAPIData insuranceData) {
+    /**
+     *
+     * Description: The calculateWeightage method is used to calculate the
+     * Weightage of a driver on the basis of insurance history and driver experience, Both of these are fetched from the API
+     * @param insuranceData insurance data fetched from API which is nused to calculate the weightage 
+     * 
+     * @return this method returns the calculated Weightage 
+     */
+    public int calculateWeightage(InsuranceAPIData insuranceData) {
 
         int weightage = 0;
 
@@ -74,7 +88,17 @@ public class InsuranceApiService {
         return weightage;
     }
 
-    public  boolean storeIntoDB(InsuranceAPIData insuranceData) {
+    /**
+     *
+     * Description: The storeIntoDB method is basically used for storing the Insurance history Data 
+     * along-with Aadhaar number(Fetched from API) to the DB
+     * @param insuranceData insurance data fetched from API
+     * 
+     * @return this method returns a boolean type which denotes the status of
+     * storing the Insurance history Data to the DB( True if successfully
+     * stored to the DB, otherwise False )
+     */
+    public boolean storeIntoDB(InsuranceAPIData insuranceData) {
         boolean result = false;
         try {
 
@@ -105,7 +129,15 @@ public class InsuranceApiService {
 
     }
 
-    public  int getInsuranceApiWeightage(String aadhaarNo) {
+    /**
+     *
+     * Description: The getInsuranceApiWeightage method is used to get the
+     * calculated weightage using Aadhaar number
+     * @param aadhaarNo Aadhaar Number is used to uniquely identify particular weightage of a insurance type 
+     * 
+     * @return this method returns the fetched weightage from the DB
+     */
+    public int getInsuranceApiWeightage(String aadhaarNo) {
         int weightage = 0;
         InsuranceAPIData insuranceData = new InsuranceAPIData();
 

@@ -13,27 +13,39 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 /**
+ * Description: The InsurantDataService public class represents a class that will
+ * contain the methods to insert the insurant data to the DB, and categorize the weightage based on medical report
  *
  * @author Admin
  */
 public class InsurantDataService {
-     public static InsurantDataService insurantDataService = null;
-    
-    public static InsurantDataService getInstance()
-    {
-        if(insurantDataService==null)
-        {
+
+    public static InsurantDataService insurantDataService = null;
+    /**
+     *
+     * Description: It is the Instance method for DriverInfoService class
+     *
+     * @return It returns the created object of DriverInfoService
+     */
+    public static InsurantDataService getInstance() {
+        if (insurantDataService == null) {
             return new InsurantDataService();
-        }
-        else
-        {
+        } else {
             return insurantDataService;
         }
     }
 
     private static final Logger logger = Logger.getLogger(InsurantDataService.class);
-
-    public  boolean doInsurantDataEntry(InsurantData insurantData) {
+    /**
+     *
+     * Description: The doInsurantDataEntry method is used to Insert the client-side Insurant Data into the DB
+     * @param insurantData Data insurance data which is given by the user while filling the client-side form 
+     * 
+     * @return this method returns a boolean type which denotes the status of
+     * inserting the client-side Insurant Data into the DB( True if successfully inserted to the DB,
+     * otherwise False )
+     */
+    public boolean doInsurantDataEntry(InsurantData insurantData) {
         boolean result = false;
 
         try {
@@ -70,8 +82,15 @@ public class InsurantDataService {
         return result;
 
     }
-
-    public  int getDriverWeightage(InsurantData insurantData) {
+    /**
+     *
+     * Description: The getDriverWeightage method is used to get the
+     * Driver Weightage using id , as well as set the weightage value for different medical record category 
+     * @param insurantData insurance data which is given by the user while filling the client-side form 
+     * 
+     * @return this method returns weightage of a driver using id
+     */
+    public int getDriverWeightage(InsurantData insurantData) {
         //DriverInfo driverInfo = new DriverInfo();
 
         int weightageId = 0;

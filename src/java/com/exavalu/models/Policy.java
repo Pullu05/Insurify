@@ -18,7 +18,8 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
- *
+ * Description: The Plan public class represents a class that will contain the
+ * private data members and the method to calculate the total weightage using the vehicle weightage and insurant weightage
  * @author RISHAV DUTTA
  */
 public class Policy extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
@@ -41,27 +42,51 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     private String weightageRange;
     private int coverage;
     private int premium;
-
+    /**
+     * Getter method of WeightageRange.
+     *
+     * @return it returns the WeightageRange
+     */
     public String getWeightageRange() {
         return weightageRange;
     }
-
+    /**
+     * Setter method of WeightageRange.
+     *
+     * @param weightageRange it denotes the WeightageRange
+     */
     public void setWeightageRange(String weightageRange) {
         this.weightageRange = weightageRange;
     }
-
+    /**
+     * Getter method of Coverage.
+     *
+     * @return it returns the Coverage of the selected plan
+     */
     public int getCoverage() {
         return coverage;
     }
-
+    /**
+     * Setter method of Coverage.
+     *
+     * @param coverage it denotes the Coverage of the selected plan
+     */
     public void setCoverage(int coverage) {
         this.coverage = coverage;
     }
-
+    /**
+     * Getter method of Premium.
+     *
+     * @return it returns the Premium of the selected plan
+     */
     public int getPremium() {
         return premium;
     }
-
+    /**
+     * Setter method of Premium.
+     *
+     * @param premium it denotes the Premium of the selected plan
+     */
     public void setPremium(int premium) {
         this.premium = premium;
     }
@@ -78,7 +103,13 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public void setEmail(String email) {
         this.email = email;
     }
-
+    /**
+     * Description: The doGetTotalWeightage method is used to calculate total weightage 
+     * using the vehicle weightage and insurant weightage , also based on the total weightage and the plan name 
+     * the premium and the coverage is calculated and put the
+     * coverage, premium, plan name to the session map
+     * @return it returns a string which is mapped to the struts.xml
+     */
     public String doGetTotalWeightage() throws Exception {
         String result = "SUCCESS";
         
