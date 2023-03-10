@@ -38,11 +38,6 @@
             <result name="FAILURE">failure.json</result>
         </action>
 
-        <action name="AddProductData" class="com.exavalu.models.ProductData" method="doAddProductData">
-            <result name="SUCCESS">success.json</result>
-            <result name="FAILURE">failure.json</result>
-        </action>
-
         <action name="SubmitDriverInfo" class="com.exavalu.models.DriverInfo" method="doAddDriverInfo">
             <result name="SUCCESS">driverInfoTable.jsp</result>
         </action>
@@ -64,10 +59,6 @@
         <action name="UpdateVehicleInfo" class="com.exavalu.models.VehicleInfo" method="doUpdateVehicleInfo">
             <result name="SUCCESS">vehicleInfoTable.jsp</result>
         </action>
-
-<!--        <action name="CalculatePremium" class="com.exavalu.models.InsuranceAPIData" method="doGetInsuranceDetails">
-            <result name="SUCCESS">success.json</result>
-        </action>-->
 
         <action name="CalculatePremium" class="com.exavalu.models.Plan" method="doAddPlanName">
             <result name="SUCCESS">success.json</result>

@@ -20,7 +20,7 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        Vendor CSS Files
+        <!--Vendor CSS Files-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -29,12 +29,8 @@
         <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
         <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-        Template Main CSS File
+        <!--Template Main CSS File-->
         <link href="assets/css/style_1.css" rel="stylesheet">
-
-
-
-        <!--<link rel="stylesheet" href="https://bootstrapmade.com/assets/css/demo-4.3.css">-->
 
     </head>
 
@@ -50,7 +46,7 @@
                 driverDetails.classList.add("d-none");
                 customChart.classList.add("d-none");
             }
-            function showDashboard(){
+            function showDashboard() {
                 driverDetails.classList.add("d-none");
                 vehicleDetails.classList.add("d-none");
                 customChart.classList.remove("d-none");
@@ -62,7 +58,7 @@
 
             <div class="d-flex align-items-center justify-content-between">
                 <a href="admin.jsp" class="logo d-flex align-items-center">
-                    <img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="42px" alt="logo"/>
+                    <img src="images/logo.jpg"class="rounded-circle" width="42px" alt="logo"/>
                     <span class="d-none d-lg-block">Admin Insurify</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -136,9 +132,7 @@
                 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="adminDriverForm" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="spinner-border spinner-border-sm text-light d-none" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -171,16 +165,16 @@
             <!-- Template Main JS File -->
             <script src="assets/js/main_1.js"></script>
             <script>
-                            function initialiseDataTables() {
-                                const datatables = [...document.querySelectorAll('.datatable')];
-                                datatables.forEach(datatable => {
-                                    new simpleDatatables.DataTable(datatable);
-                                });
-                            }
+                        function initialiseDataTables() {
+                            const datatables = [...document.querySelectorAll('.datatable')];
+                            datatables.forEach(datatable => {
+                                new simpleDatatables.DataTable(datatable);
+                            });
+                        }
             </script>
             <script>
                 async function handleEditForm(action) {
-    //                console.log(action);
+                    //                console.log(action);
                     await fetch(action).then(res => res.text()).then(data => {
                         editModal.querySelector('.modal-content').innerHTML = data;
                     });
@@ -249,9 +243,9 @@
                     yAxes: [{
                             ticks: {
                                 beginAtZero: true
-    //                callback: function (value, index, values) {
-    //                    return '$' + value;
-    //                }
+                                        //                callback: function (value, index, values) {
+                                        //                    return '$' + value;
+                                        //                }
                             },
                             scaleLabel: {
                                 display: true,

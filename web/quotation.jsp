@@ -141,7 +141,7 @@
                     <div class="card flex py-4 rounded-bottom-0 border-bottom-0">
                         <h2 class="text-center m-0" style="display: flex; align-items: center; justify-content: center;">
                             <div style="margin-right: 10px;">
-                                <img src="https://i.ibb.co/S5cbYYs/logo.jpg" class="rounded-circle" style="filter: invert(1); vertical-align: middle;" width="50px" height="35px" />
+                                <img src="https://i.ibb.co/S5cbYYs/logo.jpg" class="rounded-circle" style="vertical-align: middle;" width="50px" height="35px" />
                             </div>
                             <span>Insurify India Pvt Ltd</span>
                         </h2>

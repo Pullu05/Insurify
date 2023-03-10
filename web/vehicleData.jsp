@@ -2,36 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="vehicle" value="${VehicleData}"/>
 <section class="rounded mt-3 formBlock">
-    <script src="https://code.jquery.com/jquery-3.6.3.js"
-            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" 
-            crossorigin="anonymous">
-    </script>
-
-
-    <script>
-
-        function fetchList(selectedId, targetId) {
-//            alert("#" + selectedId.name + "'");
-            $.ajax({
-                url: 'PreAddVehicleData',
-                data: {
-                    [selectedId]: $("#" + selectedId).val()
-                },
-                success: function (responseText) {
-//                        alert(responseText);
-                    $("#" + targetId).html(responseText);
-                }
-            });
-        }
-    </script>
     <form method = "POST" action="PreAddVehicleData" onsubmit="submitFormAndChangeSection(event)" id="vehicleDataForm">
 
         <div class="form-group row">
             <label  class="col-sm-4 col-form-label" for="vin">VIN<span  style="color:red"> *</span></label>
-              
+
             <div class="col-sm-6">
                 <input type="text" id="vin" class="form-control" name="vin" value = "${vehicle.vin}" required>
-             
+
             </div>
         </div>
 
@@ -127,3 +105,12 @@
         </div>
     </form>
 </section>
+<script>
+
+    function fetchList(selectedId, targetId) {
+        const selectedValue = document.getElementById(selectedId).value;
+        fetch("PreAddVehicleData?" + selectedId + "=" + selectedValue).then(res => res.text()).then(data => {
+            document.getElementById(targetId).innerHTML = data;
+        });
+    }
+</script>

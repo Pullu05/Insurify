@@ -26,7 +26,7 @@ CREATE TABLE `plan` (
   `id` int NOT NULL AUTO_INCREMENT,
   `planName` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `plan` (
 
 LOCK TABLES `plan` WRITE;
 /*!40000 ALTER TABLE `plan` DISABLE KEYS */;
-INSERT INTO `plan` VALUES (17,'Gold'),(18,'Gold'),(19,'Gold'),(20,'Gold'),(21,'Platinum'),(22,'Ultimate'),(23,'Platinum'),(24,'Platinum'),(25,'Gold'),(26,'Platinum'),(27,'Ultimate'),(28,'Platinum'),(29,'Ultimate'),(30,'Gold'),(31,'Platinum'),(32,'Platinum'),(33,'Platinum'),(34,'Platinum'),(35,'Platinum'),(36,'Platinum'),(37,'Ultimate'),(38,'Gold'),(39,'Gold'),(40,'Gold'),(41,'Gold'),(42,'Platinum'),(43,'Platinum'),(44,'Gold'),(45,'Platinum'),(46,'Platinum'),(47,'Gold'),(48,'Platinum'),(49,'Platinum'),(50,'Platinum'),(51,'Ultimate'),(52,'Platinum'),(53,'Platinum'),(54,'Platinum'),(55,'Ultimate'),(56,'Gold'),(57,'Gold'),(58,'Gold'),(59,'Ultimate'),(60,'Platinum'),(61,'Gold'),(62,'Platinum'),(63,'Platinum'),(64,'Gold'),(65,'Platinum'),(66,'Platinum'),(67,'Ultimate'),(68,'Platinum'),(69,'Platinum'),(70,'Platinum');
+INSERT INTO `plan` VALUES (17,'Gold'),(18,'Gold'),(19,'Gold'),(20,'Gold'),(21,'Platinum'),(22,'Ultimate'),(23,'Platinum'),(24,'Platinum'),(25,'Gold'),(26,'Platinum'),(27,'Ultimate'),(28,'Platinum'),(29,'Ultimate'),(30,'Gold'),(31,'Platinum'),(32,'Platinum'),(33,'Platinum'),(34,'Platinum'),(35,'Platinum'),(36,'Platinum'),(37,'Ultimate'),(38,'Gold'),(39,'Gold'),(40,'Gold'),(41,'Gold'),(42,'Platinum'),(43,'Platinum'),(44,'Gold'),(45,'Platinum'),(46,'Platinum'),(47,'Gold'),(48,'Platinum'),(49,'Platinum'),(50,'Platinum'),(51,'Ultimate'),(52,'Platinum'),(53,'Platinum'),(54,'Platinum'),(55,'Ultimate'),(56,'Gold'),(57,'Gold'),(58,'Gold'),(59,'Ultimate'),(60,'Platinum'),(61,'Gold'),(62,'Platinum'),(63,'Platinum'),(64,'Gold'),(65,'Platinum'),(66,'Platinum'),(67,'Ultimate'),(68,'Platinum'),(69,'Platinum'),(70,'Platinum'),(71,'Gold'),(72,'Gold'),(73,'Gold'),(74,'Platinum'),(75,'Gold'),(76,'Platinum'),(77,'Platinum');
 /*!40000 ALTER TABLE `plan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-06 13:08:32
+-- Dump completed on 2023-03-10 13:06:59

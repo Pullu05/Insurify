@@ -71,7 +71,7 @@
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
                             <div class="icon-box icon-box-pink">
                                 <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                                <h4 class="title"><a href="">Liability coverage:</a></h4>
+                                <h4 class="title">Liability coverage</h4>
                                 <p class="description">This covers the cost of damages and injuries that you may cause to other people or their property in an accident.</p>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                              data-aos-delay="100">
                             <div class="icon-box icon-box-cyan">
                                 <div class="icon"><i class="bx bx-file"></i></div>
-                                <h4 class="title"><a href="">Collision coverage</a></h4>
+                                <h4 class="title">Collision coverage</h4>
                                 <p class="description">This covers the cost of damages to your own vehicle in the event of a collision.</p>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                              data-aos-delay="200">
                             <div class="icon-box icon-box-green">
                                 <div class="icon"><i class="bx bx-tachometer"></i></div>
-                                <h4 class="title"><a href="">Comprehensive coverage: </a></h4>
+                                <h4 class="title">Comprehensive coverage</h4>
                                 <p class="description">This covers the cost of damages to your vehicle that are not caused by a collision, such as theft, vandalism, or natural disasters.
 
                                 </p>
@@ -100,7 +100,7 @@
                              data-aos-delay="300">
                             <div class="icon-box icon-box-blue">
                                 <div class="icon"><i class="bx bx-world"></i></div>
-                                <h4 class="title"><a href="">Personal injury protection (PIP):</a></h4>
+                                <h4 class="title">Personal injury protection (PIP)</h4>
                                 <p class="description">This covers the cost of medical expenses and lost wages for you and your passengers if you are injured in an accident.</p>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                    <h3>Subhadip Sarkar</h3>
+                                    <h3>Soumojit Sur</h3>
                                     <h4>Ceo &amp; Founder</h4>
                                 </div>
                             </div><!-- End testimonial item -->
@@ -145,7 +145,7 @@
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                    <h3>Anand Kumar</h3>
+                                    <h3>Subhadip Sarkar</h3>
                                     <h4>Designer</h4>
                                 </div>
                             </div><!-- End testimonial item -->
@@ -160,7 +160,7 @@
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                    <h3>Rishav Dutta</h3>
+                                    <h3>Sneha</h3>
                                     <h4>Designer</h4>
                                 </div>
                             </div>
@@ -174,7 +174,7 @@
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                                    <h3>Soumyajit Sur</h3>
+                                    <h3>Nairwita Chakraborty</h3>
                                     <h4>Store Owner</h4>
                                 </div>
                             </div><!-- End testimonial item -->
@@ -188,7 +188,7 @@
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                    <h3>Nairwita Chakraborty</h3>
+                                    <h3>Rishav Dutta</h3>
                                     <h4>Freelancer</h4>
                                 </div>
                             </div><!-- End testimonial item -->
@@ -202,7 +202,7 @@
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                                    <h3>Sneha</h3>
+                                    <h3>Anand Kumar</h3>
                                     <h4>Entrepreneur</h4>
                                 </div>
                             </div><!-- End testimonial item -->
@@ -213,260 +213,6 @@
 
                 </div>
             </section><!-- End Testimonials Section -->
-
-            <!--                 ======= Portfolio Section =======
-                            <section id="portfolio" class="portfolio section-bg">
-                                <div class="container">
-
-                                    <div class="section-title" data-aos="fade-up">
-                                        <h2>Portfolio</h2>
-                                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                                            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                                            in iste officiis commodi quidem hic quas.</p>
-                                    </div>
-
-                                    <div class="row" data-aos="fade-up">
-                                        <div class="col-lg-12 d-flex justify-content-center">
-                                            <ul id="portfolio-flters">
-                                                <li data-filter="*" class="filter-active">All</li>
-                                                <li data-filter=".filter-app">App</li>
-                                                <li data-filter=".filter-card">Card</li>
-                                                <li data-filter=".filter-web">Web</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="row portfolio-container" data-aos="fade-up">
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>App 1</h4>
-                                                    <p>App</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>Web 3</h4>
-                                                    <p>Web</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>App 2</h4>
-                                                    <p>App</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>Card 2</h4>
-                                                    <p>Card</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>Web 2</h4>
-                                                    <p>Web</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>App 3</h4>
-                                                    <p>App</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>Card 1</h4>
-                                                    <p>Card</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>Card 3</h4>
-                                                    <p>Card</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                                            <div class="portfolio-wrap">
-                                                <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                    <h4>Web 3</h4>
-                                                    <p>Web</p>
-                                                    <div class="portfolio-links">
-                                                        <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
-                                                           class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </section> End Portfolio Section -->
-
-            <!-- ======= Team Section ======= -->
-            <!--                <section id="team" class="team">
-                                <div class="container">
-
-                                    <div class="section-title" data-aos="fade-up">
-                                        <h2>Team</h2>
-                                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                                            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-                                            in iste officiis commodi quidem hic quas.</p>
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
-                                            <div class="member">
-                                                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Walter White</h4>
-                                                        <span>Chief Executive Officer</span>
-                                                    </div>
-                                                    <div class="social">
-                                                        <a href=""><i class="bi bi-twitter"></i></a>
-                                                        <a href=""><i class="bi bi-facebook"></i></a>
-                                                        <a href=""><i class="bi bi-instagram"></i></a>
-                                                        <a href=""><i class="bi bi-linkedin"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                                            <div class="member">
-                                                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Sarah Jhonson</h4>
-                                                        <span>Product Manager</span>
-                                                    </div>
-                                                    <div class="social">
-                                                        <a href=""><i class="bi bi-twitter"></i></a>
-                                                        <a href=""><i class="bi bi-facebook"></i></a>
-                                                        <a href=""><i class="bi bi-instagram"></i></a>
-                                                        <a href=""><i class="bi bi-linkedin"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                                            <div class="member">
-                                                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>William Anderson</h4>
-                                                        <span>CTO</span>
-                                                    </div>
-                                                    <div class="social">
-                                                        <a href=""><i class="bi bi-twitter"></i></a>
-                                                        <a href=""><i class="bi bi-facebook"></i></a>
-                                                        <a href=""><i class="bi bi-instagram"></i></a>
-                                                        <a href=""><i class="bi bi-linkedin"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                                            <div class="member">
-                                                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Amanda Jepson</h4>
-                                                        <span>Accountant</span>
-                                                    </div>
-                                                    <div class="social">
-                                                        <a href=""><i class="bi bi-twitter"></i></a>
-                                                        <a href=""><i class="bi bi-facebook"></i></a>
-                                                        <a href=""><i class="bi bi-instagram"></i></a>
-                                                        <a href=""><i class="bi bi-linkedin"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </section> End Team Section -->
 
             <!-- ======= F.A.Q Section ======= -->
             <section id="faq" class="faq section-bg">
@@ -604,8 +350,6 @@
         <!-- Vendor JS Files -->
         <script src="assets/vendor/aos/aos.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
         <!-- Template Main JS File -->

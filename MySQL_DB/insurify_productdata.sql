@@ -31,7 +31,7 @@ CREATE TABLE `productdata` (
   `damageInsurance` varchar(45) NOT NULL,
   `courtesyCar` varchar(45) NOT NULL,
   PRIMARY KEY (`productId`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `productdata` (
 
 LOCK TABLES `productdata` WRITE;
 /*!40000 ALTER TABLE `productdata` DISABLE KEYS */;
-INSERT INTO `productdata` VALUES (37,'user@gmail.com','2023-03-24','7000000','Bonus 3','Full Coverage','Yes'),(38,'user@gmail.com','2023-03-11','7000000','Bonus 1','Partial Coverage','Yes'),(39,'user@gmail.com','2023-03-16','5000000','Malus 10','Partial Coverage','Yes'),(40,'user@gmail.com','2023-03-01','5000000','Bonus 1','Partial Coverage','Yes'),(41,'user@gmail.com','2023-03-08','7000000','Malus 11','Partial Coverage','Yes'),(42,'user@gmail.com','2023-03-14','5000000','Bonus 2','Partial Coverage','Yes'),(43,'user1@gmail.com','2023-03-01','10000000','Bonus 1','No Coverage','Yes'),(44,'user1@gmail.com','2023-03-01','7000000','Bonus 5','Partial Coverage','Yes'),(45,'user@gmail.com','2023-03-01','5000000','Bonus 3','Partial Coverage','Yes'),(46,'user@gmail.com','2023-03-01','35000000','Malus 17','Full Coverage','Yes'),(47,'user@gmail.com','2023-03-09','10000000','Bonus 2','Full Coverage','Yes'),(48,'user@gmail.com','2023-03-11','5000000','Bonus 2','Partial Coverage','Yes'),(49,'user@gmail.com','2023-03-03','7000000','Malus 13','Partial Coverage','Yes'),(50,'user@gmail.com','2023-03-16','3000000','Bonus 1','Partial Coverage','Yes'),(51,'user2@gmail.com','2023-03-02','3000000','Bonus 1','Partial Coverage','Yes');
+INSERT INTO `productdata` VALUES (37,'user@gmail.com','2023-03-24','7000000','Bonus 3','Full Coverage','Yes'),(38,'user@gmail.com','2023-03-11','7000000','Bonus 1','Partial Coverage','Yes'),(39,'user@gmail.com','2023-03-16','5000000','Malus 10','Partial Coverage','Yes'),(40,'user@gmail.com','2023-03-01','5000000','Bonus 1','Partial Coverage','Yes'),(41,'user@gmail.com','2023-03-08','7000000','Malus 11','Partial Coverage','Yes'),(42,'user@gmail.com','2023-03-14','5000000','Bonus 2','Partial Coverage','Yes'),(43,'user1@gmail.com','2023-03-01','10000000','Bonus 1','No Coverage','Yes'),(44,'user1@gmail.com','2023-03-01','7000000','Bonus 5','Partial Coverage','Yes'),(45,'user@gmail.com','2023-03-01','5000000','Bonus 3','Partial Coverage','Yes'),(46,'user@gmail.com','2023-03-01','35000000','Malus 17','Full Coverage','Yes'),(47,'user@gmail.com','2023-03-09','10000000','Bonus 2','Full Coverage','Yes'),(48,'user@gmail.com','2023-03-11','5000000','Bonus 2','Partial Coverage','Yes'),(49,'user@gmail.com','2023-03-03','7000000','Malus 13','Partial Coverage','Yes'),(50,'user@gmail.com','2023-03-16','3000000','Bonus 1','Partial Coverage','Yes'),(51,'user2@gmail.com','2023-03-02','3000000','Bonus 1','Partial Coverage','Yes'),(52,'user2@gmail.com','2023-03-16','3000000','Malus 14','No Coverage','Yes'),(53,'user@gmail.com','2023-03-15','3000000','Bonus 1','Partial Coverage','No'),(54,'user@gmail.com','2023-03-02','7000000','Bonus 1','Partial Coverage','Yes'),(55,'user2@gmail.com','2023-03-10','3000000','Malus 13','Full Coverage','Yes'),(56,'user@gmail.com','2023-03-31','5000000','Bonus 1','Partial Coverage','Yes'),(57,'pulludutta20@gmail.com','2023-03-17','5000000','Bonus 1','Partial Coverage','Yes'),(58,'duttariju20@gmail.com','2023-03-10','5000000','Malus 16','Full Coverage','No');
 /*!40000 ALTER TABLE `productdata` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-06 13:08:33
+-- Dump completed on 2023-03-10 13:06:58
