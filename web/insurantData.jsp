@@ -129,7 +129,7 @@
             <label class="col-sm-4 col-form-label"></label>
             <div class="col-sm-6">
                 <button data-sectionid="vehicleData" type="button" class="btn btn-dark prevBtn" onclick="handleAutomobileSectionChange(event)">&laquo; Prev</button>
-                <button data-sectionid="productData" type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
+                <button data-sectionid="planData" type="submit" class="btn btn-dark nextBtn">Next &raquo;</button>
             </div>
         </div>
     </form>

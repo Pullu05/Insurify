@@ -65,11 +65,10 @@ function checkPreviousForms() {
     // Get the previous form element
     var vehicleForm = document.getElementById("vehicleDataForm");
     var insurantForm = document.getElementById("insurantDataForm");
-    var productForm = document.getElementById("productDataForm");
 
 
     // Check if the previous form is filled out
-    if (vehicleForm.checkValidity() && insurantForm.checkValidity() && productForm.checkValidity()) {
+    if (vehicleForm.checkValidity() && insurantForm.checkValidity()) {
         // If the previous form is filled out, show the current form section
         document.getElementById("send-quote-section").style.display = "block";
         document.getElementById("subscription-plans-section").style.display = "block";

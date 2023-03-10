@@ -25,7 +25,9 @@ DROP TABLE IF EXISTS `makers`;
 CREATE TABLE `makers` (
   `makeCode` varchar(25) NOT NULL,
   `makeName` varchar(45) NOT NULL,
-  PRIMARY KEY (`makeCode`)
+  PRIMARY KEY (`makeCode`),
+  KEY `fk_makes_models_idx` (`makeName`),
+  CONSTRAINT `fk_makes_models` FOREIGN KEY (`makeName`) REFERENCES `models` (`makeCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -35,7 +37,7 @@ CREATE TABLE `makers` (
 
 LOCK TABLES `makers` WRITE;
 /*!40000 ALTER TABLE `makers` DISABLE KEYS */;
-INSERT INTO `makers` VALUES ('AI','Audi'),('BK','Buick'),('BMW','BMW'),('CR','Chrysler'),('CT','Chevrolet'),('DE','Dodge'),('FR','Ford'),('GMC','GMC'),('GO','Geo'),('HA','Honda'),('HR','Hummer'),('II','Infiniti'),('JP','Jeep'),('KA','Kia'),('LS','Lexus'),('MA','Mazda'),('MI','Mitsubishi'),('MY','Mercury'),('NN','Nissan'),('PC','Pontiac'),('PE','Porsche'),('PH','Plymouth'),('SB','Saab'),('TA','Toyota'),('VO','Volvo');
+INSERT INTO `makers` VALUES ('AI','Audi'),('BMW','BMW'),('BK','Buick'),('CT','Chevrolet'),('CR','Chrysler'),('DE','Dodge'),('FR','Ford'),('GO','Geo'),('GMC','GMC'),('HA','Honda'),('HR','Hummer'),('II','Infiniti'),('JP','Jeep'),('KA','Kia'),('LS','Lexus'),('MA','Mazda'),('MY','Mercury'),('MI','Mitsubishi'),('NN','Nissan'),('PH','Plymouth'),('PC','Pontiac'),('PE','Porsche'),('SB','Saab'),('TA','Toyota'),('VO','Volvo');
 /*!40000 ALTER TABLE `makers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-06 13:08:32
+-- Dump completed on 2023-03-10 17:29:18

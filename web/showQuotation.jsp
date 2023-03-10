@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : showQutation
     Created on : 05-Mar-2023, 12:31:16 pm
     Author     : RISHAV DUTTA
@@ -93,7 +93,7 @@
             <div class="card flex py-4 rounded-bottom-0 border-bottom-0">
                 <!--<div class="card-header"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/>-->
                 <!--<h2 class="logo me-auto me-lg-0 display-7"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/></h2>-->
-                <h2 class="text-center m-0"><img src="images/logo.jpg"class="rounded-circle" style="filter: invert(1);" width="50px" height="35px" alt="logo"/>Insurify India Pvt Ltd</h2>
+                <h2 class="text-center m-0"><img src="images/logo.jpg"class="rounded-circle" width="50px" height="35px" alt="logo"/>Insurify India Pvt Ltd</h2>
             </div>
             <div class="card rounded-0 border-bottom-0">
                 <div class="card-header py-3">
@@ -280,12 +280,12 @@
             <div class="acpt_reject_btn">
                 <c:if test="${quotation.status=='PENDING'}">
                     <form action="SaveStatus" method="post">
-                        <button value="1" name="status" type="submit" class="btn btn-primary btn-lg">Accept</button>  
-                        <button value="0" name="status" type="submit" class="btn btn-danger btn-lg">Reject</button> 
+                        <button value="1" name="status" type="submit" class="btn btn-primary btn-lg">Accept</button>
+                        <button value="0" name="status" type="submit" class="btn btn-danger btn-lg">Reject</button>
                     </form>
                 </c:if>
                 <c:if test="${quotation.status!='PENDING'}">
-                    <button disabled class="btn btn-dark btn-lg">${quotation.status}</button>  
+                    <button disabled class="btn btn-dark btn-lg">${quotation.status}</button>
                 </c:if>
             </div>
         </div>
