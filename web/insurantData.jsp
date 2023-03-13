@@ -119,12 +119,12 @@
                 <input type="text" id="website" class="form-control" name="website" value = "${insurance.website}">
             </div>
         </div>
-<!--        <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="picture">Picture</label>
-            <div class="col-sm-6">
-                <input type="file" id="picture" class="form-control" name="picture">
-            </div>
-        </div>-->
+        <!--        <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="picture">Picture</label>
+                    <div class="col-sm-6">
+                        <input type="file" id="picture" class="form-control" name="picture">
+                    </div>
+                </div>-->
         <div class="form-group row">
             <label class="col-sm-4 col-form-label"></label>
             <div class="col-sm-6">
