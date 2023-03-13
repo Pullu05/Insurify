@@ -78,7 +78,7 @@ public class DriverInfoService {
 
     /**
      *
-     * Description: The AddDriverInfo method is used to add the
+     * Description: The addDriverInfo method is used to add the
      * details/information of a new driver
      *
      * @param driverInfo Information about the Driver
@@ -87,7 +87,7 @@ public class DriverInfoService {
      * adding the new driver details( True if successfully added to the DB,
      * otherwise False )
      */
-    public boolean AddDriverInfo(DriverInfo driverInfo) {
+    public boolean addDriverInfo(DriverInfo driverInfo) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();

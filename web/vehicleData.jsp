@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label" for="listPrice">List Price [&#36;]<span  style="color:red"> *</span></label>
+                <label class="col-sm-4 col-form-label" for="listPrice">List Price (&#8377;)<span  style="color:red"> *</span></label>
                 <div class="col-sm-6">
                     <input type="number" id="listPrice" class="form-control" name="listPrice" value = "${vehicle.listPrice}" required>
             </div>

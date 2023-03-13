@@ -219,7 +219,7 @@
                             backgroundColor: 'rgba(80, 100, 255, 0.2)',
                             borderColor: '#000080',
                             borderWidth: 1,
-                            data: ["${AvgPrem}", "${AvgCvg}", 5580]
+                            data: []
                         }
                     ]
                 };
@@ -243,9 +243,7 @@
                     yAxes: [{
                             ticks: {
                                 beginAtZero: true
-                                        //                callback: function (value, index, values) {
-                                        //                    return '$' + value;
-                                        //                }
+                                       
                             },
                             scaleLabel: {
                                 display: true,
@@ -253,6 +251,15 @@
                             }
                         }]
                 };
+                function updateChart() {
+
+                    var data = ["${AvgPrem}", "${AvgCvg}", 5580];
+
+//                    myChart.data.labels = labels;
+                    myChart.data.datasets[0].data = data;
+                    myChart.update();
+                }
+                setInterval(updateChart, 3000);
 
         </script>
     </body>
