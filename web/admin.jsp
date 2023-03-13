@@ -259,7 +259,9 @@
                     myChart.data.datasets[0].data = data;
                     myChart.update();
                 }
+                updateChart();
                 setInterval(updateChart, 3000);
+                
 
         </script>
     </body>
