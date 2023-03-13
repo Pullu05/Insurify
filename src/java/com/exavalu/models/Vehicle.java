@@ -18,6 +18,7 @@ import org.apache.struts2.interceptor.SessionAware;
 /**
  * Description: The ProductData public class represents a class that will
  * contain the private data members and the method to add Vehicle data
+ *
  * @author Subhadip Sarkar
  */
 public class Vehicle extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
@@ -47,9 +48,10 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     private String licensePlateNumber;
     private int annualMileage;
     private String email;
+
     /**
-     * Description: The doPreAddVehicleData method is used to fetch all models of a particular car maker
-     * and put the models list to the session map
+     * Description: The doPreAddVehicleData method is used to fetch all models
+     * of a particular car maker and put the models list to the session map
      *
      * @return it returns a string which is mapped to the struts.xml
      */
@@ -69,6 +71,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
 
         return result;
     }
+
     /**
      * Description: The addVehicleData method is used to add the Vehicle data
      * and put the VehicleData to the session map
@@ -78,19 +81,28 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public String addVehicleData() throws Exception {
         String result = "FAILURE";
         String user_email = (String) sessionMap.get("userEmail");
-        System.out.println(user_email);
-        boolean success = VehicleDataService.getInstance().doVehicleDataEntry(this, user_email);
-//        ArrayList modList = LoginService.getAllmodels(this.make);
-        if (success) {
+        boolean success = false;
+
+        boolean vehicleExists = VehicleDataService.getInstance().checkVehicleExistence(this.vin);
+        if (vehicleExists == true) {
+            System.out.println("VIN already exists!");
+            success = VehicleDataService.getInstance().updateVehicleData(this, user_email);
+        } else {
+            System.out.println("New VIN found!");
+            success = VehicleDataService.getInstance().doVehicleDataEntry(this, user_email);
+        }
+
+        if (success == true) {
             System.out.println("Successfully Added Vehicle Data");
             result = "SUCCESS";
             sessionMap.put("VehicleData", this);
         } else {
-            System.out.println("OOps your vehicle Data is not added");
+            System.out.println("Oops your vehicle Data is not added");
         }
 
         return result;
     }
+
     /**
      * Getter method of Vin.
      *
@@ -99,6 +111,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public String getVin() {
         return vin;
     }
+
     /**
      * Setter method of Vin.
      *
@@ -107,6 +120,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setVin(String vin) {
         this.vin = vin;
     }
+
     /**
      * Getter method of Make.
      *
@@ -115,6 +129,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public String getMake() {
         return make;
     }
+
     /**
      * Setter method of Make.
      *
@@ -123,6 +138,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setMake(String make) {
         this.make = make;
     }
+
     /**
      * Getter method of Model.
      *
@@ -131,6 +147,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public String getModel() {
         return model;
     }
+
     /**
      * Setter method of Model.
      *
@@ -139,6 +156,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setModel(String model) {
         this.model = model;
     }
+
     /**
      * Getter method of EnginePerformance.
      *
@@ -147,6 +165,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public int getEnginePerformance() {
         return enginePerformance;
     }
+
     /**
      * Setter method of EnginePerformance.
      *
@@ -155,6 +174,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setEnginePerformance(int enginePerformance) {
         this.enginePerformance = enginePerformance;
     }
+
     /**
      * Getter method of DateOfManufacture.
      *
@@ -163,6 +183,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public String getDateOfManufacture() {
         return dateOfManufacture;
     }
+
     /**
      * Setter method of DateOfManufacture.
      *
@@ -171,6 +192,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setDateOfManufacture(String dateOfManufacture) {
         this.dateOfManufacture = dateOfManufacture;
     }
+
     /**
      * Getter method of NumberOfSeats.
      *
@@ -179,6 +201,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public int getNumberOfSeats() {
         return numberOfSeats;
     }
+
     /**
      * Setter method of NumberOfSeats.
      *
@@ -187,6 +210,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
+
     /**
      * Getter method of FuelType.
      *
@@ -195,6 +219,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public String getFuelType() {
         return fuelType;
     }
+
     /**
      * Setter method of FuelType.
      *
@@ -203,6 +228,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
     }
+
     /**
      * Getter method of ListPrice.
      *
@@ -211,6 +237,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public int getListPrice() {
         return listPrice;
     }
+
     /**
      * Setter method of ListPrice.
      *
@@ -219,6 +246,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setListPrice(int listPrice) {
         this.listPrice = listPrice;
     }
+
     /**
      * Getter method of LicensePlateNumber.
      *
@@ -227,6 +255,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public String getLicensePlateNumber() {
         return licensePlateNumber;
     }
+
     /**
      * Setter method of LicensePlateNumber.
      *
@@ -235,6 +264,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setLicensePlateNumber(String licensePlateNumber) {
         this.licensePlateNumber = licensePlateNumber;
     }
+
     /**
      * Getter method of AnnualMileage.
      *
@@ -243,6 +273,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public int getAnnualMileage() {
         return annualMileage;
     }
+
     /**
      * Setter method of AnnualMileage.
      *
@@ -251,6 +282,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public void setAnnualMileage(int annualMileage) {
         this.annualMileage = annualMileage;
     }
+
     /**
      * Getter method of Email.
      *
@@ -259,6 +291,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
     public String getEmail() {
         return email;
     }
+
     /**
      * Setter method of Email.
      *

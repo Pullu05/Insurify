@@ -89,6 +89,63 @@ public class VehicleDataService {
 
     }
 
+    public boolean checkVehicleExistence(String vin) {
+        boolean result = false;
+
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "SELECT * from vehicle WHERE vin=?";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+            preparedStatement.setString(1, vin);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                result = true;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return result;
+
+    }
+
+    public boolean updateVehicleData(Vehicle vehicle, String email) {
+        boolean result = false;
+
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "UPDATE vehicle SET enginePerformance=?,numberOfSeats=?,listPrice=?,annualMileage=?,licensePlateNumber=?,make=?,fuelType=?,dateOfManufacture=?,email=?,model=? WHERE vin=?";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+            preparedStatement.setInt(1, vehicle.getEnginePerformance());
+            preparedStatement.setInt(2, vehicle.getNumberOfSeats());
+            preparedStatement.setInt(3, vehicle.getListPrice());
+            preparedStatement.setInt(4, vehicle.getAnnualMileage());
+            preparedStatement.setString(5, vehicle.getLicensePlateNumber());
+            preparedStatement.setString(6, vehicle.getMake());
+            preparedStatement.setString(7, vehicle.getFuelType());
+            preparedStatement.setString(8, vehicle.getDateOfManufacture());
+            preparedStatement.setString(9, email);
+            preparedStatement.setString(10, vehicle.getModel());
+            preparedStatement.setString(11, vehicle.getVin());
+            System.out.println("SQL: " + preparedStatement);
+
+            int row = preparedStatement.executeUpdate();
+            if (row == 1) {
+                result = true;
+            }
+
+        } catch (SQLException ex) {
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(VehicleDataService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+        }
+        return result;
+
+    }
+
     /**
      *
      * Description: The getVehicleWeightage method is used to get the Vehicle
@@ -162,9 +219,8 @@ public class VehicleDataService {
     }
 
     /**
-     *
-     * @param makeCode Description: The getAllmodels method is used to get all
-     * models for a particular car maker
+     * Description: The getAllmodels method is used to get all models for a particular car maker
+     * @param makeCode 
      *
      * @return list of all models of a particular car maker
      */

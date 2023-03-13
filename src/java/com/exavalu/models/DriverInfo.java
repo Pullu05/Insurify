@@ -47,6 +47,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
      * Description: The doAddDriverInfo method is used to add the
      * details/information of a new driver and put the driverInfoList to the
      * session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doAddDriverInfo() throws Exception {
@@ -68,8 +69,9 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
 
     /**
      * Description: The doEditDriverInfo method is used to edit the
-     * details/information of a existing driver and put the specific driverInfo to the
-     * session map
+     * details/information of a existing driver and put the specific driverInfo
+     * to the session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doEditDriverInfo() throws Exception {
@@ -84,6 +86,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
      * Description: The doUpdateDriverInfo method is used to update the existing
      * details/information of a particular driver using it's id and put the
      * driverInfoList to the session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doUpdateDriverInfo() throws Exception {
@@ -160,7 +163,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     /**
      * Setter method of weightage.
      *
-     * @param weightage  it denotes the weightage of the driver
+     * @param weightage it denotes the weightage of the driver
      */
     public void setWeightage(int weightage) {
         this.weightage = weightage;
