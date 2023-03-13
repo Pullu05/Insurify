@@ -59,7 +59,7 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         String result = "FAILURE";
 
         if (this.getMake() != null) {
-            ArrayList modList = VehicleDataService.getInstance().getAllmodels(this.make);
+            ArrayList modList = VehicleDataService.getInstance().getAllModels(this.make);
             System.out.println("Successfully Fetch Models");
             sessionMap.put("ModelList", modList);
             result = "MODELLIST";

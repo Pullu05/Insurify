@@ -55,7 +55,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
         String result = "FAILURE";
 
         boolean success = LoginService.getInstance().doLogin(this);
-        ArrayList makeList = VehicleDataService.getInstance().getAllmakers();
+        ArrayList makeList = VehicleDataService.getInstance().getAllMakers();
         sessionMap.put("MakeList", makeList);
 
         if (!success) {

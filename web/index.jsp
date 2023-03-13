@@ -281,7 +281,7 @@
                                 <div class="address">
                                     <i class="bi bi-geo-alt"></i>
                                     <h4>Location:</h4>
-                                    <p>A108 Adam Street, New York, NY 535022</p>
+                                    <p>Plot 3, BENGAL ECO INTELLIGENT PARK, Unit No: C, 6th Floor, EM Block, Sector V, Kolkata, West Bengal 700091</p>
                                 </div>
 
                                 <div class="email mt-4">
@@ -301,9 +301,7 @@
                         </div>
 
                         <div class="col-lg-5 d-flex align-items-stretch">
-                            <iframe style="border:0; width: 100%; height: 270px;"
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                                    frameborder="0" allowfullscreen></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1041310182013!2d88.42524581446938!3d22.575208385181554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02750014d7f12f%3A0xba88c52b0fa7f529!2sExavalu!5e0!3m2!1sen!2sin!4v1678724823534!5m2!1sen!2sin" width=100% height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
 
                     </div>
