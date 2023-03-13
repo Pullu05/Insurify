@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import org.apache.log4j.Logger;
 
 /**
  * Description: The PolicyService public class represents a class that will
@@ -38,9 +40,13 @@ public class PolicyService {
 
     /**
      *
-     * Description: The getPolicyInfo method is used to get policy information based on the weightage
-     * @param weightage it is the total weightage, by using it the premium and the coverage will be calculated
-     * @return this method returns the Policy details like premium and the coverage for a particular weightage
+     * Description: The getPolicyInfo method is used to get policy information
+     * based on the weightage
+     *
+     * @param weightage it is the total weightage, by using it the premium and
+     * the coverage will be calculated
+     * @return this method returns the Policy details like premium and the
+     * coverage for a particular weightage
      */
     public Policy getPolicyInfo(int weightage) {
         Policy policy = new Policy();
@@ -84,7 +90,9 @@ public class PolicyService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(PolicyService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
 
         return policy;

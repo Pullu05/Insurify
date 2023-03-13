@@ -9,6 +9,8 @@ import com.exavalu.utils.JDBCConnectionManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
+import org.apache.log4j.Logger;
 
 /**
  * Description: The PlanService public class represents a class that will
@@ -33,14 +35,16 @@ public class PlanService {
             return planService;
         }
     }
+
     /**
      *
-     * Description: The addPlanName method is used to add the
-     * plan name to the DB
+     * Description: The addPlanName method is used to add the plan name to the
+     * DB
+     *
      * @param plan it consists of plan name and plan id
      * @return this method returns a boolean type which denotes the status of
-     * adding the plan name( True if successfully added to the DB,
-     * otherwise False )
+     * adding the plan name( True if successfully added to the DB, otherwise
+     * False )
      */
     public boolean addPlanName(Plan plan) {
         boolean result = false;
@@ -59,7 +63,9 @@ public class PlanService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(PlanService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
 
         return result;

@@ -10,10 +10,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import org.apache.log4j.Logger;
 
 /**
  * Description: The LoginService public class represents a class that will
- * contain the methods for login, sign-up, validate the user email while login and get the role id based on user and admin
+ * contain the methods for login, sign-up, validate the user email while login
+ * and get the role id based on user and admin
  *
  * @author RISHAV DUTTA
  */
@@ -37,17 +40,19 @@ public class LoginService {
 
     /**
      *
-     * Description: The doLogin method is used to do the login by validating the email and password 
-     * @param user it is the user datatype/model which has properties like email,password,role-id
-     * 
+     * Description: The doLogin method is used to do the login by validating the
+     * email and password
+     *
+     * @param user it is the user datatype/model which has properties like
+     * email,password,role-id
+     *
      * @return this method returns a boolean type which denotes the status of
-     * login by the user( True if successfully logged in,
-     * otherwise False )
+     * login by the user( True if successfully logged in, otherwise False )
      */
     public boolean doLogin(Users user) {
         boolean success = false;
 
-        String sql = "Select * from user where email=? and password=?";
+        String sql = "Select * from user where emal=? and password=?";
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -64,7 +69,11 @@ public class LoginService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(LoginService.class.getName());
+//            log.error(ex);
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+
         }
 
         return success;
@@ -72,7 +81,9 @@ public class LoginService {
 
     /**
      *
-     * Description: The getUser method is used to get the particular user using the email 
+     * Description: The getUser method is used to get the particular user using
+     * the email
+     *
      * @param emailAddress email address of the user
      * @return this method returns the corresponding user for the given email
      */
@@ -95,7 +106,9 @@ public class LoginService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(LoginService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
 
         return user;
@@ -103,9 +116,11 @@ public class LoginService {
 
     /**
      *
-     * Description: The doGetRoleId method is used to get the role id for a given user email
+     * Description: The doGetRoleId method is used to get the role id for a
+     * given user email
+     *
      * @param email email address of the user
-     * 
+     *
      * @return this method returns the role id for the given user email
      */
     public int doGetRoleId(String email) {
@@ -123,18 +138,23 @@ public class LoginService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(LoginService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
         return roleId;
     }
 
     /**
      *
-     * Description: The doSignUp method is used to do the sign-up of a user. The sign-up functionality is only applicable for the user not for the admin
-     * @param user it is the user datatype/model which has properties like email,password,role-id
+     * Description: The doSignUp method is used to do the sign-up of a user. The
+     * sign-up functionality is only applicable for the user not for the admin
+     *
+     * @param user it is the user datatype/model which has properties like
+     * email,password,role-id
      * @return this method returns a boolean type which denotes the status of
-     * singing up by the new user( True if successfully signed up and inserted the user details to the DB,
-     * otherwise False )
+     * singing up by the new user( True if successfully signed up and inserted
+     * the user details to the DB, otherwise False )
      */
     public boolean doSignUp(Users user) {
         boolean result = false;
@@ -159,7 +179,9 @@ public class LoginService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(LoginService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
         return result;
     }
