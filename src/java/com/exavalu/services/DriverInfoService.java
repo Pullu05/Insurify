@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import org.apache.log4j.Logger;
 
 /**
  * Description: The DriverInfoService public class represents a class that will
@@ -65,7 +67,10 @@ public class DriverInfoService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(DriverInfoService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+
         }
         System.out.println("Number of Drivers = " + driverInfoList.size());
         return driverInfoList;
@@ -75,9 +80,9 @@ public class DriverInfoService {
      *
      * Description: The AddDriverInfo method is used to add the
      * details/information of a new driver
-     * 
+     *
      * @param driverInfo Information about the Driver
-     * 
+     *
      * @return this method returns a boolean type which denotes the status of
      * adding the new driver details( True if successfully added to the DB,
      * otherwise False )
@@ -103,7 +108,9 @@ public class DriverInfoService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(DriverInfoService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
 
         return result;
@@ -113,8 +120,9 @@ public class DriverInfoService {
      *
      * Description: The getDriverInfo method is used to get the
      * details/information of a particular driver using it's id
+     *
      * @param id it is the id of DriverInfo
-     * 
+     *
      * @return this method returns the desired driver's information
      */
     public DriverInfo getDriverInfo(int id) {
@@ -135,7 +143,9 @@ public class DriverInfoService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(DriverInfoService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
 
         return driverinfo;
@@ -145,9 +155,10 @@ public class DriverInfoService {
      *
      * Description: The updateDriverInfo method is used to update the existing
      * details/information of a particular driver using it's id
-     * @param driverInfo The DriverInfo object 
-     * @param id The id of the DriverInfo 
-     * 
+     *
+     * @param driverInfo The DriverInfo object
+     * @param id The id of the DriverInfo
+     *
      * @return this method returns a boolean type which denotes the status of
      * updating the existing driver details( True if successfully updated to the
      * DB, otherwise False )
@@ -176,7 +187,9 @@ public class DriverInfoService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(DriverInfoService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
         return result;
     }

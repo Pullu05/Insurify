@@ -13,11 +13,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import org.apache.log4j.Logger;
 
 /**
  * Description: The VehicleDataService public class represents a class that will
  * contain the methods to insert the vehicle data to the DB, and categorize the
- * weightage based on vehicle make and model, get all makers and models for the vehicle data
+ * weightage based on vehicle make and model, get all makers and models for the
+ * vehicle data
  *
  * @author Admin
  */
@@ -38,14 +41,18 @@ public class VehicleDataService {
             return vehicleDataService;
         }
     }
+
     /**
      *
-     * Description: The doVehicleDataEntry method is used to Insert the client-side Vehicle Data into the DB
-     * @param vehicle  vehicle data which is given by the user while filling the client-side form
+     * Description: The doVehicleDataEntry method is used to Insert the
+     * client-side Vehicle Data into the DB
+     *
+     * @param vehicle vehicle data which is given by the user while filling the
+     * client-side form
      * @param email email address of the user
      * @return this method returns a boolean type which denotes the status of
-     * inserting the client-side Vehicle Data into the DB( True if successfully inserted to the DB,
-     * otherwise False )
+     * inserting the client-side Vehicle Data into the DB( True if successfully
+     * inserted to the DB, otherwise False )
      */
     public boolean doVehicleDataEntry(Vehicle vehicle, String email) {
         boolean result = false;
@@ -74,16 +81,22 @@ public class VehicleDataService {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(VehicleDataService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
         return result;
 
     }
+
     /**
      *
-     * Description: The getVehicleWeightage method is used to get the
-     * Vehicle Weightage using id , as well as set the weightage value for different make and model
-     * @param vehicle  vehicle data which is given by the user while filling the client-side form
+     * Description: The getVehicleWeightage method is used to get the Vehicle
+     * Weightage using id , as well as set the weightage value for different
+     * make and model
+     *
+     * @param vehicle vehicle data which is given by the user while filling the
+     * client-side form
      * @return this method returns weightage of a vehicle using id
      */
     public int getVehicleWeightage(Vehicle vehicle) {
@@ -107,11 +120,14 @@ public class VehicleDataService {
             System.out.println("Vehicle Weightage: " + weightageValue);
 
         } catch (SQLException ex) {
-            ex.getMessage();
+//            ex.getMessage();
+            Logger log = Logger.getLogger(VehicleDataService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
 
         return weightageValue;
     }
+
     /**
      *
      * Description: The getAllmakers method is used to get all makers of cars
@@ -138,13 +154,17 @@ public class VehicleDataService {
             System.out.println("MakeList :" + makeList.size());
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(VehicleDataService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
         return makeList;
     }
+
     /**
      *
-     * Description: The getAllmodels method is used to get all models for a particular car maker
+     * @param makeCode Description: The getAllmodels method is used to get all
+     * models for a particular car maker
      *
      * @return list of all models of a particular car maker
      */
@@ -172,7 +192,9 @@ public class VehicleDataService {
             System.out.println("ModelList :" + modelList.size());
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            Logger log = Logger.getLogger(VehicleDataService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
         return modelList;
     }

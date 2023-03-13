@@ -10,11 +10,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import org.apache.log4j.Logger;
 
 /**
  * Description: The InsuranceApiService public class represents a class that
- * will contain the methods to insert the insurance record of a particular driver,
- * calculate the weightage based on the data fetched from the API call and store it in the DB also, get the weightage of a driver using Aadhaar number
+ * will contain the methods to insert the insurance record of a particular
+ * driver, calculate the weightage based on the data fetched from the API call
+ * and store it in the DB also, get the weightage of a driver using Aadhaar
+ * number
  *
  * @author Subhadip Sarkar
  */
@@ -39,10 +43,13 @@ public class InsuranceApiService {
     /**
      *
      * Description: The calculateWeightage method is used to calculate the
-     * Weightage of a driver on the basis of insurance history and driver experience, Both of these are fetched from the API
-     * @param insuranceData insurance data fetched from API which is nused to calculate the weightage 
-     * 
-     * @return this method returns the calculated Weightage 
+     * Weightage of a driver on the basis of insurance history and driver
+     * experience, Both of these are fetched from the API
+     *
+     * @param insuranceData insurance data fetched from API which is nused to
+     * calculate the weightage
+     *
+     * @return this method returns the calculated Weightage
      */
     public int calculateWeightage(InsuranceAPIData insuranceData) {
 
@@ -90,13 +97,15 @@ public class InsuranceApiService {
 
     /**
      *
-     * Description: The storeIntoDB method is basically used for storing the Insurance history Data 
-     * along-with Aadhaar number(Fetched from API) to the DB
+     * Description: The storeIntoDB method is basically used for storing the
+     * Insurance history Data along-with Aadhaar number(Fetched from API) to the
+     * DB
+     *
      * @param insuranceData insurance data fetched from API
-     * 
+     *
      * @return this method returns a boolean type which denotes the status of
-     * storing the Insurance history Data to the DB( True if successfully
-     * stored to the DB, otherwise False )
+     * storing the Insurance history Data to the DB( True if successfully stored
+     * to the DB, otherwise False )
      */
     public boolean storeIntoDB(InsuranceAPIData insuranceData) {
         boolean result = false;
@@ -121,8 +130,11 @@ public class InsuranceApiService {
                 result = true;
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+//            e.printStackTrace();
+            Logger log = Logger.getLogger(InsuranceApiService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+
         }
 
         return result;
@@ -133,8 +145,10 @@ public class InsuranceApiService {
      *
      * Description: The getInsuranceApiWeightage method is used to get the
      * calculated weightage using Aadhaar number
-     * @param aadhaarNo Aadhaar Number is used to uniquely identify particular weightage of a insurance type 
-     * 
+     *
+     * @param aadhaarNo Aadhaar Number is used to uniquely identify particular
+     * weightage of a insurance type
+     *
      * @return this method returns the fetched weightage from the DB
      */
     public int getInsuranceApiWeightage(String aadhaarNo) {
@@ -161,8 +175,10 @@ public class InsuranceApiService {
                 insuranceData.setAadhaarNo(rs.getString("aadhaarNo"));
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+//            e.printStackTrace();
+            Logger log = Logger.getLogger(InsuranceApiService.class.getName());
+            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
         }
 
         weightage = insuranceData.getWeightage();
