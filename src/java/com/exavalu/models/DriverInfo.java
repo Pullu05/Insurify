@@ -53,7 +53,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
     public String doAddDriverInfo() throws Exception {
         String result = "FAILURE";
 
-        boolean success = DriverInfoService.getInstance().AddDriverInfo(this);
+        boolean success = DriverInfoService.getInstance().addDriverInfo(this);
 
         if (success) {
             System.out.println("returning Success from doAddDriverInfo method");
