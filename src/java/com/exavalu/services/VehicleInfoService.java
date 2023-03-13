@@ -76,7 +76,7 @@ public class VehicleInfoService {
 
     /**
      *
-     * Description: The AddVehicleInfo method is used to add the
+     * Description: The addVehicleInfo method is used to add the
      * details/information of a new vehicle
      *
      * @param vehicleInfo Information about the vehicle
@@ -84,7 +84,7 @@ public class VehicleInfoService {
      * adding the new vehicle details( True if successfully added to the DB,
      * otherwise False )
      */
-    public boolean AddVehicleInfo(VehicleInfo vehicleInfo) {
+    public boolean addVehicleInfo(VehicleInfo vehicleInfo) {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();

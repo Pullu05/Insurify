@@ -51,7 +51,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public String doAddVehicleInfo() throws Exception {
         String result = "FAILURE";
 
-        boolean success = VehicleInfoService.getInstance().AddVehicleInfo(this);
+        boolean success = VehicleInfoService.getInstance().addVehicleInfo(this);
 
         if (success) {
             System.out.println("returning Success from doAddVehicleInfo method");

@@ -187,11 +187,11 @@ public class VehicleDataService {
 
     /**
      *
-     * Description: The getAllmakers method is used to get all makers of cars
+     * Description: The getAllMakers method is used to get all makers of cars
      *
      * @return list of all makers of cars
      */
-    public ArrayList getAllmakers() {
+    public ArrayList getAllMakers() {
         ArrayList makeList = new ArrayList();
 
         String sql = "Select * from makers";
@@ -219,12 +219,12 @@ public class VehicleDataService {
     }
 
     /**
-     * Description: The getAllmodels method is used to get all models for a particular car maker
+     * Description: The getAllModels method is used to get all models for a particular car maker
      * @param makeCode 
      *
      * @return list of all models of a particular car maker
      */
-    public ArrayList getAllmodels(String makeCode) {
+    public ArrayList getAllModels(String makeCode) {
         ArrayList modelList = new ArrayList();
 
         String sql = "Select * from models where makeCode = ?";
