@@ -52,7 +52,7 @@ public class LoginService {
     public boolean doLogin(Users user) {
         boolean success = false;
 
-        String sql = "Select * from user where emal=? and password=?";
+        String sql = "Select * from user where email=? and password=?";
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
