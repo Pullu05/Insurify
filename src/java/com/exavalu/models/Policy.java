@@ -171,12 +171,9 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         sessionMap.put("CVRG", coverage);
         sessionMap.put("PRM", premium);
         sessionMap.put("PlanName", planName);
-//        System.out.println(sessionMap.get("Coverage"));
-        //System.out.println(this.getEmail());
-          //System.out.println(this.email);
-//       MailSender.sendEmailToUser(this.getEmail());
-        
 
+
+        
         return result;
     }
 

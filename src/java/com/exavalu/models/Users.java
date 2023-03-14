@@ -53,7 +53,10 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
      */
     public String doLogin() throws Exception {
         String result = "FAILURE";
-
+        
+        System.out.println(this.password);
+        this.setPassword(LoginService.getInstance().getMd5Hash(this.password));
+        System.out.println(this.password);
         boolean success = LoginService.getInstance().doLogin(this);
         ArrayList makeList = VehicleDataService.getInstance().getAllMakers();
         sessionMap.put("MakeList", makeList);
@@ -138,7 +141,10 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public String doSignUp() throws Exception {
         sessionMap.clear();
         String result = "FAILURE";
-
+        
+        System.out.println(this.password);
+        this.setPassword(LoginService.getInstance().getMd5Hash(this.password));
+        System.out.println(this.password);
         boolean success = LoginService.getInstance().doSignUp(this);
 
         if (success) {
