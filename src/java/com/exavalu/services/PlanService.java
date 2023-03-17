@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -18,9 +19,13 @@ import org.apache.log4j.Logger;
  *
  * @author RISHAV DUTTA
  */
-public class PlanService {
+public final class PlanService {
 
+    private static final Logger log = Logger.getLogger(PlanService.class.getName());
     public static PlanService planService = null;
+
+    private PlanService() {
+    }
 
     /**
      *
@@ -28,12 +33,11 @@ public class PlanService {
      *
      * @return It returns the created object of PlanService
      */
-    public static PlanService getInstance() {
+    public static synchronized PlanService getInstance() {
         if (planService == null) {
-            return new PlanService();
-        } else {
-            return planService;
+            planService = new PlanService();
         }
+        return planService;
     }
 
     /**
@@ -48,24 +52,26 @@ public class PlanService {
      */
     public boolean addPlanName(Plan plan) {
         boolean result = false;
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "INSERT INTO plan(planName) VALUES( ?)";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, plan.getPlanName());
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, plan.getPlanName());
 
-            int row = preparedStatement.executeUpdate();
+                int row = preparedStatement.executeUpdate();
 
-            System.out.println("SQl=" + preparedStatement);
-            if (row == 1) {
-                result = true;
+                System.out.println("SQl=" + preparedStatement);
+                if (row == 1) {
+                    result = true;
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(PlanService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return result;

@@ -5,14 +5,16 @@
 package com.exavalu.models;
 
 /**
- * Description: The Make public class represents a class that will contain
- * the private data members
+ * Description: The Make public class represents a class that will contain the
+ * private data members
+ *
  * @author Admin
  */
 public class Make {
 
     private String makeCode;
     private String makeName;
+
     /**
      * Getter method of MakeCode.
      *
@@ -21,6 +23,7 @@ public class Make {
     public String getMakeCode() {
         return makeCode;
     }
+
     /**
      * Setter method of MakeCode.
      *
@@ -38,6 +41,7 @@ public class Make {
     public String getMakeName() {
         return makeName;
     }
+
     /**
      * Setter method of MakeCode.
      *

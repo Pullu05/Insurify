@@ -17,9 +17,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
@@ -29,43 +27,29 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author kumar
  */
-public class InsuranceAPIData extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class InsuranceAPIData extends ActionSupport implements SessionAware, Serializable {
 
-    private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
+    private static SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     @Override
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
 
-    public static InsuranceAPIData insuranceAPIData = null;
+    private String insuranceStatus;
+    private String insuranceHistory;
+    private int amountClaimed;
+    private int drivingExperience;
+    private int weightage;
+    private String aadhaarNo;
 
     /**
-     *
-     * Description: It is the Instance method for InsuranceAPIData class
-     *
-     * @return It returns the created object of InsuranceAPIData
-     */
-    public static InsuranceAPIData getInstance() {
-        if (insuranceAPIData == null) {
-            return new InsuranceAPIData();
-        } else {
-            return insuranceAPIData;
-        }
-    }
-
-    /**
-     * Description: The doGetInsuranceDetails method is used to get all the insurance details from the API call
+     * Description: The doGetInsuranceDetails method is used to get all the
+     * insurance details from the API call
      *
      * @return it returns a string which is mapped to the struts.xml
      */
-    public String doGetInsuranceDetails() throws Exception {
+    public static String doGetInsuranceDetails() throws Exception {
 
         String result = "FAILURE";
         boolean success = false;
@@ -115,13 +99,6 @@ public class InsuranceAPIData extends ActionSupport implements ApplicationAware,
 
         return result;
     }
-
-    private String insuranceStatus;
-    private String insuranceHistory;
-    private int amountClaimed;
-    private int drivingExperience;
-    private int weightage;
-    private String aadhaarNo;
 
     /**
      * Getter method of Insurance Status.

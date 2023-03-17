@@ -12,36 +12,30 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
  * Description: The Plan public class represents a class that will contain the
- * private data members and the method to calculate the total weightage using the vehicle weightage and insurant weightage
+ * private data members and the method to calculate the total weightage using
+ * the vehicle weightage and insurant weightage
+ *
  * @author RISHAV DUTTA
  */
-public class Policy extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class Policy extends ActionSupport implements SessionAware, Serializable {
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-    private String email;
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
 
+    private String email;
     private String weightageRange;
     private int coverage;
     private int premium;
+
     /**
      * Getter method of WeightageRange.
      *
@@ -50,6 +44,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public String getWeightageRange() {
         return weightageRange;
     }
+
     /**
      * Setter method of WeightageRange.
      *
@@ -58,6 +53,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public void setWeightageRange(String weightageRange) {
         this.weightageRange = weightageRange;
     }
+
     /**
      * Getter method of Coverage.
      *
@@ -66,6 +62,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public int getCoverage() {
         return coverage;
     }
+
     /**
      * Setter method of Coverage.
      *
@@ -74,6 +71,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public void setCoverage(int coverage) {
         this.coverage = coverage;
     }
+
     /**
      * Getter method of Premium.
      *
@@ -82,6 +80,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public int getPremium() {
         return premium;
     }
+
     /**
      * Setter method of Premium.
      *
@@ -90,6 +89,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public void setPremium(int premium) {
         this.premium = premium;
     }
+
     /**
      * @return the email
      */
@@ -103,16 +103,18 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
     public void setEmail(String email) {
         this.email = email;
     }
+
     /**
-     * Description: The doGetTotalWeightage method is used to calculate total weightage 
-     * using the vehicle weightage and insurant weightage , also based on the total weightage and the plan name 
-     * the premium and the coverage is calculated and put the
-     * coverage, premium, plan name to the session map
+     * Description: The doGetTotalWeightage method is used to calculate total
+     * weightage using the vehicle weightage and insurant weightage , also based
+     * on the total weightage and the plan name the premium and the coverage is
+     * calculated and put the coverage, premium, plan name to the session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doGetTotalWeightage() throws Exception {
         String result = "SUCCESS";
-        
+
         int vehicleWeightage = VehicleDataService.getInstance().getVehicleWeightage((Vehicle) sessionMap.get("VehicleData"));
 
         int insurantWeightage = InsurantDataService.getInstance().getDriverWeightage((InsurantData) sessionMap.get("InsurantData"));
@@ -128,7 +130,6 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         Policy policy = PolicyService.getInstance().getPolicyInfo(totalWeightage);
         int coverage = policy.getCoverage();
         int premium = policy.getPremium();
-        
 
         System.out.println("Coverage  :" + coverage);
         System.out.println("Premium  :" + premium);
@@ -138,13 +139,13 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         String planName = plan.getPlanName();
         System.out.println(planName);
 
-        if (plan.getPlanName().equalsIgnoreCase("Silver")) {
+        if ("Silver".equalsIgnoreCase(planName)) {
             System.out.println("Plan Name :" + planName);
             System.out.println("Coverage  :" + coverage);
             System.out.println("Premium  :" + premium);
 
         }
-        if (planName.equalsIgnoreCase("Gold")) {
+        if ("Gold".equalsIgnoreCase(planName)) {
             System.out.println("Plan Name :" + planName);
             coverage = 2 * coverage + 2700;
             premium = 2 * premium + 300;
@@ -152,7 +153,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
             System.out.println("Premium  :" + premium);
 
         }
-        if (planName.equalsIgnoreCase("Platinum")) {
+        if ("Platinum".equalsIgnoreCase(planName)) {
             System.out.println("Plan Name :" + planName);
             coverage = 3 * coverage + 7000;
             premium = 3 * premium + 750;
@@ -160,7 +161,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
             System.out.println("Premium  :" + premium);
 
         }
-        if (planName.equalsIgnoreCase("Ultimate")) {
+        if ("Ultimate".equalsIgnoreCase(planName)) {
             System.out.println("Plan Name :" + planName);
             coverage = 4 * coverage + 12000;
             premium = 4 * premium + 1500;
@@ -172,10 +173,7 @@ public class Policy extends ActionSupport implements ApplicationAware, SessionAw
         sessionMap.put("PRM", premium);
         sessionMap.put("PlanName", planName);
 
-
-        
         return result;
     }
 
-    
 }

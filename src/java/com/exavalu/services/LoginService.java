@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -23,9 +24,13 @@ import org.apache.log4j.Logger;
  *
  * @author RISHAV DUTTA
  */
-public class LoginService {
+public final class LoginService {
 
+    private static final Logger log = Logger.getLogger(LoginService.class.getName());
     public static LoginService loginService = null;
+
+    private LoginService() {
+    }
 
     /**
      *
@@ -33,12 +38,11 @@ public class LoginService {
      *
      * @return It returns the created object of LoginService
      */
-    public static LoginService getInstance() {
+    public static synchronized LoginService getInstance() {
         if (loginService == null) {
-            return new LoginService();
-        } else {
-            return loginService;
+            loginService = new LoginService();
         }
+        return loginService;
     }
 
     /**
@@ -55,28 +59,29 @@ public class LoginService {
     public boolean doLogin(Users user) {
         boolean success = false;
 
-        String sql = "Select * from user where email=? and password=?";
-
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, user.getEmail());
-            ps.setString(2, user.getPassword());
+            String sql = "Select * from user where email=? and password=?";
 
-            System.out.println("LoginService :: " + ps);
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, user.getEmail());
+                ps.setString(2, user.getPassword());
 
-            ResultSet rs = ps.executeQuery();
+                System.out.println("LoginService :: " + ps);
 
-            if (rs.next()) {
-                success = true;
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        success = true;
+                    }
+                }
+
             }
 
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(LoginService.class.getName());
-//            log.error(ex);
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
-
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return success;
@@ -91,27 +96,31 @@ public class LoginService {
      * @return this method returns the corresponding user for the given email
      */
     public Users getUser(String emailAddress) {
-        Connection con = JDBCConnectionManager.getConnection();
         Users user = new Users();
+
         try {
-
+            Connection con = JDBCConnectionManager.getConnection();
             String sql = "Select * from user where email=?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, emailAddress);
 
-            System.out.println("sql: " + preparedStatement);
-            ResultSet rs = preparedStatement.executeQuery();
-            System.out.println(rs);
-            if (rs.next()) {
-                user.setEmail(rs.getString("email"));
-                user.setFirstName(rs.getString("firstName"));
-                user.setLastName(rs.getString("lastName"));
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, emailAddress);
+
+                System.out.println("sql: " + preparedStatement);
+
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    if (rs.next()) {
+                        user.setEmail(rs.getString("email"));
+                        user.setFirstName(rs.getString("firstName"));
+                        user.setLastName(rs.getString("lastName"));
+                    }
+                }
             }
 
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(LoginService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return user;
@@ -128,22 +137,28 @@ public class LoginService {
      */
     public int doGetRoleId(String email) {
         int roleId = 0;
-        String sql = "select roleId from user where email=?";
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, email);
-            System.out.println("GetRole :: " + ps);
-            ResultSet rs = ps.executeQuery();
+            String sql = "select roleId from user where email=?";
 
-            if (rs.next()) {
-                roleId = rs.getInt("roleId");
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, email);
+                System.out.println("GetRole :: " + ps);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        roleId = rs.getInt("roleId");
+                    }
+                }
+
             }
 
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(LoginService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return roleId;
     }
@@ -161,30 +176,32 @@ public class LoginService {
      */
     public boolean doSignUp(Users user) {
         boolean result = false;
-        Connection con = JDBCConnectionManager.getConnection();
-        String sql = "INSERT INTO user(email,password,firstName,lastName,roleId)" + "VALUES(? ,? ,? ,?, ?)";
 
         try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "INSERT INTO user(email,password,firstName,lastName,roleId)" + "VALUES(? ,? ,? ,?, ?)";
 
-            preparedStatement.setString(1, user.getEmail());
-            preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, user.getFirstName());
-            preparedStatement.setString(4, user.getLastName());
-            preparedStatement.setInt(5, 2);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, user.getEmail());
+                preparedStatement.setString(2, user.getPassword());
+                preparedStatement.setString(3, user.getFirstName());
+                preparedStatement.setString(4, user.getLastName());
+                preparedStatement.setInt(5, 2);
 
-            System.out.println("LoginService :: " + preparedStatement);
+                System.out.println("LoginService :: " + preparedStatement);
 
-            int rs = preparedStatement.executeUpdate();
+                int row = preparedStatement.executeUpdate();
 
-            if (rs == 1) {
-                result = true;
+                if (row == 1) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(LoginService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return result;
     }

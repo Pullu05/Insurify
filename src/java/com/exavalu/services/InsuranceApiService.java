@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -22,9 +23,13 @@ import org.apache.log4j.Logger;
  *
  * @author Subhadip Sarkar
  */
-public class InsuranceApiService {
+public final class InsuranceApiService {
 
+    private static final Logger log = Logger.getLogger(InsuranceApiService.class.getName());
     public static InsuranceApiService insuranceApiService = null;
+
+    private InsuranceApiService() {
+    }
 
     /**
      *
@@ -32,12 +37,11 @@ public class InsuranceApiService {
      *
      * @return It returns the created object of InsuranceApiService
      */
-    public static InsuranceApiService getInstance() {
+    public static synchronized InsuranceApiService getInstance() {
         if (insuranceApiService == null) {
-            return new InsuranceApiService();
-        } else {
-            return insuranceApiService;
+            insuranceApiService = new InsuranceApiService();
         }
+        return insuranceApiService;
     }
 
     /**
@@ -52,22 +56,21 @@ public class InsuranceApiService {
      * @return this method returns the calculated Weightage
      */
     public int calculateWeightage(InsuranceAPIData insuranceData) {
-
         int weightage = 0;
 
         // Insurance status weightage
-        if (insuranceData.getInsuranceStatus().equalsIgnoreCase("old")) {
+        if ("old".equalsIgnoreCase(insuranceData.getInsuranceStatus())) {
             weightage -= 5;
-        } else if (insuranceData.getInsuranceStatus().equalsIgnoreCase("new")) {
+        } else if ("new".equalsIgnoreCase(insuranceData.getInsuranceStatus())) {
             weightage += 5;
         }
 
         // Insurance history weightage
-        if (insuranceData.getInsuranceHistory().equalsIgnoreCase("good")) {
+        if ("good".equalsIgnoreCase(insuranceData.getInsuranceHistory())) {
             weightage -= 5;
-        } else if (insuranceData.getInsuranceHistory().equalsIgnoreCase("bad")) {
+        } else if ("bad".equalsIgnoreCase(insuranceData.getInsuranceHistory())) {
             weightage += 5;
-        } else if (insuranceData.getInsuranceHistory().equalsIgnoreCase("average")) {
+        } else if ("average".equalsIgnoreCase(insuranceData.getInsuranceHistory())) {
             weightage += 3;
         }
 
@@ -98,8 +101,8 @@ public class InsuranceApiService {
     /**
      *
      * Description: The storeIntoDB method is basically used for storing the
-     * Insurance history Data along-with Aadhaar number(Fetched from API) to the
-     * DB
+     * Insurance history Data along-with Aadhaar Number (Fetched from API) to
+     * the DB
      *
      * @param insuranceData insurance data fetched from API
      *
@@ -109,32 +112,32 @@ public class InsuranceApiService {
      */
     public boolean storeIntoDB(InsuranceAPIData insuranceData) {
         boolean result = false;
-        try {
 
+        try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "INSERT INTO insuranceapi(aadhaarNo, insuranceStatus, insuranceHistory, amountClaimed, drivingExperience, weightage)" + "VALUES(?,?,?,?,?,?)";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, insuranceData.getAadhaarNo());
+                preparedStatement.setString(2, insuranceData.getInsuranceStatus());
+                preparedStatement.setString(3, insuranceData.getInsuranceHistory());
+                preparedStatement.setInt(4, insuranceData.getAmountClaimed());
+                preparedStatement.setInt(5, insuranceData.getDrivingExperience());
+                preparedStatement.setInt(6, insuranceData.getWeightage());
 
-            preparedStatement.setString(1, insuranceData.getAadhaarNo());
-            preparedStatement.setString(2, insuranceData.getInsuranceStatus());
-            preparedStatement.setString(3, insuranceData.getInsuranceHistory());
-            preparedStatement.setInt(4, insuranceData.getAmountClaimed());
-            preparedStatement.setInt(5, insuranceData.getDrivingExperience());
-            preparedStatement.setInt(6, insuranceData.getWeightage());
+                int row = preparedStatement.executeUpdate();
 
-            int row = preparedStatement.executeUpdate();
-
-            System.out.println("SQl=" + preparedStatement);
-            if (row == 1) {
-                result = true;
+                System.out.println("SQl=" + preparedStatement);
+                if (row == 1) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
-//            e.printStackTrace();
-            Logger log = Logger.getLogger(InsuranceApiService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
-
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return result;
@@ -156,29 +159,29 @@ public class InsuranceApiService {
         InsuranceAPIData insuranceData = new InsuranceAPIData();
 
         try {
-
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "SELECT * FROM insuranceapi WHERE aadhaarNo=?";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, aadhaarNo);
 
-            preparedStatement.setString(1, aadhaarNo);
-            System.out.println("SQL -> " + preparedStatement);
-
-            ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
-                insuranceData.setInsuranceStatus(rs.getString("insuranceStatus"));
-                insuranceData.setInsuranceHistory(rs.getString("insuranceHistory"));
-                insuranceData.setAmountClaimed(rs.getInt("amountClaimed"));
-                insuranceData.setDrivingExperience(rs.getInt("drivingExperience"));
-                insuranceData.setWeightage(rs.getInt("weightage"));
-                insuranceData.setAadhaarNo(rs.getString("aadhaarNo"));
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    if (rs.next()) {
+                        insuranceData.setInsuranceStatus(rs.getString("insuranceStatus"));
+                        insuranceData.setInsuranceHistory(rs.getString("insuranceHistory"));
+                        insuranceData.setAmountClaimed(rs.getInt("amountClaimed"));
+                        insuranceData.setDrivingExperience(rs.getInt("drivingExperience"));
+                        insuranceData.setWeightage(rs.getInt("weightage"));
+                        insuranceData.setAadhaarNo(rs.getString("aadhaarNo"));
+                    }
+                }
             }
 
         } catch (SQLException ex) {
-//            e.printStackTrace();
-            Logger log = Logger.getLogger(InsuranceApiService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         weightage = insuranceData.getWeightage();

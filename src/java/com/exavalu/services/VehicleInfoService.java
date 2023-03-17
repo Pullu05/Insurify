@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -21,9 +23,13 @@ import org.apache.log4j.Logger;
  *
  * @author kumar
  */
-public class VehicleInfoService {
+public final class VehicleInfoService {
 
+    private static final Logger log = Logger.getLogger(VehicleInfoService.class.getName());
     public static VehicleInfoService vehicleInfoService = null;
+
+    private VehicleInfoService() {
+    }
 
     /**
      *
@@ -31,12 +37,11 @@ public class VehicleInfoService {
      *
      * @return It returns the created object of VehicleInfoService
      */
-    public static VehicleInfoService getInstance() {
+    public static synchronized VehicleInfoService getInstance() {
         if (vehicleInfoService == null) {
-            return new VehicleInfoService();
-        } else {
-            return vehicleInfoService;
+            vehicleInfoService = new VehicleInfoService();
         }
+        return vehicleInfoService;
     }
 
     /**
@@ -46,30 +51,35 @@ public class VehicleInfoService {
      *
      * @return list of all Vehicle Information
      */
-    public ArrayList getAllVehicleInfo() {
-        ArrayList vehicleInfoList = new ArrayList();
+    public List<VehicleInfo> getAllVehicleInfo() {
+        List<VehicleInfo> vehicleInfoList = new ArrayList<>();
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "SELECT * from vehicleinfo";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                VehicleInfo vehicleInfo = new VehicleInfo();
 
-                vehicleInfo.setVehicleId(rs.getInt("vehicleId"));
-                vehicleInfo.setVehicleMake(rs.getString("vehicleMake"));
-                vehicleInfo.setVehicleModel(rs.getString("vechicleModel"));
-                vehicleInfo.setDateOfManufacture(rs.getString("dateOfManufacture"));
-                vehicleInfo.setWeightage(rs.getInt("weightage"));
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        VehicleInfo vehicleInfo = new VehicleInfo();
 
-                vehicleInfoList.add(vehicleInfo);
+                        vehicleInfo.setVehicleId(rs.getInt("vehicleId"));
+                        vehicleInfo.setVehicleMake(rs.getString("vehicleMake"));
+                        vehicleInfo.setVehicleModel(rs.getString("vechicleModel"));
+                        vehicleInfo.setDateOfManufacture(rs.getString("dateOfManufacture"));
+                        vehicleInfo.setWeightage(rs.getInt("weightage"));
+
+                        vehicleInfoList.add(vehicleInfo);
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(VehicleInfoService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
+
         System.out.println("Number of Vehicles = " + vehicleInfoList.size());
         return vehicleInfoList;
     }
@@ -86,29 +96,30 @@ public class VehicleInfoService {
      */
     public boolean addVehicleInfo(VehicleInfo vehicleInfo) {
         boolean result = false;
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "INSERT INTO vehicleInfo(vehicleMake,vechicleModel,dateOfManufacture,weightage) "
                     + "VALUES(? ,? ,? ,?)";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, vehicleInfo.getVehicleMake());
+                preparedStatement.setString(2, vehicleInfo.getVehicleModel());
+                preparedStatement.setString(3, vehicleInfo.getDateOfManufacture());
+                preparedStatement.setInt(4, vehicleInfo.getWeightage());
 
-            preparedStatement.setString(1, vehicleInfo.getVehicleMake());
-            preparedStatement.setString(2, vehicleInfo.getVehicleModel());
-            preparedStatement.setString(3, vehicleInfo.getDateOfManufacture());
-            preparedStatement.setInt(4, vehicleInfo.getWeightage());
+                int row = preparedStatement.executeUpdate();
 
-            int row = preparedStatement.executeUpdate();
-
-            System.out.println("SQl=" + preparedStatement);
-            if (row == 1) {
-                result = true;
+                System.out.println("SQl=" + preparedStatement);
+                if (row == 1) {
+                    result = true;
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(VehicleInfoService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return result;
@@ -127,24 +138,26 @@ public class VehicleInfoService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-
             String sql = "SELECT * from vehicleInfo where vehicleId =?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, vehicleId);
 
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                vehicleInfo.setVehicleId(rs.getInt("vehicleId"));
-                vehicleInfo.setVehicleMake(rs.getString("vehicleMake"));
-                vehicleInfo.setVehicleModel(rs.getString("vechicleModel"));
-                vehicleInfo.setDateOfManufacture(rs.getString("dateOfManufacture"));
-                vehicleInfo.setWeightage(rs.getInt("weightage"));
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, vehicleId);
+
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        vehicleInfo.setVehicleId(rs.getInt("vehicleId"));
+                        vehicleInfo.setVehicleMake(rs.getString("vehicleMake"));
+                        vehicleInfo.setVehicleModel(rs.getString("vechicleModel"));
+                        vehicleInfo.setDateOfManufacture(rs.getString("dateOfManufacture"));
+                        vehicleInfo.setWeightage(rs.getInt("weightage"));
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(VehicleInfoService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return vehicleInfo;
@@ -163,35 +176,36 @@ public class VehicleInfoService {
      *
      */
     public boolean updateVehicleInfo(VehicleInfo vehicleInfo, int vehicleId) {
-
         boolean result = false;
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "UPDATE vehicleInfo "
                     + "SET vehicleMake = ? , vechicleModel = ? , dateOfManufacture = ?, weightage = ? "
                     + "WHERE vehicleId = ?;";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, vehicleInfo.getVehicleMake());
+                preparedStatement.setString(2, vehicleInfo.getVehicleModel());
+                preparedStatement.setString(3, vehicleInfo.getDateOfManufacture());
+                preparedStatement.setInt(4, vehicleInfo.getWeightage());
 
-            preparedStatement.setString(1, vehicleInfo.getVehicleMake());
-            preparedStatement.setString(2, vehicleInfo.getVehicleModel());
-            preparedStatement.setString(3, vehicleInfo.getDateOfManufacture());
-            preparedStatement.setInt(4, vehicleInfo.getWeightage());
+                preparedStatement.setInt(5, vehicleId);
 
-            preparedStatement.setInt(5, vehicleId);
+                int row = preparedStatement.executeUpdate();
 
-            int row = preparedStatement.executeUpdate();
-
-            System.out.println("SQl=" + preparedStatement);
-            if (row == 1) {
-                result = true;
+                System.out.println("SQl=" + preparedStatement);
+                if (row == 1) {
+                    result = true;
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(VehicleInfoService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
+
         return result;
     }
 }

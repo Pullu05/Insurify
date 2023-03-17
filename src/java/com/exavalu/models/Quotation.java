@@ -8,28 +8,21 @@ import com.exavalu.services.QuotationService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
  * Description: The Quotation public class represents a class that will contain
- * the private data members and the methods to add data to the quotation, show 
+ * the private data members and the methods to add data to the quotation, show
  * existing quotation details, to edit/update quotation details
+ *
  * @author RISHAV DUTTA
  */
-public class Quotation extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class Quotation extends ActionSupport implements SessionAware, Serializable {
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -52,12 +45,15 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     private String model;
     private String planName;
     private String status;
+
     /**
-     * Description: The AddQuotationData method is used to add the quotation data
-     * and put the QuotationData,as well as previous quotation list to the session map
+     * Description: The AddQuotationData method is used to add the quotation
+     * data and put the QuotationData,as well as previous quotation list to the
+     * session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
-    public String AddQuotationData() throws Exception {
+    public String addQuotationData() throws Exception {
         String result = "FAILURE";
 
         boolean success = QuotationService.getInstance().addQuotationData(this);
@@ -65,16 +61,18 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
             System.out.println("Successfully Quotation Data Added");
             result = "SUCCESS";
             sessionMap.put("QuotationData", this);
-            ArrayList quotationList = QuotationService.getInstance().getQuotationList(this.email);
+            List<Quotation> quotationList = QuotationService.getInstance().getQuotationList(this.email);
             sessionMap.put("PrevQuotList", quotationList);
         } else {
             System.out.println("OOps your Quotation Data is not added");
         }
         return result;
     }
+
     /**
-     * Description: The showQuotationData method is used to show a id specific quotation data
-     * and put the QuotationData to the session map
+     * Description: The showQuotationData method is used to show a id specific
+     * quotation data and put the QuotationData to the session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String showQuotationData() throws Exception {
@@ -83,10 +81,13 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
         sessionMap.put("IdSpecificQuotataion", quotation);
         return result;
     }
+
     /**
-     * Description: The updateStatus method is used to show a id specific quotation data
-     * and put the QuotationData to the session map and the user can Accept or Reject.
-     * after clicking the status is being updated to the DB
+     * Description: The updateStatus method is used to show a id specific
+     * quotation data and put the QuotationData to the session map and the user
+     * can Accept or Reject. after clicking the status is being updated to the
+     * DB
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String updateStatus() throws Exception {
@@ -94,31 +95,32 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
         Quotation quot = (Quotation) sessionMap.get("IdSpecificQuotataion");
         int quotId = quot.getQuotationId();
         String quotEmail = quot.getEmail();
-        if (this.status.equals("1")) {
+        if ("1".equals(this.status)) {
             boolean success = QuotationService.getInstance().updateStatus(quotId, "ACCEPTED");
             if (success) {
                 result = "SUCCESS";
-                ArrayList quotationList = QuotationService.getInstance().getQuotationList(this.email);
+                List<Quotation> quotationList = QuotationService.getInstance().getQuotationList(this.email);
                 sessionMap.put("PrevQuotList", quotationList);
             } else {
                 System.out.println("OOps your update is failed");
             }
         }
-        if (this.status.equals("0")) {
+        if ("0".equals(this.status)) {
             boolean success = QuotationService.getInstance().updateStatus(quotId, "REJECTED");
             if (success) {
                 result = "SUCCESS";
-                ArrayList quotationList = QuotationService.getInstance().getQuotationList(this.email);
+                List<Quotation> quotationList = QuotationService.getInstance().getQuotationList(this.email);
                 sessionMap.put("PrevQuotList", quotationList);
             } else {
                 System.out.println("OOps your update is failed");
             }
         }
 
-        ArrayList quotationList = QuotationService.getInstance().getQuotationList(quotEmail);
+        List<Quotation> quotationList = QuotationService.getInstance().getQuotationList(quotEmail);
         sessionMap.put("PrevQuotList", quotationList);
         return result;
     }
+
     /**
      * Getter method of QuotationId.
      *
@@ -127,6 +129,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public int getQuotationId() {
         return quotationId;
     }
+
     /**
      * Setter method of QuotationId.
      *
@@ -135,6 +138,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setQuotationId(int quotationId) {
         this.quotationId = quotationId;
     }
+
     /**
      * Getter method of IdvValue.
      *
@@ -143,6 +147,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public int getIdvValue() {
         return idvValue;
     }
+
     /**
      * Setter method of IdvValue.
      *
@@ -151,6 +156,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setIdvValue(int idvValue) {
         this.idvValue = idvValue;
     }
+
     /**
      * Getter method of Cc.
      *
@@ -159,6 +165,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public int getCc() {
         return cc;
     }
+
     /**
      * Setter method of Cc.
      *
@@ -167,6 +174,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setCc(int cc) {
         this.cc = cc;
     }
+
     /**
      * Getter method of Premium.
      *
@@ -175,6 +183,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public int getPremium() {
         return premium;
     }
+
     /**
      * Setter method of Premium.
      *
@@ -183,6 +192,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setPremium(int premium) {
         this.premium = premium;
     }
+
     /**
      * Getter method of LiabPremium.
      *
@@ -191,6 +201,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public int getLiabPremium() {
         return liabPremium;
     }
+
     /**
      * Setter method of LiabPremium.
      *
@@ -199,6 +210,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setLiabPremium(int liabPremium) {
         this.liabPremium = liabPremium;
     }
+
     /**
      * Getter method of TotalPremium.
      *
@@ -207,6 +219,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public int getTotalPremium() {
         return totalPremium;
     }
+
     /**
      * Setter method of TotalPremium.
      *
@@ -215,6 +228,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setTotalPremium(int totalPremium) {
         this.totalPremium = totalPremium;
     }
+
     /**
      * Getter method of Email.
      *
@@ -223,6 +237,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getEmail() {
         return email;
     }
+
     /**
      * Setter method of Email.
      *
@@ -231,6 +246,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setEmail(String email) {
         this.email = email;
     }
+
     /**
      * Getter method of AadhaarNo.
      *
@@ -239,6 +255,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getAadhaarNo() {
         return aadhaarNo;
     }
+
     /**
      * Setter method of AadhaarNo.
      *
@@ -247,6 +264,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setAadhaarNo(String aadhaarNo) {
         this.aadhaarNo = aadhaarNo;
     }
+
     /**
      * Getter method of ProposerName.
      *
@@ -255,6 +273,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getProposerName() {
         return proposerName;
     }
+
     /**
      * Setter method of ProposerName.
      *
@@ -263,6 +282,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setProposerName(String proposerName) {
         this.proposerName = proposerName;
     }
+
     /**
      * Getter method of QuotationDate.
      *
@@ -271,6 +291,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getQuotationDate() {
         return quotationDate;
     }
+
     /**
      * Setter method of QuotationDate.
      *
@@ -279,6 +300,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setQuotationDate(String quotationDate) {
         this.quotationDate = quotationDate;
     }
+
     /**
      * Getter method of Vin.
      *
@@ -287,6 +309,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getVin() {
         return vin;
     }
+
     /**
      * Setter method of Vin.
      *
@@ -295,6 +318,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setVin(String vin) {
         this.vin = vin;
     }
+
     /**
      * Getter method of LicensePlateNumber.
      *
@@ -303,6 +327,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getLicensePlateNumber() {
         return licensePlateNumber;
     }
+
     /**
      * Setter method of LicensePlateNumber.
      *
@@ -311,6 +336,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setLicensePlateNumber(String licensePlateNumber) {
         this.licensePlateNumber = licensePlateNumber;
     }
+
     /**
      * Getter method of Make.
      *
@@ -319,6 +345,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getMake() {
         return make;
     }
+
     /**
      * Setter method of Make.
      *
@@ -327,6 +354,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setMake(String make) {
         this.make = make;
     }
+
     /**
      * Getter method of Model.
      *
@@ -335,6 +363,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getModel() {
         return model;
     }
+
     /**
      * Setter method of Model.
      *
@@ -343,6 +372,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setModel(String model) {
         this.model = model;
     }
+
     /**
      * Getter method of PlanName.
      *
@@ -351,6 +381,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getPlanName() {
         return planName;
     }
+
     /**
      * Setter method of PlanName.
      *
@@ -359,6 +390,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public void setPlanName(String planName) {
         this.planName = planName;
     }
+
     /**
      * Getter method of Status.
      *
@@ -367,6 +399,7 @@ public class Quotation extends ActionSupport implements ApplicationAware, Sessio
     public String getStatus() {
         return status;
     }
+
     /**
      * Setter method of Status.
      *

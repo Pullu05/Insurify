@@ -8,11 +8,9 @@ import com.exavalu.services.VehicleDataService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
@@ -21,16 +19,9 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Subhadip Sarkar
  */
-public class Vehicle extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class Vehicle extends ActionSupport implements SessionAware, Serializable {
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -59,9 +50,9 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
         String result = "FAILURE";
 
         if (this.getMake() != null) {
-            ArrayList modList = VehicleDataService.getInstance().getAllModels(this.make);
-            System.out.println("Successfully Fetch Models");
-            sessionMap.put("ModelList", modList);
+            List<Model> modelList = VehicleDataService.getInstance().getAllModels(this.make);
+            System.out.println("Successfully Fetched Models");
+            sessionMap.put("ModelList", modelList);
             result = "MODELLIST";
         }
 
@@ -80,16 +71,16 @@ public class Vehicle extends ActionSupport implements ApplicationAware, SessionA
      */
     public String addVehicleData() throws Exception {
         String result = "FAILURE";
-        String user_email = (String) sessionMap.get("userEmail");
+        String userEmail = (String) sessionMap.get("userEmail");
         boolean success = false;
 
         boolean vehicleExists = VehicleDataService.getInstance().checkVehicleExistence(this.vin);
         if (vehicleExists == true) {
             System.out.println("VIN already exists!");
-            success = VehicleDataService.getInstance().updateVehicleData(this, user_email);
+            success = VehicleDataService.getInstance().updateVehicleData(this, userEmail);
         } else {
             System.out.println("New VIN found!");
-            success = VehicleDataService.getInstance().doVehicleDataEntry(this, user_email);
+            success = VehicleDataService.getInstance().doVehicleDataEntry(this, userEmail);
         }
 
         if (success == true) {

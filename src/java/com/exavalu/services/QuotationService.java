@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -22,9 +24,13 @@ import org.apache.log4j.Logger;
  *
  * @author RISHAV DUTTA
  */
-public class QuotationService {
+public final class QuotationService {
 
+    private static final Logger log = Logger.getLogger(QuotationService.class.getName());
     public static QuotationService quotationService = null;
+
+    private QuotationService() {
+    }
 
     /**
      *
@@ -32,12 +38,11 @@ public class QuotationService {
      *
      * @return It returns the created object of QuotationService
      */
-    public static QuotationService getInstance() {
+    public static synchronized QuotationService getInstance() {
         if (quotationService == null) {
-            return new QuotationService();
-        } else {
-            return quotationService;
+            quotationService = new QuotationService();
         }
+        return quotationService;
     }
 
     /**
@@ -53,40 +58,41 @@ public class QuotationService {
      */
     public boolean addQuotationData(Quotation quotation) {
         boolean result = false;
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO quotation(email,proposalNo,aadhaarNo,proposerName,quotationDate,idvValue,vin,cc,licensePlateNumber,make,model,planName,premium,liabPremium,totalPremium )"
+            String sql = "INSERT INTO quotation(email,proposalNo,aadhaarNo,proposerName,quotationDate,idvValue,vin,cc,licensePlateNumber,make,model,planName,premium,liabPremium,totalPremium) "
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, quotation.getEmail());
+                preparedStatement.setString(2, "INS" + quotation.getVin());
+                preparedStatement.setString(3, quotation.getAadhaarNo());
+                preparedStatement.setString(4, quotation.getProposerName());
+                preparedStatement.setString(5, quotation.getQuotationDate());
+                preparedStatement.setInt(6, quotation.getIdvValue());
+                preparedStatement.setString(7, quotation.getVin());
+                preparedStatement.setInt(8, quotation.getCc());
+                preparedStatement.setString(9, quotation.getLicensePlateNumber());
+                preparedStatement.setString(10, quotation.getMake());
+                preparedStatement.setString(11, quotation.getModel());
+                preparedStatement.setString(12, quotation.getPlanName());
+                preparedStatement.setInt(13, quotation.getPremium());
+                preparedStatement.setInt(14, quotation.getLiabPremium());
+                preparedStatement.setInt(15, quotation.getTotalPremium());
 
-            preparedStatement.setString(1, quotation.getEmail());
-            preparedStatement.setString(2, "INS" + quotation.getVin());
-            preparedStatement.setString(3, quotation.getAadhaarNo());
-            preparedStatement.setString(4, quotation.getProposerName());
-            preparedStatement.setString(5, quotation.getQuotationDate());
-            preparedStatement.setInt(6, quotation.getIdvValue());
-            preparedStatement.setString(7, quotation.getVin());
-            preparedStatement.setInt(8, quotation.getCc());
-            preparedStatement.setString(9, quotation.getLicensePlateNumber());
-            preparedStatement.setString(10, quotation.getMake());
-            preparedStatement.setString(11, quotation.getModel());
-            preparedStatement.setString(12, quotation.getPlanName());
-            preparedStatement.setInt(13, quotation.getPremium());
-            preparedStatement.setInt(14, quotation.getLiabPremium());
-            preparedStatement.setInt(15, quotation.getTotalPremium());
+                int row = preparedStatement.executeUpdate();
 
-            int row = preparedStatement.executeUpdate();
-
-            System.out.println("SQl=" + preparedStatement);
-            if (row == 1) {
-                result = true;
+                System.out.println("SQl=" + preparedStatement);
+                if (row == 1) {
+                    result = true;
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(QuotationService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return result;
@@ -100,35 +106,36 @@ public class QuotationService {
      * @param email email address of the user
      * @return list of all Quotations
      */
-    public ArrayList getQuotationList(String email) {
-        ArrayList quotationList = new ArrayList();
+    public List<Quotation> getQuotationList(String email) {
+        List<Quotation> quotationList = new ArrayList<>();
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
-
             String sql = "select * from quotation where email=?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, email);
 
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, email);
 
-                Quotation quotation = new Quotation();
-                quotation.setQuotationId(rs.getInt("quotationId"));
-                quotation.setEmail(rs.getString("email"));
-                quotation.setProposerName(rs.getString("proposerName"));
-                quotation.setQuotationDate(rs.getString("quotationDate"));
-                quotation.setVin(rs.getString("vin"));
-                quotation.setStatus(rs.getString("status"));
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        Quotation quotation = new Quotation();
 
-                quotationList.add(quotation);
+                        quotation.setQuotationId(rs.getInt("quotationId"));
+                        quotation.setEmail(rs.getString("email"));
+                        quotation.setProposerName(rs.getString("proposerName"));
+                        quotation.setQuotationDate(rs.getString("quotationDate"));
+                        quotation.setVin(rs.getString("vin"));
+                        quotation.setStatus(rs.getString("status"));
+
+                        quotationList.add(quotation);
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            //log.error(LocalDateTime.now() + "-- Error in the getEmployee Process !!!!!" + " Error Code: " + ex.getErrorCode());
-            Logger log = Logger.getLogger(QuotationService.class.getName());
-
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
 
         }
 
@@ -146,40 +153,40 @@ public class QuotationService {
      */
     public Quotation getQuotation(int quotaionId) {
         Quotation quotation = new Quotation();
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
-
             String sql = "select * from quotation where quotationId=?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, quotaionId);
 
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                quotation.setQuotationId(rs.getInt("quotationId"));
-                quotation.setEmail(rs.getString("email"));
-                quotation.setAadhaarNo(rs.getString("aadhaarNo"));
-                quotation.setProposerName(rs.getString("proposerName"));
-                quotation.setQuotationDate(rs.getString("quotationDate"));
-                quotation.setIdvValue(rs.getInt("idvValue"));
-                quotation.setCc(rs.getInt("cc"));
-                quotation.setVin(rs.getString("vin"));
-                quotation.setLicensePlateNumber(rs.getString("licensePlateNumber"));
-                quotation.setMake(rs.getString("make"));
-                quotation.setModel(rs.getString("model"));
-                quotation.setPlanName(rs.getString("planName"));
-                quotation.setPremium(rs.getInt("premium"));
-                quotation.setLiabPremium(rs.getInt("liabPremium"));
-                quotation.setTotalPremium(rs.getInt("totalPremium"));
-                quotation.setStatus(rs.getString("status"));
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, quotaionId);
+
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        quotation.setQuotationId(rs.getInt("quotationId"));
+                        quotation.setEmail(rs.getString("email"));
+                        quotation.setAadhaarNo(rs.getString("aadhaarNo"));
+                        quotation.setProposerName(rs.getString("proposerName"));
+                        quotation.setQuotationDate(rs.getString("quotationDate"));
+                        quotation.setIdvValue(rs.getInt("idvValue"));
+                        quotation.setCc(rs.getInt("cc"));
+                        quotation.setVin(rs.getString("vin"));
+                        quotation.setLicensePlateNumber(rs.getString("licensePlateNumber"));
+                        quotation.setMake(rs.getString("make"));
+                        quotation.setModel(rs.getString("model"));
+                        quotation.setPlanName(rs.getString("planName"));
+                        quotation.setPremium(rs.getInt("premium"));
+                        quotation.setLiabPremium(rs.getInt("liabPremium"));
+                        quotation.setTotalPremium(rs.getInt("totalPremium"));
+                        quotation.setStatus(rs.getString("status"));
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(QuotationService.class.getName());
-
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
-
-            //log.error(LocalDateTime.now() + "-- Error in the getEmployee Process !!!!!" + " Error Code: " + ex.getErrorCode());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return quotation;
@@ -200,29 +207,29 @@ public class QuotationService {
      */
     public boolean updateStatus(int quotaionId, String value) {
         boolean result = false;
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "UPDATE quotation SET status = ? WHERE quotationId = ?";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, value);
+                preparedStatement.setInt(2, quotaionId);
 
-            preparedStatement.setString(1, value);
-            preparedStatement.setInt(2, quotaionId);
+                System.out.println("SQl=" + preparedStatement);
+                int row = preparedStatement.executeUpdate();
 
-            System.out.println("SQl=" + preparedStatement);
-            int row = preparedStatement.executeUpdate();
-
-            if (row == 1) {
-                result = true;
+                if (row == 1) {
+                    result = true;
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(QuotationService.class.getName());
-
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
-
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
+
         return result;
     }
 
@@ -233,27 +240,24 @@ public class QuotationService {
      * @return this method returns a float type average premium value
      */
     public float getAvgPremium() {
-
         float avgPrem = 0;
+
         try {
-
             Connection con = JDBCConnectionManager.getConnection();
-
             String sql = "SELECT avg(totalPremium) from quotation;";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-//            System.out.println("SQL: " + preparedStatement);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if (rs.next()) {
-                avgPrem = rs.getInt(1);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    if (rs.next()) {
+                        avgPrem = rs.getInt(1);
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.getMessage();
-            Logger log = Logger.getLogger(QuotationService.class.getName());
-
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
 
         }
         return avgPrem;
@@ -267,28 +271,24 @@ public class QuotationService {
      * @return this method returns a float type average coverage value
      */
     public float getAvgCoverage() {
-
         float avgCvg = 0;
+
         try {
-
             Connection con = JDBCConnectionManager.getConnection();
-
             String sql = "SELECT avg(idvValue) from quotation;";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-//            System.out.println("SQL: " + preparedStatement);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if (rs.next()) {
-                avgCvg = rs.getInt(1);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    if (rs.next()) {
+                        avgCvg = rs.getInt(1);
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.getMessage();
-            Logger log = Logger.getLogger(QuotationService.class.getName());
-
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
-
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return avgCvg;
     }

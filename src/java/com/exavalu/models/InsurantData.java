@@ -9,9 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
@@ -20,16 +18,9 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author sinha
  */
-public class InsurantData extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class InsurantData extends ActionSupport implements SessionAware, Serializable {
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -55,6 +46,7 @@ public class InsurantData extends ActionSupport implements ApplicationAware, Ses
     /**
      * Description: The addInsurantData method is used to add the insurant data
      * and put the InsurantData to the session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String addInsurantData() throws Exception {

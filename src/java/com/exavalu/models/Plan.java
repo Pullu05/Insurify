@@ -9,9 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
@@ -20,15 +18,9 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author RISHAV DUTTA
  */
-public class Plan extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class Plan extends ActionSupport implements SessionAware, Serializable {
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -39,9 +31,8 @@ public class Plan extends ActionSupport implements ApplicationAware, SessionAwar
     private String planName;
 
     /**
-     * Description: The doAddPlanName method is used to add the
-     * plan name and put the Plan Name to the
-     * session map
+     * Description: The doAddPlanName method is used to add the plan name and
+     * put the Plan Name to the session map
      *
      * @return it returns a string which is mapped to the struts.xml
      */
@@ -51,13 +42,14 @@ public class Plan extends ActionSupport implements ApplicationAware, SessionAwar
         if (planSuccess) {
             System.out.println("Successfully Added Plan Name");
             sessionMap.put("Plan", this);
-            InsuranceAPIData.getInstance().doGetInsuranceDetails();
+            InsuranceAPIData.doGetInsuranceDetails();
             result = "SUCCESS";
         } else {
             System.out.println("Oops! Your Plan Name is not added");
         }
         return result;
     }
+
     /**
      * Getter method of id.
      *
@@ -66,6 +58,7 @@ public class Plan extends ActionSupport implements ApplicationAware, SessionAwar
     public int getId() {
         return id;
     }
+
     /**
      * Setter method of id.
      *
@@ -74,6 +67,7 @@ public class Plan extends ActionSupport implements ApplicationAware, SessionAwar
     public void setId(int id) {
         this.id = id;
     }
+
     /**
      * Getter method of Plan Name.
      *
@@ -82,10 +76,11 @@ public class Plan extends ActionSupport implements ApplicationAware, SessionAwar
     public String getPlanName() {
         return planName;
     }
+
     /**
      * Setter method of Plan Name.
      *
-     * @param planName  it denotes the Plan Name of the plan
+     * @param planName it denotes the Plan Name of the plan
      */
     public void setPlanName(String planName) {
         this.planName = planName;

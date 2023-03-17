@@ -5,23 +5,16 @@
 package com.exavalu.models;
 
 import com.exavalu.utils.EnvUtility;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
-import java.util.Map;
 import java.util.Properties;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import org.apache.struts2.dispatcher.ApplicationMap;
-import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
-import org.apache.struts2.interceptor.SessionAware;
 
 /**
  * Description: The MailSender public class represents a class that will contain
@@ -29,21 +22,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author sinha
  */
-public class MailSender extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
-
-    private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> session) {
-        sessionMap = (SessionMap) session;
-    }
+public class MailSender extends ActionSupport implements Serializable {
 
     private String email;
     private String htmlContent;
@@ -88,15 +67,12 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
             mailMessage.setFrom(new InternetAddress(fromEmail));
             mailMessage.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(this.getEmail()));
-            String coverage = (String) sessionMap.get("PlanName");
             mailMessage.setSubject("Successfully created Quote");
             mailMessage.setContent(this.getHtmlContent(), "text/html");
             Transport.send(mailMessage);
 
         } catch (AddressException ex) {
-
-        } catch (MessagingException ex) {
-
+            ex.printStackTrace();
         }
         return result;
     }
@@ -131,7 +107,7 @@ public class MailSender extends ActionSupport implements ApplicationAware, Sessi
     /**
      * Setter method of HtmlContent.
      *
-     * @param htmlContent  it denotes the HtmlContent of the quotation.jsp
+     * @param htmlContent it denotes the HtmlContent of the quotation.jsp
      */
     public void setHtmlContent(String htmlContent) {
         this.htmlContent = htmlContent;

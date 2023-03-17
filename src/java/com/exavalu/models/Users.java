@@ -12,28 +12,21 @@ import com.exavalu.services.VehicleInfoService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
- * Description: The Users public class represents a class that will
- * contain the methods for login, logout, sign-up, validate the user email while login and get the role id based on user and admin
+ * Description: The Users public class represents a class that will contain the
+ * methods for login, logout, sign-up, validate the user email while login and
+ * get the role id based on user and admin
+ *
  * @author RISHAV DUTTA
  */
-public class Users extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class Users extends ActionSupport implements SessionAware, Serializable {
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -45,20 +38,22 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     private int roleId;
     private String firstName;
     private String lastName;
+
     /**
      *
-     * Description: The doLogin method is used to do the login by validating the email, password and role id 
-     * 
+     * Description: The doLogin method is used to do the login by validating the
+     * email, password and role id
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doLogin() throws Exception {
         String result = "FAILURE";
-        
+
         System.out.println(this.password);
         this.setPassword(LoginService.getInstance().getMd5Hash(this.password));
         System.out.println(this.password);
         boolean success = LoginService.getInstance().doLogin(this);
-        ArrayList makeList = VehicleDataService.getInstance().getAllMakers();
+        List<Make> makeList = VehicleDataService.getInstance().getAllMakers();
         sessionMap.put("MakeList", makeList);
 
         if (!success) {
@@ -66,11 +61,11 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
             sessionMap.put("ErrorMsg", errorMsg);
             System.out.println("returning Failure from doLogin method");
         }
-        int RoleId = LoginService.getInstance().doGetRoleId(this.email);
+        int dBRoleId = LoginService.getInstance().doGetRoleId(this.email);
 
-        System.out.println(RoleId);
+        System.out.println(dBRoleId);
 
-        if (RoleId == 1) {
+        if (dBRoleId == 1) {
             System.out.println(success);
             if (success) {
                 System.out.println("returning Success from doLogin method");
@@ -80,17 +75,17 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
                 sessionMap.put("User", user);
 
-                ArrayList driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
+                List driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
                 sessionMap.put("DriverInfoList", driverInfoList);
 
-                ArrayList vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
+                List<VehicleInfo> vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
                 sessionMap.put("VehicleInfoList", vehicleInfoList);
 
                 float averagePremium = QuotationService.getInstance().getAvgPremium();
-                sessionMap.put("AvgPrem",averagePremium);
-                
+                sessionMap.put("AvgPrem", averagePremium);
+
                 float averageCoverage = QuotationService.getInstance().getAvgCoverage();
-                sessionMap.put("AvgCvg",averageCoverage);
+                sessionMap.put("AvgCvg", averageCoverage);
                 result = "ADMIN";
             } else {
                 String errorMsg = "Either Email Address or Password is Wrong";
@@ -99,7 +94,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
             }
         }
-        if (RoleId == 2) {
+        if (dBRoleId == 2) {
             System.out.println(success);
             if (success) {
                 sessionMap.put("LoggedIn", this);
@@ -109,9 +104,9 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
                 sessionMap.put("userEmail", user.getEmail());
                 sessionMap.put("MakeList", makeList);
 
-                ArrayList quotationList = QuotationService.getInstance().getQuotationList(this.email);
+                List<Quotation> quotationList = QuotationService.getInstance().getQuotationList(this.email);
                 sessionMap.put("PrevQuotList", quotationList);
-                    result = "USER";
+                result = "USER";
             } else {
                 String errorMsg = "Either Email Address or Password is Wrong";
                 sessionMap.put("ErrorMsg", errorMsg);
@@ -119,29 +114,32 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
             }
         }
-        
+
         return result;
     }
+
     /**
      *
-     * Description: The doLogout method is used to do the logout by clearing the session for the user
-     * 
+     * Description: The doLogout method is used to do the logout by clearing the
+     * session for the user
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doLogout() throws Exception {
         sessionMap.clear();
         return "SUCCESS";
     }
+
     /**
      *
      * Description: The doSignUp method is used to do the SignUp by a new user
-     * 
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doSignUp() throws Exception {
         sessionMap.clear();
         String result = "FAILURE";
-        
+
         System.out.println(this.password);
         this.setPassword(LoginService.getInstance().getMd5Hash(this.password));
         System.out.println(this.password);
@@ -161,6 +159,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
 
         return result;
     }
+
     /**
      * Getter method of Email.
      *
@@ -169,6 +168,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public String getEmail() {
         return email;
     }
+
     /**
      * Setter method of Email.
      *
@@ -177,6 +177,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public void setEmail(String email) {
         this.email = email;
     }
+
     /**
      * Getter method of Password.
      *
@@ -185,6 +186,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public String getPassword() {
         return password;
     }
+
     /**
      * Setter method of Password.
      *
@@ -193,6 +195,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public void setPassword(String password) {
         this.password = password;
     }
+
     /**
      * Getter method of RoleId.
      *
@@ -201,6 +204,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public int getRoleId() {
         return roleId;
     }
+
     /**
      * Setter method of RoleId.
      *
@@ -209,6 +213,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
+
     /**
      * Getter method of FirstName.
      *
@@ -217,6 +222,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public String getFirstName() {
         return firstName;
     }
+
     /**
      * Setter method of FirstName.
      *
@@ -225,6 +231,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     /**
      * Getter method of LastName.
      *
@@ -233,6 +240,7 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public String getLastName() {
         return lastName;
     }
+
     /**
      * Setter method of LastName.
      *
@@ -241,5 +249,5 @@ public class Users extends ActionSupport implements ApplicationAware, SessionAwa
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+
 }
