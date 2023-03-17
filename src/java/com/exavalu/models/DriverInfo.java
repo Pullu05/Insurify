@@ -8,11 +8,9 @@ import com.exavalu.services.DriverInfoService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
@@ -22,16 +20,9 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author RISHAV DUTTA
  */
-public class DriverInfo extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class DriverInfo extends ActionSupport implements SessionAware, Serializable {
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -57,7 +48,7 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
 
         if (success) {
             System.out.println("returning Success from doAddDriverInfo method");
-            ArrayList driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
+            List driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
             sessionMap.put("DriverInfoList", driverInfoList);
             result = "SUCCESS";
         } else {
@@ -90,9 +81,8 @@ public class DriverInfo extends ActionSupport implements ApplicationAware, Sessi
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doUpdateDriverInfo() throws Exception {
-        boolean result = false;
-        result = DriverInfoService.getInstance().updateDriverInfo(this, this.id);
-        ArrayList driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
+        DriverInfoService.getInstance().updateDriverInfo(this, this.id);
+        List driverInfoList = DriverInfoService.getInstance().getAllDriverInfo();
         sessionMap.put("DriverInfoList", driverInfoList);
         return "SUCCESS";
     }

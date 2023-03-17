@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -20,9 +21,13 @@ import org.apache.log4j.Logger;
  *
  * @author Admin
  */
-public class InsurantDataService {
+public final class InsurantDataService {
 
+    private static final Logger log = Logger.getLogger(InsurantDataService.class.getName());
     public static InsurantDataService insurantDataService = null;
+
+    private InsurantDataService() {
+    }
 
     /**
      *
@@ -30,15 +35,12 @@ public class InsurantDataService {
      *
      * @return It returns the created object of DriverInfoService
      */
-    public static InsurantDataService getInstance() {
+    public static synchronized InsurantDataService getInstance() {
         if (insurantDataService == null) {
-            return new InsurantDataService();
-        } else {
-            return insurantDataService;
+            insurantDataService = new InsurantDataService();
         }
+        return insurantDataService;
     }
-
-    private static final Logger logger = Logger.getLogger(InsurantDataService.class);
 
     /**
      *
@@ -58,35 +60,35 @@ public class InsurantDataService {
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "INSERT INTO insurantdata (email,firstName,lastName,aadhaarNo,age,medicalRecord,gender,streetAddress,country,zipCode,occupation,hobbies,website) VALUES (?, ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ?, ?)";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, insurantData.getEmail());
-            preparedStatement.setString(2, insurantData.getFirstName());
-            preparedStatement.setString(3, insurantData.getLastName());
-            preparedStatement.setString(4, insurantData.getAadhaarNo());
-            preparedStatement.setInt(5, insurantData.getAge());
-            preparedStatement.setString(6, insurantData.getMedicalRecord());
-            preparedStatement.setString(7, insurantData.getGender());
-            preparedStatement.setString(8, insurantData.getStreetAddress());
-            preparedStatement.setString(9, insurantData.getCountry());
-            preparedStatement.setInt(10, insurantData.getZipCode());
-            preparedStatement.setString(11, insurantData.getOccupation());
-            preparedStatement.setString(12, insurantData.getHobbies());
-            preparedStatement.setString(13, insurantData.getWebsite());
-//                preparedStatement.setString(12, insurantData.getPicture());
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, insurantData.getEmail());
+                preparedStatement.setString(2, insurantData.getFirstName());
+                preparedStatement.setString(3, insurantData.getLastName());
+                preparedStatement.setString(4, insurantData.getAadhaarNo());
+                preparedStatement.setInt(5, insurantData.getAge());
+                preparedStatement.setString(6, insurantData.getMedicalRecord());
+                preparedStatement.setString(7, insurantData.getGender());
+                preparedStatement.setString(8, insurantData.getStreetAddress());
+                preparedStatement.setString(9, insurantData.getCountry());
+                preparedStatement.setInt(10, insurantData.getZipCode());
+                preparedStatement.setString(11, insurantData.getOccupation());
+                preparedStatement.setString(12, insurantData.getHobbies());
+                preparedStatement.setString(13, insurantData.getWebsite());
 
-            System.out.println("sql:" + preparedStatement);
+                System.out.println("sql:" + preparedStatement);
 
-            int row = preparedStatement.executeUpdate();
-            if (row == 1) {
-                result = true;
+                int row = preparedStatement.executeUpdate();
+                if (row == 1) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
-//            logger.error(ex.getMessage());
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(InsurantDataService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return result;
 
@@ -142,29 +144,32 @@ public class InsurantDataService {
 
             default:
                 System.out.println("Something went wrong!");
+                break;
         }
 
         try {
-
             Connection con = JDBCConnectionManager.getConnection();
-
             String sql = "SELECT weightage from driverinfo where id=?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, weightageId);
 
-            System.out.println("SQL: " + preparedStatement);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, weightageId);
 
-            ResultSet rs = preparedStatement.executeQuery();
+                System.out.println("SQL: " + preparedStatement);
 
-            if (rs.next()) {
-                weightageValue = rs.getInt(1);
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    if (rs.next()) {
+                        weightageValue = rs.getInt(1);
+                    }
+                    System.out.println("DriverInfo Weightage: " + weightageValue);
+                }
+
             }
-            System.out.println("DriverInfo Weightage: " + weightageValue);
 
         } catch (SQLException ex) {
-//            ex.getMessage();
-            Logger log = Logger.getLogger(InsurantDataService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return weightageValue;

@@ -33,6 +33,7 @@ public class Model {
     public void setModelName(String modelName) {
         this.modelName = modelName;
     }
+
     /**
      * Getter method of ModelCode.
      *
@@ -41,6 +42,7 @@ public class Model {
     public String getModelCode() {
         return modelCode;
     }
+
     /**
      * Setter method of ModelCode.
      *
@@ -49,6 +51,7 @@ public class Model {
     public void setModelCode(String modelCode) {
         this.modelCode = modelCode;
     }
+
     /**
      * Getter method of MakeCode.
      *
@@ -57,6 +60,7 @@ public class Model {
     public String getMakeCode() {
         return makeCode;
     }
+
     /**
      * Setter method of MakeCode.
      *

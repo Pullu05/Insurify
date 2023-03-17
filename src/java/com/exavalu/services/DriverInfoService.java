@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -23,9 +25,14 @@ import org.apache.log4j.Logger;
  * @version 1.0
  *
  */
-public class DriverInfoService {
+public final class DriverInfoService {
+
+    private static final Logger log = Logger.getLogger(DriverInfoService.class.getName());
 
     public static DriverInfoService driverInfoService = null;
+
+    private DriverInfoService() {
+    }
 
     /**
      *
@@ -33,12 +40,11 @@ public class DriverInfoService {
      *
      * @return It returns the created object of DriverInfoService
      */
-    public static DriverInfoService getInstance() {
+    public static synchronized DriverInfoService getInstance() {
         if (driverInfoService == null) {
-            return new DriverInfoService();
-        } else {
-            return driverInfoService;
+            driverInfoService = new DriverInfoService();
         }
+        return driverInfoService;
     }
 
     /**
@@ -48,28 +54,32 @@ public class DriverInfoService {
      *
      * @return list of all Driver Information
      */
-    public ArrayList getAllDriverInfo() {
-        ArrayList driverInfoList = new ArrayList();
+    public List<DriverInfo> getAllDriverInfo() {
+        List<DriverInfo> driverInfoList = new ArrayList<>();
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "SELECT * from driverinfo";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                DriverInfo driverinfo = new DriverInfo();
 
-                driverinfo.setId(rs.getInt("id"));
-                driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
-                driverinfo.setDriverAge(rs.getString("driverAge"));
-                driverinfo.setWeightage(rs.getInt("weightage"));
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        DriverInfo driverinfo = new DriverInfo();
 
-                driverInfoList.add(driverinfo);
+                        driverinfo.setId(rs.getInt("id"));
+                        driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
+                        driverinfo.setDriverAge(rs.getString("driverAge"));
+                        driverinfo.setWeightage(rs.getInt("weightage"));
+
+                        driverInfoList.add(driverinfo);
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(DriverInfoService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
 
         }
         System.out.println("Number of Drivers = " + driverInfoList.size());
@@ -89,28 +99,29 @@ public class DriverInfoService {
      */
     public boolean addDriverInfo(DriverInfo driverInfo) {
         boolean result = false;
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "INSERT INTO driverinfo(medicalHistory,driverAge,weightage )"
                     + "VALUES(? ,? , ?)";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, driverInfo.getMedicalHistory());
+                preparedStatement.setString(2, driverInfo.getDriverAge());
+                preparedStatement.setInt(3, driverInfo.getWeightage());
 
-            preparedStatement.setString(1, driverInfo.getMedicalHistory());
-            preparedStatement.setString(2, driverInfo.getDriverAge());
-            preparedStatement.setInt(3, driverInfo.getWeightage());
+                int row = preparedStatement.executeUpdate();
 
-            int row = preparedStatement.executeUpdate();
-
-            System.out.println("SQl=" + preparedStatement);
-            if (row == 1) {
-                result = true;
+                System.out.println("SQl=" + preparedStatement);
+                if (row == 1) {
+                    result = true;
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(DriverInfoService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return result;
@@ -127,25 +138,30 @@ public class DriverInfoService {
      */
     public DriverInfo getDriverInfo(int id) {
         DriverInfo driverinfo = new DriverInfo();
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
-
             String sql = "SELECT * from driverinfo where id =?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
 
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                driverinfo.setId(rs.getInt("id"));
-                driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
-                driverinfo.setDriverAge(rs.getString("driverAge"));
-                driverinfo.setWeightage(rs.getInt("weightage"));
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, id);
+
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        driverinfo.setId(rs.getInt("id"));
+                        driverinfo.setMedicalHistory(rs.getString("medicalHistory"));
+                        driverinfo.setDriverAge(rs.getString("driverAge"));
+                        driverinfo.setWeightage(rs.getInt("weightage"));
+                    }
+                }
+
             }
 
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(DriverInfoService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return driverinfo;
@@ -165,31 +181,32 @@ public class DriverInfoService {
      *
      */
     public boolean updateDriverInfo(DriverInfo driverInfo, int id) {
-
         boolean result = false;
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "UPDATE driverinfo SET medicalHistory = ? , driverAge = ? , weightage = ? WHERE id = ?;";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, driverInfo.getMedicalHistory());
+                preparedStatement.setString(2, driverInfo.getDriverAge());
+                preparedStatement.setInt(3, driverInfo.getWeightage());
 
-            preparedStatement.setString(1, driverInfo.getMedicalHistory());
-            preparedStatement.setString(2, driverInfo.getDriverAge());
-            preparedStatement.setInt(3, driverInfo.getWeightage());
+                preparedStatement.setInt(4, id);
 
-            preparedStatement.setInt(4, id);
+                int row = preparedStatement.executeUpdate();
 
-            int row = preparedStatement.executeUpdate();
-
-            System.out.println("SQl=" + preparedStatement);
-            if (row == 1) {
-                result = true;
+                System.out.println("SQl=" + preparedStatement);
+                if (row == 1) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(DriverInfoService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return result;
     }

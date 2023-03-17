@@ -7,15 +7,35 @@ package com.exavalu.utils;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Properties;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Avijit Chattopadhyay
  */
-public class JDBCUtility {
+public final class JDBCUtility {
 
+    private static final Logger log = Logger.getLogger(JDBCUtility.class.getName());
     public static JDBCUtility jdbcUtility = null;
+
+    private JDBCUtility() {
+    }
+
+    /**
+     *
+     * Description: It is the Instance method for JDBCUtility class
+     *
+     * @return It returns the created object of JDBCUtility
+     */
+    public static synchronized JDBCUtility getInstanceOfJDBCUtility() {
+        if (jdbcUtility == null) {
+            jdbcUtility = new JDBCUtility();
+        }
+        return jdbcUtility;
+    }
 
     // in this class we will have static methods to get the connection params
     public String getPropertyValue(String param) {
@@ -27,37 +47,23 @@ public class JDBCUtility {
 
             String path = JDBCUtility.class.getClassLoader().getResource("settings.properties").getPath();
 
-            BufferedReader input = new BufferedReader(new FileReader(path));
+            try (BufferedReader input = new BufferedReader(new FileReader(path))) {
 
-            Properties prop = new Properties();
+                Properties prop = new Properties();
 
-            prop.load(input);
+                prop.load(input);
 
-            value = prop.getProperty(param);
+                value = prop.getProperty(param);
+            }
 
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        } catch (IOException ex) {
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return value;
-    }
-
-    private JDBCUtility() {
-        // Private constructor
-    }
-
-    /**
-     *
-     * Description: It is the Instance method for JDBCUtility class
-     *
-     * @return It returns the created object of JDBCUtility
-     */
-    public static JDBCUtility getInstanceOfJDBCUtility() {
-        if (jdbcUtility == null) {
-            jdbcUtility = new JDBCUtility();
-        }
-        return jdbcUtility;
     }
 
 }

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -20,9 +21,13 @@ import org.apache.log4j.Logger;
  *
  * @author Subhadip
  */
-public class PolicyService {
+public final class PolicyService {
 
+    private static final Logger log = Logger.getLogger(PolicyService.class.getName());
     public static PolicyService policyService = null;
+
+    private PolicyService() {
+    }
 
     /**
      *
@@ -30,12 +35,11 @@ public class PolicyService {
      *
      * @return It returns the created object of PolicyService
      */
-    public static PolicyService getInstance() {
+    public static synchronized PolicyService getInstance() {
         if (policyService == null) {
-            return new PolicyService();
-        } else {
-            return policyService;
+            policyService = new PolicyService();
         }
+        return policyService;
     }
 
     /**
@@ -77,22 +81,24 @@ public class PolicyService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-
             String sql = "SELECT coverage, premium from policy where weightageId =?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, weightageId);
 
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                policy.setCoverage(rs.getInt("coverage"));
-                policy.setPremium(rs.getInt("premium"));
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, weightageId);
 
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        policy.setCoverage(rs.getInt("coverage"));
+                        policy.setPremium(rs.getInt("premium"));
+                    }
+                }
             }
 
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(PolicyService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return policy;

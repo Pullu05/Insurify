@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -24,9 +26,13 @@ import org.apache.log4j.Logger;
  *
  * @author Admin
  */
-public class VehicleDataService {
+public final class VehicleDataService {
 
+    private static final Logger log = Logger.getLogger(VehicleDataService.class.getName());
     public static VehicleDataService vehicleDataService = null;
+
+    private VehicleDataService() {
+    }
 
     /**
      *
@@ -34,12 +40,11 @@ public class VehicleDataService {
      *
      * @return It returns the created object of VehicleDataService
      */
-    public static VehicleDataService getInstance() {
+    public static synchronized VehicleDataService getInstance() {
         if (vehicleDataService == null) {
-            return new VehicleDataService();
-        } else {
-            return vehicleDataService;
+            vehicleDataService = new VehicleDataService();
         }
+        return vehicleDataService;
     }
 
     /**
@@ -60,30 +65,31 @@ public class VehicleDataService {
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "INSERT INTO vehicle(vin,enginePerformance,numberOfSeats,listPrice,annualMileage,licensePlateNumber,make,fuelType,dateOfManufacture,email,model)" + "VALUES(?, ? , ? , ? , ? , ? , ? , ? , ?, ?,? )";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, vehicle.getVin());
-            preparedStatement.setInt(2, vehicle.getEnginePerformance());
-            preparedStatement.setInt(3, vehicle.getNumberOfSeats());
-            preparedStatement.setInt(4, vehicle.getListPrice());
-            preparedStatement.setInt(5, vehicle.getAnnualMileage());
-            preparedStatement.setString(6, vehicle.getLicensePlateNumber());
-            preparedStatement.setString(7, vehicle.getMake());
-            preparedStatement.setString(8, vehicle.getFuelType());
-            preparedStatement.setString(9, vehicle.getDateOfManufacture());
-            preparedStatement.setString(10, email);
-            preparedStatement.setString(11, vehicle.getModel());
-            System.out.println("SQL: " + preparedStatement);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, vehicle.getVin());
+                preparedStatement.setInt(2, vehicle.getEnginePerformance());
+                preparedStatement.setInt(3, vehicle.getNumberOfSeats());
+                preparedStatement.setInt(4, vehicle.getListPrice());
+                preparedStatement.setInt(5, vehicle.getAnnualMileage());
+                preparedStatement.setString(6, vehicle.getLicensePlateNumber());
+                preparedStatement.setString(7, vehicle.getMake());
+                preparedStatement.setString(8, vehicle.getFuelType());
+                preparedStatement.setString(9, vehicle.getDateOfManufacture());
+                preparedStatement.setString(10, email);
+                preparedStatement.setString(11, vehicle.getModel());
+                System.out.println("SQL: " + preparedStatement);
 
-            int row = preparedStatement.executeUpdate();
-            if (row == 1) {
-                result = true;
+                int row = preparedStatement.executeUpdate();
+                if (row == 1) {
+                    result = true;
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(VehicleDataService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return result;
 
@@ -95,17 +101,21 @@ public class VehicleDataService {
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "SELECT * from vehicle WHERE vin=?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, vin);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, vin);
 
-            ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
-                result = true;
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    if (rs.next()) {
+                        result = true;
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return result;
 
@@ -117,30 +127,31 @@ public class VehicleDataService {
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "UPDATE vehicle SET enginePerformance=?,numberOfSeats=?,listPrice=?,annualMileage=?,licensePlateNumber=?,make=?,fuelType=?,dateOfManufacture=?,email=?,model=? WHERE vin=?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setInt(1, vehicle.getEnginePerformance());
-            preparedStatement.setInt(2, vehicle.getNumberOfSeats());
-            preparedStatement.setInt(3, vehicle.getListPrice());
-            preparedStatement.setInt(4, vehicle.getAnnualMileage());
-            preparedStatement.setString(5, vehicle.getLicensePlateNumber());
-            preparedStatement.setString(6, vehicle.getMake());
-            preparedStatement.setString(7, vehicle.getFuelType());
-            preparedStatement.setString(8, vehicle.getDateOfManufacture());
-            preparedStatement.setString(9, email);
-            preparedStatement.setString(10, vehicle.getModel());
-            preparedStatement.setString(11, vehicle.getVin());
-            System.out.println("SQL: " + preparedStatement);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, vehicle.getEnginePerformance());
+                preparedStatement.setInt(2, vehicle.getNumberOfSeats());
+                preparedStatement.setInt(3, vehicle.getListPrice());
+                preparedStatement.setInt(4, vehicle.getAnnualMileage());
+                preparedStatement.setString(5, vehicle.getLicensePlateNumber());
+                preparedStatement.setString(6, vehicle.getMake());
+                preparedStatement.setString(7, vehicle.getFuelType());
+                preparedStatement.setString(8, vehicle.getDateOfManufacture());
+                preparedStatement.setString(9, email);
+                preparedStatement.setString(10, vehicle.getModel());
+                preparedStatement.setString(11, vehicle.getVin());
+                System.out.println("SQL: " + preparedStatement);
 
-            int row = preparedStatement.executeUpdate();
-            if (row == 1) {
-                result = true;
+                int row = preparedStatement.executeUpdate();
+                if (row == 1) {
+                    result = true;
+                }
             }
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(VehicleDataService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return result;
 
@@ -162,24 +173,25 @@ public class VehicleDataService {
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "SELECT weightage from vehicleinfo where vehicleMake=? and vechicleModel=?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, vehicle.getMake());
-            preparedStatement.setString(2, vehicle.getModel());
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, vehicle.getMake());
+                preparedStatement.setString(2, vehicle.getModel());
 
-            System.out.println("SQL: " + preparedStatement);
+                System.out.println("SQL: " + preparedStatement);
 
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if (rs.next()) {
-                weightageValue = rs.getInt(1);
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    if (rs.next()) {
+                        weightageValue = rs.getInt(1);
+                    }
+                    System.out.println("Vehicle Weightage: " + weightageValue);
+                }
             }
-            System.out.println("Vehicle Weightage: " + weightageValue);
-
         } catch (SQLException ex) {
-//            ex.getMessage();
-            Logger log = Logger.getLogger(VehicleDataService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
 
         return weightageValue;
@@ -191,66 +203,66 @@ public class VehicleDataService {
      *
      * @return list of all makers of cars
      */
-    public ArrayList getAllMakers() {
-        ArrayList makeList = new ArrayList();
-
-        String sql = "Select * from makers";
+    public List<Make> getAllMakers() {
+        List<Make> makeList = new ArrayList<>();
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
+            String sql = "Select * from makers";
 
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Make make = new Make();
-                make.setMakeCode(rs.getString("makeCode"));
-                make.setMakeName(rs.getString("makeName"));
-                makeList.add(make);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        Make make = new Make();
+                        make.setMakeCode(rs.getString("makeCode"));
+                        make.setMakeName(rs.getString("makeName"));
+                        makeList.add(make);
+                    }
+                    System.out.println("MakeList :" + makeList.size());
+                }
             }
-            System.out.println("MakeList :" + makeList.size());
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(VehicleDataService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return makeList;
     }
 
     /**
-     * Description: The getAllModels method is used to get all models for a particular car maker
-     * @param makeCode 
+     * Description: The getAllModels method is used to get all models for a
+     * particular car maker
+     *
+     * @param makeCode
      *
      * @return list of all models of a particular car maker
      */
-    public ArrayList getAllModels(String makeCode) {
-        ArrayList modelList = new ArrayList();
-
-        String sql = "Select * from models where makeCode = ?";
+    public List<Model> getAllModels(String makeCode) {
+        List<Model> modelList = new ArrayList<>();
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
+            String sql = "Select * from models where makeCode = ?";
 
-            ps.setString(1, makeCode);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, makeCode);
 
-            ResultSet rs = ps.executeQuery();
-            System.err.println(ps);
-
-            while (rs.next()) {
-                Model model = new Model();
-                model.setMakeCode(rs.getString("makeCode"));
-                model.setModelCode(rs.getString("modelCode"));
-                model.setModelName(rs.getString("modelName"));
-                modelList.add(model);
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        Model model = new Model();
+                        model.setMakeCode(rs.getString("makeCode"));
+                        model.setModelCode(rs.getString("modelCode"));
+                        model.setModelName(rs.getString("modelName"));
+                        modelList.add(model);
+                    }
+                }
             }
-            System.out.println("ModelList :" + modelList.size());
-
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            Logger log = Logger.getLogger(VehicleDataService.class.getName());
-            log.error("Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date());
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
         }
         return modelList;
     }

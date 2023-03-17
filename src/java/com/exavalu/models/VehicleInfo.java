@@ -8,29 +8,21 @@ import com.exavalu.services.VehicleInfoService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
- * Description: The VehicleInfo public class represents a class that will contain
- * the private data members and the methods to add vehicle information to the
- * existing details, to edit/update vehicle details
+ * Description: The VehicleInfo public class represents a class that will
+ * contain the private data members and the methods to add vehicle information
+ * to the existing details, to edit/update vehicle details
+ *
  * @author kumar
  */
-public class VehicleInfo extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class VehicleInfo extends ActionSupport implements SessionAware, Serializable {
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -42,10 +34,12 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     private String vehicleModel;
     private String dateOfManufacture;
     private int weightage;
+
     /**
      * Description: The doAddVehicleInfo method is used to add the
      * details/information of a new vehicle and put the vehicleInfoList to the
      * session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doAddVehicleInfo() throws Exception {
@@ -55,7 +49,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
 
         if (success) {
             System.out.println("returning Success from doAddVehicleInfo method");
-            ArrayList vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
+            List<VehicleInfo> vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
             sessionMap.put("VehicleInfoList", vehicleInfoList);
             result = "SUCCESS";
         } else {
@@ -64,10 +58,12 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
 
         return result;
     }
+
     /**
      * Description: The doEditVehicleInfo method is used to edit the
-     * details/information of a existing vehicle and put the specific vehicleInfo to the
-     * session map
+     * details/information of a existing vehicle and put the specific
+     * vehicleInfo to the session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doEditVehicleInfo() throws Exception {
@@ -77,19 +73,21 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
 
         return "SUCCESS";
     }
+
     /**
-     * Description: The doUpdateVehicleInfo method is used to update the existing
-     * details/information of a particular vehicle using it's id and put the
-     * vehicleInfoList to the session map
+     * Description: The doUpdateVehicleInfo method is used to update the
+     * existing details/information of a particular vehicle using it's id and
+     * put the vehicleInfoList to the session map
+     *
      * @return it returns a string which is mapped to the struts.xml
      */
     public String doUpdateVehicleInfo() throws Exception {
-        boolean result = false;
-        result = VehicleInfoService.getInstance().updateVehicleInfo(this, this.vehicleId);
-        ArrayList vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
+        VehicleInfoService.getInstance().updateVehicleInfo(this, this.vehicleId);
+        List<VehicleInfo> vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
         sessionMap.put("VehicleInfoList", vehicleInfoList);
         return "SUCCESS";
     }
+
     /**
      * Getter method of VehicleId.
      *
@@ -98,6 +96,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public int getVehicleId() {
         return vehicleId;
     }
+
     /**
      * Setter method of VehicleId.
      *
@@ -106,6 +105,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public void setVehicleId(int vehicleId) {
         this.vehicleId = vehicleId;
     }
+
     /**
      * Getter method of VehicleMake.
      *
@@ -114,6 +114,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public String getVehicleMake() {
         return vehicleMake;
     }
+
     /**
      * Setter method of VehicleMake.
      *
@@ -122,6 +123,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public void setVehicleMake(String vehicleMake) {
         this.vehicleMake = vehicleMake;
     }
+
     /**
      * Getter method of VehicleModel.
      *
@@ -130,6 +132,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public String getVehicleModel() {
         return vehicleModel;
     }
+
     /**
      * Setter method of VehicleModel.
      *
@@ -138,6 +141,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public void setVehicleModel(String vehicleModel) {
         this.vehicleModel = vehicleModel;
     }
+
     /**
      * Getter method of DateOfManufacture.
      *
@@ -146,6 +150,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public String getDateOfManufacture() {
         return dateOfManufacture;
     }
+
     /**
      * Setter method of DateOfManufacture.
      *
@@ -154,6 +159,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public void setDateOfManufacture(String dateOfManufacture) {
         this.dateOfManufacture = dateOfManufacture;
     }
+
     /**
      * Getter method of Weightage.
      *
@@ -162,6 +168,7 @@ public class VehicleInfo extends ActionSupport implements ApplicationAware, Sess
     public int getWeightage() {
         return weightage;
     }
+
     /**
      * Setter method of Weightage.
      *
