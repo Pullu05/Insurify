@@ -53,6 +53,7 @@ public class InsuranceAPIData extends ActionSupport implements SessionAware, Ser
 
         String result = "FAILURE";
         boolean success = false;
+
         HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://randomapi.com/api/7763e3d1c2c554b861a7aa429b67cbe7")).build();
 
         //creating client object to send request

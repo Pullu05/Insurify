@@ -31,7 +31,16 @@ async function submitFormAndChangeSection(event) {
     event.preventDefault();
 
     // Form Submission functionality
-    const formData = new FormData(event.target);
+    const form = event.target;
+
+    if (!form.checkValidity()) {
+        form.classList.add('was-validated')
+        return;
+    }
+
+    form.classList.add('was-validated')
+
+    const formData = new FormData(form);
     const data = {};
     formData.forEach(function (value, key) {
         data[key] = value;

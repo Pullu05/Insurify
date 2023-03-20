@@ -30,6 +30,19 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/forms.css" rel="stylesheet">
+        <style>
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+        </style>
 
     </head>
 

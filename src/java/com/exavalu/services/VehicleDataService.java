@@ -208,7 +208,7 @@ public final class VehicleDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "Select * from makers";
+            String sql = "Select * from makers order by makeName";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 try (ResultSet rs = preparedStatement.executeQuery()) {
@@ -243,7 +243,7 @@ public final class VehicleDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "Select * from models where makeName = ?";
+            String sql = "Select * from models where makeName = ? order by modelName";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, makeName);
@@ -266,22 +266,23 @@ public final class VehicleDataService {
         }
         return modelList;
     }
-    
-     public boolean checkMakePresent(String makeName){
+
+    public boolean checkMakeExistence(String makeName) {
         boolean result = false;
-    
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "select * from makers where makeName=?";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
-                
-                preparedStatement.setString(1,makeName);
+
+                preparedStatement.setString(1, makeName);
                 ResultSet rs = preparedStatement.executeQuery();
                 System.out.println("SQl=" + preparedStatement);
                 if (rs.next()) {
-                    if(rs.getString("makeName")!=null)
-                    result = true;
+                    if (rs.getString("makeName") != null) {
+                        result = true;
+                    }
                 }
             }
         } catch (SQLException ex) {
@@ -290,12 +291,12 @@ public final class VehicleDataService {
                 log.error(errorMessage);
             }
         }
-        System.out.println(result);
+
         return result;
     }
-    
-    public boolean addMake(String makeName){
-         boolean result = false;
+
+    public boolean addMake(String makeName) {
+        boolean result = false;
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -303,7 +304,6 @@ public final class VehicleDataService {
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, makeName);
-                
 
                 System.out.println("Add Model :: " + preparedStatement);
 
@@ -322,8 +322,8 @@ public final class VehicleDataService {
         }
         return result;
     }
-    
-    public boolean addModel(String modelName, String makeName){
+
+    public boolean addModel(String modelName, String makeName) {
         boolean result = false;
 
         try {
@@ -333,7 +333,6 @@ public final class VehicleDataService {
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, modelName);
                 preparedStatement.setString(2, makeName);
-                
 
                 System.out.println("Add Model :: " + preparedStatement);
 
