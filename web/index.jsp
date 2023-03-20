@@ -115,7 +115,7 @@
                 <div class="container">
 
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Team Members</h2>
+                        <h2>Testimonials</h2>
                         <p></p>
                     </div>
 
@@ -132,7 +132,7 @@
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                                     <h3>Soumojit Sur</h3>
-                                    <h4>Ceo &amp; Founder</h4>
+                                    
                                 </div>
                             </div><!-- End testimonial item -->
 
@@ -146,7 +146,7 @@
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                                     <h3>Subhadip Sarkar</h3>
-                                    <h4>Designer</h4>
+                                    
                                 </div>
                             </div><!-- End testimonial item -->
 
@@ -161,7 +161,7 @@
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                                     <h3>Sneha</h3>
-                                    <h4>Designer</h4>
+                                    
                                 </div>
                             </div>
 
@@ -175,7 +175,7 @@
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                                     <h3>Nairwita Chakraborty</h3>
-                                    <h4>Store Owner</h4>
+                                    
                                 </div>
                             </div><!-- End testimonial item -->
 
@@ -189,7 +189,7 @@
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                                     <h3>Rishav Dutta</h3>
-                                    <h4>Freelancer</h4>
+                                    
                                 </div>
                             </div><!-- End testimonial item -->
 
@@ -203,7 +203,7 @@
                                     </p>
                                     <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                                     <h3>Anand Kumar</h3>
-                                    <h4>Entrepreneur</h4>
+                                   
                                 </div>
                             </div><!-- End testimonial item -->
 

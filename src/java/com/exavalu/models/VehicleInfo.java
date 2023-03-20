@@ -4,6 +4,7 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.VehicleDataService;
 import com.exavalu.services.VehicleInfoService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -46,7 +47,13 @@ public class VehicleInfo extends ActionSupport implements SessionAware, Serializ
         String result = "FAILURE";
 
         boolean success = VehicleInfoService.getInstance().addVehicleInfo(this);
-
+        if (VehicleDataService.getInstance().checkMakePresent(this.vehicleMake)) {
+            VehicleDataService.getInstance().addModel(this.vehicleModel, this.vehicleMake);
+        } else {
+            VehicleDataService.getInstance().addMake(this.vehicleMake);
+            VehicleDataService.getInstance().addModel(this.vehicleModel, this.vehicleMake);
+        }
+        
         if (success) {
             System.out.println("returning Success from doAddVehicleInfo method");
             List<VehicleInfo> vehicleInfoList = VehicleInfoService.getInstance().getAllVehicleInfo();
