@@ -275,15 +275,17 @@ public final class VehicleDataService {
             String sql = "select * from makers where makeName=?";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
-
                 preparedStatement.setString(1, makeName);
-                ResultSet rs = preparedStatement.executeQuery();
-                System.out.println("SQl=" + preparedStatement);
-                if (rs.next()) {
-                    if (rs.getString("makeName") != null) {
-                        result = true;
+
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    System.out.println("SQl=" + preparedStatement);
+                    if (rs.next()) {
+                        if (rs.getString("makeName") != null) {
+                            result = true;
+                        }
                     }
                 }
+
             }
         } catch (SQLException ex) {
             if (log.isEnabledFor(Level.ERROR)) {
@@ -300,12 +302,12 @@ public final class VehicleDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO makers(makeName)" + "VALUES(?)";
+            String sql = "INSERT INTO makers(makeName) " + "VALUES(?)";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, makeName);
 
-                System.out.println("Add Model :: " + preparedStatement);
+                System.out.println("Add Make :: " + preparedStatement);
 
                 int row = preparedStatement.executeUpdate();
 
@@ -328,7 +330,7 @@ public final class VehicleDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO models(modelName,makeName)" + "VALUES(? ,?)";
+            String sql = "INSERT INTO models(modelName,makeName) " + "VALUES(? ,?)";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, modelName);
