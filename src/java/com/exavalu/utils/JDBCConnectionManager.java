@@ -15,7 +15,10 @@ import org.apache.log4j.Logger;
  *
  * @author kumar
  */
-public class JDBCConnectionManager {
+public final class JDBCConnectionManager {
+
+    private JDBCConnectionManager() {
+    }
 
     private static final Logger log = Logger.getLogger(JDBCConnectionManager.class.getName());
     public static JDBCConnectionManager connectionManager = null;
