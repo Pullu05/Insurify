@@ -34,7 +34,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label" for="age">Age<span  style="color:red"> *</span></label>
             <div class="col-sm-6">
-                <input type="number" id="age" class="form-control" name="age" value = "${insurance.age}" required>
+                <input type="number" id="age" class="form-control" name="age" min="18" value = "${insurance.age}" required>
             </div>
         </div>
 
