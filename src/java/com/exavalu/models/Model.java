@@ -12,9 +12,9 @@ package com.exavalu.models;
  */
 public class Model {
 
-    private String modelCode;
+    private int modelId;
     private String modelName;
-    private String makeCode;
+    private String makeName;
 
     /**
      * Getter method of ModelName.
@@ -37,37 +37,37 @@ public class Model {
     /**
      * Getter method of ModelCode.
      *
-     * @return it returns the ModelCode of the Vehicle
+     * @return it returns the ModelId of the Vehicle
      */
-    public String getModelCode() {
-        return modelCode;
+    public int getModelId() {
+        return modelId;
     }
 
     /**
      * Setter method of ModelCode.
      *
-     * @param modelCode it denotes the ModelCode of the Vehicle
+     * @param modelId it denotes the ModelId of the Vehicle
      */
-    public void setModelCode(String modelCode) {
-        this.modelCode = modelCode;
+    public void setModelId(int modelId) {
+        this.modelId = modelId;
     }
 
     /**
      * Getter method of MakeCode.
      *
-     * @return it returns the MakeCode of the Vehicle
+     * @return it returns the MakeName of the Vehicle
      */
-    public String getMakeCode() {
-        return makeCode;
+    public String getMakeName() {
+        return makeName;
     }
 
     /**
      * Setter method of MakeCode.
      *
-     * @param makeCode it denotes the MakeCode of the Vehicle
+     * @param makeName it denotes the MakeName of the Vehicle
      */
-    public void setMakeCode(String makeCode) {
-        this.makeCode = makeCode;
+    public void setMakeName(String makeName) {
+        this.makeName = makeName;
     }
 
 }

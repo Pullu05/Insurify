@@ -214,7 +214,7 @@ public final class VehicleDataService {
                 try (ResultSet rs = preparedStatement.executeQuery()) {
                     while (rs.next()) {
                         Make make = new Make();
-                        make.setMakeCode(rs.getString("makeCode"));
+                        make.setMakeId(rs.getInt("makeId"));
                         make.setMakeName(rs.getString("makeName"));
                         makeList.add(make);
                     }
@@ -234,25 +234,25 @@ public final class VehicleDataService {
      * Description: The getAllModels method is used to get all models for a
      * particular car maker
      *
-     * @param makeCode
+     * @param makeName
      *
      * @return list of all models of a particular car maker
      */
-    public List<Model> getAllModels(String makeCode) {
+    public List<Model> getAllModels(String makeName) {
         List<Model> modelList = new ArrayList<>();
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "Select * from models where makeCode = ?";
+            String sql = "Select * from models where makeName = ?";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
-                preparedStatement.setString(1, makeCode);
+                preparedStatement.setString(1, makeName);
 
                 try (ResultSet rs = preparedStatement.executeQuery()) {
                     while (rs.next()) {
                         Model model = new Model();
-                        model.setMakeCode(rs.getString("makeCode"));
-                        model.setModelCode(rs.getString("modelCode"));
+                        model.setMakeName(rs.getString("makeName"));
+                        model.setModelId(rs.getInt("modelId"));
                         model.setModelName(rs.getString("modelName"));
                         modelList.add(model);
                     }
@@ -265,5 +265,91 @@ public final class VehicleDataService {
             }
         }
         return modelList;
+    }
+    
+     public boolean checkMakePresent(String makeName){
+        boolean result = false;
+    
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "select * from makers where makeName=?";
+
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                
+                preparedStatement.setString(1,makeName);
+                ResultSet rs = preparedStatement.executeQuery();
+                System.out.println("SQl=" + preparedStatement);
+                if (rs.next()) {
+                    if(rs.getString("makeName")!=null)
+                    result = true;
+                }
+            }
+        } catch (SQLException ex) {
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
+        }
+        System.out.println(result);
+        return result;
+    }
+    
+    public boolean addMake(String makeName){
+         boolean result = false;
+
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "INSERT INTO makers(makeName)" + "VALUES(?)";
+
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, makeName);
+                
+
+                System.out.println("Add Model :: " + preparedStatement);
+
+                int row = preparedStatement.executeUpdate();
+
+                if (row == 1) {
+                    result = true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
+        }
+        return result;
+    }
+    
+    public boolean addModel(String modelName, String makeName){
+        boolean result = false;
+
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "INSERT INTO models(modelName,makeName)" + "VALUES(? ,?)";
+
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, modelName);
+                preparedStatement.setString(2, makeName);
+                
+
+                System.out.println("Add Model :: " + preparedStatement);
+
+                int row = preparedStatement.executeUpdate();
+
+                if (row == 1) {
+                    result = true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            if (log.isEnabledFor(Level.ERROR)) {
+                String errorMessage = "Error code: " + ex.getErrorCode() + " | Error message: " + ex.getMessage() + " | Date: " + new Date();
+                log.error(errorMessage);
+            }
+        }
+        return result;
     }
 }

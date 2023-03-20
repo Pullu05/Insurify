@@ -12,25 +12,25 @@ package com.exavalu.models;
  */
 public class Make {
 
-    private String makeCode;
+    private int makeId;
     private String makeName;
 
     /**
      * Getter method of MakeCode.
      *
-     * @return it returns the MakeCode of the Vehicle
+     * @return it returns the MakeId of the Vehicle
      */
-    public String getMakeCode() {
-        return makeCode;
+    public int getMakeId() {
+        return makeId;
     }
 
     /**
      * Setter method of MakeCode.
      *
-     * @param makeCode it denotes the MakeCode of the Vehicle
+     * @param makeId it denotes the MakeId of the Vehicle
      */
-    public void setMakeCode(String makeCode) {
-        this.makeCode = makeCode;
+    public void setMakeId(int makeId) {
+        this.makeId = makeId;
     }
 
     /**
