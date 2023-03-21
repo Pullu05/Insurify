@@ -208,7 +208,7 @@ public final class VehicleDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "Select * from makers";
+            String sql = "Select * from makers order by makeName";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 try (ResultSet rs = preparedStatement.executeQuery()) {
@@ -243,7 +243,7 @@ public final class VehicleDataService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "Select * from models where makeName = ?";
+            String sql = "Select * from models where makeName = ? order by modelName";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, makeName);
@@ -266,23 +266,26 @@ public final class VehicleDataService {
         }
         return modelList;
     }
-    
-     public boolean checkMakePresent(String makeName){
+
+    public boolean checkMakeExistence(String makeName) {
         boolean result = false;
-    
+
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "select * from makers where makeName=?";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
-                
-                preparedStatement.setString(1,makeName);
-                ResultSet rs = preparedStatement.executeQuery();
-                System.out.println("SQl=" + preparedStatement);
-                if (rs.next()) {
-                    if(rs.getString("makeName")!=null)
-                    result = true;
+                preparedStatement.setString(1, makeName);
+
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    System.out.println("SQl=" + preparedStatement);
+                    if (rs.next()) {
+                        if (rs.getString("makeName") != null) {
+                            result = true;
+                        }
+                    }
                 }
+
             }
         } catch (SQLException ex) {
             if (log.isEnabledFor(Level.ERROR)) {
@@ -290,22 +293,21 @@ public final class VehicleDataService {
                 log.error(errorMessage);
             }
         }
-        System.out.println(result);
+
         return result;
     }
-    
-    public boolean addMake(String makeName){
-         boolean result = false;
+
+    public boolean addMake(String makeName) {
+        boolean result = false;
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO makers(makeName)" + "VALUES(?)";
+            String sql = "INSERT INTO makers(makeName) " + "VALUES(?)";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, makeName);
-                
 
-                System.out.println("Add Model :: " + preparedStatement);
+                System.out.println("Add Make :: " + preparedStatement);
 
                 int row = preparedStatement.executeUpdate();
 
@@ -322,18 +324,17 @@ public final class VehicleDataService {
         }
         return result;
     }
-    
-    public boolean addModel(String modelName, String makeName){
+
+    public boolean addModel(String modelName, String makeName) {
         boolean result = false;
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO models(modelName,makeName)" + "VALUES(? ,?)";
+            String sql = "INSERT INTO models(modelName,makeName) " + "VALUES(? ,?)";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, modelName);
                 preparedStatement.setString(2, makeName);
-                
 
                 System.out.println("Add Model :: " + preparedStatement);
 

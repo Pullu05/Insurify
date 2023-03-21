@@ -50,10 +50,17 @@ async function saveQuotation(event) {
 
 async function sendQuotationToMail(event) {
     event.preventDefault();
+
     const submitBtn = event.submitter;
     const successIcon = submitBtn.children[0];
     const loader = submitBtn.children[1];
     const msgElem = submitBtn.children[2];
+    const form = event.target;
+
+    if (!form.checkValidity()) {
+        form.classList.add('was-validated')
+        return;
+    }
 
 
     submitBtn.setAttribute('disabled', true);
@@ -69,7 +76,7 @@ async function sendQuotationToMail(event) {
 
 
     // Form Submission functionality
-    const formData = new FormData(event.target);
+    const formData = new FormData(form);
     const data = {};
     formData.forEach(function (value, key) {
         data[key] = value;
@@ -104,6 +111,7 @@ async function sendQuotationToMail(event) {
             })
             .finally(() => {
                 event.target.reset();
+                form.classList.remove('was-validated');
                 submitBtn.removeAttribute('disabled');
                 loader.classList.add('d-none');
 

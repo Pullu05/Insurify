@@ -105,17 +105,23 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="SendQuotation" method="post" onsubmit="sendQuotationToMail(event)">
+                            <form class="needs-validation" action="SendQuotation" method="post" onsubmit="sendQuotationToMail(event)" novalidate>
                                 <div class="row mb-3">
                                     <label for="email" class="col-sm-2 col-form-label">E-Mail</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <input type="email" class="form-control" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid email address
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="phone" class="col-sm-2 col-form-label">Phone</label>
                                     <div class="col-sm-10">
-                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                        <input type="tel" class="form-control" id="phone" name="phone" pattern="[1-9][0-9]{9}" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid phone number (must be of 10 digits)
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">

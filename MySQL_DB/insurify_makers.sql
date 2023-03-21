@@ -23,12 +23,10 @@ DROP TABLE IF EXISTS `makers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `makers` (
-  `makeCode` varchar(25) NOT NULL,
+  `makeId` int NOT NULL AUTO_INCREMENT,
   `makeName` varchar(45) NOT NULL,
-  PRIMARY KEY (`makeCode`),
-  KEY `fk_makes_models_idx` (`makeName`),
-  CONSTRAINT `fk_makes_models` FOREIGN KEY (`makeName`) REFERENCES `models` (`makeCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`makeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +35,7 @@ CREATE TABLE `makers` (
 
 LOCK TABLES `makers` WRITE;
 /*!40000 ALTER TABLE `makers` DISABLE KEYS */;
-INSERT INTO `makers` VALUES ('AI','Audi'),('BMW','BMW'),('BK','Buick'),('CT','Chevrolet'),('CR','Chrysler'),('DE','Dodge'),('FR','Ford'),('GO','Geo'),('GMC','GMC'),('HA','Honda'),('HR','Hummer'),('II','Infiniti'),('JP','Jeep'),('KA','Kia'),('LS','Lexus'),('MA','Mazda'),('MY','Mercury'),('MI','Mitsubishi'),('NN','Nissan'),('PH','Plymouth'),('PC','Pontiac'),('PE','Porsche'),('SB','Saab'),('TA','Toyota'),('VO','Volvo');
+INSERT INTO `makers` VALUES (1,'Audi'),(2,'Buick'),(3,'BMW'),(4,'Chrysler'),(5,'Chevrolet'),(6,'Dodge'),(7,'Ford'),(8,'GMC'),(9,'Geo'),(10,'Honda'),(11,'Hummer'),(12,'Infiniti'),(13,'Jeep'),(14,'Kia'),(15,'Lexus'),(16,'Mazda'),(17,'Mitsubishi'),(18,'Mercury'),(19,'Nissan'),(20,'Pontiac'),(21,'Porsche'),(22,'Plymouth'),(23,'Saab'),(24,'Toyota'),(25,'Volvo'),(28,'Lamborghini'),(30,'Tata'),(32,'Hyundai'),(33,'Mahindra');
 /*!40000 ALTER TABLE `makers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-17 12:12:23
+-- Dump completed on 2023-03-20 23:46:29
