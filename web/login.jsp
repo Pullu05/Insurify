@@ -80,13 +80,13 @@
                                 <label class="form-label" for="form1Example23">Password</label>
                             </div>
 
-                            <div class="d-flex justify-content-around align-items-center mb-4">
+<!--                            <div class="d-flex justify-content-around align-items-center mb-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
                                     <label class="form-check-label" for="form1Example3"> Remember me </label>
                                 </div>
                                 <a href="#!">Forgot password?</a>
-                            </div>
+                            </div>-->
                             <button type="submit" class="btn btn-primary btn-lg btn-block w-100">Sign in</button>
 
                             <div class="divider d-flex align-items-center my-4">
